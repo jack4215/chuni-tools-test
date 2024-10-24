@@ -1,9 +1,0 @@
-.prettierrc
-package-lock.json
-node_modules/
-.vscode/
-.exclude/
-build/
-log.md
-.DS_Store
-secret/

@@ -33,15 +33,17 @@
     async function s(e=r.master) {
         const t = new FormData;
         t.append("genre", "99"),
+        t.append("friend", document.querySelector('select[name="friend"]').value),
         t.append("token", n("_t"));
         const a = {
-            [r.ultima]: "sendUltima",
-            [r.master]: "sendMaster",
-            [r.expert]: "sendExpert",
-            [r.advanced]: "sendAdvanced",
-            [r.basic]: "sendBasic"
-        }[e]
-          , c = await async function(e, t) {
+            [r.ultima]: "4",
+            [r.master]: "3",
+            [r.expert]: "2",
+            [r.advanced]: "1",
+            [r.basic]: "0"
+        }[e];
+        t.append("radio_diff", a);
+        const c = await async function(e, t) {
             const n = await fetch(o + e, {
                 headers: {
                     "Cache-Control": "no-cache"
@@ -54,17 +56,20 @@
             if (-1 != n.url.indexOf("/error"))
                 throw new Error("Request failed: rejected by server");
             return (new DOMParser).parseFromString(await n.text(), "text/html")
-        }("/mobile/record/musicGenre/" + a, t);
-        return Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
-            const n = t.querySelector(".play_musicdata_icon")
-              , o = t.querySelector(".text_b")?.innerHTML;
+        }("/mobile/friend/genreVs/sendBattleStart/", t);
+
+        const friendName = document.querySelector('select[name="friend"] option[selected]')?.innerHTML || "";
+        return Array.from(c.querySelectorAll(".w388.music_box")).map((t => {
+            const n = t.querySelector(".vs_list_friendbatch")
+              , o = t.querySelectorAll(".play_musicdata_highscore")[1]?.innerHTML
             return {
-                title: t.querySelector(".music_title")?.innerHTML,
+                name: friendName,
+                title: t.querySelector(".block_underline")?.textContent.trim(),
                 score: o ? (r = o,
                 Number([...r].filter((e => "," !== e)).join(""))) : -1,
                 difficulty: e,
                 clear: n?.querySelector('img[src*="alljustice"]') ? "AJ" : n?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
-                idx: t.querySelector('input[name="idx"]').value
+                idx: a
             };
             var r
         }
@@ -124,19 +129,17 @@
             [e.en_US]: {
                 pleaseLogin: "Please login to CHUNITHM-NET first.",
                 needReload: "Oops! Something went wrong, please reload CHUNITHM-NET.",
-                downloadCSV: "Download Song Record as CSV",
+                downloadCSV: "Download Friend's Song Record as CSV",
                 downloading: "Downloading {{diff}} data...",
                 downloaded: "Completed!",
-                triggerScript: "B30 Image @Qman",
                 loadingMessage: "Loading song data, please do not click the button again."
             },
             [e.zh_TW]: {
                 pleaseLogin: "請先登入 CHUNITHM-NET 再執行本程式。",
                 needReload: "唉呀，看來我們這裡出了一點小意外，請重新整理 CHUNITHM-NET。",
-                downloadCSV: "以CSV下載歌曲記錄",
+                downloadCSV: "以CSV下載好友歌曲記錄",
                 downloading: "正在下載 {{diff}} 資料...",
                 downloaded: "下載完成！",
-                triggerScript: "B30 圖片 @Qman",
                 loadingMessage: "正在載入歌曲資料，請勿重複點擊按鈕。"
             }
         }[function() {
@@ -168,14 +171,6 @@
                 }
                 )),
                 e
-            }();
-
-            const triggerButton = function() {
-                const e = r.createElement("button");
-                e.className = "chuni-tool-btn";
-                e.innerText = a.triggerScript;
-                r.querySelector(".clearfix")?.insertAdjacentElement("afterend", e);
-                return e;
             }();
             let isLoading = false;
             e.addEventListener("click", (async () => {
@@ -266,9 +261,9 @@
                 isLoading = false;
                 e.innerText = a.downloaded;
                 const l = document.createElement("a");
-                l.href = "data:text/plain;charset=utf-8," + encodeURIComponent("title,difficulty,const,score,rating,op\n" + i.join("\n")),
+                l.href = "data:text/plain;charset=utf-8," + encodeURIComponent( `"${o[0].name}"\n` + "title,difficulty,const,score,rating,op\n" + i.join("\n")),
                 l.target = "_blank",
-                l.download = `chunithm_record_${(new Date).toISOString()}.csv`,
+                l.download = `chunithm_record_${o[0].name}_${(new Date).toISOString()}.csv`,
                 l.style.display = "none",
                 r.body.appendChild(l),
                 l.click(),
@@ -279,12 +274,6 @@
                 ), 3e3)
             }
             ));
-
-            triggerButton.addEventListener("click", () => {
-                var e = document.createElement("script");
-                e.src = "https://reiwa.f5.si/chuni_scoredata/main.js?" + String(Math.floor((new Date).getTime()/1e3));
-                document.body.appendChild(e);
-            });
 
         } catch (e) {
             alert(a.needReload),

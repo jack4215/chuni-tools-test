@@ -1,45 +1,59 @@
-# Chunithm Tools
+# CHUNITHM Tools (Intl.ver)
 
-For more information please refer to [this page](https://dogeon188.github.io/chuni-tools/?lang=en_US)
+This repo is forked from [Dogeon188/chuni-tools](https://github.com/Dogeon188/chuni-tools).
 
-若要取得更多資訊，請參考[此頁面](https://dogeon188.github.io/chuni-tools/?lang=zh_TW)
+(請注意：中文內容設於下方)
 
-## Acknowledgement
+For more information please refer to [this page](https://jack4215.github.io/chuni-tools/?lang=en_US).
 
-Recently (the year 2024,) I have been struggling for my curriculum, and have no time & passion & energy to maintain this project. Sorry for the inconvenience.
+## Chart constant data
+JP 20241017v1.1
 
-Actually, there are [some functioning forks](https://github.com/Dogeon188/chuni-tools/forks) out there, though I'm not responsible for any of the features they implemented.
+## How to use
+1. Copy the following link to your bookmarks.
 
-Hopefully, I can still make some time to update the const data, but not guaranteed. Perhaps one day I will make improvements to the const data db, document all the workflows in my development, finish the tutorial website, make a better and build some cool new features, etc. Though sadly not now.
-
-If you're interested to contribute, please feel free to fork this project, or even make a PR (if I have time to merge them :P).
-
-## Credits & about this project
-
-This project is a remake of [chuni_new_intl_viewer](https://github.com/Dogeon188/chuni_new_intl_viewer). The old project is deprecated, please don't mind those dirty codes.
-
-This project is heavily inspired by [@kyroslee/chuni_intl_viewer](https://github.com/kyroslee/chuni_intl_viewer) and [@myjian/mai-tools](https://github.com/myjian/mai-tools).
-
-The chart constant data is from [CHUNITHM譜面定数メインフレーム](https://twitter.com/RCMF_chunithm).
-
-## Dev
-
-To initialize the repository, first copy the `./docs` folder and rename to `./build`. (If you know what you're doing, you can also just take advantages of the symlinks.) Then, use
-
-```sh
-npm install
+```js
+javascript:(function(d,s){s=d.createElement('script');s.src='https://jack4215.github.io/chuni-tools/scripts/chuni-tools.js?t='+Math.floor(Date.now()/60000);d.body.append(s);})(document);
 ```
 
-to initialize the repo. BTW, it's recommended to install Live Server plugin if you're using VSCode.
+2. Navigate to [CHUNITHM-NET](https://chunithm-net-eng.com/mobile/home) and open the bookmark. This tool offers 4 features.
 
-After that, use the following command to create a dev session:
+- Personal Record Viewer：
+ Executed on any non-specified page of [CHUNITHM-NET](https://chunithm-net-eng.com/mobile/home).
 
-```sh
-npm run dev
+- Friend Record Viewer：
+ Select friend on [CHUNITHM-NET Friend VS](https://chunithm-net-eng.com/mobile/friend/genreVs/battleStart) page, click 'Battle Start' and then execute.
+
+- Export Personal Record to CSV：
+ Execute on [CHUNITHM-NET Login Bonus](https://chunithm-net-eng.com/mobile/loginBonus) page.
+
+- Export Team Ranking to CSV：
+ Execute on [CHUNITHM-NET Team Ranking](https://chunithm-net-eng.com/mobile/ranking/teamPoint) page.
+
+# CHUNITHM Tools (國際版)
+
+若要取得更多資訊，請參考[此頁面](https://jack4215.github.io/chuni-tools/?lang=zh_TW)
+
+## 定數資料
+JP 20241017v1.1
+
+## 如何使用
+1. 複製以下的連結加入書籤 
+
+```js
+javascript:(function(d,s){s=d.createElement('script');s.src='https://jack4215.github.io/chuni-tools/scripts/chuni-tools.js?t='+Math.floor(Date.now()/60000);d.body.append(s);})(document);
 ```
 
-With the following command, you can build and compile the code to `./docs`, then GitHub Pages will handle the rest.
+2. 至 [CHUNITHM-NET](https://chunithm-net-eng.com/mobile/home) 並開啟該書籤，本工具共有 4 項功能
 
-```sh
-npm run build
-```
+- 個人查分器：
+ 於 [CHUNITHM-NET](https://chunithm-net-eng.com/mobile/home) <b>非指定</b>的網頁即可執行
+
+- 好友查分器：
+ 需於 [CHUNITHM-NET 好友對決](https://chunithm-net-eng.com/mobile/friend/genreVs/battleStart)網頁選擇好友後，按下 Battle Start 再執行
+
+- 個人成績匯出 CSV：
+ 需於 [CHUNITHM-NET 登入獎勵](https://chunithm-net-eng.com/mobile/loginBonus)網頁執行
+
+- 團隊排名匯出 CSV：
+ 需於 [CHUNITHM-NET 團隊排名](https://chunithm-net-eng.com/mobile/ranking/teamPoint)網頁執行

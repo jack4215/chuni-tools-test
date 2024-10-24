@@ -64,12 +64,12 @@
             [e.en_US]: {
                 pleaseLogin: "Please login to CHUNITHM-NET first.",
                 needReload: "Please reload CHUNITHM-NET.",
-                analyzeRating: "Analyze Rating"
+                analyzeRating: "Analyze Friend's Rating"
             },
             [e.zh_TW]: {
                 pleaseLogin: "請先登入 CHUNITHM-NET 再執行本程式。",
                 needReload: "請重新整理 CHUNITHM-NET 再執行本程式。",
-                analyzeRating: "分析遊戲成績"
+                analyzeRating: "分析好友遊戲成績"
             }
         }[function() {
             const t = new URLSearchParams(location.search);
@@ -92,10 +92,10 @@
                 e.className = "chuni-tool-btn";
                 const r = l.createElement("link");
                 r.rel = "stylesheet",
-                r.href = t("fetch-all") + "/common/styles/inject.css",
+                r.href = t("fetch-friend") + "/common/styles/inject.css",
                 e.innerText = s.analyzeRating,
-                e.href = t("fetch-all") + "/record-viewer/#best",
-                e.target = "recordViewer",
+                e.href = t("fetch-friend") + "/friendrecord-viewer/#best",
+                e.target = "friendrecordViewer",
                 l.getElementsByTagName("head")[0].appendChild(r),
                 r.addEventListener("load", ( () => {
                     l.querySelector(".clearfix")?.insertAdjacentElement("afterend", e)
@@ -121,102 +121,83 @@
                             }
                         }(e.source, e.origin);
                         let s;
+                     //   let bestRecordName = "";
                         switch (t.target) {
                         case "bestRecord":
                             console.log("%c    Target difficulty: %c" + t.data.difficulty, "color: gray", "color: white"),
                             s = async function(e=o.master) {
                                 const t = new FormData;
                                 t.append("genre", "99"),
+                                t.append("friend", document.querySelector('select[name="friend"]').value),
                                 t.append("token", r("_t"));
                                 const a = {
-                                    [o.ultima]: "sendUltima",
-                                    [o.master]: "sendMaster",
-                                    [o.expert]: "sendExpert",
-                                    [o.advanced]: "sendAdvanced",
-                                    [o.basic]: "sendBasic"
+                                    [o.ultima]: "4",
+                                    [o.master]: "3",
+                                    [o.expert]: "2",
+                                    [o.advanced]: "1",
+                                    [o.basic]: "0"
                                 }[e]
-                                  , c = await i("/mobile/record/musicGenre/" + a, t);
-                                return Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
-                                    const r = t.querySelector(".play_musicdata_icon")
-                                      , a = t.querySelector(".text_b")?.innerHTML;
+                                t.append("radio_diff", a);
+                                const c = await i("/mobile/friend/genreVs/sendBattleStart/", t);
+                                const records = Array.from(c.querySelectorAll(".w388.music_box")).map((t => {
+                                    const r = t.querySelector(".vs_list_friendbatch")
+                                      , a = t.querySelectorAll(".play_musicdata_highscore")[1]?.innerHTML;
                                     return {
-                                        title: t.querySelector(".music_title")?.innerHTML,
+                                        title: t.querySelector(".block_underline")?.textContent.trim(),
                                         score: a ? n(a) : -1,
                                         difficulty: e,
                                         clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
-                                        idx: t.querySelector('input[name="idx"]').value
-                            
+                                        idx: a
                                     }
-                                }
-                                )).filter((e => e.title && e.score))
+                                }));
+                                return records.filter(e => e.title && e.score);
                             }(t.data.difficulty);
                             break;
                         case "playHistory":
                             s = async function() {
-                                const e = await i("/mobile/record/playlog");
-                                return Array.from(e.querySelectorAll(".mt_10 .frame02.w400")).map((e => {
-                                    const t = e.querySelector(".play_musicdata_score_text")?.innerHTML
-                                      , r = e.querySelector(".play_track_result img").src
-                                      , a = /musiclevel_.*(?=\.png)/.exec(r)[0].slice(11)
-                                      , c = Array.from(e.querySelectorAll(".play_musicdata_icon"));
+                                return Array.from({ length: 50 }).map(() => {
                                     return {
-                                        title: e.querySelector(".play_musicdata_title").innerHTML,
-                                        score: n(t),
-                                        difficulty: "ultimate" == a ? "ULT" : "worldsend" == a ? "WE" : o[a],
-                                        clear: c.some((e => e.querySelector('img[src*="alljustice"]'))) ? "AJ" : c.some((e => e.querySelector('img[src*="fullcombo"]'))) ? "FC" : "",
-                                        timestamp: Date.parse(e.querySelector(".play_datalist_date").innerHTML)
-                                    }
-                                }
-                                ))
-                            }();
-                            break;
-                        case "recentRecord":
-                            s = async function() {
-                                const e = await i("/mobile/home/playerData/ratingDetailRecent");
-                                return Array.from(e.querySelectorAll("form")).map((e => {
-                                    const t = e.querySelector("input[name=diff]")?.value;
-                                    return {
-                                        title: e.querySelector(".music_title").innerHTML,
-                                        score: n(e.querySelector(".text_b")?.innerHTML),
-                                        difficulty: Object.values(o)[parseInt(t)],
+                                        title: "unknown",
+                                        score: "0",
+                                        difficulty: "--",
                                         clear: ""
-                                    }
-                                }
-                                ))
+                                    };
+                                });
                             }();
                             break;
+                            case "recentRecord":
+                                s = async function() {
+                                    return Array.from({ length: 10 }).map(() => {
+                                        return {
+                                            title: "unknown",
+                                            score: "0",
+                                            difficulty: "--",
+                                            clear: ""
+                                        };
+                                    });
+                                }();
+                                break;
                         case "playerStats":
                             s = async function() {
-                                const e = await i("/mobile/home/playerData")
-                                  , t = e.querySelector(".player_honor_short")
-                                  , r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage)
-                                  , a = Array.from(e.querySelectorAll(".player_rating_num_block img")).map((e => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1))).join("");
-                                return {
-                                    name: e.querySelector(".player_name_in").innerHTML,
+                                const e = await i("/mobile/friend/genreVs/battleStart")
+                                  return {
+                                    name: e.querySelector('select[name="friend"] option[selected]')?.innerHTML,
                                     honor: {
-                                        text: e.querySelector(".player_honor_text_view span").innerHTML,
-                                        color: r ? r[0].slice(9) : "normal"
+                                        text: "unknown",
+                                        color: "normal"
                                     },
-                                    rating: a,
-                                    ratingMax: e.querySelector(".player_rating_max").innerHTML,
-                                    playCount: e.querySelector(".user_data_play_count .user_data_text").innerHTML,
-                                    lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML)
+                                    rating: "--",
+                                    ratingMax: "--",
+                                    playCount: "--",
+                                    lastPlayed: "--"
                                 }
                             }();
                             break;
-                        case "songPlayCount":
-                            console.log("%c    Target song id: %c" + t.data.idx, "color: gray", "color: white"),
-                            console.log("%c    Target difficulty: %c" + t.data.difficulty, "color: gray", "color: white"),
-                            s = async function(e, t) {
-                                const a = new FormData;
-                                a.append("idx", e),
-                                a.append("genre", "99"),
-                                a.append("diff", c.indexOf(t).toString()),
-                                a.append("token", r("_t"));
-                                const n = await i("/mobile/record/musicGenre/sendMusicDetail/", a)
-                                  , l = n.querySelectorAll(`.music_box.bg_${Object.entries(o).find((e => e[1] === t))[0]} .box14 > div`)[1].querySelector(".text_b")?.innerHTML.replace("times", "");
-                                return parseInt(l)
-                            }(t.data.idx, t.data.difficulty)
+                        case "songPlayCount":                  
+                            s = async function() {
+                                return "-";
+                            }(t.data.idx, t.data.difficulty);
+                            break;
                         }
                         l("ping", {
                             target: t.target
