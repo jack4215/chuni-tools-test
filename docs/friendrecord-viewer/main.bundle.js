@@ -868,7 +868,7 @@
           }(e), e.genre = `${t.genre}`, e.rating = Math.floor(e.rawRating / 100));
           
           if (e.score === "-") {
-            return 0;
+            e.rawRating = 0;
           } else {
             
             e.op = function(e) {
