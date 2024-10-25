@@ -149,7 +149,7 @@
                                         clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
                                         idx: a
                                     },
-                                    console.log(title,score),
+                                    console.log(title,score)
                                 }));
                                 return records.filter(e => e.title && e.score);
                             }(t.data.difficulty);
