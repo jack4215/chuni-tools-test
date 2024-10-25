@@ -868,8 +868,8 @@
           }(e), e.genre = `${t.genre}`, e.rating = Math.floor(e.rawRating / 100));
           
           if (e.score === "-") {
-            e.op = 1;
-            e.rating = "-";
+            e.op = 0;
+          //  e.rating = "-";
           } else {
             
             e.op = function(e) {
