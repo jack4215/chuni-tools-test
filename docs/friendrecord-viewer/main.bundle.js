@@ -850,7 +850,7 @@
         o = t,
         s = [];
       if (r.map((e => {
-          if ("-" === e.score) return e.title = Xe(e.title), e.score = 0;
+          if ("-" === e.score) return e.title = Xe(e.title), e.score = 1;
           void 0 === o[e.title] && (e.title = Xe(e.title));
           let t = o[e.title];
           void 0 === t ? (s.push(e), e.const = -1, e.rating = 0) : (e.const = t[e.difficulty], t.uncertain?.includes(e.difficulty) && (e.constUncertain = !0), e.rawRating = function(e) {
