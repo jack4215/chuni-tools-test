@@ -816,10 +816,6 @@
       return 5 * (e.const+3) * 1e4
     }
 
-    function Vz(e) {
-      return 0 
-    }
-
     function qe(e, t) {
       return e.slice(0, t).reduce(((e, t) => e + t), 0) / t
     }
@@ -874,6 +870,7 @@
           }(e), e.genre = `${t.genre}`, e.rating = Math.floor(e.rawRating / 100));
           
           e.op = function(e) {
+            if (e.score === "-") return 0;
             if (e.score >= 101e4) return Ve(e);
             let t = {
                 AJ: 2e3,
