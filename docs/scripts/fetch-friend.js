@@ -147,7 +147,7 @@
                                         score: a ? n(a) : -1,
                                         difficulty: e,
                                         clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
-                                        idx: "0"
+                                        idx: "9999"
                                     }
                                 }));
                                 console.log(records);
