@@ -816,6 +816,10 @@
       return 5 * (e.const+3) * 1e4
     }
 
+    function Vz(e) {
+      return 0 
+    }
+
     function qe(e, t) {
       return e.slice(0, t).reduce(((e, t) => e + t), 0) / t
     }
@@ -871,6 +875,7 @@
           
           e.op = function(e) {
             if (e.score >= 101e4) return Ve(e);
+            if (e.rawRating = 0) return Vz(e);
             let t = {
                 AJ: 2e3,
                 FC: 1e3,
