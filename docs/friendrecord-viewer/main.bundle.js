@@ -875,7 +875,7 @@
               n = Math.floor(1e4 * e.const),
               r = e.score < 1007500 ? e.rawRating : n + 2e4 + 3 * (e.score - 1007500);
             return r = e.score >= 975e3 ? 10 * Math.floor(r / 10) : 100 * Math.floor(r / 100), 5 * (r + t)
-          }(e), e.opMax = Ve(e), e.opPercent = 100 * e.op / e.opMax, e.rank = Fe(e.score)
+          }(e),console.log(e.title,e.op), e.opMax = Ve(e), e.opPercent = 100 * e.op / e.opMax, e.rank = Fe(e.score)
         })), n && s.length) {
         const e = {};
         s.forEach((t => {
