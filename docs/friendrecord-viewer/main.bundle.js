@@ -860,7 +860,7 @@
           void 0 === t ? (s.push(e), e.const = -1, e.rating = 0) : (e.const = t[e.difficulty], t.uncertain?.includes(e.difficulty) && (e.constUncertain = !0), 
           e.rawRating = function(e) {
             let t, n = Math.floor(1e4 * e.const);
-            if (e.score === "-") e.rawRating = 0;
+            if (e.score === "-") return 0;
             if (e.score >= 9e5) {
               let t = Be.find((t => e.score >= t.score));
               return Math.max(0, n + t.base + t.ratio * (e.score - t.score))
@@ -875,7 +875,6 @@
           
           e.op = function(e) {
             if (e.score >= 101e4) return Ve(e);
-            if (e.rawRating = 0) return Vz(e);
             let t = {
                 AJ: 2e3,
                 FC: 1e3,
@@ -884,7 +883,9 @@
               n = Math.floor(1e4 * e.const),
               r = e.score < 1007500 ? e.rawRating : n + 2e4 + 3 * (e.score - 1007500);
             return r = e.score >= 975e3 ? 10 * Math.floor(r / 10) : 100 * Math.floor(r / 100), 5 * (r + t)
-          }(e), e.opMax = Ve(e), e.opPercent = 100 * e.op / e.opMax, e.rank = Fe(e.score)
+          }(e), 
+          
+          e.opMax = Ve(e), e.opPercent = 100 * e.op / e.opMax, e.rank = Fe(e.score)
         })), n && s.length) {
         const e = {};
         s.forEach((t => {
