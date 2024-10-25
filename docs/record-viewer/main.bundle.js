@@ -3906,7 +3906,7 @@
         }
       }
     }
-
+/*
     function _o(e, t, n) {
       let r, o, s, {
         records: a
@@ -3916,7 +3916,40 @@
       }, e.$$.update = () => {
         8 & e.$$.dirty && n(1, r = a.reduce(((e, t) => e + t.op), 0)), 8 & e.$$.dirty && n(0, o = a.reduce(((e, t) => e + t.opMax), 0)), 3 & e.$$.dirty && n(2, s = r / o * 100)
       }, [o, r, s, a]
+    }*/
+
+      function _o(e, t, n) {
+        let r, o, s, { records: a } = t;
+    
+        // 過濾重複的 title，只保留較高的 OP 和 opMax
+        const filteredRecords = a.reduce((acc, record) => {
+            // 如果這個 title 還沒出現過，或者新的紀錄 OP 較高，則更新
+            if (!acc[record.title] || acc[record.title].op < record.op) {
+                acc[record.title] = record;
+            } else if (acc[record.title].op === record.op && acc[record.title].opMax < record.opMax) {
+                // 如果 OP 相同，則比較 opMax，保留較高的 opMax
+                acc[record.title].opMax = record.opMax;
+            }
+            return acc;
+        }, {});
+    
+        const uniqueRecords = Object.values(filteredRecords);
+    
+        e.$$set = e => {
+            "records" in e && n(3, a = e.records);
+        };
+    
+        e.$$.update = () => {
+            // 使用過濾後的 uniqueRecords 進行計算
+            if (8 & e.$$.dirty) n(1, r = uniqueRecords.reduce((sum, t) => sum + t.op, 0));
+            if (8 & e.$$.dirty) n(0, o = uniqueRecords.reduce((sum, t) => sum + t.opMax, 0));
+            if (3 & e.$$.dirty) n(2, s = r / o * 100);
+        };
+    
+        return [o, r, s, a];
     }
+    
+    
     const Io = class extends Se {
         constructor(e) {
           super(), je(this, e, _o, Oo, i, {
