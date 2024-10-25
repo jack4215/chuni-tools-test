@@ -1,4 +1,4 @@
-# CHUNITHM Tools (Intl.ver)
+# CHUNITHM Tools (Dev.)
 
 This repo is forked from [Dogeon188/chuni-tools](https://github.com/Dogeon188/chuni-tools), and only for dev.
 
