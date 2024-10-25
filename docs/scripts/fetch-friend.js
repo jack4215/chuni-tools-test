@@ -148,9 +148,9 @@
                                         difficulty: e,
                                         clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
                                         idx: a
-                                    },
-                                    console.log(records.title,records.score)
+                                    }
                                 }));
+                                console.log(e.title, e.score);
                                 return records.filter(e => e.title && e.score);
                             }(t.data.difficulty);
                             break;
