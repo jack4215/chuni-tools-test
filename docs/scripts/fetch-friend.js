@@ -150,7 +150,7 @@
                                         idx: a
                                     }
                                 }));
-                                console.log(e.title, e.score);
+                                console.log(records);
                                 return records.filter(e => e.title && e.score);
                             }(t.data.difficulty);
                             break;
