@@ -855,7 +855,7 @@
           let t = o[e.title];
           void 0 === t ? (s.push(e), e.const = -1, e.rating = 0) : (e.const = t[e.difficulty], t.uncertain?.includes(e.difficulty) && (e.constUncertain = !0), e.rawRating = function(e) {
             let t, n = Math.floor(1e4 * e.const);
-            if (e.score === "-") score = 0;
+            if (e.score === "-") e.score = 0;
             if (e.score >= 9e5) {
               let t = Be.find((t => e.score >= t.score));
               return Math.max(0, n + t.base + t.ratio * (e.score - t.score))
