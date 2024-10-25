@@ -865,7 +865,14 @@
               t = (n - 5e4) / 2 * (e.score - 5e5) / 3e5
             }
             return Math.max(0, t)
-          }(e), e.genre = `${t.genre}`, e.rating = Math.floor(e.rawRating / 100)), e.op = function(e) {
+          }(e), e.genre = `${t.genre}`, e.rating = Math.floor(e.rawRating / 100));
+          
+          if (e.score === "-") {
+            e.op = 1;
+            e.rating = "-";
+          } else {
+            
+            e.op = function(e) {
             if (e.score >= 101e4) return Ve(e);
             let t = {
                 AJ: 2e3,
@@ -876,7 +883,7 @@
               r = e.score < 1007500 ? e.rawRating : n + 2e4 + 3 * (e.score - 1007500);
             return r = e.score >= 975e3 ? 10 * Math.floor(r / 10) : 100 * Math.floor(r / 100), 5 * (r + t)
           }(e), e.opMax = Ve(e), e.opPercent = 100 * e.op / e.opMax, e.rank = Fe(e.score)
-        })), n && s.length) {
+        }})), n && s.length) {
         const e = {};
         s.forEach((t => {
           var n;
