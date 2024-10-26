@@ -3919,35 +3919,43 @@
     }*/
 
       function _o(e, t, n) {
-        let r, o, s, { records: a } = t;
+        let r, o, s;
+        const { records: a } = t;
     
-        // 過濾重複的 title，只保留較高的 OP 和 opMax
-        const filteredRecords = a.reduce((acc, record) => {
-            // 如果這個 title 還沒出現過，或者新的紀錄 OP 較高，則更新
-            if (!acc[record.title] || acc[record.title].op < record.op) {
-                acc[record.title] = record;
-            } else if (acc[record.title].op === record.op && acc[record.title].opMax < record.opMax) {
-                // 如果 OP 相同，則比較 opMax，保留較高的 opMax
-                acc[record.title].opMax = record.opMax;
-            }
-            return acc;
-        }, {});
+        // 依照曲名 (title) 分組，並選取每首歌的最高 OP 和 OP Max
+        const groupByTitle = (records) => {
+            const map = new Map();
+            records.forEach((song) => {
+                const { title, op, opMax } = song;
+                if (!map.has(title)) {
+                    map.set(title, { op, opMax });
+                } else {
+                    const current = map.get(title);
+                    map.set(title, {
+                        op: Math.max(current.op, op),
+                        opMax: Math.max(current.opMax, opMax)
+                    });
+                }
+            });
+            return Array.from(map.values());
+        };
     
-        const uniqueRecords = Object.values(filteredRecords);
-    
-        e.$$set = e => {
+        e.$$set = (e) => {
             "records" in e && n(3, a = e.records);
         };
     
         e.$$.update = () => {
-            // 使用過濾後的 uniqueRecords 進行計算
-            if (8 & e.$$.dirty) n(1, r = uniqueRecords.reduce((sum, t) => sum + t.op, 0));
-            if (8 & e.$$.dirty) n(0, o = uniqueRecords.reduce((sum, t) => sum + t.opMax, 0));
-            if (3 & e.$$.dirty) n(2, s = r / o * 100);
+            const groupedRecords = groupByTitle(a);  // 依照曲名分組，選取最高的 OP 和 OP Max
+    
+            // 計算 OP 總和、OP Max 總和，以及達成百分比
+            if (8 & e.$$.dirty) n(1, r = groupedRecords.reduce((sum, song) => sum + song.op, 0));
+            if (8 & e.$$.dirty) n(0, o = groupedRecords.reduce((sum, song) => sum + song.opMax, 0));
+            if (3 & e.$$.dirty) n(2, s = (r / o) * 100);
         };
     
         return [o, r, s, a];
     }
+    
     
     
     const Io = class extends Se {
