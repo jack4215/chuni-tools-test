@@ -887,30 +887,9 @@
           e[n = t.title] ?? (e[n] = []), e[t.title].push(t.difficulty)
         })), console.log(e), alert(n.replace("{{songs}}", Object.entries(e).map((([e, t]) => `    ${e} ${t.join(",")}`)).join("\n")))
       }
-      const scoreSum = calculateScoreSum(r);
-      console.log("Score Sum by Difficulty:", scoreSum);
-
       return r.sort(Je.default), r.map(((e, t) => {
         e.order = t + 1
       })), r
-
-      function calculateScoreSum(r) {
-        const scoreSums = {
-          BAS: 0,
-          ADV: 0,
-          EXP: 0,
-          MAS: 0,
-          ULT: 0
-        };
-      
-        r.forEach(r => {
-          if (r.score !== -1 && scoreSums.hasOwnProperty(r.difficulty)) {
-            scoreSums[r.difficulty] += r.score || 0;
-          }
-        });
-      
-        return scoreSums;
-      }
     }
     c(De, (() => {
       try {
@@ -3958,8 +3937,8 @@
   
       e.$$.update = () => {
           const groupedRecords = groupByTitle(a);  
-          if (8 & e.$$.dirty) n(1, r = groupedRecords.reduce((sum, song) => sum + song.op, 0));console.log("OPtotal: ", r);
-          if (8 & e.$$.dirty) n(0, o = groupedRecords.reduce((sum, song) => sum + song.opMax, 0));console.log("OPmax: ", o);
+          if (8 & e.$$.dirty) n(1, r = groupedRecords.reduce((sum, song) => sum + song.op, 0));
+          if (8 & e.$$.dirty) n(0, o = groupedRecords.reduce((sum, song) => sum + song.opMax, 0));
           if (3 & e.$$.dirty) n(2, s = (r / o) * 100);  
       };
   
