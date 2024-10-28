@@ -56,18 +56,19 @@
             return (new DOMParser).parseFromString(await n.text(), "text/html")
         }("/mobile/record/musicGenre/" + a, t);
         return Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
-            const n = t.querySelector(".play_musicdata_icon")
-              , o = t.querySelector(".text_b")?.innerHTML;
+            const n = t.querySelector(".play_musicdata_icon"),
+                  o = t.querySelector(".text_b")?.innerHTML;
+            const score = o ? Number(o.replace(/,/g, "")) : -1; // 直接移除逗號並轉換為數字
+            
             return {
                 title: t.querySelector(".music_title")?.innerHTML,
-                score: o ? (r = o,
-                Number([...r].filter((e => "," !== e)).join(""))) : -1,
+                score: score,
                 difficulty: e,
                 clear: n?.querySelector('img[src*="alljustice"]') ? "AJ" : n?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
                 idx: t.querySelector('input[name="idx"]').value
             };
-            var r
-        })).filter((e => e.title && e.score))
+        })).filter((e => e.title && e.score));
+        
     }
     !function(e) {
         e["P & A"] = "0",
