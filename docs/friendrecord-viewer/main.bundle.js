@@ -921,12 +921,12 @@
         Nt.updateConstData(), Ht.updateConstData(), At.updateConstData()
       })),
       nt = Ne("showOverPower", "hide", ["hide", "value", "percentage"]),
-      rt = function(e, t, n = (() => {})) {
+      rt = function(e, n = (() => {})) {
         let o = false;
         const { subscribe: s, set: a, update: i } = Ce(o);
         return {
           subscribe: s,
-          set(value) {
+          set() {
               a(false);
               localStorage.setItem(e, JSON.stringify(false));
               n(false);
