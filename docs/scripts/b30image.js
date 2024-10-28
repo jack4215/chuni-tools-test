@@ -219,7 +219,7 @@ async function main() {
         for (let i = 0; i < missingCount; i++) {
             let userScore;
             do {
-                userScore = prompt(`請輸入「Stardust:RAY」的分數（必須為正整數）：`);
+                userScore = prompt(`請輸入「Stardust:RAY」的分數：`);
                 userScore = Number(userScore);
             } while (!Number.isInteger(userScore) || userScore <= 0);
         
