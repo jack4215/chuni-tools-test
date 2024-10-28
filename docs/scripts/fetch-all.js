@@ -168,7 +168,7 @@
                                     
                                     records.push({
                                         title: "Stardust:RAY",
-                                        score: totalHighScore - difficultyScore, 
+                                        score: totalHighScore - difficultyScore === 0 ? -1 : totalHighScore - difficultyScore, 
                                         difficulty: e,
                                         clear: "",
                                         idx: "2605"
