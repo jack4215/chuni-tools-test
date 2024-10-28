@@ -122,37 +122,49 @@
                         }(e.source, e.origin);
                         let s;
                         switch (t.target) {
-                        case "bestRecord":
-                            console.log("%c    Target difficulty: %c" + t.data.difficulty, "color: gray", "color: white"),
-                            s = async function(e=o.master) {
-                                const t = new FormData;
-                                t.append("genre", "99"),
-                                t.append("token", r("_t"));
-                                const a = {
-                                    [o.ultima]: "sendUltima",
-                                    [o.master]: "sendMaster",
-                                    [o.expert]: "sendExpert",
-                                    [o.advanced]: "sendAdvanced",
-                                    [o.basic]: "sendBasic"
-                                }[e]
-                                  , c = await i("/mobile/record/musicGenre/" + a, t);
-                                return Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
-                                    const r = t.querySelector(".play_musicdata_icon")
-                                      , a = t.querySelector(".text_b")?.innerHTML;
-                                    return {
-                                        title: t.querySelector(".music_title")?.innerHTML,
-                                        score: a ? n(a) : -1,
-                                        difficulty: e,
-                                        clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
-                                        idx: t.querySelector('input[name="idx"]').value
+                            case "bestRecord":
+                                console.log("%c    Target difficulty: %c" + t.data.difficulty, "color: gray", "color: white"),
+                                s = async function(e=o.master) {
+                                    const t = new FormData;
+                                    t.append("genre", "99"),
+                                    t.append("token", r("_t"));
+                                    
+                                    const a = {
+                                        [o.ultima]: "sendUltima",
+                                        [o.master]: "sendMaster",
+                                        [o.expert]: "sendExpert",
+                                        [o.advanced]: "sendAdvanced",
+                                        [o.basic]: "sendBasic"
+                                    }[e];
+                                    
+                                    const c = await i("/mobile/record/musicGenre/" + a, t);
+                                    
+                                    // 將撈取的分數結果轉換為陣列
+                                    const records = Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
+                                        const r = t.querySelector(".play_musicdata_icon"),
+                                              a = t.querySelector(".text_b")?.innerHTML;
+                                        return {
+                                            title: t.querySelector(".music_title")?.innerHTML,
+                                            score: a ? n(a) : -1,
+                                            difficulty: e,
+                                            clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
+                                            idx: t.querySelector('input[name="idx"]').value
+                                        };
+                                    })).filter((e => e.title && e.score));
                             
-                                    }
-                                }
-                                )).filter((e => e.title && e.score))
-
-                                
-                            }(t.data.difficulty);
-                            break;
+                                    // 顯示當前難度的分數總和
+                                    const difficultyScore = sumScores(records);
+                                    console.log(`難度 ${e} 的分數總和為：${difficultyScore}`);
+                                    
+                                    return records;
+                                }(t.data.difficulty);
+                                break;
+                            
+                            // 定義計算分數總和的函數
+                            function sumScores(records) {
+                                return records.reduce((sum, record) => sum + record.score, 0);
+                            }
+                            
                         case "playHistory":
                             s = async function() {
                                 const e = await i("/mobile/record/playlog");
