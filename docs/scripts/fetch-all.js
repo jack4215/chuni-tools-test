@@ -154,8 +154,8 @@
                                     const difficultyScore = sumScores(records);
                                     console.log(`難度 ${e} 的分數總和為：${difficultyScore}`);
 
-                                    const totalHighScore = await fetchTotalHighScore(difficulty);
-                                    console.log(`難度 ${difficulty} 的網站總分為：${totalHighScore}`);
+                                    const totalHighScore = await fetchTotalHighScore(e);
+                                    console.log(`難度 ${e} 的網站總分為：${totalHighScore}`);
 
                                     
                                     return records;
