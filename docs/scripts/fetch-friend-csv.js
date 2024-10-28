@@ -259,7 +259,7 @@
                 isLoading = false;
                 e.innerText = a.downloaded;
                 const l = document.createElement("a");
-                l.href = "data:text/plain;charset=utf-8," + encodeURIComponent( `"${o[0].name}"\n` + "title,difficulty,const,score,rating,op\n" + i.join("\n")),
+                l.href = "data:text/plain;charset=utf-8," + encodeURIComponent("title,difficulty,const,score,rating,op\n" + i.join("\n")),
                 l.target = "_blank",
                 l.download = `chunithm_record_${o[0].name}_${(new Date).toISOString()}.csv`,
                 l.style.display = "none",
