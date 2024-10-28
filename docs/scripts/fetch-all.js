@@ -164,7 +164,7 @@
                                     console.log(`難度 ${e} 的分數總和為：${difficultyScore}`);
 
                                     const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
-                                    console.log(`難度 ${difficultyNames[e]} 的網站總分為：${totalHighScore}`);
+                                    console.log(`難度 ${e} 的網站總分為：${totalHighScore}`);
 
                                     
                                     return records;
@@ -182,7 +182,7 @@
                             
                                 // 尋找 <div class="mb_5 text_b "> 中的總分
                                 const totalHighScoreDiv = doc.querySelector(".mb_5.text_b");
-                                return totalHighScoreDiv ? totalHighScoreDiv.innerText.trim() : "無法取得總分";
+                                return totalHighScoreDiv ? totalHighScoreDiv.innerText.replace(/,/g, "").trim() : "無法取得總分";
                             }         
                             
                             
