@@ -150,12 +150,21 @@
                                             idx: t.querySelector('input[name="idx"]').value
                                         };
                                     })).filter((e => e.title && e.score));
+
+                                    // 定義縮寫和完整名稱的對應
+                                    const difficultyNames = {
+                                        [o.ultima]: "ultima",
+                                        [o.master]: "master",
+                                        [o.expert]: "expert",
+                                        [o.advanced]: "advanced",
+                                        [o.basic]: "basic"
+                                    };
                             
                                     const difficultyScore = sumScores(records);
                                     console.log(`難度 ${e} 的分數總和為：${difficultyScore}`);
 
-                                    const totalHighScore = await fetchTotalHighScore(e);
-                                    console.log(`難度 ${e} 的網站總分為：${totalHighScore}`);
+                                    const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
+                                    console.log(`難度 ${difficultyNames[e]} 的網站總分為：${totalHighScore}`);
 
                                     
                                     return records;
