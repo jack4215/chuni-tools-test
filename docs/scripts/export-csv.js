@@ -66,9 +66,8 @@
                 clear: n?.querySelector('img[src*="alljustice"]') ? "AJ" : n?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
                 idx: t.querySelector('input[name="idx"]').value
             };
-            var r
-        }
-        )).filter((e => e.title && e.score))
+            //var r
+        })).filter((e => e.title && e.score))
     }
     !function(e) {
         e["P & A"] = "0",
