@@ -157,11 +157,51 @@
                                     return records;
                                 }(t.data.difficulty);
                                 break;
-
+                            
                             function sumScores(records) {
                                 return records.reduce((sum, record) => sum + (record.score !== -1 ? record.score : 0), 0);
                             }
+                            // 測試
+                            async function fetchTotalScore(difficulty) {
+                                const url = `https://chunithm-net-eng.com/mobile/ranking/totalHighScore/${difficulty}`;
+                                const response = await fetch(url);
+                                
+                                if (!response.ok) {
+                                    throw new Error(`Failed to fetch ${difficulty} score: ${response.statusText}`);
+                                }
+                                
+                                const html = await response.text();
+                                const parser = new DOMParser();
+                                const doc = parser.parseFromString(html, "text/html");
+                                const scoreText = doc.querySelector(".mb_5.text_b").innerHTML;
                             
+                                // 移除逗號並轉換為數字
+                                const score = Number(scoreText.replace(/,/g, ''));
+                            
+                                return score;
+                            }
+                            
+                            async function fetchAllScores() {
+                                const difficulties = ['basic', 'advanced', 'expert', 'master', 'ultima'];
+                                const scores = {};
+                            
+                                for (const difficulty of difficulties) {
+                                    try {
+                                        scores[difficulty] = await fetchTotalScore(difficulty);
+                                    } catch (error) {
+                                        console.error(error);
+                                        scores[difficulty] = 0; // 若撈取失敗，預設為0
+                                    }
+                                }
+                            
+                                return scores;
+                            }
+                            fetchAllScores().then(scores => {
+                                console.log("各難度的總分:", scores);
+                            });
+                            
+                            
+
                         case "playHistory":
                             s = async function() {
                                 const e = await i("/mobile/record/playlog");
