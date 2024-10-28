@@ -136,42 +136,23 @@
                                     [o.basic]: "sendBasic"
                                 }[e]
                                   , c = await i("/mobile/record/musicGenre/" + a, t);
-                                  const records = Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
-                                    const r = t.querySelector(".play_musicdata_icon");
-                                    const a = t.querySelector(".text_b")?.innerHTML;
+                                return Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
+                                    const r = t.querySelector(".play_musicdata_icon")
+                                      , a = t.querySelector(".text_b")?.innerHTML;
                                     return {
                                         title: t.querySelector(".music_title")?.innerHTML,
                                         score: a ? n(a) : -1,
                                         difficulty: e,
                                         clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
                                         idx: t.querySelector('input[name="idx"]').value
-                                    };
-                                })).filter((e => e.title && e.score !== -1));
-                        
-                                // 計算每個難度的分數總和
-                                const difficultyScores = {
-                                    [o.basic]: 0,
-                                    [o.advanced]: 0,
-                                    [o.expert]: 0,
-                                    [o.master]: 0,
-                                    [o.ultima]: 0
-                                };
-                        
-                                // 將分數加到對應的難度
-                                records.forEach((record) => {
-                                    if (difficultyScores.hasOwnProperty(record.difficulty)) {
-                                        difficultyScores[record.difficulty] += record.score;
+                            
                                     }
-                                });
-                        
-                                // 在 console 中顯示每個難度的分數總和
-                                console.log("分數總和（依難度）：");
-                                Object.entries(difficultyScores).forEach(([difficulty, score]) => {
-                                    console.log(`${difficulty}: ${score}`);
-                                });
-                        
-                                return records;
+                                }
+                                )).filter((e => e.title && e.score))
+
+                                
                             }(t.data.difficulty);
+                            break;
                         case "playHistory":
                             s = async function() {
                                 const e = await i("/mobile/record/playlog");
