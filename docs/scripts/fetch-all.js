@@ -161,10 +161,10 @@
                                     };
                             
                                     const difficultyScore = sumScores(records);
-                                    console.log(`難度 ${e} 的分數總和為：${difficultyScore}`);
+                                    console.log(`Total ${e} Score：${difficultyScore}`);
 
                                     const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
-                                    console.log(`難度 ${e} 的網站總分為：${totalHighScore}`);
+                                    console.log(`Total ${e} Score on Net：${totalHighScore}`);
                                     
                                     records.push({
                                         title: "Stardust:RAY",
