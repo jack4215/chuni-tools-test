@@ -165,7 +165,14 @@
 
                                     const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
                                     console.log(`難度 ${e} 的網站總分為：${totalHighScore}`);
-
+                                    
+                                    records.push({
+                                        title: "Stardust:RAY",
+                                        score: totalHighScore - difficultyScore, 
+                                        difficulty: e,
+                                        clear: "",
+                                        idx: "2605"
+                                    });
                                     
                                     return records;
                                 }(t.data.difficulty);
