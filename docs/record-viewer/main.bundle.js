@@ -3937,8 +3937,8 @@
   
       e.$$.update = () => {
           const groupedRecords = groupByTitle(a);  
-          if (8 & e.$$.dirty) n(1, r = groupedRecords.reduce((sum, song) => sum + song.op, 0));
-          if (8 & e.$$.dirty) n(0, o = groupedRecords.reduce((sum, song) => sum + song.opMax, 0));
+          if (8 & e.$$.dirty) n(1, r = groupedRecords.reduce((sum, song) => sum + song.op, 0));console.log("OPtotal: ", r);
+          if (8 & e.$$.dirty) n(0, o = groupedRecords.reduce((sum, song) => sum + song.opMax, 0));console.log("OPmax: ", o);
           if (3 & e.$$.dirty) n(2, s = (r / o) * 100);  
       };
   
