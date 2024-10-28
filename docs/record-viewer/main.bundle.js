@@ -904,8 +904,7 @@
         };
       
         r.forEach(r => {
-          if (r.score === "-") return 0;
-          if (scoreSums.hasOwnProperty(r.difficulty)) {
+          if (r.score !== -1 && scoreSums.hasOwnProperty(r.difficulty)) {
             scoreSums[r.difficulty] += r.score || 0;
           }
         });
