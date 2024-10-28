@@ -890,31 +890,9 @@
           e[n = t.title] ?? (e[n] = []), e[t.title].push(t.difficulty)
         })), console.log(e), alert(n.replace("{{songs}}", Object.entries(e).map((([e, t]) => `    ${e} ${t.join(",")}`)).join("\n")))
       }
-    
-      const scoreSum = calculateScoreSum(r);
-      console.log("Score Sum by Difficulty:", scoreSum);
-
       return r.sort(Je.default), r.map(((e, t) => {
         e.order = t + 1
       })), r
-
-      function calculateScoreSum(r) {
-        const scoreSums = {
-          BAS: 0,
-          ADV: 0,
-          EXP: 0,
-          MAS: 0,
-          ULT: 0
-        };
-      
-        r.forEach(r => {
-          if (r.score !== "-" && scoreSums.hasOwnProperty(r.difficulty)) {
-            scoreSums[r.difficulty] += r.score || 0;
-          }
-        });
-      
-        return scoreSums;
-      }
     }
     c(De, (() => {
       try {
@@ -3933,10 +3911,9 @@
     }
 
     function _o(e, t, n) {
-      let r, o, s;  // OP 總和 (r)、OP Max 總和 (o)、百分比 (s)
-      let a = t.records;  // 使用 let 來管理變動資料
-  
-      // 依照曲名 (title) 分組，選擇最高的 OP 和 OP Max
+      let r, o, s; 
+      let a = t.records; 
+
       const groupByTitle = (records) => {
           const map = new Map();
           records.forEach((song) => {
@@ -3953,27 +3930,23 @@
           });
           return Array.from(map.values());
       };
-  
-      // 設置 $$set 以處理變數更新
+
       e.$$set = (newData) => {
           if ("records" in newData) {
-              a = newData.records;  // 更新 records 資料
+              a = newData.records; 
               n(3, a);
           }
       };
   
-      // 更新函數：資料髒時自動重新計算
       e.$$.update = () => {
-          const groupedRecords = groupByTitle(a);  // 依曲名分組並取最高值
-  
+          const groupedRecords = groupByTitle(a);  
           if (8 & e.$$.dirty) n(1, r = groupedRecords.reduce((sum, song) => sum + song.op, 0));
           if (8 & e.$$.dirty) n(0, o = groupedRecords.reduce((sum, song) => sum + song.opMax, 0));
-          if (3 & e.$$.dirty) n(2, s = (r / o) * 100);  // 計算百分比
+          if (3 & e.$$.dirty) n(2, s = (r / o) * 100);  
       };
   
-      return [o, r, s, a];  // 返回結果
+      return [o, r, s, a]; 
   }
-  
     const Io = class extends Se {
         constructor(e) {
           super(), je(this, e, _o, Oo, i, {
