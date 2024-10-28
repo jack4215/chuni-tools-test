@@ -890,9 +890,31 @@
           e[n = t.title] ?? (e[n] = []), e[t.title].push(t.difficulty)
         })), console.log(e), alert(n.replace("{{songs}}", Object.entries(e).map((([e, t]) => `    ${e} ${t.join(",")}`)).join("\n")))
       }
+    
+      const scoreSum = calculateScoreSum(r);
+      console.log("Score Sum by Difficulty:", scoreSum);
+
       return r.sort(Je.default), r.map(((e, t) => {
         e.order = t + 1
       })), r
+
+      function calculateScoreSum(r) {
+        const scoreSums = {
+          BAS: 0,
+          ADV: 0,
+          EXP: 0,
+          MAS: 0,
+          ULT: 0
+        };
+      
+        r.forEach(r => {
+          if (r.score !== -1 && scoreSums.hasOwnProperty(r.difficulty)) {
+            scoreSums[r.difficulty] += r.score || 0;
+          }
+        });
+      
+        return scoreSums;
+      }
     }
     c(De, (() => {
       try {
