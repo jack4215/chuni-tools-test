@@ -149,6 +149,33 @@
                                     }
                                 }
                                 )).filter((e => e.title && e.score))
+
+                             // 計算每個難度的分數總和
+                            const difficultyScores = {
+                                [o.basic]: 0,
+                                [o.advanced]: 0,
+                                [o.expert]: 0,
+                                [o.master]: 0,
+                                [o.ultima]: 0
+                            };
+
+                            // 將分數加到對應的難度
+                            records.forEach((record) => {
+                                if (difficultyScores.hasOwnProperty(record.difficulty)) {
+                                    difficultyScores[record.difficulty] += record.score;
+                                }
+                            });
+
+                            // 在 console 中顯示每個難度的分數總和
+                            console.log("分數總和（依難度）：");
+                            Object.entries(difficultyScores).forEach(([difficulty, score]) => {
+                                console.log(`${difficulty}: ${score}`);
+                            });
+
+                            return {
+                                records: records,
+                                totalScoresByDifficulty: difficultyScores
+                            };
                             }(t.data.difficulty);
                             break;
                         case "playHistory":
