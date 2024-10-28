@@ -139,7 +139,6 @@
                                     
                                     const c = await i("/mobile/record/musicGenre/" + a, t);
                                     
-                                    // 將撈取的分數結果轉換為陣列
                                     const records = Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
                                         const r = t.querySelector(".play_musicdata_icon"),
                                               a = t.querySelector(".text_b")?.innerHTML;
@@ -152,17 +151,15 @@
                                         };
                                     })).filter((e => e.title && e.score));
                             
-                                    // 顯示當前難度的分數總和
                                     const difficultyScore = sumScores(records);
                                     console.log(`難度 ${e} 的分數總和為：${difficultyScore}`);
                                     
                                     return records;
                                 }(t.data.difficulty);
                                 break;
-                            
-                            // 定義計算分數總和的函數
+
                             function sumScores(records) {
-                                return records.reduce((sum, record) => sum + record.score, 0);
+                                return records.reduce((sum, record) => sum + (record.score !== -1 ? record.score : 0), 0);
                             }
                             
                         case "playHistory":
