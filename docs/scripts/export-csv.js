@@ -58,7 +58,7 @@
         return Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
             const n = t.querySelector(".play_musicdata_icon"),
                   o = t.querySelector(".text_b")?.innerHTML;
-            const score = o ? Number(o.replace(/,/g, "")) : -1; // 直接移除逗號並轉換為數字
+            const score = o ? Number(o.replace(/,/g, "")) : -1; 
             
             return {
                 title: t.querySelector(".music_title")?.innerHTML,
