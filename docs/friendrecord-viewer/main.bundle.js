@@ -921,13 +921,26 @@
         Nt.updateConstData(), Ht.updateConstData(), At.updateConstData()
       })),
       nt = Ne("showOverPower", "hide", ["hide", "value", "percentage"]),
-      rt = false,
+      rt = function(e, t, n = (() => {})) {
+        let o = false;
+        const { subscribe: s, set: a, update: i } = Ce(o);
+        return {
+          subscribe: s,
+          set(value) {
+              a(false);
+              localStorage.setItem(e, JSON.stringify(false));
+              n(false);
+          },
+          update: i,
+          reset() {
+              this.set(false);
+          },
+          toggle() {
+              this.set(!o); 
+          }
+        }
+      }("showPlaycount", false),
       ot = {
-      /*  "1d": 864e5,
-        "3d": 2592e5,
-        "7d": 6048e5,
-        "14d": 12096e5,
-        "30d": 2592e6,*/
         manual: Number.POSITIVE_INFINITY
       },
       st = Ne("diffUpdateInterval", "manual", Object.keys(ot)),
