@@ -217,16 +217,19 @@ async function main() {
             : `<p>不足 ${missingCount} 首歌，將以「Stardust:RAY」填補。</p>`;
 
         for (let i = 0; i < missingCount; i++) {
-            const userScore = prompt(`請輸入「Stardust:RAY」的分數：`, "0");
-            if (userScore !== null) {
-                bestMusicData.push({
-                    title: "Stardust:RAY",
-                    difficulty: "Master",
-                    score: Number(userScore),
-                    isAllJustice: false,
-                    isFullCombo: false
-                });
-            }
+            let userScore;
+            do {
+                userScore = prompt(`請輸入「Stardust:RAY」的分數（必須為正整數）：`, "0");
+                userScore = Number(userScore);
+            } while (!Number.isInteger(userScore) || userScore <= 0);
+        
+            bestMusicData.push({
+                title: "Stardust:RAY",
+                difficulty: "Master",
+                score: userScore,
+                isAllJustice: false,
+                isFullCombo: false
+            });
         }
     }
 
