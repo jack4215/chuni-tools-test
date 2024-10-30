@@ -234,7 +234,7 @@
                                         background = match[1];
                                     }
                                 }
-                                  console.log(`Profile background: ${ratingPossession}`);
+                                  console.log(`Profile background: ${background}`);
                                 return {
                                     name: e.querySelector(".player_name_in").innerHTML,
                                     honor: {
@@ -245,7 +245,7 @@
                                     ratingMax: e.querySelector(".player_rating_max").innerHTML,
                                     playCount: e.querySelector(".user_data_play_count .user_data_text").innerHTML,
                                     lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
-                                    ratingPossession: background
+                                    ratingPn: background
                                 }
                             }();
                             break;
