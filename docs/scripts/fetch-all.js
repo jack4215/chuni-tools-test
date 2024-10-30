@@ -228,16 +228,20 @@
                                   const profileDiv = e.querySelector(".box_playerprofile.clearfix");
 
                                   // 預設為 normal，如果找不到圖片，避免報錯
-                                  let background = "normal";
-                          
-                                  if (profileDiv) {
-                                      const profileBackground = profileDiv.getAttribute("style"); // 直接取得 style 屬性
-                                      const match = /profile_(\w+)\.png/.exec(profileBackground); // 正則抓取 profile 類型
-                                      
-                                      if (match && match[1]) {
-                                          background = match[1]; // 如果有匹配，更新背景類型
-                                      }
-                                  }
+                                  const profileDiv = e.querySelector(".box_playerprofile.clearfix, .box_playerprofile");
+
+                                let background = "normal"; // 預設為 normal
+
+                                if (profileDiv) {
+                                    const styleAttr = profileDiv.getAttribute("style"); // 取得 style 屬性值
+
+                                    // 使用正則表達式擷取 profile 類型
+                                    const match = styleAttr.match(/profile_(\w+)\.png/);
+
+                                    if (match && match[1]) {
+                                        background = match[1]; // 抓取到類型並存入 background
+                                    }
+                                }
 
                                   console.log(`Profile background: ${background}`);
                                 return {
@@ -250,7 +254,7 @@
                                     ratingMax: e.querySelector(".player_rating_max").innerHTML,
                                     playCount: e.querySelector(".user_data_play_count .user_data_text").innerHTML,
                                     lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
-                                    background 
+                                    background: background
                                 }
                             }();
                             break;
