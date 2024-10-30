@@ -2941,13 +2941,27 @@
       });
       const U = [Dr, Ar],
         L = [];
+      function getBackgroundColor(ratingPn) {
+        switch (ratingPn) {
+            case "silver":
+                return "#C0C0C0"; // 銀色
+            case "gold":
+                return "#FFD700"; // 金色
+            case "platina":
+                return "#E5E4E2"; // 白金色
+            case "rainbow":
+                return "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)";
+            default:
+                return "#FFFFFF"; // 預設為白色
+        }
+      }
 
       function P(e, t) {
         return "best" === e[5] ? 0 : "recent" === e[5] || "history" === e[5] ? 1 : -1
       }
       return ~($ = P(e)) && (x = L[$] = U[$](e)), {
         c() {
-          t = H("div"), n = H("h2"), r = A(S), o = D(), s = H("div"), a = H("h2"), i = A(T), l = D(), c = H("span"), d = A("MAX "), u = A(C), f = D(), p = H("div"), h = H("span"), g = A(N), v = D(), b = H("div"), $e(y.$$.fragment), w = D(), x && x.c(), O(n, "class", "stats-name svelte-1rv2o5c"), O(a, "class", "svelte-1rv2o5c"), O(c, "class", "svelte-1rv2o5c"), O(s, "class", "stats-rating svelte-1rv2o5c"), O(p, "class", "stats-honor svelte-1rv2o5c"), O(p, "data-honor", m = e[3].honor.color), B(p, "marquee", !0), O(b, "class", "stats-items svelte-1rv2o5c"), O(t, "class", "wrapper svelte-1rv2o5c")
+          t = H("div"), n = H("h2"), r = A(S), o = D(), s = H("div"), a = H("h2"), i = A(T), l = D(), c = H("span"), d = A("MAX "), u = A(C), f = D(), p = H("div"), h = H("span"), g = A(N), v = D(), b = H("div"), $e(y.$$.fragment), w = D(), x && x.c(), O(n, "class", "stats-name svelte-1rv2o5c"), O(a, "class", "svelte-1rv2o5c"), O(c, "class", "svelte-1rv2o5c"), O(s, "class", "stats-rating svelte-1rv2o5c"), O(p, "class", "stats-honor svelte-1rv2o5c"), O(p, "data-honor", m = e[3].honor.color), B(p, "marquee", !0), O(b, "class", "stats-items svelte-1rv2o5c"), O(t, "class", "wrapper svelte-1rv2o5c"), O(t, "style", `background-color: ${getBackgroundColor(e[3].ratingPn)}`)
         },
         m(e, m) {
           M(e, t, m), k(t, n), k(n, r), k(t, o), k(t, s), k(s, a), k(a, i), k(s, l), k(s, c), k(c, d), k(c, u), k(t, f), k(t, p), k(p, h), k(h, g), k(t, v), k(t, b), xe(y, b, null), k(b, w), ~$ && L[$].m(b, null), j = !0
@@ -2959,7 +2973,8 @@
           let o = $;
           $ = P(e), $ === o ? ~$ && L[$].p(e, t) : (x && (pe(), me(L[o], 1, 1, (() => {
             L[o] = null
-          })), he()), ~$ ? (x = L[$], x ? x.p(e, t) : (x = L[$] = U[$](e), x.c()), ge(x, 1), x.m(b, null)) : x = null)
+          })), he()), ~$ ? (x = L[$], x ? x.p(e, t) : (x = L[$] = U[$](e), x.c()), ge(x, 1), x.m(b, null)) : x = null);
+          O(this.t, "style", `background-color: ${getBackgroundColor(e[3].ratingPn)}`);
         },
         i(e) {
           j || (ge(y.$$.fragment, e), ge(x), j = !0)
