@@ -2943,8 +2943,8 @@
         L = [];
       function getBackgroundColor(ratingPn) {
         switch (ratingPn) {
-         //   case "silver":
-         //       return "#023751"; // 銀 
+          //  case "silver":
+           //     return "#023751"; // 銀 
             case "gold":
                 return "#4f4517"; // 金
             case "platina":
@@ -2952,7 +2952,7 @@
             case "rainbow":
                 return "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)";
             default:
-                return;
+                return null;
         }
       }
 
@@ -2974,7 +2974,10 @@
           $ = P(e), $ === o ? ~$ && L[$].p(e, t) : (x && (pe(), me(L[o], 1, 1, (() => {
             L[o] = null
           })), he()), ~$ ? (x = L[$], x ? x.p(e, t) : (x = L[$] = U[$](e), x.c()), ge(x, 1), x.m(b, null)) : x = null);
-          O(this.t, "style", `background-color: ${getBackgroundColor(e[3].ratingPn)}`);
+          const bgColor = getBackgroundColor(e[3].ratingPn);
+          if (bgColor) {
+              O(this.t, "style", `background-color: ${bgColor}`);
+          }
         },
         i(e) {
           j || (ge(y.$$.fragment, e), ge(x), j = !0)
