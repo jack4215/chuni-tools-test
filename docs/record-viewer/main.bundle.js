@@ -2952,7 +2952,7 @@
             case "rainbow":
                 return "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)";
             default:
-                return;
+                return null;
         }
       }
 
@@ -2962,6 +2962,11 @@
       return ~($ = P(e)) && (x = L[$] = U[$](e)), {
         c() {
           t = H("div"),this.t = t, n = H("h2"), r = A(S), o = D(), s = H("div"), a = H("h2"), i = A(T), l = D(), c = H("span"), d = A("MAX "), u = A(C), f = D(), p = H("div"), h = H("span"), g = A(N), v = D(), b = H("div"), $e(y.$$.fragment), w = D(), x && x.c(), O(n, "class", "stats-name svelte-1rv2o5c"), O(a, "class", "svelte-1rv2o5c"), O(c, "class", "svelte-1rv2o5c"), O(s, "class", "stats-rating svelte-1rv2o5c"), O(p, "class", "stats-honor svelte-1rv2o5c"), O(p, "data-honor", m = e[3].honor.color), B(p, "marquee", !0), O(b, "class", "stats-items svelte-1rv2o5c"), O(t, "class", "wrapper svelte-1rv2o5c"), O(t, "style", `background-color: ${getBackgroundColor(e[3].ratingPn)}`)
+          const bgColor = getBackgroundColor(e[3].ratingPn);
+          if (bgColor) {
+              O(t, "style", `background-color: ${bgColor}`);
+          }
+          O(t, "class", "wrapper svelte-1rv2o5c");
         },
         m(e, m) {
           M(e, t, m), k(t, n), k(n, r), k(t, o), k(t, s), k(s, a), k(a, i), k(s, l), k(s, c), k(c, d), k(c, u), k(t, f), k(t, p), k(p, h), k(h, g), k(t, v), k(t, b), xe(y, b, null), k(b, w), ~$ && L[$].m(b, null), j = !0
@@ -2975,8 +2980,10 @@
             L[o] = null
           })), he()), ~$ ? (x = L[$], x ? x.p(e, t) : (x = L[$] = U[$](e), x.c()), ge(x, 1), x.m(b, null)) : x = null);
           const bgColor = getBackgroundColor(e[3].ratingPn);
-          if (bgColor !== undefined) {
+          if (bgColor) {
               O(this.t, "style", `background-color: ${bgColor}`);
+          } else {
+              this.t.removeAttribute("style"); 
           }
         },
         i(e) {
