@@ -2944,7 +2944,7 @@
       function getBackgroundColor(ratingPn) {
         switch (ratingPn) {
             case "silver":
-                return "#4f4517"; // 銀 
+                return "#4f4d41"; // 銀 
             case "gold":
                 return "#4f4517"; // 金
             case "platina":
