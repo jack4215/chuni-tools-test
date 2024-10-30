@@ -225,23 +225,16 @@
                                   , t = e.querySelector(".player_honor_short")
                                   , r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage)
                                   , a = Array.from(e.querySelectorAll(".player_rating_num_block img")).map((e => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1))).join("");
-                                  // 預設為 normal，如果找不到圖片，避免報錯
                                   const profileDiv = e.querySelector(".box_playerprofile.clearfix, .box_playerprofile");
-
-                                let background = "normal"; // 預設為 normal
-
+                                let background = "normal";
                                 if (profileDiv) {
-                                    const styleAttr = profileDiv.getAttribute("style"); // 取得 style 屬性值
-
-                                    // 使用正則表達式擷取 profile 類型
+                                    const styleAttr = profileDiv.getAttribute("style");
                                     const match = styleAttr.match(/profile_(\w+)\.png/);
-
                                     if (match && match[1]) {
-                                        background = match[1]; // 抓取到類型並存入 background
+                                        background = match[1];
                                     }
                                 }
-
-                                  console.log(`Profile background: ${background}`);
+                                  console.log(`Profile background: ${ratingPossession}`);
                                 return {
                                     name: e.querySelector(".player_name_in").innerHTML,
                                     honor: {
@@ -252,7 +245,7 @@
                                     ratingMax: e.querySelector(".player_rating_max").innerHTML,
                                     playCount: e.querySelector(".user_data_play_count .user_data_text").innerHTML,
                                     lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
-                                    background: background
+                                    ratingPossession: background
                                 }
                             }();
                             break;
