@@ -2952,7 +2952,7 @@
             case "rainbow":
                 return "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)";
             default:
-                return "#FFFFFF"; // 預設為白色
+                return; 
         }
       }
 
