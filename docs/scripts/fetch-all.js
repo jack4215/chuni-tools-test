@@ -225,9 +225,15 @@
                                   , t = e.querySelector(".player_honor_short")
                                   , r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage)
                                   , a = Array.from(e.querySelectorAll(".player_rating_num_block img")).map((e => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1))).join("");
-                                  const profileBox = e.querySelector(".box_playerprofile.clearfix"); 
-                                  const profileMatch = /profile_(.*)(?=\.png)/.exec(profileBox.style.backgroundImage);
-                                  const background = profileMatch ? profileMatch[1] : "normal";
+                                  const profileBackground = e.querySelector(".box_playerprofile.clearfix")?.style.backgroundImage;
+                                  let background = "normal";
+                                  
+                                  if (profileBackground) {
+                                      const profileMatch = /profile_(.*)\.png/.exec(profileBackground);
+                                      if (profileMatch && profileMatch[1]) {
+                                          background = profileMatch[1]; 
+                                      }
+                                  }
 
                                   console.log(`Profile background: ${background}`);
                                 return {
