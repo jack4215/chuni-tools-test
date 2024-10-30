@@ -234,7 +234,6 @@
                                         background = match[1];
                                     }
                                 }
-                                  console.log(`Profile background: ${background}`);
                                 return {
                                     name: e.querySelector(".player_name_in").innerHTML,
                                     honor: {
