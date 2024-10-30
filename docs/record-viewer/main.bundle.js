@@ -2975,7 +2975,7 @@
             L[o] = null
           })), he()), ~$ ? (x = L[$], x ? x.p(e, t) : (x = L[$] = U[$](e), x.c()), ge(x, 1), x.m(b, null)) : x = null);
           const bgColor = getBackgroundColor(e[3].ratingPn);
-          if (bgColor) {
+          if (bgColor !== undefined) {
               O(this.t, "style", `background-color: ${bgColor}`);
           }
         },
