@@ -225,8 +225,6 @@
                                   , t = e.querySelector(".player_honor_short")
                                   , r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage)
                                   , a = Array.from(e.querySelectorAll(".player_rating_num_block img")).map((e => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1))).join("");
-                                  const profileDiv = e.querySelector(".box_playerprofile.clearfix");
-
                                   // 預設為 normal，如果找不到圖片，避免報錯
                                   const profileDiv = e.querySelector(".box_playerprofile.clearfix, .box_playerprofile");
 
