@@ -2948,7 +2948,7 @@
             case "gold":
                 return "#4f4517"; // 金
             case "platina":
-                return "#4f4d41"; // 白金
+                return "#4f4d41"; // 白
             case "rainbow":
                 return "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)";
             default:
