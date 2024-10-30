@@ -155,8 +155,12 @@
                                         [o.advanced]: "advanced",
                                         [o.basic]: "basic"
                                     };   
+                                    
                                     const difficultyScore = sumScores(records);
+                                    console.log(`Total ${e} Score：${difficultyScore}`);
                                     const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
+                                    console.log(`Total ${e} Score on Net：${totalHighScore}`);
+
                                     records.push({
                                         title: "Stardust:RAY",
                                         score: totalHighScore - difficultyScore === 0 ? -1 : totalHighScore - difficultyScore, 
