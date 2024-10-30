@@ -2943,8 +2943,8 @@
         L = [];
       function getBackgroundColor(ratingPn) {
         switch (ratingPn) {
-            case "silver":
-                return "#023751"; // 銀 
+         //   case "silver":
+         //       return "#023751"; // 銀 
             case "gold":
                 return "#4f4517"; // 金
             case "platina":
@@ -2952,7 +2952,7 @@
             case "rainbow":
                 return "linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet)";
             default:
-                return; 
+                return;
         }
       }
 
