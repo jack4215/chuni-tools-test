@@ -225,17 +225,19 @@
                                   , t = e.querySelector(".player_honor_short")
                                   , r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage)
                                   , a = Array.from(e.querySelectorAll(".player_rating_num_block img")).map((e => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1))).join("");
-                                const profileDiv = e.querySelector(".box_playerprofile.clearfix");
+                                  const profileDiv = e.querySelector(".box_playerprofile.clearfix");
 
-                                let background = "normal"; 
-                                if (profileDiv) {
-                                    const profileBackground = profileDiv.style.backgroundImage;
-
-                                    const profileMatch = /profile_(\w+)\.png/.exec(profileBackground);
-                                    if (profileMatch && profileMatch[1]) {
-                                        background = profileMatch[1]; 
-                                    }
-                                }
+                                  // 預設為 normal，如果找不到圖片，避免報錯
+                                  let background = "normal";
+                          
+                                  if (profileDiv) {
+                                      const profileBackground = profileDiv.getAttribute("style"); // 直接取得 style 屬性
+                                      const match = /profile_(\w+)\.png/.exec(profileBackground); // 正則抓取 profile 類型
+                                      
+                                      if (match && match[1]) {
+                                          background = match[1]; // 如果有匹配，更新背景類型
+                                      }
+                                  }
 
                                   console.log(`Profile background: ${background}`);
                                 return {
