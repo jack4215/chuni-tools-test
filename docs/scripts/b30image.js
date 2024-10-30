@@ -211,27 +211,25 @@ async function main() {
 
     // 當資料少於 30 首時，自動填入 "Stardust:RAY" 並詢問分數
     if (bestMusicData.length < 32) {
-        const missingCount = 32 - bestMusicData.length;
-        UiBase.innerHTML += engMode
-            ? `<p>Missing ${missingCount} song(s). Filling with "Stardust:RAY".</p>`
-            : `<p>不足 ${missingCount} 首歌，將以「Stardust:RAY」填補。</p>`;
+    UiBase.innerHTML += engMode
+        ? `<p>Missing some songs. Filling with "Stardust:RAY".</p>`
+        : `<p>不足的歌曲將以「Stardust:RAY」填補。</p>`;
+    
+    let userScore;
+    do {
+        userScore = prompt(`請輸入「Stardust:RAY」的分數：`);
+        userScore = Number(userScore);
+    } while (!Number.isInteger(userScore) || userScore <= 0);
 
-        for (let i = 0; i < missingCount; i++) {
-            let userScore;
-            do {
-                userScore = prompt(`請輸入「Stardust:RAY」的分數：`);
-                userScore = Number(userScore);
-            } while (!Number.isInteger(userScore) || userScore <= 0);
-        
-            bestMusicData.push({
-                title: "Stardust:RAY",
-                difficulty: "Master",
-                score: userScore,
-                isAllJustice: false,
-                isFullCombo: false
-            });
-        }
-    }
+    bestMusicData.push({
+        title: "Stardust:RAY",
+        difficulty: "Master",
+        score: userScore,
+        isAllJustice: false,
+        isFullCombo: false
+    });
+}
+
 
     // リーセント枠
     UiBase.innerHTML += engMode ? "<p>Fetching recent songs...</p>" : "<p>リーセント枠楽曲を取得しています...</p>";
