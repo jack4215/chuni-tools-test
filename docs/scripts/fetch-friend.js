@@ -184,7 +184,6 @@
                                 const friendBlock = Array.from(e.querySelectorAll(".friend_block")).find(block => 
                                     block.querySelector('input[name="idx"]')?.value === selectedFriendIdx
                                 );
-                        
                                 if (!friendBlock) {
                                     throw new Error("Selected friend not found");
                                 }
@@ -193,7 +192,6 @@
                                  , a = Array.from(friendBlock.querySelectorAll(".player_rating_num_block img"))
                                     .map(img => /rating_.*_comma.png/.test(img.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(img.src)[0].slice(-1))
                                     .join("");
-
                                 const profileDiv = friendBlock.querySelector(".box_playerprofile.clearfix, .box_playerprofile");
                                 let background = "normal";
                                 if (profileDiv) {
