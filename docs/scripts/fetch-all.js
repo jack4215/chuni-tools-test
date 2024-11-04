@@ -155,19 +155,15 @@
                                         [o.advanced]: "advanced",
                                         [o.basic]: "basic"
                                     };   
-                                    
                                     const difficultyScore = sumScores(records);
-                                    console.log(`Total ${e} Score：${difficultyScore}`);
                                     const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
-                                    console.log(`Total ${e} Score on Net：${totalHighScore}`);
-
-                                    records.push({
-                                        title: "Stardust:RAY",
+                                /*    records.push({
+                                        title: "Latent Kingdom",
                                         score: totalHighScore - difficultyScore === 0 ? -1 : totalHighScore - difficultyScore, 
                                         difficulty: e,
                                         clear: "",
                                         idx: "2605"
-                                    });
+                                    });*/
                                     return records;
                                     // Add hidden song end
                                 }(t.data.difficulty);
