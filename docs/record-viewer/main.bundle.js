@@ -1657,7 +1657,7 @@
             M(r, t, a), k(t, n), o || (s = P(t, "click", e[2]), o = !0)
           },
           p(e, o) {
-            2 & o && a !== (a = "luminousplus" === e[1] ? "🌐" : "🗾") && I(n, a), 3 & o && r !== (r = e[0]("header.title.constData", {
+            2 & o && a !== (a = "luminouscopy" === e[1] ? "🌐" : "🗾") && I(n, a), 3 & o && r !== (r = e[0]("header.title.constData", {
               name: e[0]("settings.data.constData." + e[1])
             })) && O(t, "title", r)
           },
