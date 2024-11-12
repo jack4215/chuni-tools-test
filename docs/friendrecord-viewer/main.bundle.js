@@ -917,7 +917,7 @@
     let Ke = {};
     for (let e of Ie) Ke[e] = !0;
     const et = Ue("filterGenre", Ke),
-      tt = Ne("usedConstData", "luminousplus", ["luminousplus,luminouscopy"], (() => {
+      tt = Ne("usedConstData", "luminousplus", ["luminousplus","luminouscopy"], (() => {
         Nt.updateConstData(), Ht.updateConstData(), At.updateConstData()
       })),
       nt = Ne("showOverPower", "hide", ["hide", "value", "percentage"]),
