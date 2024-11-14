@@ -157,13 +157,13 @@
                                     };   
                                     const difficultyScore = sumScores(records);
                                     const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
-                                    records.push({
-                                        title: "HECATONCHEIR",
+                                 /*   records.push({
+                                        title: "Latent Kingdom",
                                         score: totalHighScore - difficultyScore === 0 ? -1 : totalHighScore - difficultyScore, 
                                         difficulty: e,
                                         clear: "",
                                         idx: "2605"
-                                    }); 
+                                    }); */
                                     // Add hidden song end
                                     return records;
                                 }(t.data.difficulty);
