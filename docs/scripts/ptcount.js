@@ -1,4 +1,4 @@
-function displayRecentMonthlyPoints() {
+function displayPt() {
     const monthlyData = {}; 
     const logBlocks = document.querySelectorAll(".net_point_log_block > div[name^='aggr']");
 
@@ -40,4 +40,4 @@ function displayRecentMonthlyPoints() {
     alert(message);
 }
 
-displayRecentMonthlyPoints();
+displayPt();
