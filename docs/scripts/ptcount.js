@@ -3,13 +3,11 @@ function displayPt() {
     const logBlocks = document.querySelectorAll(".net_point_log_block > div[name^='aggr']");
     const selectElement = document.querySelector("select[name='aggrDate']");
     const options = selectElement.querySelectorAll("option");
-
-    // 依據 <select> 元素中的月份初始化
     const availableMonths = Array.from(options).map(option => option.value);
 
     logBlocks.forEach(block => {
         const monthName = block.getAttribute("name")?.slice(4); 
-        if (!monthName) return; // 確保 name 屬性存在
+        if (!monthName) return; 
         
         const logEntries = block.querySelectorAll(".net_point_log_history");
         if (!monthlyData[monthName]) {
@@ -38,6 +36,4 @@ function displayPt() {
 
     alert(message);
 }
-
-// 執行函數
 displayPt();
