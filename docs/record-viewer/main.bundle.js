@@ -3284,7 +3284,6 @@
       return {
           c() {
               t = H("span");
-              t.textContent = "N"; // 可選，顯示 "N" 或其他標記
               z(t, "color", "pink");
           },
           m(e, n) {
