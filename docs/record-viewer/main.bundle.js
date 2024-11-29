@@ -851,13 +851,13 @@
   
       r.map(e => {
           // 判斷 newV
-          if (t.newV !== undefined) {
-              e.newV = t.newV === 1; 
+          let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
+          if (songData && songData.newV !== undefined) {
+              e.newV = songData.newV === 1;
           } else {
               e.newV = false;
           }
-          console.log("t value:", t);
-          console.log("newV value set for song:", e.title, e.newV);
+        console.log("newV value set for song:", e.title, e.newV);
           // 特殊難度處理
           if ("WE" === e.difficulty) {
               e.title = Xe(e.title);
@@ -875,7 +875,7 @@
               e.title = Xe(e.title);
           }
   
-          let songData = o[e.title]; // 使用 songData 代替 t
+          songData = o[e.title]; // 使用 songData 代替 t
           if (songData === undefined) {
               s.push(e);
               e.const = -1;
