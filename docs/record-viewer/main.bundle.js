@@ -3280,21 +3280,6 @@
         }
       }
     }
-    function Zs() {
-      let t;
-      return {
-          c() {
-              t = H("span");
-              z(t, "color", "pink");
-          },
-          m(e, n) {
-              M(e, t, n);
-          },
-          d(e) {
-              e && E(t);
-          }
-      }
-    }
     function Vz(data) {
       return {
         c() {
@@ -3316,7 +3301,7 @@
         T = (t[0].const < 0 ? "-" : t[0].const?.toFixed(1) ?? "??.?") + "",
         C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
         N = t[0].constUncertain && Ir();
-      let newVIndicator = t[0].newV && Zs();
+      let newVIndicator = t[0].newV;
       
       function U(e, t) {
         return "hide" != e[1] ? zr : Rr
