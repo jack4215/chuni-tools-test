@@ -3280,6 +3280,20 @@
         }
       }
     }
+    function Zs() {
+      let t;
+      return {
+          c() {
+              t = H("span");
+          },
+          m(e, n) {
+              M(e, t, n);
+          },
+          d(e) {
+              e && E(t);
+          }
+      }
+    }
     function Vz(data) {
       return {
         c() {
@@ -3301,7 +3315,7 @@
         T = (t[0].const < 0 ? "-" : t[0].const?.toFixed(1) ?? "??.?") + "",
         C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
         N = t[0].constUncertain && Ir();
-      let newVIndicator = t[0].newV;
+      let newVIndicator = t[0].newV && Zs();
       
       function U(e, t) {
         return "hide" != e[1] ? zr : Rr
@@ -3322,6 +3336,7 @@
           console.log("newV value:", t[0].newV);
           O(u, "class", `svelte-1gjhsjp ${t[0].newV ? "newV-highlight" : ""}`);
           if (newVIndicator) {
+            newVIndicator.c();
             newVIndicator.m(u, null);
           }
         },
@@ -3333,6 +3348,7 @@
           if (e[0].newV) {
             if (!newVIndicator) {
               newVIndicator = Vz(e[0].newV);
+              newVIndicator.c();
               newVIndicator.m(u, null);
             }
           } else if (newVIndicator) {
