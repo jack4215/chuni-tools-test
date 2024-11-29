@@ -2875,16 +2875,17 @@
     }
 
     function Nr(e, t, n) {
-      // 檢查 t 是否為有效對象
+      // 如果 t 無效，設置預設值並記錄錯誤
       if (!t) {
-          console.error("t is undefined or null");
-          return; // 或者直接返回，避免後續錯誤
+          console.error("t is undefined or null, using default values");
+          t = { title: "Default Title", content: "Default Content" };
       }
-    
-      // 解構賦值，使用預設值來防止錯誤
-      let { title: r = "Default Title", content: o = "Default Content" } = t;
   
-      // 繼續處理
+      let { title: r, content: o } = t;
+  
+      // Debugging: 確保解構成功
+      console.log("Nr function initialized with title:", r, "content:", o);
+  
       e.$$set = e => {
           if ("title" in e) n(0, r = e.title);
           if ("content" in e) n(1, o = e.content);
@@ -2892,6 +2893,7 @@
   
       return [r, o];
   }
+  
   
     const Hr = class extends Se {
       constructor(e) {
