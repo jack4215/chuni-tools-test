@@ -857,6 +857,7 @@
               e.newV = false;
           }
           console.log("t value:", t);
+          console.log("newV value set for song:", e.title, e.newV);
           // 特殊難度處理
           if ("WE" === e.difficulty) {
               e.title = Xe(e.title);
