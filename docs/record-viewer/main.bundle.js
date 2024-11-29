@@ -848,7 +848,7 @@
       const r = e,
         o = t,
         s = [];
-        console.log("t.newV:", t.newV);
+        console.log("JSON data (o):", o);
         if (t.newV !== undefined) {
           e.newV = t.newV === 1; 
         } else {
