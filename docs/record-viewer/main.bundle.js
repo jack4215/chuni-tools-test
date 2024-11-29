@@ -825,7 +825,6 @@
     }
     const Je = {
       default: (e, t) => e.score < 0 ? 1 : t.score < 0 ? -1 : t.rating - e.rating || t.const-e.const || e.score - t.score,
-      playOrder: (e, t) => t.timestamp - e.timestamp,
       title: (e, t) => e.title < t.title ? -1 : e.title > t.title ? 1 : Oe.indexOf(t.difficulty) - Oe.indexOf(e.difficulty),
       const: (e, t) => t.const-e.const || e.order - t.order,
       op: (e, t) => t.op - e.op || e.order - t.order,
@@ -3452,10 +3451,6 @@
           display: "order",
           sort: "rating",
           nocur: !0
-        }, {
-          display: "playOrder",
-          sort: "playOrder",
-          condition: "history" === s
         }, {
           display: "title",
           sort: "title"
