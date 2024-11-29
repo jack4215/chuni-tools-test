@@ -3282,9 +3282,7 @@
         c() {
           this.el = document.createElement("span");
           this.el.className = "newV-indicator";
-          if (data) {
-            this.el.textContent = data; // 設置內容
-          }
+          this.el.textContent = data; // 將數據作為 `span` 的文本內容
         },
         m(target, anchor) {
           target.insertBefore(this.el, anchor);
@@ -3296,13 +3294,14 @@
     }
     
     
+    
     function Yr(t) {
       let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j = t[0].order + "",
         S = t[0].title + "",
         T = (t[0].const < 0 ? "-" : t[0].const?.toFixed(1) ?? "??.?") + "",
         C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
         N = t[0].constUncertain && Ir();
-      let newVIndicator = t[0].newV && Vz();
+      let newVIndicator = t[0].newV && Vz(T);
       
       function U(e, t) {
         return "hide" != e[1] ? zr : Rr
@@ -3320,12 +3319,11 @@
       return {
         c() {
           n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"), f = A(T), N && N.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = "new" === t[2] ? 2 : 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ("best" === t[2] || "new" === t[2] ? 10 : 30)), B(n, "best40", t[0].order <= ("best" === t[2] ? 10 : "new" === t[2] ? 30 : 40)), B(n, "ajc", 101e4 == t[0].score);
-          if (t[0].newV) {
-            newVIndicator = Vz(T); // 傳入數據
-            newVIndicator.c();
-            newVIndicator.m(u, null);
+          if (newVIndicator) {
+            newVIndicator.c(); // 初始化 `newVIndicator`
+            newVIndicator.m(u, null); // 插入到 `u` 的起始位置
           } else {
-            u.textContent = T; // 沒有 newV 時直接插入數據
+            u.textContent = T; // 若沒有 `newVIndicator`，直接插入數據
           }
         },
         m(e, l) {
@@ -3335,13 +3333,16 @@
           1 & t && j !== (j = e[0].order + "") && I(o, j), 1 & t && S !== (S = e[0].title + "") && I(i, S), 1 & t && l !== (l = e[0].difficulty) && O(a, "data-diff", l), 4 & t && c !== (c = "new" === e[2] ? 2 : 1) && O(a, "colspan", c), 1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T), e[0].constUncertain ? N || (N = Ir(), N.c(), N.m(u, null)) : N && (N.d(1), N = null), L === (L = U(e)) && _ ? _.p(e, t) : (_.d(1), _ = L(e), _ && (_.c(), _.m(n, h))), z === (z = R(e)) && F ? F.p(e, t) : (F.d(1), F = z(e), F && (F.c(), F.m(g, null))), 4 & t && B(g, "clickable", "all" === e[2]), 1 & t && C !== (C = (e[0].const < 0 || -1 == e[0].score ? "-" : null == e[0].rating ? "??.??" : (e[0].rating / 100).toFixed(2)) + "") && I(b, C), "new" === e[2] || "all" === e[2] ? V ? V.p(e, t) : (V = Wr(e), V.c(), V.m(n, w)) : V && (V.d(1), V = null), e[4] && "all" === e[2] ? q ? q.p(e, t) : (q = Jr(e), q.c(), q.m(n, null)) : q && (q.d(1), q = null), 5 & t && B(n, "best30", e[0].order <= ("best" === e[2] || "new" === e[2] ? 10 : 30)), 5 & t && B(n, "best40", e[0].order <= ("best" === e[2] ? 10 : "new" === e[2] ? 30 : 40)), 1 & t && B(n, "ajc", 101e4 == e[0].score)
           if (e[0].newV) {
             if (!newVIndicator) {
-              newVIndicator = Vz(e[0].newV);
+              newVIndicator = Vz(T); // 傳遞新的數據
               newVIndicator.c();
-              newVIndicator.m(u, null);
+              newVIndicator.m(u, u.firstChild); // 插入到單元格內，包裹數據
+            } else {
+              newVIndicator.el.textContent = T; // 更新文本內容
             }
           } else if (newVIndicator) {
-            newVIndicator.d(1);
+            newVIndicator.d(1); // 移除舊的 `newVIndicator`
             newVIndicator = null;
+            u.textContent = T; // 還原為普通數據
           }
         },
         i: e,
