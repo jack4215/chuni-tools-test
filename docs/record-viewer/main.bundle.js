@@ -3479,7 +3479,6 @@
         }, {
           display: "ajfc",
           sort: "aj",
-          condition: "history" === s || "all" === s
         }, {
           display: "playcount",
           sort: "playcount",
