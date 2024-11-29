@@ -3294,22 +3294,20 @@
           }
       }
     }
-    function Vz(content) {
+    function Vz(data) {
       return {
-          c() {
-              this.el = document.createElement("span");
-              this.el.className = "newV-indicator";
-              this.el.textContent = content; // 將傳入的內容設為 span 的文字內容
-          },
-          m(target, anchor) {
-              target.insertBefore(this.el, anchor);
-          },
-          d(detach) {
-              if (detach) this.el.remove();
-          },
+        c() {
+          this.el = document.createElement("span");
+          this.el.className = "newV-indicator";
+        },
+        m(target, anchor) {
+          target.insertBefore(this.el, anchor);
+        },
+        d(detach) {
+          if (detach) this.el.remove();
+        },
       };
-  }
-  
+    }
     
     function Yr(t) {
       let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j = t[0].order + "",
