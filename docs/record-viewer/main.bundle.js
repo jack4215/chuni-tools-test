@@ -3299,7 +3299,6 @@
       return {
         c() {
           this.el = document.createElement("span");
-          this.el.textContent = `NewV: ${data}`;
           this.el.className = "newV-indicator";
         },
         m(target, anchor) {
