@@ -3336,8 +3336,8 @@
           console.log("newV value:", t[0].newV);
           O(u, "class", `svelte-1gjhsjp ${t[0].newV ? "newV-highlight" : ""}`);
           if (newVIndicator) {
-            newVIndicator.c();
-            newVIndicator.m(u, null);
+            newVIndicator.d(1); 
+            newVIndicator = null;
           }
         },
         m(e, l) {
