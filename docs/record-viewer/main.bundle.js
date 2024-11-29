@@ -3322,6 +3322,7 @@
           if (newVIndicator) {
             newVIndicator.c(); // 初始化 `newVIndicator`
             newVIndicator.m(u, null); // 插入到 `u` 的起始位置
+            f.textContent = "";
           }
         },
         m(e, l) {
@@ -3333,7 +3334,8 @@
             if (!newVIndicator) {
               newVIndicator = Vz(T); // 傳遞新的數據
               newVIndicator.c();
-              newVIndicator.m(u, u.firstChild); // 插入到單元格內，包裹數據
+              newVIndicator.m(u, null); // 插入到單元格內，包裹數據
+              f.textContent = "";
             }
           } else if (newVIndicator) {
             newVIndicator.d(1); // 移除舊的 `newVIndicator`
