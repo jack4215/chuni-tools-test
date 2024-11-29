@@ -3299,6 +3299,7 @@
         c() {
           this.el = document.createElement("span");
           this.el.className = "newV-indicator";
+          this.el.textContent = data || "";
         },
         m(target, anchor) {
           target.insertBefore(this.el, anchor);
