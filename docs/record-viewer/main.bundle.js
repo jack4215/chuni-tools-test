@@ -1082,8 +1082,8 @@
         }
       }
     }
-    const Nt = Et("recentRecord"),
-      Ht = Et("playHistory"),
+    const Nt = Et("allRecord"),
+      Ht = Et("allRecord"),
       Ut = (() => {
         const {
           subscribe: e,
