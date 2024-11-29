@@ -3322,8 +3322,6 @@
           if (newVIndicator) {
             newVIndicator.c(); // 初始化 `newVIndicator`
             newVIndicator.m(u, null); // 插入到 `u` 的起始位置
-          } else {
-            u.textContent = T; // 若沒有 `newVIndicator`，直接插入數據
           }
         },
         m(e, l) {
@@ -3336,13 +3334,10 @@
               newVIndicator = Vz(T); // 傳遞新的數據
               newVIndicator.c();
               newVIndicator.m(u, u.firstChild); // 插入到單元格內，包裹數據
-            } else {
-              newVIndicator.el.textContent = T; // 更新文本內容
             }
           } else if (newVIndicator) {
             newVIndicator.d(1); // 移除舊的 `newVIndicator`
             newVIndicator = null;
-            u.textContent = T; // 還原為普通數據
           }
         },
         i: e,
