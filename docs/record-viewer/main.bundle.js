@@ -3227,7 +3227,7 @@
         c() {
           t = H("span");
           t.textContent = value;
-          z(t, "color", "pink"); // 設置為粉紅色
+          t.style.color = "pink"; // 明確設置粉紅色樣式
         },
         m(e, n) {
           M(e, t, n);
@@ -3237,6 +3237,7 @@
         }
       };
     }
+    
     
     function Yr(t) {
       let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j = t[0].order + "",
@@ -3260,7 +3261,15 @@
         q = t[4] && "all" === t[2] && Jr(t);
       return {
         c() {
-          n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"), f = A(T), N && N.c(),Z && Z.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = "new" === t[2] ? 2 : 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ("best" === t[2] || "new" === t[2] ? 10 : 30)), B(n, "best40", t[0].order <= ("best" === t[2] ? 10 : "new" === t[2] ? 30 : 40)), B(n, "ajc", 101e4 == t[0].score)
+          n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td");
+          if (t[0].isNewV) {
+            Z = pv(T);
+            Z.c();
+            Z.m(u, null);
+          } else {
+            f = A(T);
+            k(u, f);
+          }; f = A(T), N && N.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = "new" === t[2] ? 2 : 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ("best" === t[2] || "new" === t[2] ? 10 : 30)), B(n, "best40", t[0].order <= ("best" === t[2] ? 10 : "new" === t[2] ? 30 : 40)), B(n, "ajc", 101e4 == t[0].score)
         },
         m(e, l) {
           M(e, n, l), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, d), k(n, u), k(u, f), N && N.m(u, null),Z && Z.m(u, null), k(n, p), _.m(n, null), k(n, h), k(n, g), F.m(g, null), k(n, m), k(n, v), k(v, b), k(n, y), V && V.m(n, null), k(n, w), q && q.m(n, null), $ || (x = P(g, "click", t[6]), $ = !0)
