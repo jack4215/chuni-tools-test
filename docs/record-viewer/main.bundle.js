@@ -2876,15 +2876,16 @@
     }
 
     function Nr(e, t, n) {
-      let {
-        title: r
-      } = t, {
-        content: o
-      } = t;
-      return e.$$set = e => {
-        "title" in e && n(0, r = e.title), "content" in e && n(1, o = e.content)
-      }, [r, o]
+      let { title: r = '', content: o = '' } = t || {};
+      return (
+        e.$$set = (e) => {
+          if ('title' in e) n(0, r = e.title);
+          if ('content' in e) n(1, o = e.content);
+        },
+        [r, o]
+      );
     }
+    
     const Hr = class extends Se {
       constructor(e) {
         super(), je(this, e, Nr, Er, i, {
