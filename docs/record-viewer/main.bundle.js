@@ -2874,10 +2874,28 @@
         }
       }
     }
-
+    function Nr() {
+      return {
+        c() {
+          // 創建節點邏輯
+          this.el = document.createElement("span");
+          this.el.textContent = "NewV!";
+          this.el.className = "newV-highlight";
+        },
+        m(target, anchor) {
+          // 挂載到目標
+          target.insertBefore(this.el, anchor);
+        },
+        d(detach) {
+          // 刪除節點
+          if (detach) this.el.remove();
+        },
+      };
+    }
     function Nr(e, t, n) {
       let { title: r = '', content: o = '' } = t || {};
       return (
+        
         e.$$set = (e) => {
           if ('title' in e) n(0, r = e.title);
           if ('content' in e) n(1, o = e.content);
