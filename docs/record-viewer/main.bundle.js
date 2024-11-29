@@ -1060,90 +1060,30 @@
       St = vt(!1),
       Tt = vt(!1),
       Ct = {};
-
-      
-    
     for (let e of tt.accepts) Ct[e] = void 0;
     const Mt = Me(tt, (async e => (Ct[e] || (Ct[e] = await fetch(`../data/song-const/${e}.json?t=${Date.now()}`).then((async e => await e.json()))), Ct[e])));
 
     function Et(e) {
-      const { subscribe: t, set: n } = Ce([]);
+      const {
+        subscribe: t,
+        set: n
+      } = Ce([]);
       let r = !1,
-          o = []; // 原始數據
-      let allSongs = [], bestSongs = [], newSongs = []; // 篩選後的數據
-  
+        o = [];
       return {
-          set: n,
-          subscribe: t,
-          async init() {
-              // 加載數據
-              o = await gt(e);
-              const processedSongs = Ge(o, await d(Mt)); // 處理數據
-  
-              // 保存所有歌曲
-              allSongs = processedSongs;
-  
-              // 篩選 BEST 歌曲
-              bestSongs = processedSongs
-                  .filter(song => song.newV === 0)
-                  .sort((a, b) => b.rating - a.rating)
-                  .slice(0, 30);
-  
-              // 篩選 NEW 歌曲
-              newSongs = processedSongs
-                  .filter(song => song.newV === 1)
-                  .sort((a, b) => b.rating - a.rating)
-                  .slice(0, 10);
-  
-              // 更新 store
-              n(processedSongs);
-              r = !0;
-          },
-          async updateConstData() {
-              if (r) {
-                  const processedSongs = Ge(o, await d(Mt));
-                  allSongs = processedSongs;
-  
-                  // 重新篩選數據
-                  bestSongs = processedSongs
-                      .filter(song => song.newV === 0)
-                      .sort((a, b) => b.rating - a.rating)
-                      .slice(0, 30);
-  
-                  newSongs = processedSongs
-                      .filter(song => song.newV === 1)
-                      .sort((a, b) => b.rating - a.rating)
-                      .slice(0, 10);
-  
-                  n(processedSongs);
-              }
-          },
-          getAllSongs() {
-              return allSongs;
-          },
-          getBestSongs() {
-              return bestSongs;
-          },
-          getNewSongs() {
-              return newSongs;
-          }
-      };
-  }
-  
-  
-    const Nt = Et(""),
-      Ht = Et("");
-      c($t, (tab) => {
-        // tab 是當前頁籤的值 ("all", "best", 或 "new")
-        if (tab === "all") {
-            Nt.set(Ht.getAllSongs());
-        } else if (tab === "best") {
-            Nt.set(Ht.getBestSongs());
-        } else if (tab === "new") {
-            Nt.set(Ht.getNewSongs());
+        set: n,
+        subscribe: t,
+        async init() {
+          o = await gt(e), n(Ge(o, await d(Mt))), r = !0
+        },
+        async updateConstData() {
+          r && n(Ge(o, await d(Mt)))
         }
-      });
-      const Ut = (() => {
+      }
+    }
+    const Nt = Et(""),
+      Ht = Et(""),
+      Ut = (() => {
         const {
           subscribe: e,
           set: t
