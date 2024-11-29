@@ -3239,17 +3239,17 @@
       }
       let z = R(t),
         F = z(t),
-        V = ("history" === t[2] || "all" === t[2]) && Wr(t),
+        V = ("new" === t[2] || "all" === t[2]) && Wr(t),
         q = t[4] && "all" === t[2] && Jr(t);
       return {
         c() {
-          n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"), f = A(T), N && N.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = "history" === t[2] ? 2 : 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ("recent" === t[2] || "history" === t[2] ? 10 : 30)), B(n, "best40", t[0].order <= ("recent" === t[2] ? 10 : "history" === t[2] ? 30 : 40)), B(n, "ajc", 101e4 == t[0].score)
+          n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"), f = A(T), N && N.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = "new" === t[2] ? 2 : 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ("best" === t[2] || "new" === t[2] ? 10 : 30)), B(n, "best40", t[0].order <= ("best" === t[2] ? 10 : "new" === t[2] ? 30 : 40)), B(n, "ajc", 101e4 == t[0].score)
         },
         m(e, l) {
           M(e, n, l), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, d), k(n, u), k(u, f), N && N.m(u, null), k(n, p), _.m(n, null), k(n, h), k(n, g), F.m(g, null), k(n, m), k(n, v), k(v, b), k(n, y), V && V.m(n, null), k(n, w), q && q.m(n, null), $ || (x = P(g, "click", t[6]), $ = !0)
         },
         p(e, [t]) {
-          1 & t && j !== (j = e[0].order + "") && I(o, j), 1 & t && S !== (S = e[0].title + "") && I(i, S), 1 & t && l !== (l = e[0].difficulty) && O(a, "data-diff", l), 4 & t && c !== (c = "history" === e[2] ? 2 : 1) && O(a, "colspan", c), 1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T), e[0].constUncertain ? N || (N = Ir(), N.c(), N.m(u, null)) : N && (N.d(1), N = null), L === (L = U(e)) && _ ? _.p(e, t) : (_.d(1), _ = L(e), _ && (_.c(), _.m(n, h))), z === (z = R(e)) && F ? F.p(e, t) : (F.d(1), F = z(e), F && (F.c(), F.m(g, null))), 4 & t && B(g, "clickable", "all" === e[2]), 1 & t && C !== (C = (e[0].const < 0 || -1 == e[0].score ? "-" : null == e[0].rating ? "??.??" : (e[0].rating / 100).toFixed(2)) + "") && I(b, C), "history" === e[2] || "all" === e[2] ? V ? V.p(e, t) : (V = Wr(e), V.c(), V.m(n, w)) : V && (V.d(1), V = null), e[4] && "all" === e[2] ? q ? q.p(e, t) : (q = Jr(e), q.c(), q.m(n, null)) : q && (q.d(1), q = null), 5 & t && B(n, "best30", e[0].order <= ("recent" === e[2] || "history" === e[2] ? 10 : 30)), 5 & t && B(n, "best40", e[0].order <= ("recent" === e[2] ? 10 : "history" === e[2] ? 30 : 40)), 1 & t && B(n, "ajc", 101e4 == e[0].score)
+          1 & t && j !== (j = e[0].order + "") && I(o, j), 1 & t && S !== (S = e[0].title + "") && I(i, S), 1 & t && l !== (l = e[0].difficulty) && O(a, "data-diff", l), 4 & t && c !== (c = "new" === e[2] ? 2 : 1) && O(a, "colspan", c), 1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T), e[0].constUncertain ? N || (N = Ir(), N.c(), N.m(u, null)) : N && (N.d(1), N = null), L === (L = U(e)) && _ ? _.p(e, t) : (_.d(1), _ = L(e), _ && (_.c(), _.m(n, h))), z === (z = R(e)) && F ? F.p(e, t) : (F.d(1), F = z(e), F && (F.c(), F.m(g, null))), 4 & t && B(g, "clickable", "all" === e[2]), 1 & t && C !== (C = (e[0].const < 0 || -1 == e[0].score ? "-" : null == e[0].rating ? "??.??" : (e[0].rating / 100).toFixed(2)) + "") && I(b, C), "new" === e[2] || "all" === e[2] ? V ? V.p(e, t) : (V = Wr(e), V.c(), V.m(n, w)) : V && (V.d(1), V = null), e[4] && "all" === e[2] ? q ? q.p(e, t) : (q = Jr(e), q.c(), q.m(n, null)) : q && (q.d(1), q = null), 5 & t && B(n, "best30", e[0].order <= ("best" === e[2] || "new" === e[2] ? 10 : 30)), 5 & t && B(n, "best40", e[0].order <= ("best" === e[2] ? 10 : "new" === e[2] ? 30 : 40)), 1 & t && B(n, "ajc", 101e4 == e[0].score)
         },
         i: e,
         o: e,
@@ -3769,13 +3769,13 @@
       let n, r, o, s, a, i, l, c, d;
       return {
         c() {
-          n = H("header"), r = H("a"), o = H("h3"), o.textContent = "ALL", s = D(), a = H("a"), i = H("h3"), i.textContent = "RECENT", l = D(), c = H("a"), d = H("h3"), d.textContent = "HISTORY", O(o, "class", "svelte-ufw7k"), B(o, "selected", "all" == t[0]), O(r, "href", "#all"), O(r, "class", "svelte-ufw7k"), O(i, "class", "svelte-ufw7k"), B(i, "selected", "recent" == t[0]), O(a, "href", "#recent"), O(a, "class", "svelte-ufw7k"), O(d, "class", "svelte-ufw7k"), B(d, "selected", "history" == t[0]), O(c, "href", "#history"), O(c, "class", "svelte-ufw7k"), O(n, "class", "svelte-ufw7k")
+          n = H("header"), r = H("a"), o = H("h3"), o.textContent = "ALL", s = D(), a = H("a"), i = H("h3"), i.textContent = "BEST", l = D(), c = H("a"), d = H("h3"), d.textContent = "NEW", O(o, "class", "svelte-ufw7k"), B(o, "selected", "all" == t[0]), O(r, "href", "#all"), O(r, "class", "svelte-ufw7k"), O(i, "class", "svelte-ufw7k"), B(i, "selected", "best" == t[0]), O(a, "href", "#best"), O(a, "class", "svelte-ufw7k"), O(d, "class", "svelte-ufw7k"), B(d, "selected", "new" == t[0]), O(c, "href", "#new"), O(c, "class", "svelte-ufw7k"), O(n, "class", "svelte-ufw7k")
         },
         m(e, t) {
           M(e, n, t), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, l), k(n, c), k(c, d)
         },
         p(e, [t]) {
-          1 & t && B(o, "selected", "all" == e[0]), 1 & t && B(i, "selected", "recent" == e[0]), 1 & t && B(d, "selected", "history" == e[0])
+          1 & t && B(o, "selected", "all" == e[0]), 1 & t && B(i, "selected", "best" == e[0]), 1 & t && B(d, "selected", "new" == e[0])
         },
         i: e,
         o: e,
@@ -4017,12 +4017,12 @@
       }), u = new io({
         props: {
           playRecord: e[8],
-          shown: "recent" === e[5]
+          shown: "best" === e[5]
         }
       }), p = new io({
         props: {
           playRecord: e[9],
-          shown: "history" === e[5]
+          shown: "new" === e[5]
         }
       });
       let v = e[10] && Wo();
@@ -4040,9 +4040,9 @@
           const n = {};
           1 & t && (n.playRecord = e[0]), 32 & t && (n.shown = "all" === e[5]), c.$set(n);
           const r = {};
-          256 & t && (r.playRecord = e[8]), 32 & t && (r.shown = "recent" === e[5]), u.$set(r);
+          256 & t && (r.playRecord = e[8]), 32 & t && (r.shown = "best" === e[5]), u.$set(r);
           const o = {};
-          512 & t && (o.playRecord = e[9]), 32 & t && (o.shown = "history" === e[5]), p.$set(o), e[10] ? v ? 1024 & t && ge(v, 1) : (v = Wo(), v.c(), ge(v, 1), v.m(s, null)) : v && (pe(), me(v, 1, 1, (() => {
+          512 & t && (o.playRecord = e[9]), 32 & t && (o.shown = "new" === e[5]), p.$set(o), e[10] ? v ? 1024 & t && ge(v, 1) : (v = Wo(), v.c(), ge(v, 1), v.m(s, null)) : v && (pe(), me(v, 1, 1, (() => {
             v = null
           })), he())
         },
