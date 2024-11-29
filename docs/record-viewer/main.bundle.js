@@ -853,12 +853,12 @@
           // 判斷 newV
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
           if (songData && songData.newV !== undefined) {
-              e.newV = songData.newV === 1;
+            e.newV = songData.newV;  // 保留 newV 的原始數值（如 0, 1, 2）
           } else {
-              e.newV = false;
+            e.newV = 0;  // 如果沒有設定 newV，則預設為 0（或其他合適的預設值）
           }
+
         console.log("newV value set for song:", e.title, e.newV);
-          // 特殊難度處理
           if ("WE" === e.difficulty) {
               e.title = Xe(e.title);
               e.const = -1;
@@ -869,13 +869,10 @@
               e.rank = Fe(e.score);
               return;
           }
-  
-          // 處理未找到歌曲標題的情況
           if (o[e.title] === undefined) {
               e.title = Xe(e.title);
           }
-  
-          songData = o[e.title]; // 使用 songData 代替 t
+          songData = o[e.title]; 
           if (songData === undefined) {
               s.push(e);
               e.const = -1;
@@ -906,7 +903,6 @@
               e.rating = Math.floor(e.rawRating / 100);
           }
   
-          // 計算 OP
           e.op = function(e) {
               if (e.score >= 101e4) return Ve(e);
   
@@ -3286,8 +3282,7 @@
       let t;
       return {
           c() {
-              t = H("span");
-              t.textContent = "N"; // 可選，顯示 "N" 或其他標記
+              t = H("span"); 
               z(t, "color", "pink");
           },
           m(e, n) {
@@ -3301,58 +3296,78 @@
   
     function Yr(t) {
       let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j = t[0].order + "",
-        S = t[0].title + "",
-        T = (t[0].const < 0 ? "-" : t[0].const?.toFixed(1) ?? "??.?") + "",
-        C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
-        N = t[0].constUncertain && Ir();
-      let newVIndicator = t[0].newV && Zs();
+          S = t[0].title + "",
+          T = (t[0].const < 0 ? "-" : t[0].const?.toFixed(1) ?? "??.?") + "",
+          C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
+          N = t[0].constUncertain && Ir();
+  
+      let newVIndicator = null;
+      if (t[0].newV === 1) {
+          newVIndicator = Zs(); // 顯示粉紅色
+      } else if (t[0].newV === 2) {
+          newVIndicator = Zs(); // 可以根據需求修改顯示的樣式
+      }
+  
       function U(e, t) {
-        return "hide" != e[1] ? zr : Rr
+          return "hide" != e[1] ? zr : Rr;
       }
       let L = U(t),
-        _ = L(t);
-
+          _ = L(t);
+  
       function R(e, t) {
-        return e[3] ? qr : Vr
+          return e[3] ? qr : Vr;
       }
       let z = R(t),
-        F = z(t),
-        V = ("new" === t[2] || "all" === t[2]) && Wr(t),
-        q = t[4] && "all" === t[2] && Jr(t);
+          F = z(t),
+          V = ("new" === t[2] || "all" === t[2]) && Wr(t),
+          q = t[4] && "all" === t[2] && Jr(t);
+  
       return {
-        c() {
-          n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"), f = A(T), N && N.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = "new" === t[2] ? 2 : 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ("best" === t[2] || "new" === t[2] ? 10 : 30)), B(n, "best40", t[0].order <= ("best" === t[2] ? 10 : "new" === t[2] ? 30 : 40)), B(n, "ajc", 101e4 == t[0].score),
-          console.log("newV value:", t[0].newV);
-          O(u, "class", `svelte-1gjhsjp ${t[0].newV ? "newV-highlight" : ""}`);
-          if (newVIndicator) {
-            newVIndicator.c();
-            newVIndicator.m(u, null);
+          c() {
+              n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"), f = A(T), N && N.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = "new" === t[2] ? 2 : 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ("best" === t[2] || "new" === t[2] ? 10 : 30)), B(n, "best40", t[0].order <= ("best" === t[2] ? 10 : "new" === t[2] ? 30 : 40)), B(n, "ajc", 101e4 == t[0].score),
+              console.log("newV value:", t[0].newV);
+  
+              // 根據 newV 的值選擇樣式
+              if (t[0].newV === 1) {
+                  // newV為1，所有難度的const變色
+                  O(u, "class", `svelte-1gjhsjp newV-1-highlight`);
+              } else if (t[0].newV === 2 && t[0].difficulty === "ULT") {
+                  // newV為2，且難度是ULT時，const變色
+                  O(u, "class", `svelte-1gjhsjp newV-2-highlight`);
+              } else {
+                  O(u, "class", `svelte-1gjhsjp`);
+              }
+  
+              if (newVIndicator) {
+                  newVIndicator.c();
+                  newVIndicator.m(u, null);
+              }
+          },
+          m(e, l) {
+              M(e, n, l), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, d), k(n, u), k(u, f), N && N.m(u, null), k(n, p), _.m(n, null), k(n, h), k(n, g), F.m(g, null), k(n, m), k(n, v), k(v, b), k(n, y), V && V.m(n, null), k(n, w), q && q.m(n, null), $ || (x = P(g, "click", t[6]), $ = !0)
+          },
+          p(e, [t]) {
+              1 & t && j !== (j = e[0].order + "") && I(o, j), 1 & t && S !== (S = e[0].title + "") && I(i, S), 1 & t && l !== (l = e[0].difficulty) && O(a, "data-diff", l), 4 & t && c !== (c = "new" === e[2] ? 2 : 1) && O(a, "colspan", c), 1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T), e[0].constUncertain ? N || (N = Ir(), N.c(), N.m(u, null)) : N && (N.d(1), N = null), L === (L = U(e)) && _ ? _.p(e, t) : (_.d(1), _ = L(e), _ && (_.c(), _.m(n, h))), z === (z = R(e)) && F ? F.p(e, t) : (F.d(1), F = z(e), F && (F.c(), F.m(g, null))), 4 & t && B(g, "clickable", "all" === e[2]), 1 & t && C !== (C = (e[0].const < 0 || -1 == e[0].score ? "-" : null == e[0].rating ? "??.??" : (e[0].rating / 100).toFixed(2)) + "") && I(b, C), "new" === e[2] || "all" === e[2] ? V ? V.p(e, t) : (V = Wr(e), V.c(), V.m(n, w)) : V && (V.d(1), V = null), e[4] && "all" === e[2] ? q ? q.p(e, t) : (q = Jr(e), q.c(), q.m(n, null)) : q && (q.d(1), q = null), 5 & t && B(n, "best30", e[0].order <= ("best" === e[2] || "new" === e[2] ? 10 : 30)), 5 & t && B(n, "best40", e[0].order <= ("best" === e[2] ? 10 : "new" === e[2] ? 30 : 40)), 1 & t && B(n, "ajc", 101e4 == e[0].score)
+              if (e[0].newV) {
+                  if (!newVIndicator) {
+                      newVIndicator = Nr();
+                      newVIndicator.c();
+                      newVIndicator.m(u, null);
+                  }
+              } else if (newVIndicator) {
+                  newVIndicator.d(1);
+                  newVIndicator = null;
+              }
+          },
+          i: e,
+          o: e,
+          d(e) {
+              e && E(n), N && N.d(), _.d(), F.d(), V && V.d(), q && q.d(), $ = !1, x();
+              newVIndicator && newVIndicator.d();
           }
-        },
-        m(e, l) {
-          M(e, n, l), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, d), k(n, u), k(u, f), N && N.m(u, null), k(n, p), _.m(n, null), k(n, h), k(n, g), F.m(g, null), k(n, m), k(n, v), k(v, b), k(n, y), V && V.m(n, null), k(n, w), q && q.m(n, null), $ || (x = P(g, "click", t[6]), $ = !0)
-        },
-        p(e, [t]) {
-          1 & t && j !== (j = e[0].order + "") && I(o, j), 1 & t && S !== (S = e[0].title + "") && I(i, S), 1 & t && l !== (l = e[0].difficulty) && O(a, "data-diff", l), 4 & t && c !== (c = "new" === e[2] ? 2 : 1) && O(a, "colspan", c), 1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T), e[0].constUncertain ? N || (N = Ir(), N.c(), N.m(u, null)) : N && (N.d(1), N = null), L === (L = U(e)) && _ ? _.p(e, t) : (_.d(1), _ = L(e), _ && (_.c(), _.m(n, h))), z === (z = R(e)) && F ? F.p(e, t) : (F.d(1), F = z(e), F && (F.c(), F.m(g, null))), 4 & t && B(g, "clickable", "all" === e[2]), 1 & t && C !== (C = (e[0].const < 0 || -1 == e[0].score ? "-" : null == e[0].rating ? "??.??" : (e[0].rating / 100).toFixed(2)) + "") && I(b, C), "new" === e[2] || "all" === e[2] ? V ? V.p(e, t) : (V = Wr(e), V.c(), V.m(n, w)) : V && (V.d(1), V = null), e[4] && "all" === e[2] ? q ? q.p(e, t) : (q = Jr(e), q.c(), q.m(n, null)) : q && (q.d(1), q = null), 5 & t && B(n, "best30", e[0].order <= ("best" === e[2] || "new" === e[2] ? 10 : 30)), 5 & t && B(n, "best40", e[0].order <= ("best" === e[2] ? 10 : "new" === e[2] ? 30 : 40)), 1 & t && B(n, "ajc", 101e4 == e[0].score)
-          if (e[0].newV) {
-            if (!newVIndicator) {
-                newVIndicator = Nr();
-                newVIndicator.c();
-                newVIndicator.m(u, null);
-            }
-          } else if (newVIndicator) {
-              newVIndicator.d(1);
-              newVIndicator = null;
-          }
-        },
-        i: e,
-        o: e,
-        d(e) {
-          e && E(n), N && N.d(), _.d(), F.d(), V && V.d(), q && q.d(), $ = !1, x();
-          newVIndicator && newVIndicator.d();
-        }
-      }
-    }
+      };
+  }
+  
 
     function Zr(e, t, n) {
       let r, o, s, a, i;
