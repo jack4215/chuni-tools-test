@@ -2853,8 +2853,8 @@
         }
       }), s = new Hr({
         props: {
-          title: e[4]("player.recent.history30"),
-          content: Cr(qe(e[0], 30) / 100, 4)
+          title: e[4]("player.best.playCount"),
+          content: e[3].playCount
         }
       }), {
         c() {
@@ -2869,7 +2869,7 @@
           const a = {};
           16 & n && (a.title = e[4]("player.recent.history10")), 1 & n && (a.content = Cr(qe(e[0], 10) / 100, 4)), r.$set(a);
           const i = {};
-          16 & n && (i.title = e[4]("player.recent.history30")), 1 & n && (i.content = Cr(qe(e[0], 30) / 100, 4)), s.$set(i)
+          16 & n && (i.title = e[4]("player.best.playCount")), 8 & n && (i.content = e[3].playCount), s.$set(i)
         },
         i(e) {
           a || (ge(t.$$.fragment, e), ge(r.$$.fragment, e), ge(s.$$.fragment, e), a = !0)
@@ -2893,7 +2893,7 @@
       }), r = new Hr({
         props: {
           title: e[4]("player.best.maxPossible"),
-          content: Cr(We(e[2]) / 100, 2)
+          content: Cr(We(e[2]) / 100, 4)
         }
       }), s = new Hr({
         props: {
