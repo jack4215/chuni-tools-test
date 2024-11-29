@@ -856,7 +856,6 @@
           } else {
               e.newV = false;
           }
-          console.log("newV value:", t[0].newV);
           // 特殊難度處理
           if ("WE" === e.difficulty) {
               e.title = Xe(e.title);
