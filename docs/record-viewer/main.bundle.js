@@ -1082,7 +1082,8 @@
         }
       }
     }
-    const  
+    const Nt = Et(""),
+      Ht = Et(""),
       Ut = (() => {
         const {
           subscribe: e,
@@ -1151,9 +1152,7 @@
             }
           }
         }
-      })()
-      const Nt = '',
-      Ht = '',
+      })(),
       Dt = (() => {
         let e = 0;
         return () => (e += 1, `u${`0000${(Math.random()*36**4<<0).toString(36)}`.slice(-4)}${e}`)
