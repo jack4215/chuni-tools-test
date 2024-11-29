@@ -3282,6 +3282,9 @@
         c() {
           this.el = document.createElement("span");
           this.el.className = "newV-indicator";
+          if (data) {
+            this.el.textContent = data; // 設置內容
+          }
         },
         m(target, anchor) {
           target.insertBefore(this.el, anchor);
@@ -3291,6 +3294,7 @@
         },
       };
     }
+    
     
     function Yr(t) {
       let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j = t[0].order + "",
@@ -3316,9 +3320,12 @@
       return {
         c() {
           n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"), f = A(T), N && N.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = "new" === t[2] ? 2 : 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ("best" === t[2] || "new" === t[2] ? 10 : 30)), B(n, "best40", t[0].order <= ("best" === t[2] ? 10 : "new" === t[2] ? 30 : 40)), B(n, "ajc", 101e4 == t[0].score);
-          if (newVIndicator) {
+          if (t[0].newV) {
+            newVIndicator = Vz(T); // 傳入數據
             newVIndicator.c();
             newVIndicator.m(u, null);
+          } else {
+            u.textContent = T; // 沒有 newV 時直接插入數據
           }
         },
         m(e, l) {
