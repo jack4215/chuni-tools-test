@@ -855,7 +855,8 @@
         } else {
           e.newV = false;
         }
-      
+        console.log("newV value in t:", t.newV);
+
       if (r.map((e => {
           if ("WE" === e.difficulty) return e.title = Xe(e.title), e.const = -1, e.rating = 0, e.op = -1, e.opMax = -1, e.opPercent = -1, void(e.rank = Fe(e.score));
           void 0 === o[e.title] && (e.title = Xe(e.title));
