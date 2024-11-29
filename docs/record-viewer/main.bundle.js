@@ -3298,17 +3298,14 @@
     function Vz(data) {
       return {
         c() {
-          // 創建 DOM 節點
           this.el = document.createElement("span");
           this.el.textContent = `NewV: ${data}`;
           this.el.className = "newV-indicator";
         },
         m(target, anchor) {
-          // 挂載節點到 DOM
           target.insertBefore(this.el, anchor);
         },
         d(detach) {
-          // 銷毀節點
           if (detach) this.el.remove();
         },
       };
@@ -3349,7 +3346,7 @@
         },
         p(e, [t]) {
           1 & t && j !== (j = e[0].order + "") && I(o, j), 1 & t && S !== (S = e[0].title + "") && I(i, S), 1 & t && l !== (l = e[0].difficulty) && O(a, "data-diff", l), 4 & t && c !== (c = "new" === e[2] ? 2 : 1) && O(a, "colspan", c), 1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T), e[0].constUncertain ? N || (N = Ir(), N.c(), N.m(u, null)) : N && (N.d(1), N = null), L === (L = U(e)) && _ ? _.p(e, t) : (_.d(1), _ = L(e), _ && (_.c(), _.m(n, h))), z === (z = R(e)) && F ? F.p(e, t) : (F.d(1), F = z(e), F && (F.c(), F.m(g, null))), 4 & t && B(g, "clickable", "all" === e[2]), 1 & t && C !== (C = (e[0].const < 0 || -1 == e[0].score ? "-" : null == e[0].rating ? "??.??" : (e[0].rating / 100).toFixed(2)) + "") && I(b, C), "new" === e[2] || "all" === e[2] ? V ? V.p(e, t) : (V = Wr(e), V.c(), V.m(n, w)) : V && (V.d(1), V = null), e[4] && "all" === e[2] ? q ? q.p(e, t) : (q = Jr(e), q.c(), q.m(n, null)) : q && (q.d(1), q = null), 5 & t && B(n, "best30", e[0].order <= ("best" === e[2] || "new" === e[2] ? 10 : 30)), 5 & t && B(n, "best40", e[0].order <= ("best" === e[2] ? 10 : "new" === e[2] ? 30 : 40)), 1 & t && B(n, "ajc", 101e4 == e[0].score)
-          if (t[0].newV) {
+          if (t && t[0] && t[0].newV) {
             if (!newVIndicator) {
               newVIndicator = Vz(t[0].newV);
               newVIndicator.c();
