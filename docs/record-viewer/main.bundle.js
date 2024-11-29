@@ -846,83 +846,50 @@
 
     function Ge(e, t, n) {
       const r = e,
-          o = t,
-          s = [];
-      if (r.map((e) => {
-          if ("WE" === e.difficulty) {
-              e.title = Xe(e.title);
-              e.const = -1;
-              e.rating = 0;
-              e.op = -1;
-              e.opMax = -1;
-              e.opPercent = -1;
-              e.rank = Fe(e.score);
-              return;
-          }
+        o = t,
+        s = [];
+      if (r.map((e => {
+          if ("WE" === e.difficulty) return e.title = Xe(e.title), e.const = -1, e.rating = 0, e.op = -1, e.opMax = -1, e.opPercent = -1, void(e.rank = Fe(e.score));
           void 0 === o[e.title] && (e.title = Xe(e.title));
           let t = o[e.title];
-          if (void 0 === t) {
-              s.push(e);
-              e.const = -1;
-              e.rating = 0;
-          } else {
-              e.const = t[e.difficulty];
-              if (t.uncertain?.includes(e.difficulty)) e.constUncertain = !0;
-              e.rawRating = function (e) {
-                  let t, n = Math.floor(1e4 * e.const);
-                  if (e.score >= 9e5) {
-                      let t = Be.find((t) => e.score >= t.score);
-                      return Math.max(0, n + t.base + t.ratio * (e.score - t.score));
-                  }
-                  if (e.score >= 8e5) {
-                      t = (n - 5e4) / 2 + (n - 5e4) / 2 * (e.score - 8e5) / 1e5;
-                  } else {
-                      if (!(e.score >= 5e5)) return 0;
-                      t = (n - 5e4) / 2 * (e.score - 5e5) / 3e5;
-                  }
-                  return Math.max(0, t);
-              }(e);
-              e.genre = `${t.genre}`;
-              e.rating = Math.floor(e.rawRating / 100);
-          }
-          e.isNew = e.newV === 1;
-          e.op = function (e) {
-              if (e.score >= 101e4) return Ve(e);
-              let t = {
-                      AJ: 2e3,
-                      FC: 1e3,
-                      "": 0
-                  }[e.clear],
-                  n = Math.floor(1e4 * e.const),
-                  r = e.score < 1007500 ? e.rawRating : n + 2e4 + 3 * (e.score - 1007500);
-              return r = e.score >= 975e3 ? 10 * Math.floor(r / 10) : 100 * Math.floor(r / 100), 5 * (r + t);
-          }(e);
-  
-          e.opMax = Ve(e);
-          e.opPercent = (100 * e.op) / e.opMax;
-          e.rank = Fe(e.score);
-      }), n && s.length) {
-          const e = {};
-          s.forEach((t) => {
-              var n;
-              e[n = t.title] ?? (e[n] = []);
-              e[t.title].push(t.difficulty);
-          });
-          console.log(e);
-          alert(
-              n.replace(
-                  "{{songs}}",
-                  Object.entries(e)
-                      .map(([e, t]) => `    ${e} ${t.join(",")}`)
-                      .join("\n")
-              )
-          );
+          void 0 === t ? (s.push(e), e.const = -1, e.rating = 0) : (e.const = t[e.difficulty], t.uncertain?.includes(e.difficulty) && (e.constUncertain = !0), e.rawRating = function(e) {
+            let t, n = Math.floor(1e4 * e.const);
+            if (e.score >= 9e5) {
+              let t = Be.find((t => e.score >= t.score));
+              return Math.max(0, n + t.base + t.ratio * (e.score - t.score))
+            }
+            if (e.score >= 8e5) t = (n - 5e4) / 2 + (n - 5e4) / 2 * (e.score - 8e5) / 1e5;
+            else {
+              if (!(e.score >= 5e5)) return 0;
+              t = (n - 5e4) / 2 * (e.score - 5e5) / 3e5
+            }
+            return Math.max(0, t)
+          }(e), e.genre = `${t.genre}`, e.rating = Math.floor(e.rawRating / 100)), 
+          
+          e.op = function(e) {
+            if (e.score >= 101e4) return Ve(e);
+            let t = {
+                AJ: 2e3,
+                FC: 1e3,
+                "": 0
+              } [e.clear],
+              n = Math.floor(1e4 * e.const),
+              r = e.score < 1007500 ? e.rawRating : n + 2e4 + 3 * (e.score - 1007500);
+            return r = e.score >= 975e3 ? 10 * Math.floor(r / 10) : 100 * Math.floor(r / 100), 5 * (r + t)
+          }(e), 
+        
+        e.opMax = Ve(e), e.opPercent = 100 * e.op / e.opMax, e.rank = Fe(e.score)
+        })), n && s.length) {
+        const e = {};
+        s.forEach((t => {
+          var n;
+          e[n = t.title] ?? (e[n] = []), e[t.title].push(t.difficulty)
+        })), console.log(e), alert(n.replace("{{songs}}", Object.entries(e).map((([e, t]) => `    ${e} ${t.join(",")}`)).join("\n")))
       }
-      return r.sort(Je.default), r.map((e, t) => {
-          e.order = t + 1;
-      }), r;
-  }
-  
+      return r.sort(Je.default), r.map(((e, t) => {
+        e.order = t + 1
+      })), r
+    }
     c(De, (() => {
       try {
         Re(window.opener, Le)("saveConfig", {
@@ -3256,68 +3223,41 @@
 
     function Yr(t) {
       let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j = t[0].order + "",
-          S = t[0].title + "",
-          // const 顯示邏輯
-          T = (t[0].const < 0 ? "-" : t[0].const?.toFixed(1) ?? "??.?") + "",
-          C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
-          N = t[0].constUncertain && Ir();
-  
+        S = t[0].title + "",
+        T = (t[0].const < 0 ? "-" : t[0].const?.toFixed(1) ?? "??.?") + "",
+        C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
+        N = t[0].constUncertain && Ir();
+
       function U(e, t) {
-          return "hide" != e[1] ? zr : Rr;
+        return "hide" != e[1] ? zr : Rr
       }
       let L = U(t),
-          _ = L(t);
-  
+        _ = L(t);
+
       function R(e, t) {
-          return e[3] ? qr : Vr;
+        return e[3] ? qr : Vr
       }
       let z = R(t),
-          F = z(t),
-          V = ("new" === t[2] || "all" === t[2]) && Wr(t),
-          q = t[4] && "all" === t[2] && Jr(t);
-  
+        F = z(t),
+        V = ("new" === t[2] || "all" === t[2]) && Wr(t),
+        q = t[4] && "all" === t[2] && Jr(t);
       return {
-          c() {
-              n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"),
-              // 動態設置 const 的樣式
-              f = A(T), 
-              N && N.c(), 
-              p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), 
-              V && V.c(), w = D(), q && q.c(),
-  
-              // 設置樣式
-              O(r, "class", "song-order svelte-1gjhsjp"),
-              O(a, "data-diff", l = t[0].difficulty),
-              O(a, "colspan", c = "new" === t[2] ? 2 : 1),
-              O(a, "class", "svelte-1gjhsjp"),
-              O(u, "class", t[0].isNew ? "pink-text svelte-1gjhsjp" : "svelte-1gjhsjp"), // 根據條件設置樣式
-              O(g, "class", "song-score svelte-1gjhsjp"),
-              B(g, "clickable", "all" === t[2]),
-              O(v, "class", "svelte-1gjhsjp"),
-              O(n, "class", "svelte-1gjhsjp"),
-              B(n, "best30", t[0].order <= ("best" === t[2] || "new" === t[2] ? 10 : 30)),
-              B(n, "best40", t[0].order <= ("best" === t[2] ? 10 : "new" === t[2] ? 30 : 40)),
-              B(n, "ajc", 101e4 == t[0].score);
-          },
-          m(e, l) {
-              M(e, n, l), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, d), k(n, u), k(u, f), 
-              N && N.m(u, null), k(n, p), _.m(n, null), k(n, h), k(n, g), F.m(g, null), k(n, m), 
-              k(n, v), k(v, b), k(n, y), V && V.m(n, null), k(n, w), q && q.m(n, null), 
-              $ || (x = P(g, "click", t[6]), $ = !0);
-          },
-          p(e, [t]) {
-              // 動態更新 const 的顯示樣式
-              1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T);
-              1 & t && O(u, "class", e[0].isNew ? "pink-text svelte-1gjhsjp" : "svelte-1gjhsjp"); // 更新樣式
-          },
-          i: e,
-          o: e,
-          d(e) {
-              e && E(n), N && N.d(), _.d(), F.d(), V && V.d(), q && q.d(), $ = !1, x();
-          }
-      };
-  }
-  
+        c() {
+          n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"), f = A(T), N && N.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = "new" === t[2] ? 2 : 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ("best" === t[2] || "new" === t[2] ? 10 : 30)), B(n, "best40", t[0].order <= ("best" === t[2] ? 10 : "new" === t[2] ? 30 : 40)), B(n, "ajc", 101e4 == t[0].score)
+        },
+        m(e, l) {
+          M(e, n, l), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, d), k(n, u), k(u, f), N && N.m(u, null), k(n, p), _.m(n, null), k(n, h), k(n, g), F.m(g, null), k(n, m), k(n, v), k(v, b), k(n, y), V && V.m(n, null), k(n, w), q && q.m(n, null), $ || (x = P(g, "click", t[6]), $ = !0)
+        },
+        p(e, [t]) {
+          1 & t && j !== (j = e[0].order + "") && I(o, j), 1 & t && S !== (S = e[0].title + "") && I(i, S), 1 & t && l !== (l = e[0].difficulty) && O(a, "data-diff", l), 4 & t && c !== (c = "new" === e[2] ? 2 : 1) && O(a, "colspan", c), 1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T), e[0].constUncertain ? N || (N = Ir(), N.c(), N.m(u, null)) : N && (N.d(1), N = null), L === (L = U(e)) && _ ? _.p(e, t) : (_.d(1), _ = L(e), _ && (_.c(), _.m(n, h))), z === (z = R(e)) && F ? F.p(e, t) : (F.d(1), F = z(e), F && (F.c(), F.m(g, null))), 4 & t && B(g, "clickable", "all" === e[2]), 1 & t && C !== (C = (e[0].const < 0 || -1 == e[0].score ? "-" : null == e[0].rating ? "??.??" : (e[0].rating / 100).toFixed(2)) + "") && I(b, C), "new" === e[2] || "all" === e[2] ? V ? V.p(e, t) : (V = Wr(e), V.c(), V.m(n, w)) : V && (V.d(1), V = null), e[4] && "all" === e[2] ? q ? q.p(e, t) : (q = Jr(e), q.c(), q.m(n, null)) : q && (q.d(1), q = null), 5 & t && B(n, "best30", e[0].order <= ("best" === e[2] || "new" === e[2] ? 10 : 30)), 5 & t && B(n, "best40", e[0].order <= ("best" === e[2] ? 10 : "new" === e[2] ? 30 : 40)), 1 & t && B(n, "ajc", 101e4 == e[0].score)
+        },
+        i: e,
+        o: e,
+        d(e) {
+          e && E(n), N && N.d(), _.d(), F.d(), V && V.d(), q && q.d(), $ = !1, x()
+        }
+      }
+    }
 
     function Zr(e, t, n) {
       let r, o, s, a, i;
