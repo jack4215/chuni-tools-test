@@ -848,6 +848,7 @@
       const r = e,
         o = t,
         s = [];
+        console.log("t.newV:", t.newV);
         if (t.newV !== undefined) {
           e.newV = t.newV === 1; 
         } else {
