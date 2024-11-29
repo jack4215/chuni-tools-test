@@ -857,9 +857,6 @@
           } else {
               e.newV = 0;  // 如果沒有設定 newV，則預設為 0（或其他合適的預設值）
           }
-
-          // Debug: 確認 newV 的設定
-          console.log("newV value set for song:", e.title, e.newV);
           if ("WE" === e.difficulty) {
               e.title = Xe(e.title);
               e.const = -1;
