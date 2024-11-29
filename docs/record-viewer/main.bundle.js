@@ -3297,60 +3297,126 @@
     }
   
     function Yr(t) {
-      let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j = t[0].order + "",
-        S = t[0].title + "",
-        T = (t[0].const < 0 ? "-" : t[0].const?.toFixed(1) ?? "??.?") + "",
-        C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
-        N = t[0].constUncertain && Ir();
+      let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x;
+      let j = t[0].order + "",
+          S = t[0].title + "",
+          T = (t[0].const < 0 ? "-" : t[0].const?.toFixed(1) ?? "??.?") + "",
+          C = (t[0].const < 0 || t[0].score === -1 ? "-" : t[0].rating == null ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
+          N = t[0].constUncertain && Ir();
       let newVIndicator = t[0].newV && Zs();
-      function U(e, t) {
-        return "hide" != e[1] ? zr : Rr
+    
+      // 動態設置顏色
+      function applyColorCondition(element, newV, difficulty) {
+        if (newV === 1) {
+          z(element, "color", "pink"); // 設置為粉紅色
+        } else if (newV === 2 && difficulty === "ULT") {
+          z(element, "color", "pink"); // 設置為粉紅色
+        } else {
+          z(element, "color", ""); // 清除顏色
+        }
       }
-      let L = U(t),
-        _ = L(t);
-
-      function R(e, t) {
-        return e[3] ? qr : Vr
-      }
-      let z = R(t),
-        F = z(t),
-        V = ("new" === t[2] || "all" === t[2]) && Wr(t),
-        q = t[4] && "all" === t[2] && Jr(t);
+    
       return {
         c() {
-          n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"), f = A(T), N && N.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = "new" === t[2] ? 2 : 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ("best" === t[2] || "new" === t[2] ? 10 : 30)), B(n, "best40", t[0].order <= ("best" === t[2] ? 10 : "new" === t[2] ? 30 : 40)), B(n, "ajc", 101e4 == t[0].score),
-          console.log("newV value:", t[0].newV);
-          O(u, "class", `svelte-1gjhsjp ${t[0].newV ? "newV-highlight" : ""}`);
-          if (newVIndicator) {
-            newVIndicator.c();
-            newVIndicator.m(u, null);
-          }
+          n = H("tr");
+          r = H("td");
+          o = A(j);
+          s = D();
+          a = H("td");
+          i = A(S);
+          d = D();
+          u = H("td");
+          f = A(T);
+          N && N.c();
+          p = D();
+          _.c();
+          h = D();
+          g = H("td");
+          F.c();
+          m = D();
+          v = H("td");
+          b = A(C);
+          y = D();
+          V && V.c();
+          w = D();
+          q && q.c();
+    
+          // 初始化顏色
+          applyColorCondition(u, t[0].newV, t[0].difficulty);
+    
+          O(r, "class", "song-order svelte-1gjhsjp");
+          O(a, "data-diff", l = t[0].difficulty);
+          O(a, "colspan", c = "new" === t[2] ? 2 : 1);
+          O(a, "class", "svelte-1gjhsjp");
+          O(u, "class", "svelte-1gjhsjp");
+          O(g, "class", "song-score svelte-1gjhsjp");
+          B(g, "clickable", "all" === t[2]);
+          O(v, "class", "svelte-1gjhsjp");
+          O(n, "class", "svelte-1gjhsjp");
+          B(n, "best30", t[0].order <= ("best" === t[2] || "new" === t[2] ? 10 : 30));
+          B(n, "best40", t[0].order <= ("best" === t[2] ? 10 : "new" === t[2] ? 30 : 40));
+          B(n, "ajc", 101e4 == t[0].score);
         },
         m(e, l) {
-          M(e, n, l), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, d), k(n, u), k(u, f), N && N.m(u, null), k(n, p), _.m(n, null), k(n, h), k(n, g), F.m(g, null), k(n, m), k(n, v), k(v, b), k(n, y), V && V.m(n, null), k(n, w), q && q.m(n, null), $ || (x = P(g, "click", t[6]), $ = !0)
+          M(e, n, l);
+          k(n, r);
+          k(r, o);
+          k(n, s);
+          k(n, a);
+          k(a, i);
+          k(n, d);
+          k(n, u);
+          k(u, f);
+          N && N.m(u, null);
+          k(n, p);
+          _.m(n, null);
+          k(n, h);
+          k(n, g);
+          F.m(g, null);
+          k(n, m);
+          k(n, v);
+          k(v, b);
+          k(n, y);
+          V && V.m(n, null);
+          k(n, w);
+          q && q.m(n, null);
+          $ || (x = P(g, "click", t[6]), $ = !0);
         },
         p(e, [t]) {
-          1 & t && j !== (j = e[0].order + "") && I(o, j), 1 & t && S !== (S = e[0].title + "") && I(i, S), 1 & t && l !== (l = e[0].difficulty) && O(a, "data-diff", l), 4 & t && c !== (c = "new" === e[2] ? 2 : 1) && O(a, "colspan", c), 1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T), e[0].constUncertain ? N || (N = Ir(), N.c(), N.m(u, null)) : N && (N.d(1), N = null), L === (L = U(e)) && _ ? _.p(e, t) : (_.d(1), _ = L(e), _ && (_.c(), _.m(n, h))), z === (z = R(e)) && F ? F.p(e, t) : (F.d(1), F = z(e), F && (F.c(), F.m(g, null))), 4 & t && B(g, "clickable", "all" === e[2]), 1 & t && C !== (C = (e[0].const < 0 || -1 == e[0].score ? "-" : null == e[0].rating ? "??.??" : (e[0].rating / 100).toFixed(2)) + "") && I(b, C), "new" === e[2] || "all" === e[2] ? V ? V.p(e, t) : (V = Wr(e), V.c(), V.m(n, w)) : V && (V.d(1), V = null), e[4] && "all" === e[2] ? q ? q.p(e, t) : (q = Jr(e), q.c(), q.m(n, null)) : q && (q.d(1), q = null), 5 & t && B(n, "best30", e[0].order <= ("best" === e[2] || "new" === e[2] ? 10 : 30)), 5 & t && B(n, "best40", e[0].order <= ("best" === e[2] ? 10 : "new" === e[2] ? 30 : 40)), 1 & t && B(n, "ajc", 101e4 == e[0].score)
-          if (e[0].newV) {
-            if (!newVIndicator) {
-                newVIndicator = Nr();
-                newVIndicator.c();
-                newVIndicator.m(u, null);
-            }
-          } else if (newVIndicator) {
-              newVIndicator.d(1);
-              newVIndicator = null;
+          if (1 & t) {
+            j = e[0].order + "";
+            I(o, j);
           }
+          if (1 & t) {
+            S = e[0].title + "";
+            I(i, S);
+          }
+          if (1 & t && l !== (l = e[0].difficulty)) {
+            O(a, "data-diff", l);
+          }
+          if (1 & t) {
+            T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "";
+            I(f, T);
+          }
+    
+          // 更新顏色
+          applyColorCondition(u, e[0].newV, e[0].difficulty);
         },
         i: e,
         o: e,
         d(e) {
-          e && E(n), N && N.d(), _.d(), F.d(), V && V.d(), q && q.d(), $ = !1, x();
-          newVIndicator && newVIndicator.d();
+          e && E(n);
+          N && N.d();
+          _.d();
+          F.d();
+          V && V.d();
+          q && q.d();
+          $ = !1;
+          x();
         }
-      }
+      };
     }
-
+    
     function Zr(e, t, n) {
       let r, o, s, a, i;
       u(e, nt, (e => n(1, r = e))), u(e, $t, (e => n(2, o = e))), u(e, Tt, (e => n(3, s = e))), u(e, rt, (e => n(4, a = e))), u(e, jt, (e => n(5, i = e)));
