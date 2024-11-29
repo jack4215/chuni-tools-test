@@ -94,7 +94,7 @@
                 r.rel = "stylesheet",
                 r.href = t("fetch-all") + "/common/styles/inject.css",
                 e.innerText = s.analyzeRating,
-                e.href = t("fetch-all") + "/record-viewer/#best",
+                e.href = t("fetch-all") + "/record-viewer/#all",
                 e.target = "recordViewer",
                 l.getElementsByTagName("head")[0].appendChild(r),
                 r.addEventListener("load", ( () => {
@@ -122,7 +122,7 @@
                         }(e.source, e.origin);
                         let s;
                         switch (t.target) {
-                            case "bestRecord":
+                            case "allRecord":
                                 console.log("%c    Target difficulty: %c" + t.data.difficulty, "color: gray", "color: white"),
                                 s = async function(e=o.master) {
                                     const t = new FormData;
@@ -181,40 +181,7 @@
                                 return totalHighScoreDiv ? totalHighScoreDiv.innerText.replace(/,/g, "").trim() : "Error";
                             }         
                             // Calculate total score end         
-                        case "playHistory":
-                            s = async function() {
-                                const e = await i("/mobile/record/playlog");
-                                return Array.from(e.querySelectorAll(".mt_10 .frame02.w400")).map((e => {
-                                    const t = e.querySelector(".play_musicdata_score_text")?.innerHTML
-                                      , r = e.querySelector(".play_track_result img").src
-                                      , a = /musiclevel_.*(?=\.png)/.exec(r)[0].slice(11)
-                                      , c = Array.from(e.querySelectorAll(".play_musicdata_icon"));
-                                    return {
-                                        title: e.querySelector(".play_musicdata_title").innerHTML,
-                                        score: n(t),
-                                        difficulty: "ultimate" == a ? "ULT" : "worldsend" == a ? "WE" : o[a],
-                                        clear: c.some((e => e.querySelector('img[src*="alljustice"]'))) ? "AJ" : c.some((e => e.querySelector('img[src*="fullcombo"]'))) ? "FC" : "",
-                                        timestamp: Date.parse(e.querySelector(".play_datalist_date").innerHTML)
-                                    }
-                                }
-                                ))
-                            }();
-                            break;
-                        case "recentRecord":
-                            s = async function() {
-                                const e = await i("/mobile/home/playerData/ratingDetailRecent");
-                                return Array.from(e.querySelectorAll("form")).map((e => {
-                                    const t = e.querySelector("input[name=diff]")?.value;
-                                    return {
-                                        title: e.querySelector(".music_title").innerHTML,
-                                        score: n(e.querySelector(".text_b")?.innerHTML),
-                                        difficulty: Object.values(o)[parseInt(t)],
-                                        clear: ""
-                                    }
-                                }
-                                ))
-                            }();
-                            break;
+                        
                         case "playerStats":
                             s = async function() {
                                 const e = await i("/mobile/home/playerData")
