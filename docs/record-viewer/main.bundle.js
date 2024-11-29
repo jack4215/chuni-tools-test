@@ -3312,9 +3312,14 @@
   
       let newVIndicator = null;
       if (t[0].newV === 1) {
-          newVIndicator = Zs(); // 顯示粉紅色
+          newVIndicator = Zs();  // 初始化 newVIndicator
       } else if (t[0].newV === 2) {
-          newVIndicator = Zs(); // 可以根據需求修改顯示的樣式
+          newVIndicator = Zs();  // 初始化 newVIndicator
+      }
+  
+      // 防止 newVIndicator 為 undefined
+      if (newVIndicator) {
+          newVIndicator.c();  // 確保 newVIndicator 被正確初始化
       }
   
       function U(e, t) {
@@ -3376,6 +3381,7 @@
           }
       };
   }
+  
   
 
     function Zr(e, t, n) {
