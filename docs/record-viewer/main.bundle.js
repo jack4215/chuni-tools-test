@@ -1060,27 +1060,74 @@
       St = vt(!1),
       Tt = vt(!1),
       Ct = {};
+
+      c($t, (tab) => {
+        // tab 是當前頁籤的值 ("all", "best", 或 "new")
+        if (tab === "all") {
+            Nt.set(Ht.getAllSongs());
+        } else if (tab === "best") {
+            Nt.set(Ht.getBestSongs());
+        } else if (tab === "new") {
+            Nt.set(Ht.getNewSongs());
+        }
+    });
+    
     for (let e of tt.accepts) Ct[e] = void 0;
     const Mt = Me(tt, (async e => (Ct[e] || (Ct[e] = await fetch(`../data/song-const/${e}.json?t=${Date.now()}`).then((async e => await e.json()))), Ct[e])));
 
     function Et(e) {
-      const {
-        subscribe: t,
-        set: n
-      } = Ce([]);
-      let r = !1,
-        o = [];
+      const { subscribe: t, set: n } = Ce([]);
+      let isInitialized = false;
+      let allSongs = [];
+      let bestSongs = [];
+      let newSongs = [];
+  
       return {
-        set: n,
-        subscribe: t,
-        async init() {
-          o = await gt(e), n(Ge(o, await d(Mt))), r = !0
-        },
-        async updateConstData() {
-          r && n(Ge(o, await d(Mt)))
-        }
-      }
-    }
+          set: n,
+          subscribe: t,
+          async init() {
+              // 加載 ALL 數據
+              allSongs = await gt(e);
+              const processedSongs = Ge(allSongs, await d(Mt));
+  
+              // 篩選 BEST 和 NEW 的數據
+              bestSongs = processedSongs
+                  .filter(song => song.newV === 0)
+                  .sort((a, b) => b.rating - a.rating)
+                  .slice(0, 30);
+  
+              newSongs = processedSongs
+                  .filter(song => song.newV === 1)
+                  .sort((a, b) => b.rating - a.rating)
+                  .slice(0, 10);
+  
+              // 設置所有歌曲數據到存儲
+              n(processedSongs);
+              isInitialized = true;
+          },
+          async updateConstData() {
+              if (isInitialized) {
+                  const processedSongs = Ge(allSongs, await d(Mt));
+                  bestSongs = processedSongs
+                      .filter(song => song.newV === 0)
+                      .sort((a, b) => b.rating - a.rating)
+                      .slice(0, 30);
+  
+                  newSongs = processedSongs
+                      .filter(song => song.newV === 1)
+                      .sort((a, b) => b.rating - a.rating)
+                      .slice(0, 10);
+              }
+          },
+          getBestSongs() {
+              return bestSongs;
+          },
+          getNewSongs() {
+              return newSongs;
+          }
+      };
+  }
+  
     const Nt = Et(""),
       Ht = Et(""),
       Ut = (() => {
