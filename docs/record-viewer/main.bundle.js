@@ -2876,11 +2876,7 @@
     }
 
     function Nr(e, t, n) {
-      let {
-        title: r
-      } = t, {
-        content: o
-      } = t;
+      let { title: r = "", content: o = "" } = t || {};
       return e.$$set = e => {
         "title" in e && n(0, r = e.title), "content" in e && n(1, o = e.content)
       }, [r, o]
