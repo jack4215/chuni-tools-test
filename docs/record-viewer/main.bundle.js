@@ -3333,14 +3333,14 @@
           1 & t && j !== (j = e[0].order + "") && I(o, j), 1 & t && S !== (S = e[0].title + "") && I(i, S), 1 & t && l !== (l = e[0].difficulty) && O(a, "data-diff", l), 4 & t && c !== (c = "new" === e[2] ? 2 : 1) && O(a, "colspan", c), 1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T), e[0].constUncertain ? N || (N = Ir(), N.c(), N.m(u, null)) : N && (N.d(1), N = null), L === (L = U(e)) && _ ? _.p(e, t) : (_.d(1), _ = L(e), _ && (_.c(), _.m(n, h))), z === (z = R(e)) && F ? F.p(e, t) : (F.d(1), F = z(e), F && (F.c(), F.m(g, null))), 4 & t && B(g, "clickable", "all" === e[2]), 1 & t && C !== (C = (e[0].const < 0 || -1 == e[0].score ? "-" : null == e[0].rating ? "??.??" : (e[0].rating / 100).toFixed(2)) + "") && I(b, C), "new" === e[2] || "all" === e[2] ? V ? V.p(e, t) : (V = Wr(e), V.c(), V.m(n, w)) : V && (V.d(1), V = null), e[4] && "all" === e[2] ? q ? q.p(e, t) : (q = Jr(e), q.c(), q.m(n, null)) : q && (q.d(1), q = null), 5 & t && B(n, "best30", e[0].order <= ("best" === e[2] || "new" === e[2] ? 10 : 30)), 5 & t && B(n, "best40", e[0].order <= ("best" === e[2] ? 10 : "new" === e[2] ? 30 : 40)), 1 & t && B(n, "ajc", 101e4 == e[0].score)
           if (e[0].newV) {
             if (!newVIndicator) {
-              newVIndicator = Vz(T); // 傳遞新的數據
+              newVIndicator = Vz(T); // 創建新的 `newVIndicator`
               newVIndicator.c();
-              newVIndicator.m(u, u.firstChild); // 插入到單元格內，包裹數據
+              newVIndicator.m(u, null); // 插入 `newVIndicator`
             } else {
-              newVIndicator.el.textContent = T; // 更新文本內容
+              newVIndicator.el.textContent = T; // 更新 `newVIndicator` 的內容
             }
           } else if (newVIndicator) {
-            newVIndicator.d(1); // 移除舊的 `newVIndicator`
+            newVIndicator.d(1); // 移除 `newVIndicator`
             newVIndicator = null;
             u.textContent = T; // 還原為普通數據
           }
