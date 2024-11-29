@@ -2875,15 +2875,24 @@
     }
 
     function Nr(e, t, n) {
-      let {
-        title: r
-      } = t, {
-        content: o
-      } = t;
-      return e.$$set = e => {
-        "title" in e && n(0, r = e.title), "content" in e && n(1, o = e.content)
-      }, [r, o]
-    }
+      // 檢查 t 是否為有效對象
+      if (!t) {
+          console.error("t is undefined or null");
+          return; // 或者直接返回，避免後續錯誤
+      }
+    
+      // 解構賦值，使用預設值來防止錯誤
+      let { title: r = "Default Title", content: o = "Default Content" } = t;
+  
+      // 繼續處理
+      e.$$set = e => {
+          if ("title" in e) n(0, r = e.title);
+          if ("content" in e) n(1, o = e.content);
+      };
+  
+      return [r, o];
+  }
+  
     const Hr = class extends Se {
       constructor(e) {
         super(), je(this, e, Nr, Er, i, {
