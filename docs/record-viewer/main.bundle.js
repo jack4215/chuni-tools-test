@@ -1068,37 +1068,43 @@
 
     function Et(e) {
       const { subscribe: t, set: n } = Ce([]);
-      let isInitialized = false;
-      let allSongs = [];
-      let bestSongs = [];
-      let newSongs = [];
+      let r = !1,
+          o = []; // 原始數據
+      let allSongs = [], bestSongs = [], newSongs = []; // 篩選後的數據
   
       return {
           set: n,
           subscribe: t,
           async init() {
-              // 加載 ALL 數據
-              allSongs = await gt(e);
-              const processedSongs = Ge(allSongs, await d(Mt));
+              // 加載數據
+              o = await gt(e);
+              const processedSongs = Ge(o, await d(Mt)); // 處理數據
   
-              // 篩選 BEST 和 NEW 的數據
+              // 保存所有歌曲
+              allSongs = processedSongs;
+  
+              // 篩選 BEST 歌曲
               bestSongs = processedSongs
                   .filter(song => song.newV === 0)
                   .sort((a, b) => b.rating - a.rating)
                   .slice(0, 30);
   
+              // 篩選 NEW 歌曲
               newSongs = processedSongs
                   .filter(song => song.newV === 1)
                   .sort((a, b) => b.rating - a.rating)
                   .slice(0, 10);
   
-              // 設置所有歌曲數據到存儲
+              // 更新 store
               n(processedSongs);
-              isInitialized = true;
+              r = !0;
           },
           async updateConstData() {
-              if (isInitialized) {
-                  const processedSongs = Ge(allSongs, await d(Mt));
+              if (r) {
+                  const processedSongs = Ge(o, await d(Mt));
+                  allSongs = processedSongs;
+  
+                  // 重新篩選數據
                   bestSongs = processedSongs
                       .filter(song => song.newV === 0)
                       .sort((a, b) => b.rating - a.rating)
@@ -1108,7 +1114,12 @@
                       .filter(song => song.newV === 1)
                       .sort((a, b) => b.rating - a.rating)
                       .slice(0, 10);
+  
+                  n(processedSongs);
               }
+          },
+          getAllSongs() {
+              return allSongs;
           },
           getBestSongs() {
               return bestSongs;
@@ -1118,6 +1129,7 @@
           }
       };
   }
+  
   
     const Nt = Et(""),
       Ht = Et("");
