@@ -848,48 +848,74 @@
       const r = e,
         o = t,
         s = [];
-      if (r.map((e => {
-          if ("WE" === e.difficulty) return e.title = Xe(e.title), e.const = -1, e.rating = 0, e.op = -1, e.opMax = -1, e.opPercent = -1, void(e.rank = Fe(e.score));
-          void 0 === o[e.title] && (e.title = Xe(e.title));
-          let t = o[e.title];
-          void 0 === t ? (s.push(e), e.const = -1, e.rating = 0) : (e.const = t[e.difficulty], t.uncertain?.includes(e.difficulty) && (e.constUncertain = !0), e.rawRating = function(e) {
-            let t, n = Math.floor(1e4 * e.const);
-            if (e.score >= 9e5) {
-              let t = Be.find((t => e.score >= t.score));
-              return Math.max(0, n + t.base + t.ratio * (e.score - t.score))
-            }
-            if (e.score >= 8e5) t = (n - 5e4) / 2 + (n - 5e4) / 2 * (e.score - 8e5) / 1e5;
-            else {
-              if (!(e.score >= 5e5)) return 0;
-              t = (n - 5e4) / 2 * (e.score - 5e5) / 3e5
-            }
-            return Math.max(0, t)
-          }(e), e.genre = `${t.genre}`, e.rating = Math.floor(e.rawRating / 100)), 
-          
-          e.op = function(e) {
-            if (e.score >= 101e4) return Ve(e);
-            let t = {
-                AJ: 2e3,
-                FC: 1e3,
-                "": 0
-              } [e.clear],
-              n = Math.floor(1e4 * e.const),
-              r = e.score < 1007500 ? e.rawRating : n + 2e4 + 3 * (e.score - 1007500);
-            return r = e.score >= 975e3 ? 10 * Math.floor(r / 10) : 100 * Math.floor(r / 100), 5 * (r + t)
-          }(e), 
+      
+      // 遍歷 ALL 資料並計算屬性
+      r.map((e => {
+        if ("WE" === e.difficulty) return e.title = Xe(e.title), e.const = -1, e.rating = 0, e.op = -1, e.opMax = -1, e.opPercent = -1, void(e.rank = Fe(e.score));
+        void 0 === o[e.title] && (e.title = Xe(e.title));
+        let t = o[e.title];
+        void 0 === t ? (s.push(e), e.const = -1, e.rating = 0) : (e.const = t[e.difficulty], t.uncertain?.includes(e.difficulty) && (e.constUncertain = !0), e.rawRating = function(e) {
+          let t, n = Math.floor(1e4 * e.const);
+          if (e.score >= 9e5) {
+            let t = Be.find((t => e.score >= t.score));
+            return Math.max(0, n + t.base + t.ratio * (e.score - t.score))
+          }
+          if (e.score >= 8e5) t = (n - 5e4) / 2 + (n - 5e4) / 2 * (e.score - 8e5) / 1e5;
+          else {
+            if (!(e.score >= 5e5)) return 0;
+            t = (n - 5e4) / 2 * (e.score - 5e5) / 3e5
+          }
+          return Math.max(0, t)
+        }(e), e.genre = `${t.genre}`, e.rating = Math.floor(e.rawRating / 100)), 
         
-        e.opMax = Ve(e), e.opPercent = 100 * e.op / e.opMax, e.rank = Fe(e.score)
-        })), n && s.length) {
-        const e = {};
-        s.forEach((t => {
-          var n;
-          e[n = t.title] ?? (e[n] = []), e[t.title].push(t.difficulty)
-        })), console.log(e), alert(n.replace("{{songs}}", Object.entries(e).map((([e, t]) => `    ${e} ${t.join(",")}`)).join("\n")))
-      }
-      return r.sort(Je.default), r.map(((e, t) => {
+        e.op = function(e) {
+          if (e.score >= 101e4) return Ve(e);
+          let t = {
+              AJ: 2e3,
+              FC: 1e3,
+              "": 0
+            } [e.clear],
+            n = Math.floor(1e4 * e.const),
+            r = e.score < 1007500 ? e.rawRating : n + 2e4 + 3 * (e.score - 1007500);
+          return r = e.score >= 975e3 ? 10 * Math.floor(r / 10) : 100 * Math.floor(r / 100), 5 * (r + t)
+        }(e), 
+      
+      e.opMax = Ve(e), e.opPercent = 100 * e.op / e.opMax, e.rank = Fe(e.score)
+      }));
+    
+      // 排序並加上順序
+      r.sort(Je.default);
+      r.map(((e, t) => {
         e.order = t + 1
-      })), r
+      }));
+    
+      // 傳回 ALL 數據
+      return r;
     }
+    
+    // 新增函數生成 BEST 和 NEW
+    function generateBestAndNew(allData) {
+      const bestData = allData
+        .filter(e => e.newV === 0)
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, 30);
+    
+      const newData = allData
+        .filter(e => e.newV === 1)
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, 10);
+    
+      return { bestData, newData };
+    }
+    
+    // 使用 Ge 函數並生成 BEST 和 NEW 資料
+    const allData = Ge(e, t, n);
+    const { bestData, newData } = generateBestAndNew(allData);
+    
+    // 設定到頁簽
+    best.set(bestData);
+    hisory.set(newData);
+    
     c(De, (() => {
       try {
         Re(window.opener, Le)("saveConfig", {
