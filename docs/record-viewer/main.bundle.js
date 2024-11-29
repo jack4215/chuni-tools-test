@@ -1163,7 +1163,7 @@
         await Nt.init(); // 初始化 Nt，保持兼容性
       })();
             
-      Dt = (() => {
+      const Dt = (() => {
         let e = 0;
         return () => (e += 1, `u${`0000${(Math.random()*36**4<<0).toString(36)}`.slice(-4)}${e}`)
       })();
