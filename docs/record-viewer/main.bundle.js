@@ -848,7 +848,8 @@
       const r = e,
         o = t,
         s = [];
-        console.log("JSON data (o):", o);
+        console.log("Current title (e.title):", e.title);
+        console.log("Extracted song data (t):", t)
         if (t.newV !== undefined) {
           e.newV = t.newV === 1; 
         } else {
