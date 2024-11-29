@@ -1061,16 +1061,7 @@
       Tt = vt(!1),
       Ct = {};
 
-      c($t, (tab) => {
-        // tab 是當前頁籤的值 ("all", "best", 或 "new")
-        if (tab === "all") {
-            Nt.set(Ht.getAllSongs());
-        } else if (tab === "best") {
-            Nt.set(Ht.getBestSongs());
-        } else if (tab === "new") {
-            Nt.set(Ht.getNewSongs());
-        }
-    });
+      
     
     for (let e of tt.accepts) Ct[e] = void 0;
     const Mt = Me(tt, (async e => (Ct[e] || (Ct[e] = await fetch(`../data/song-const/${e}.json?t=${Date.now()}`).then((async e => await e.json()))), Ct[e])));
@@ -1129,8 +1120,18 @@
   }
   
     const Nt = Et(""),
-      Ht = Et(""),
-      Ut = (() => {
+      Ht = Et("");
+      c($t, (tab) => {
+        // tab 是當前頁籤的值 ("all", "best", 或 "new")
+        if (tab === "all") {
+            Nt.set(Ht.getAllSongs());
+        } else if (tab === "best") {
+            Nt.set(Ht.getBestSongs());
+        } else if (tab === "new") {
+            Nt.set(Ht.getNewSongs());
+        }
+      });
+      const Ut = (() => {
         const {
           subscribe: e,
           set: t
