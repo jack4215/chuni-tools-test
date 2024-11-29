@@ -914,7 +914,7 @@
     
     // 設定到頁簽
     best.set(bestData);
-    hisory.set(newData);
+    history.set(newData);
     
     c(De, (() => {
       try {
