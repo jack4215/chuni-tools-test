@@ -3296,26 +3296,27 @@
     }
     function Vz(data) {
       return {
-        c() {
-          this.el = document.createElement("span");
-          this.el.className = "newV-indicator";
-        },
-        m(target, anchor) {
-          target.insertBefore(this.el, anchor);
-        },
-        d(detach) {
-          if (detach) this.el.remove();
-        },
+          c() {
+              this.el = document.createElement("span");
+              this.el.className = "newV-indicator";
+              this.el.textContent = data; 
+          },
+          m(target, anchor) {
+              target.insertBefore(this.el, anchor);
+          },
+          d(detach) {
+              if (detach) this.el.remove();
+          },
       };
-    }
-    
+  }
+  
     function Yr(t) {
       let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j = t[0].order + "",
         S = t[0].title + "",
         T = (t[0].const < 0 ? "-" : t[0].const?.toFixed(1) ?? "??.?") + "",
         C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
         N = t[0].constUncertain && Ir();
-      let newVIndicator = t[0].newV && Zs();
+        let newVIndicator = t[0].newV && Vz(T);
       
       function U(e, t) {
         return "hide" != e[1] ? zr : Rr
