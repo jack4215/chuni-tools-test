@@ -1054,7 +1054,7 @@
           })), o)
         }(t, n, r)))
       }(bt, De),
-      $t = Ce("best"),
+      $t = Ce("all"),
       xt = vt(!1),
       kt = Ce(""),
       jt = vt(!1),
