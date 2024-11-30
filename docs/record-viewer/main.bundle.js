@@ -2884,17 +2884,6 @@
       let t, n, r, o, s, a;
       console.log("e[0]:", e[0]);
       console.log("e[1]:", e[1]);
-      console.log("e[2]:", e[2]);
-      console.log("e[3]:", e[3]);
-      console.log("e[4]:", e[4]);
-      console.log("e[5]:", e[5]);
-      console.log("e[6]:", e[6]);
-      console.log("e[7]:", e[7]);
-      console.log("e[8]:", e[8]);
-      console.log("e[9]:", e[9]);
-      console.log("e[10]:", e[10]);
-      console.log("e[11]:", e[11]);
-      console.log("e[12]:", e[12]);
       return t = new Hr({
         props: {
           title: e[4]("player.recent.best10"),
@@ -3053,7 +3042,7 @@
 
     function Pr(e, t, n) {
       let r, o, s, a, i, l, c, d, f;
-      return u(e, At, (e => n(6, a = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(7, i = e))), u(e, At, (e => n(8, l = e))), u(e, Ut, (e => n(3, c = e))), u(e, wt, (e => n(4, d = e))), u(e, $t, (e => n(5, f = e))), e.$$.update = () => {
+      return u(e, At, (e => n(6, a = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(7, i = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(8, l = e))), u(e, Ut, (e => n(3, c = e))), u(e, wt, (e => n(4, d = e))), u(e, $t, (e => n(5, f = e))), e.$$.update = () => {
         256 & e.$$.dirty && n(2, r = l.slice(0, 30).map((e => e.rating))), 128 & e.$$.dirty && n(1, o = i.map((e => e.rating))), 64 & e.$$.dirty && n(0, s = a.map((e => e.rating)))
       }, [s, o, r, c, d, f, a, i, l]
     }
