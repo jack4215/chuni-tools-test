@@ -3320,13 +3320,7 @@
             newVIndicator.m(u, null);
             f.textContent = "";
           }
-          // 刪除不符合條件的行
-          const shouldShowNewV = 
-              t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT");
-          if ((t[2] === "new" && !shouldShowNewV) || (t[2] === "best" && shouldShowNewV)) {
-              n.remove(); // 直接移除行
-          }
-        },
+                  },
         m(e, l) {
           M(e, n, l), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, d), k(n, u), k(u, f), N && N.m(u, null), k(n, p), _.m(n, null), k(n, h), k(n, g), F.m(g, null), k(n, m), k(n, v), k(v, b), k(n, y), V && V.m(n, null), k(n, w), q && q.m(n, null), $ || (x = P(g, "click", t[6]), $ = !0)
         },
