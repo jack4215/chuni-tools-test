@@ -3036,18 +3036,11 @@
     }
 
     function Pr(e, t, n) {
-      console.log("e[0]:", e); // 印出初始內容
       let r, o, s, a, i, l, c, d, f;
       return (
         u(e, At, (data => {
-          // 篩選不同條件的數據
           const filtered1 = data.filter(item => item.newV === 1);
           const filtered2 = data.filter(item => item.newV === 0);
-    
-          console.log("Filtered Data (newV === 1):", filtered1);
-          console.log("Filtered Data (newV === 0):", filtered2);
-    
-          // 更新響應式變量
           n(6, a = filtered1);
           n(7, i = filtered2);
           n(8, l = [...a, ...i]); // 合併篩選後的數據
@@ -3073,6 +3066,7 @@
         super(), je(this, e, Pr, Lr, i, {}, Ur);
       }
     };
+    
     
     
 
