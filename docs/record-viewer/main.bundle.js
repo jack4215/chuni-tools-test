@@ -3043,14 +3043,12 @@
           const filtered = data.filter(item => item.newV === 1);
           console.log("Filtered Data (newV === 1):", filtered); // 確認篩選
           n(6, a = filtered);
-          n(8, l = filtered); // 同步篩選結果到 l
           e.$$.update(); // 手動觸發更新
         })),
         u(e, At, (data => {
           const filtered2 = data.filter(item => item.newV === 0);
           console.log("Filtered Data (newV === 1):", filtered2); // 確認篩選
           n(7, i = filtered2);
-          n(8, l = filtered2); // 同步篩選結果到 l
           e.$$.update(); // 手動觸發更新
         })),
         u(e, At, (e => n(8, l = e))),
