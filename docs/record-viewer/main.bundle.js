@@ -3299,14 +3299,6 @@
         C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
         N = t[0].constUncertain && Ir();
       let newVIndicator = (t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT")) && Vz(T);
-      const cPG = t[2]
-      const sSV = t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT");
-      if (
-          (cPG === "best" && sSV) || 
-          (cPG === "new" && !sSV)
-      ) {
-          return null;
-      }
       function U(e, t) {
         return "hide" != e[1] ? zr : Rr
       }
