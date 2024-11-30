@@ -845,15 +845,17 @@
     }
 
     function Ge(e, t, n) {
-      const r = e,
-            o = t,
-            s = [];
+      const r = e, // 數據列表
+            o = t, // 傳入的對應表
+            s = []; // 未找到的歌曲集合
+  
       r.map(e => {
+          // 判斷 newV
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
           if (songData && songData.newV !== undefined) {
-              e.newV = songData.newV;
+              e.newV = songData.newV;  // 保留 newV 的原始數值（如 0, 1, 2）
           } else {
-              e.newV = 0;
+              e.newV = 0;  // 如果沒有設定 newV，則預設為 0（或其他合適的預設值）
           }
           if ("WE" === e.difficulty) {
               e.title = Xe(e.title);
@@ -919,6 +921,7 @@
           e.opPercent = (100 * e.op) / e.opMax;
           e.rank = Fe(e.score);
       });
+  
       r.sort(Je.default);
       r.map((e, index) => {
           e.order = index + 1;
@@ -2878,7 +2881,6 @@
     }
 
     function Ar(e) {
-      
       let t, n, r, o, s, a;
       return t = new Hr({
         props: {
@@ -2921,6 +2923,7 @@
         }
       }
     }
+
     function Dr(e) {
       let t, n, r, o, s, a;
       return t = new Hr({
@@ -3037,38 +3040,15 @@
 
     function Pr(e, t, n) {
       let r, o, s, a, i, l, c, d, f;
-      return (
-        u(e, At, (data => {
-          const filtered1 = data.filter(item => item.newV === 1);
-          const filtered2 = data.filter(item => item.newV === 0);
-          n(6, a = filtered1);
-          n(7, i = filtered2);
-          n(8, l = [...a, ...i]); // 合併篩選後的數據
-    
-          console.log("Updated Variables: a =", a, ", i =", i, ", l =", l);
-    
-          e.$$.update(); // 手動觸發更新
-        })),
-        u(e, Ut, (e => n(3, c = e))),
-        u(e, wt, (e => n(4, d = e))),
-        u(e, $t, (e => n(5, f = e))),
-        e.$$.update = () => {
-          256 & e.$$.dirty && n(2, r = l.slice(0, 30).map((e => e.rating))); // 使用篩選後的 l
-          128 & e.$$.dirty && n(1, o = i.map((e => e.rating)));
-          64 & e.$$.dirty && n(0, s = a.map((e => e.rating)));
-        },
-        [s, o, r, c, d, f, a, i, l]
-      );
+      return u(e, At, (e => n(6, a = e))), u(e, At, (e => n(7, i = e))), u(e, At, (e => n(8, l = e))), u(e, Ut, (e => n(3, c = e))), u(e, wt, (e => n(4, d = e))), u(e, $t, (e => n(5, f = e))), e.$$.update = () => {
+        256 & e.$$.dirty && n(2, r = l.slice(0, 30).map((e => e.rating))), 128 & e.$$.dirty && n(1, o = i.map((e => e.rating))), 64 & e.$$.dirty && n(0, s = a.map((e => e.rating)))
+      }, [s, o, r, c, d, f, a, i, l]
     }
-    
     const Or = class extends Se {
       constructor(e) {
-        super(), je(this, e, Pr, Lr, i, {}, Ur);
+        super(), je(this, e, Pr, Lr, i, {}, Ur)
       }
     };
-    
-    
-    
 
     function _r(e) {
       j(e, "svelte-1gjhsjp", 'tr.best30.svelte-1gjhsjp td.song-order.svelte-1gjhsjp{color:var(--theme-rank-b30)}tr.best40.svelte-1gjhsjp td.song-order.svelte-1gjhsjp{font-weight:bold}tr.svelte-1gjhsjp:not(.best40) td.song-order.svelte-1gjhsjp{color:var(--theme-text-dim)}tr.ajc.svelte-1gjhsjp td[data-rank].svelte-1gjhsjp,tr.ajc.svelte-1gjhsjp td.song-score.svelte-1gjhsjp,tr.ajc.svelte-1gjhsjp td[data-clear].svelte-1gjhsjp{text-shadow:0 0 10px var(--theme-clear-aj)}td.svelte-1gjhsjp.svelte-1gjhsjp{padding:0.5em;border-top:var(--theme-border) 1.5px solid;text-align:center}td[data-diff].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold;text-align:left;max-width:30em}td[data-diff][data-diff=WE].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-song-we)}td[data-diff][data-diff=ULT].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-song-ult)}td[data-diff][data-diff=MAS].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-song-mas)}td[data-diff][data-diff=EXP].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-song-exp)}td[data-diff][data-diff=ADV].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-song-adv)}td[data-diff][data-diff=BAS].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-song-bas)}@media only screen and (max-width: 544px){td.svelte-1gjhsjp.svelte-1gjhsjp{padding:0.5em 0.1em}td[data-diff].svelte-1gjhsjp.svelte-1gjhsjp{max-width:20em}}td[data-rank].svelte-1gjhsjp.svelte-1gjhsjp{white-space:nowrap}td[data-rank][data-rank=MAX].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-clear-aj);text-shadow:0 0 10px var(--theme-clear-aj)}td[data-rank][data-rank="SSS+"].svelte-1gjhsjp.svelte-1gjhsjp{color:#ffcc11}td[data-rank][data-rank=SSS].svelte-1gjhsjp.svelte-1gjhsjp{color:#ffd744}td[data-rank][data-rank="SS+"].svelte-1gjhsjp.svelte-1gjhsjp{color:#ffe277}td[data-rank][data-rank=SS].svelte-1gjhsjp.svelte-1gjhsjp{color:#ffedaa}td[data-rank][data-rank="S+"].svelte-1gjhsjp.svelte-1gjhsjp{color:#ffd744}td[data-rank][data-rank=S].svelte-1gjhsjp.svelte-1gjhsjp{color:#ffe277}td[data-rank][data-rank=AAA].svelte-1gjhsjp.svelte-1gjhsjp{color:#cceeff}td[data-rank][data-rank=AA].svelte-1gjhsjp.svelte-1gjhsjp{color:#a6e1ff}td[data-rank][data-rank=A].svelte-1gjhsjp.svelte-1gjhsjp{color:#80d5ff}td[data-rank][data-rank=BBB].svelte-1gjhsjp.svelte-1gjhsjp{color:#59c8ff}td[data-rank][data-rank=BB].svelte-1gjhsjp.svelte-1gjhsjp{color:#33bbff}td[data-rank][data-rank=B].svelte-1gjhsjp.svelte-1gjhsjp{color:#0daeff}td[data-rank][data-rank=MAX].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold}td[data-rank][data-rank="SSS+"].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold}td[data-rank][data-rank=SSS].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold}td[data-rank][data-rank="SS+"].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold}td[data-rank][data-rank=SS].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold}td[data-rank][data-rank=C].svelte-1gjhsjp.svelte-1gjhsjp{color:#888}td[data-rank][data-rank=D].svelte-1gjhsjp.svelte-1gjhsjp{color:#666}td[data-clear].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold}td[data-clear][data-clear=FC].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-clear-fc)}td[data-clear][data-clear=AJ].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-clear-aj)}td.song-op.svelte-1gjhsjp.svelte-1gjhsjp{white-space:nowrap}td.clickable.svelte-1gjhsjp.svelte-1gjhsjp{cursor:pointer}td.clickable.svelte-1gjhsjp.svelte-1gjhsjp:hover{text-shadow:0 0 10px var(--theme-text)}.opmx.svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-text-dim);font-size:0.8em}.pc-hidden.svelte-1gjhsjp.svelte-1gjhsjp{cursor:pointer}.pc-hidden.svelte-1gjhsjp span.svelte-1gjhsjp{border-radius:0.2em;background-color:var(--theme-bg-sub);color:var(--theme-bg-sub)}.pc-hidden.disabled.svelte-1gjhsjp.svelte-1gjhsjp{cursor:no-drop}.pc-hidden.disabled.svelte-1gjhsjp span.svelte-1gjhsjp{filter:brightness(0.8)}')
