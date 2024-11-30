@@ -11473,5 +11473,45 @@
     "MAS": 15.5,
     "genre": 5,
     "newV": 1
+  },
+  "Here the Our MIRAI!": {
+    "BAS": 3,
+    "ADV": 6,
+    "EXP": 10.2,
+    "MAS": 13.5,
+    "genre": 7,
+    "newV": 1
+  },
+  "超熊猫的周遊記(ワンダーパンダートラベラー)": {
+    "BAS": 4,
+    "ADV": 6,
+    "EXP": 13.1,
+    "MAS": 14.6,
+    "genre": 9,
+    "newV": 1
+  },
+  "NAGAREBOSHI☆ROCKET": {
+    "BAS": 3,
+    "ADV": 6,
+    "EXP": 12,
+    "MAS": 14.1,
+    "genre": 9,
+    "newV": 1
+  },
+  "群青シグナル": {
+    "BAS": 3,
+    "ADV": 6,
+    "EXP": 10.1,
+    "MAS": 13.8,
+    "genre": 9,
+    "newV": 1
+  },
+  "Flower": {
+    "BAS": 3,
+    "ADV": 6,
+    "EXP": 9.5,
+    "MAS": 12.6,
+    "genre": 9,
+    "newV": 1
   }
 }
