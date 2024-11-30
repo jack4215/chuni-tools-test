@@ -3299,11 +3299,6 @@
         C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
         N = t[0].constUncertain && Ir();
       let newVIndicator = (t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT")) && Vz(T);
-      const mode = t[2];
-      const shouldShowNewV = t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT");
-      const shouldShow =
-          (mode === "best" && !shouldShowNewV) || 
-          (mode === "new" && shouldShowNewV);
       function U(e, t) {
         return "hide" != e[1] ? zr : Rr
       }
@@ -3319,9 +3314,6 @@
         q = t[4] && "all" === t[2] && Jr(t);
       return {
         c() {
-          if (!shouldShow) {
-              return;
-          }
           n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"), f = A(T), N && N.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ("best" === t[2] || "new" === t[2] ? 10 : 30)), B(n, "best40", t[0].order <= ("best" === t[2] ? 10 : "new" === t[2] ? 30 : 40)), B(n, "ajc", 101e4 == t[0].score);
           if (newVIndicator) {
             newVIndicator.c();
