@@ -3311,7 +3311,7 @@
       }
       let z = R(t),
         F = z(t),
-        V = ("new" === t[2] || "all" === t[2]) && Wr(t),
+        V = ("new" === t[2] || "all" === t[2]|| "best" === t[2]) && Wr(t),
         q = t[4] && "all" === t[2] && Jr(t);
       return {
         c() {
