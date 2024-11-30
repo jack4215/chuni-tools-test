@@ -3036,22 +3036,35 @@
     }
 
     function Pr(e, t, n) {
-      console.log("e[0]:", e); // 印出 e[0] 的內容
+      console.log("e[0]:", e); // 印出初始內容
       let r, o, s, a, i, l, c, d, f;
-      return u(e, At, (data => {
-        const filtered = data.filter(item => item.newV === 1);
-        console.log("Filtered Data (newV === 1):", filtered);
-        n(6, a = filtered);
-        n(8, l = filtered); // 同時更新 l，保證渲染邏輯正確
-      })), u(e, At, (e => n(7, i = e))), u(e, At, (e => n(8, l = e))), u(e, Ut, (e => n(3, c = e))), u(e, wt, (e => n(4, d = e))), u(e, $t, (e => n(5, f = e))), e.$$.update = () => {
-        256 & e.$$.dirty && n(2, r = l.slice(0, 30).map((e => e.rating))), 128 & e.$$.dirty && n(1, o = i.map((e => e.rating))), 64 & e.$$.dirty && n(0, s = a.map((e => e.rating)))
-      }, [s, o, r, c, d, f, a, i, l]
+      return (
+        u(e, At, (data => {
+          const filtered = data.filter(item => item.newV === 1);
+          console.log("Filtered Data (newV === 1):", filtered); // 確認篩選
+          n(6, a = filtered);
+          n(8, l = filtered); // 同步篩選結果到 l
+          e.$$.update(); // 手動觸發更新
+        })),
+        u(e, At, (e => n(7, i = e))),
+        u(e, At, (e => n(8, l = e))),
+        u(e, Ut, (e => n(3, c = e))),
+        u(e, wt, (e => n(4, d = e))),
+        u(e, $t, (e => n(5, f = e))),
+        e.$$.update = () => {
+          256 & e.$$.dirty && n(2, r = l.slice(0, 30).map((e => e.rating)));
+          128 & e.$$.dirty && n(1, o = i.map((e => e.rating)));
+          64 & e.$$.dirty && n(0, s = a.map((e => e.rating)));
+        },
+        [s, o, r, c, d, f, a, i, l]
+      );
     }
     const Or = class extends Se {
       constructor(e) {
-        super(), je(this, e, Pr, Lr, i, {}, Ur)
+        super(), je(this, e, Pr, Lr, i, {}, Ur);
       }
     };
+    
 
     function _r(e) {
       j(e, "svelte-1gjhsjp", 'tr.best30.svelte-1gjhsjp td.song-order.svelte-1gjhsjp{color:var(--theme-rank-b30)}tr.best40.svelte-1gjhsjp td.song-order.svelte-1gjhsjp{font-weight:bold}tr.svelte-1gjhsjp:not(.best40) td.song-order.svelte-1gjhsjp{color:var(--theme-text-dim)}tr.ajc.svelte-1gjhsjp td[data-rank].svelte-1gjhsjp,tr.ajc.svelte-1gjhsjp td.song-score.svelte-1gjhsjp,tr.ajc.svelte-1gjhsjp td[data-clear].svelte-1gjhsjp{text-shadow:0 0 10px var(--theme-clear-aj)}td.svelte-1gjhsjp.svelte-1gjhsjp{padding:0.5em;border-top:var(--theme-border) 1.5px solid;text-align:center}td[data-diff].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold;text-align:left;max-width:30em}td[data-diff][data-diff=WE].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-song-we)}td[data-diff][data-diff=ULT].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-song-ult)}td[data-diff][data-diff=MAS].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-song-mas)}td[data-diff][data-diff=EXP].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-song-exp)}td[data-diff][data-diff=ADV].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-song-adv)}td[data-diff][data-diff=BAS].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-song-bas)}@media only screen and (max-width: 544px){td.svelte-1gjhsjp.svelte-1gjhsjp{padding:0.5em 0.1em}td[data-diff].svelte-1gjhsjp.svelte-1gjhsjp{max-width:20em}}td[data-rank].svelte-1gjhsjp.svelte-1gjhsjp{white-space:nowrap}td[data-rank][data-rank=MAX].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-clear-aj);text-shadow:0 0 10px var(--theme-clear-aj)}td[data-rank][data-rank="SSS+"].svelte-1gjhsjp.svelte-1gjhsjp{color:#ffcc11}td[data-rank][data-rank=SSS].svelte-1gjhsjp.svelte-1gjhsjp{color:#ffd744}td[data-rank][data-rank="SS+"].svelte-1gjhsjp.svelte-1gjhsjp{color:#ffe277}td[data-rank][data-rank=SS].svelte-1gjhsjp.svelte-1gjhsjp{color:#ffedaa}td[data-rank][data-rank="S+"].svelte-1gjhsjp.svelte-1gjhsjp{color:#ffd744}td[data-rank][data-rank=S].svelte-1gjhsjp.svelte-1gjhsjp{color:#ffe277}td[data-rank][data-rank=AAA].svelte-1gjhsjp.svelte-1gjhsjp{color:#cceeff}td[data-rank][data-rank=AA].svelte-1gjhsjp.svelte-1gjhsjp{color:#a6e1ff}td[data-rank][data-rank=A].svelte-1gjhsjp.svelte-1gjhsjp{color:#80d5ff}td[data-rank][data-rank=BBB].svelte-1gjhsjp.svelte-1gjhsjp{color:#59c8ff}td[data-rank][data-rank=BB].svelte-1gjhsjp.svelte-1gjhsjp{color:#33bbff}td[data-rank][data-rank=B].svelte-1gjhsjp.svelte-1gjhsjp{color:#0daeff}td[data-rank][data-rank=MAX].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold}td[data-rank][data-rank="SSS+"].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold}td[data-rank][data-rank=SSS].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold}td[data-rank][data-rank="SS+"].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold}td[data-rank][data-rank=SS].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold}td[data-rank][data-rank=C].svelte-1gjhsjp.svelte-1gjhsjp{color:#888}td[data-rank][data-rank=D].svelte-1gjhsjp.svelte-1gjhsjp{color:#666}td[data-clear].svelte-1gjhsjp.svelte-1gjhsjp{font-weight:bold}td[data-clear][data-clear=FC].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-clear-fc)}td[data-clear][data-clear=AJ].svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-clear-aj)}td.song-op.svelte-1gjhsjp.svelte-1gjhsjp{white-space:nowrap}td.clickable.svelte-1gjhsjp.svelte-1gjhsjp{cursor:pointer}td.clickable.svelte-1gjhsjp.svelte-1gjhsjp:hover{text-shadow:0 0 10px var(--theme-text)}.opmx.svelte-1gjhsjp.svelte-1gjhsjp{color:var(--theme-text-dim);font-size:0.8em}.pc-hidden.svelte-1gjhsjp.svelte-1gjhsjp{cursor:pointer}.pc-hidden.svelte-1gjhsjp span.svelte-1gjhsjp{border-radius:0.2em;background-color:var(--theme-bg-sub);color:var(--theme-bg-sub)}.pc-hidden.disabled.svelte-1gjhsjp.svelte-1gjhsjp{cursor:no-drop}.pc-hidden.disabled.svelte-1gjhsjp span.svelte-1gjhsjp{filter:brightness(0.8)}')
