@@ -4362,28 +4362,83 @@
 
     function Yo(e, t, n) {
       let r, o, s, a, i, l, c, d, f, h, g, m, v, b, y, w, $, x, k;
-      return u(e, Ye, (e => n(14, i = e))), u(e, Ze, (e => n(15, l = e))), u(e, et, (e => n(16, c = e))), u(e, Qe, (e => n(17, d = e))), u(e, nt, (e => n(2, f = e))), u(e, At, (e => n(18, h = e))), u(e, De, (e => n(19, g = e))), u(e, Tt, (e => n(20, m = e))), u(e, $t, (e => n(5, v = e))), u(e, Ae, (e => n(6, b = e))), u(e, wt, (e => n(7, y = e))), u(e, At, (e => n(8, w = e))), u(e, At, (e => n(9, $ = e))), u(e, jt, (e => n(10, x = e))), u(e, xt, (e => n(11, k = e))), p($t, v = window.location.hash.slice(1), v), e.$$.update = () => {
-        507908 & e.$$.dirty && n(0, r = h.filter((e => ("hide" != f || e.score >= 0) && d[e.difficulty] && c[Ie.find((t => _e[t] == e.genre))] && l >= e.const && e.const >= i))), 1 & e.$$.dirty && n(4, o = (() => {
-          let e = {};
-          ["MAX", "SSS+", "SSS", "SS+", "SS", "S+", "S"].forEach((t => e[t] = 0)), ["AAA", "AA", "A", "BBB", "BB", "B", "C", "D"].forEach((t => e[t] = 0));
-          for (const t of r) e[t.rank]++;
-          return Object.keys(e).reduce(((t, n) => (e[n] += e[t], n))), e
-        })()), 1 & e.$$.dirty && n(1, s = r.filter((e => "AJ" == e.clear)).length), 3 & e.$$.dirty && n(3, a = s + r.filter((e => "FC" == e.clear)).length)
-      }, [r, s, f, a, o, v, b, y, w, $, x, k, function() {
-        p($t, v = window.location.hash.slice(1), v), "all" !== v && p(Tt, m = !1, m)
-      }, async function() {
-        Re(window.opener, Le)("saveConfig", {
-          data: {
-            lang: g
-          }
-        })
-      }, i, l, c, d, h]
+      
+      return (
+        u(e, Ye, (e => n(14, i = e))),
+        u(e, Ze, (e => n(15, l = e))),
+        u(e, et, (e => n(16, c = e))),
+        u(e, Qe, (e => n(17, d = e))),
+        u(e, nt, (e => n(2, f = e))),
+        u(e, At, (data => {
+          // 篩選 newV === 1 和 newV === 0 的數據
+          const filtered1 = data.filter(item => item.newV === 1);
+          const filtered2 = data.filter(item => item.newV === 0);
+    
+          // 儲存篩選結果
+          n(7, w = filtered1); // 儲存 newV === 1 的數據到 w
+          n(9, $ = filtered2); // 儲存 newV === 0 的數據到 $
+    
+          // 整合篩選結果進行其他處理
+          n(0, r = filtered1.filter((e => 
+            ("hide" != f || e.score >= 0) &&
+            d[e.difficulty] &&
+            c[Ie.find((t => _e[t] == e.genre))] &&
+            l >= e.const && e.const >= i
+          )));
+    
+          console.log("Filtered (newV === 1):", w);
+          console.log("Filtered (newV === 0):", $);
+        })),
+        u(e, De, (e => n(19, g = e))),
+        u(e, Tt, (e => n(20, m = e))),
+        u(e, $t, (e => n(5, v = e))),
+        u(e, Ae, (e => n(6, b = e))),
+        u(e, wt, (e => n(7, y = e))),
+        u(e, jt, (e => n(10, x = e))),
+        u(e, xt, (e => n(11, k = e))),
+        p($t, v = window.location.hash.slice(1), v),
+    
+        e.$$.update = () => {
+          // 更新篩選後數據 r 的處理
+          507908 & e.$$.dirty && n(0, r = w.filter((e => 
+            ("hide" != f || e.score >= 0) &&
+            d[e.difficulty] &&
+            c[Ie.find((t => _e[t] == e.genre))] &&
+            l >= e.const && e.const >= i
+          )));
+    
+          // 累積統計邏輯
+          1 & e.$$.dirty && n(4, o = (() => {
+            let e = {};
+            ["MAX", "SSS+", "SSS", "SS+", "SS", "S+", "S"].forEach((t => e[t] = 0));
+            ["AAA", "AA", "A", "BBB", "BB", "B", "C", "D"].forEach((t => e[t] = 0));
+            for (const t of r) e[t.rank]++;
+            return Object.keys(e).reduce(((t, n) => (e[n] += e[t], n))), e;
+          })());
+    
+          // 清除狀態計算
+          1 & e.$$.dirty && n(1, s = r.filter((e => "AJ" == e.clear)).length);
+          3 & e.$$.dirty && n(3, a = s + r.filter((e => "FC" == e.clear)).length);
+        },
+        [r, s, f, a, o, v, b, y, w, $, x, k, function() {
+          p($t, v = window.location.hash.slice(1), v);
+          "all" !== v && p(Tt, m = !1, m);
+        }, async function() {
+          Re(window.opener, Le)("saveConfig", {
+            data: {
+              lang: g
+            }
+          });
+        }, i, l, c, d, h]
+      );
     }
+    
     new class extends Se {
       constructor(e) {
-        super(), je(this, e, Yo, Go, i, {}, zo)
+        super(), je(this, e, Yo, Go, i, {}, zo);
       }
-    }({
+    };
+    ({
       target: document.body
     })
   })()
