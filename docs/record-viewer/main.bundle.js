@@ -3316,15 +3316,22 @@
               e[0].newV === 1 || (e[0].newV === 2 && e[0].difficulty === "ULT");
           if (shouldShowNewV) {
               if (!newVIndicator) {
+                  // 新增 newVIndicator 並清空當前的內容
                   newVIndicator = Vz(T);
                   newVIndicator.c();
+                  f.textContent = ""; // 確保清空文字內容
                   newVIndicator.m(u, null);
-                  f.textContent = "";
+              } else {
+                  // 更新 newVIndicator 的內容
+                  f.textContent = ""; // 確保內容不被累加
               }
           } else if (newVIndicator) {
+              // 如果不需要 newVIndicator，移除並恢復舊數據
               newVIndicator.d(1);
               newVIndicator = null;
-              f.textContent = T;
+              f.textContent = T; // 恢復為舊數據
+          } else {
+              f.textContent = T; // 確保保持正常顯示
           }
         },
         i: e,
