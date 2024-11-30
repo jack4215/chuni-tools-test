@@ -3302,20 +3302,10 @@
         N = t[0].constUncertain && Ir();
       let newVIndicator = (t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT")) && Vz(T);
       if (t[2] === "new" && !newVIndicator) {
-          return {
-              c() {}, // 如果不符合條件，跳過創建
-              m() {}, // 跳過掛載
-              p() {}, // 跳過更新
-              d() {}  // 跳過銷毀
-          };
+          return;
       }
       if (t[2] === "best" && newVIndicator) {
-          return {
-              c() {}, // 如果不符合條件，跳過創建
-              m() {}, // 跳過掛載
-              p() {}, // 跳過更新
-              d() {}  // 跳過銷毀
-          };
+          return;
       }
       function U(e, t) {
         return "hide" != e[1] ? zr : Rr
