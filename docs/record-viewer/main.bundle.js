@@ -845,6 +845,7 @@
     }
 
     function Ge(e, t, n) {
+      console.log("e[0]:", e[0]); // 印出 e[0] 的內容
       const r = e, // 數據列表
             o = t, // 傳入的對應表
             s = []; // 未找到的歌曲集合
@@ -2897,8 +2898,7 @@
     }
 
     function Ar(e) {
-      console.log("e[0]:", e[0]); // 印出 e[0] 的內容
-      console.log("e[1]:", e[1]);
+      
       let t, n, r, o, s, a;
       return t = new Hr({
         props: {
