@@ -3315,24 +3315,26 @@
           const shouldShowNewV = 
               e[0].newV === 1 || (e[0].newV === 2 && e[0].difficulty === "ULT");
           if (shouldShowNewV) {
-              if (!newVIndicator) {
-                  // 新增 newVIndicator 並清空當前的內容
-                  newVIndicator = Vz(T);
-                  newVIndicator.c();
-                  f.textContent = ""; // 確保清空文字內容
-                  newVIndicator.m(u, null);
-              } else {
-                  // 更新 newVIndicator 的內容
-                  f.textContent = ""; // 確保內容不被累加
+              // 確保新數據插入前清理舊的內容
+              if (newVIndicator) {
+                  newVIndicator.d(1); // 清除舊的 newVIndicator
+                  newVIndicator = null; // 解除引用
               }
-          } else if (newVIndicator) {
-              // 如果不需要 newVIndicator，移除並恢復舊數據
-              newVIndicator.d(1);
-              newVIndicator = null;
-              f.textContent = T; // 恢復為舊數據
+          
+              // 插入新的 newVIndicator
+              newVIndicator = Vz(T); // 使用新數據 T 創建 newVIndicator
+              newVIndicator.c();
+              f.textContent = ""; // 確保清空原本的內容
+              newVIndicator.m(u, null);
           } else {
-              f.textContent = T; // 確保保持正常顯示
+              // 如果不需要 newVIndicator，刪除它並恢復舊的數據
+              if (newVIndicator) {
+                  newVIndicator.d(1); // 清除 newVIndicator
+                  newVIndicator = null; // 解除引用
+              }
+              f.textContent = T; // 顯示舊的數據
           }
+            
         },
         i: e,
         o: e,
