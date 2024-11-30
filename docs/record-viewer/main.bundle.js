@@ -3040,18 +3040,19 @@
       let r, o, s, a, i, l, c, d, f;
       return (
         u(e, At, (data => {
-          const filtered = data.filter(item => item.newV === 1);
-          console.log("Filtered Data (newV === 1):", filtered); // 確認篩選
-          n(6, a = filtered);
-          e.$$.update(); // 手動觸發更新
-        })),
-        u(e, At, (data => {
+          // 篩選不同條件的數據
+          const filtered1 = data.filter(item => item.newV === 1);
           const filtered2 = data.filter(item => item.newV === 0);
-          console.log("Filtered Data (newV === 1):", filtered2); // 確認篩選
+        
+          console.log("Filtered Data (newV === 1):", filtered1);
+          console.log("Filtered Data (newV === 0):", filtered2);
+        
+          // 更新響應式變量
+          n(6, a = filtered1);
           n(7, i = filtered2);
+          n(8, l = e)
           e.$$.update(); // 手動觸發更新
         })),
-        u(e, At, (e => n(8, l = e))),
         u(e, Ut, (e => n(3, c = e))),
         u(e, wt, (e => n(4, d = e))),
         u(e, $t, (e => n(5, f = e))),
