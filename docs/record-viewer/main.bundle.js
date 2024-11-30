@@ -2944,13 +2944,13 @@
       let t, n, r, o, s, a;
       return t = new Hr({
         props: {
-          title: e[4]("player.best.best30"),
-          content: Cr(qe(e[2], 30) / 100, 4)
+          title: e[4]("player.recent.best10"),
+          content: Cr(qe(e[1], 30) / 100, 4)
         }
       }), r = new Hr({
         props: {
-          title: e[4]("player.best.maxPossible"),
-          content: Cr(We(e[2]) / 100, 4)
+          title: e[4]("player.recent.history10"),
+          content: Cr(qe(e[0], 10) / 100, 4)
         }
       }), s = new Hr({
         props: {
