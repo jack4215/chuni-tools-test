@@ -3301,6 +3301,7 @@
         C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
         N = t[0].constUncertain && Ir();
       let newVIndicator = (t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT")) && Vz(T);
+      console.log("Current filter type:", t[2]);
       if (t[2] === "new" && !newVIndicator) {
           return;
       }
