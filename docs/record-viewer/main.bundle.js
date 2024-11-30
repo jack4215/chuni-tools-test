@@ -3316,7 +3316,7 @@
               e[0].newV === 1 || (e[0].newV === 2 && e[0].difficulty === "ULT");
           if (shouldShowNewV) {
               if (!newVIndicator) {
-                  newVIndicator = Vz(e[0].const.toFixed(1));
+                  newVIndicator = Vz(T);
                   newVIndicator.c();
                   newVIndicator.m(u, null);
                   f.textContent = "";
@@ -3331,7 +3331,7 @@
         o: e,
         d(e) {
           e && E(n), N && N.d(), _.d(), F.d(), V && V.d(), q && q.d(), $ = !1, x();
-          if (newVIndicator) newVIndicator.d();
+          newVIndicator && newVIndicator.d();
         }
       }
     }
