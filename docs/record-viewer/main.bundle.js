@@ -2882,17 +2882,17 @@
 
     function Ar(e,w) {
       let t, n, r, o, s, a;
-      console.log("e[0]:", w[0]);
-      console.log("e[1]:", w[1]);
+      console.log("e[8]:", e[8]);
+      console.log("e[9]:", e[9]);
       return t = new Hr({
         props: {
           title: e[4]("player.recent.best10"),
-          content: Cr(qe(e[1], 30) / 100, 4)
+          content: Cr(qe(e[8], 30) / 100, 4)
         }
       }), r = new Hr({
         props: {
           title: e[4]("player.recent.history10"),
-          content: Cr(qe(e[0], 10) / 100, 4)
+          content: Cr(qe(e[9], 10) / 100, 4)
         }
       }), s = new Hr({
         props: {
@@ -2908,9 +2908,9 @@
         },
         p(e, n) {
           const o = {};
-          16 & n && (o.title = e[4]("player.recent.best10")), 2 & n && (o.content = Cr(qe(e[1], 30) / 100, 4)), t.$set(o);
+          16 & n && (o.title = e[4]("player.recent.best10")), 2 & n && (o.content = Cr(qe(e[8], 30) / 100, 4)), t.$set(o);
           const a = {};
-          16 & n && (a.title = e[4]("player.recent.history10")), 1 & n && (a.content = Cr(qe(e[0], 10) / 100, 4)), r.$set(a);
+          16 & n && (a.title = e[4]("player.recent.history10")), 1 & n && (a.content = Cr(qe(e[9], 10) / 100, 4)), r.$set(a);
           const i = {};
           16 & n && (i.title = e[4]("player.best.playCount")), 8 & n && (i.content = e[3].playCount), s.$set(i)
         },
@@ -2931,12 +2931,12 @@
       return t = new Hr({
         props: {
           title: e[4]("player.recent.best10"),
-          content: Cr(qe(e[1], 30) / 100, 4)
+          content: Cr(qe(e[8], 30) / 100, 4)
         }
       }), r = new Hr({
         props: {
           title: e[4]("player.recent.history10"),
-          content: Cr(qe(e[0], 10) / 100, 4)
+          content: Cr(qe(e[9], 10) / 100, 4)
         }
       }), s = new Hr({
         props: {
@@ -2952,9 +2952,9 @@
         },
         p(e, n) {
           const o = {};
-          16 & n && (o.title = e[4]("player.recent.best10")), 2 & n && (o.content = Cr(qe(e[1], 30) / 100, 4)), t.$set(o);
+          16 & n && (o.title = e[4]("player.recent.best10")), 2 & n && (o.content = Cr(qe(e[8], 30) / 100, 4)), t.$set(o);
           const a = {};
-          16 & n && (a.title = e[4]("player.recent.history10")), 1 & n && (a.content = Cr(qe(e[0], 10) / 100, 4)), r.$set(a);
+          16 & n && (a.title = e[4]("player.recent.history10")), 1 & n && (a.content = Cr(qe(e[9], 10) / 100, 4)), r.$set(a);
           const i = {};
           16 & n && (i.title = e[4]("player.best.playCount")), 8 & n && (i.content = e[3].playCount), s.$set(i)
         },
