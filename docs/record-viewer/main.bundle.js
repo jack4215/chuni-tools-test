@@ -3299,14 +3299,23 @@
         C = (t[0].const < 0 || -1 == t[0].score ? "-" : null == t[0].rating ? "??.??" : (t[0].rating / 100).toFixed(2)) + "",
         N = t[0].constUncertain && Ir();
       let newVIndicator = (t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT")) && Vz(T);
-      const filteredRows = rows.filter(row => {
-        if ("new" === t[2]) {
-          return row.newV === 1 || (row.newV === 2 && row.difficulty === "ULT");
-        } else if ("best" === t[2]) {
-          return !(row.newV === 1 || (row.newV === 2 && row.difficulty === "ULT"));
-        }
-        return true; // 默認顯示所有
-      });
+        // 判斷是否需要顯示該行
+          const shouldShowRow =
+          ("new" === t[2] && (t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT"))) ||
+          ("best" === t[2] && !(t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT")));
+
+      if (!shouldShowRow) {
+          // 如果不符合條件，直接跳過渲染
+          return {
+              c() {},
+              m() {},
+              p() {},
+              i: e,
+              o: e,
+              d() {}
+          };
+      }
+
       function U(e, t) {
         return "hide" != e[1] ? zr : Rr
       }
