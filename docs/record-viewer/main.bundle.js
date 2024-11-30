@@ -2897,6 +2897,8 @@
     }
 
     function Ar(e) {
+      console.log("e[0]:", e[0]); // 印出 e[0] 的內容
+      console.log("e[1]:", e[1]);
       let t, n, r, o, s, a;
       return t = new Hr({
         props: {
@@ -2939,9 +2941,6 @@
         }
       }
     }
-    console.log("e[0]:", e[0]);
-    console.log("e[1]:", e[1]);
-    console.log("e[2]:", e[2]);
     function Dr(e) {
       let t, n, r, o, s, a;
       return t = new Hr({
