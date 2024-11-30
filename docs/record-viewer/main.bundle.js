@@ -3038,11 +3038,7 @@
     function Pr(e, t, n) {
       console.log("e[0]:", e); // 印出 e[0] 的內容
       let r, o, s, a, i, l, c, d, f;
-      return u(e, At, (data => {
-        const filtered = data.filter(item => item.newV === 1);
-        console.log("Filtered Data (newV === 1):", filtered); // 列印篩選後的結果
-        n(6, a = filtered);
-        })), u(e, At, (e => n(7, i = e))), u(e, At, (e => n(8, l = e))), u(e, Ut, (e => n(3, c = e))), u(e, wt, (e => n(4, d = e))), u(e, $t, (e => n(5, f = e))), e.$$.update = () => {
+      return u(e, At, (e => n(6, a = e))), u(e, At, (e => n(7, i = e))), u(e, At, (e => n(8, l = e))), u(e, Ut, (e => n(3, c = e))), u(e, wt, (e => n(4, d = e))), u(e, $t, (e => n(5, f = e))), e.$$.update = () => {
         256 & e.$$.dirty && n(2, r = l.slice(0, 30).map((e => e.rating))), 128 & e.$$.dirty && n(1, o = i.map((e => e.rating))), 64 & e.$$.dirty && n(0, s = a.map((e => e.rating)))
       }, [s, o, r, c, d, f, a, i, l]
     }
