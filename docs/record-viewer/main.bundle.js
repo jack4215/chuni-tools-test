@@ -2887,7 +2887,11 @@
       console.log("e[2]:", e[2]);
       console.log("e[3]:", e[3]);
       console.log("e[4]:", e[4]);
+      console.log("e[5]:", e[5]);
+      console.log("e[6]:", e[6]);
       console.log("e[7]:", e[7]);
+      console.log("e[8]:", e[8]);
+      console.log("e[9]:", e[9]);
       return t = new Hr({
         props: {
           title: e[4]("player.recent.best10"),
