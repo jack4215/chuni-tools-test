@@ -2882,6 +2882,8 @@
 
     function Ar(e) {
       let t, n, r, o, s, a;
+      console.log("e[0]:", e[0]);
+      console.log("e[1]:", e[1]);
       return t = new Hr({
         props: {
           title: e[4]("player.recent.best10"),
