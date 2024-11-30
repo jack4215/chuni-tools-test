@@ -2950,9 +2950,9 @@
         },
         p(e, n) {
           const o = {};
-          16 & n && (o.title = e[4]("player.best.best30")), 4 & n && (o.content = Cr(qe(e[2], 30) / 100, 4)), t.$set(o);
+          16 & n && (o.title = e[4]("player.recent.best10")), 2 & n && (o.content = Cr(qe(e[1], 10) / 100, 4)), t.$set(o);
           const a = {};
-          16 & n && (a.title = e[4]("player.best.maxPossible")), 4 & n && (a.content = Cr(We(e[2]) / 100, 2)), r.$set(a);
+          16 & n && (a.title = e[4]("player.recent.history10")), 1 & n && (a.content = Cr(qe(e[0], 10) / 100, 4)), r.$set(a);
           const i = {};
           16 & n && (i.title = e[4]("player.best.playCount")), 8 & n && (i.content = e[3].playCount), s.$set(i)
         },
