@@ -845,18 +845,15 @@
     }
 
     function Ge(e, t, n) {
-      console.log("e[0]:", e[0]); // 印出 e[0] 的內容
-      const r = e, // 數據列表
-            o = t, // 傳入的對應表
-            s = []; // 未找到的歌曲集合
-  
+      const r = e,
+            o = t,
+            s = [];
       r.map(e => {
-          // 判斷 newV
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
           if (songData && songData.newV !== undefined) {
-              e.newV = songData.newV;  // 保留 newV 的原始數值（如 0, 1, 2）
+              e.newV = songData.newV;
           } else {
-              e.newV = 0;  // 如果沒有設定 newV，則預設為 0（或其他合適的預設值）
+              e.newV = 0;
           }
           if ("WE" === e.difficulty) {
               e.title = Xe(e.title);
@@ -922,23 +919,6 @@
           e.opPercent = (100 * e.op) / e.opMax;
           e.rank = Fe(e.score);
       });
-  
-      if (n && s.length) {
-          const unmatchedSongs = {};
-          s.forEach(e => {
-              unmatchedSongs[e.title] ??= [];
-              unmatchedSongs[e.title].push(e.difficulty);
-          });
-  
-          console.log(unmatchedSongs);
-          alert(n.replace(
-              "{{songs}}", 
-              Object.entries(unmatchedSongs)
-                  .map(([title, difficulties]) => `    ${title} ${difficulties.join(",")}`)
-                  .join("\n")
-          ));
-      }
-  
       r.sort(Je.default);
       r.map((e, index) => {
           e.order = index + 1;
