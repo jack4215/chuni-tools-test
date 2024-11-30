@@ -2939,7 +2939,9 @@
         }
       }
     }
-
+    console.log("e[0]:", e[0]);
+    console.log("e[1]:", e[1]);
+    console.log("e[2]:", e[2]);
     function Dr(e) {
       let t, n, r, o, s, a;
       return t = new Hr({
