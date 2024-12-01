@@ -122,7 +122,7 @@
                         }(e.source, e.origin);
                         let s;
                         switch (t.target) {
-                        case "bestRecord":
+                        case "allRecord":
                             console.log("%c    Target difficulty: %c" + t.data.difficulty, "color: gray", "color: white"),
                             s = async function(e=o.master) {
                                 const t = new FormData;
@@ -151,30 +151,6 @@
                                 }));
                                 return records.filter(e => e.title && e.score);
                             }(t.data.difficulty);
-                            break;
-                        case "playHistory":
-                            s = async function() {
-                                return Array.from({ length: 50 }).map(() => {
-                                    return {
-                                        title: "unknown",
-                                        score: -1,
-                                        difficulty: "--",
-                                        clear: ""
-                                    };
-                                });
-                            }();
-                            break;
-                        case "recentRecord":
-                            s = async function() {
-                                return Array.from({ length: 10 }).map(() => {
-                                    return {
-                                        title: "unknown",
-                                        score: -1,
-                                        difficulty: "--",
-                                        clear: ""
-                                    };
-                                });
-                            }();
                             break;
                         case "playerStats":
                             s = async function() {
