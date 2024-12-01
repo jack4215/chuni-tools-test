@@ -2912,7 +2912,7 @@
           const a = {};
           16 & n && (a.title = e[4]("player.recent.new10")), 1 & n && (a.content = Cr(qe(e[1], 10) / 100, 4)), r.$set(a);
           const i = {};
-          16 & n && (i.title = e[4]("player.recent.average")), 8 & n && (i.content = Cr((qe(e[0], 30) / 100) * 0.75 + (qe(e[1], 10) / 100) * 0.25, 4)), s.$set(i)
+          16 & n && (i.title = e[4]("player.recent.average")), 1 & n && (i.content = Cr((qe(e[0], 30) / 100) * 0.75 + (qe(e[1], 10) / 100) * 0.25, 4)), s.$set(i)
         },
         i(e) {
           a || (ge(t.$$.fragment, e), ge(r.$$.fragment, e), ge(s.$$.fragment, e), a = !0)
