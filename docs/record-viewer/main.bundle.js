@@ -3091,7 +3091,7 @@
 
     function zr(e) {
       let t, n, r;
-
+      console.log(e);
       function o(e, t) {
         return e[1] === "percentage" || e[1] === "dgpercentage" ? Br : e[1] === "dgvalue" ? Fr : Fr;
       }
@@ -4012,7 +4012,6 @@
     function _o(e, t, n) {
       let r, o, s; 
       let a = t.records; 
-      console.log(a);
       const groupByTitle = (records) => {
           const map = new Map();
           records.forEach((song) => {
