@@ -846,34 +846,18 @@
 
     function Ge(e, t, n) {
       console.log(e);
-      const r = e,  // 數據列表
-          o = t,    // 傳入的對應表
-          s = [];   // 未找到的歌曲集合
-  
-      // 先計算每首歌的最大 op 和 opMax
-      const maxOpMap = new Map();
-      const maxOpMaxMap = new Map();
-  
-      // 計算每首歌的最大 op 和 opMax
-      r.forEach(song => {
-          const { title, op, opMax } = song;
-          if (!maxOpMap.has(title) || op > maxOpMap.get(title)) {
-              maxOpMap.set(title, op);
-          }
-          if (!maxOpMaxMap.has(title) || opMax > maxOpMaxMap.get(title)) {
-              maxOpMaxMap.set(title, opMax);
-          }
-      });
+      const r = e, // 數據列表
+            o = t, // 傳入的對應表
+            s = []; // 未找到的歌曲集合
   
       r.map(e => {
           // 判斷 newV
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
           if (songData && songData.newV !== undefined) {
-              e.newV = songData.newV;  // 保留 newV 的原始數值（如 0, 1, 2）
+              e.newV = songData.newV;
           } else {
-              e.newV = 0;  // 如果沒有設定 newV，則預設為 0（或其他合適的預設值）
+              e.newV = 0;
           }
-  
           if ("WE" === e.difficulty) {
               e.title = Xe(e.title);
               e.const = -1;
@@ -887,7 +871,6 @@
           if (o[e.title] === undefined) {
               e.title = Xe(e.title);
           }
-  
           songData = o[e.title]; 
           if (songData === undefined) {
               s.push(e);
@@ -937,25 +920,10 @@
   
           e.opMax = Ve(e);
           e.opPercent = (100 * e.op) / e.opMax;
-  
-          // 根據最大 op 和 opMax 設置 dg
-          const maxOp = maxOpMap.get(e.title);
-          const maxOpMax = maxOpMaxMap.get(e.title);
-  
-          // 設置 dg
-          if (e.op === maxOp && e.opMax === maxOpMax) {
-              e.dg = 1; // 優先設置為 1，表示 op 是最大的
-          } else if (e.op === maxOp) {
-              e.dg = 1; // 如果 op 是最大，設為 1
-          } else if (e.opMax === maxOpMax) {
-              e.dg = 2; // 如果 opMax 是最大，設為 2
-          } else {
-              e.dg = 0; // 其他情況設為 0
-          }
+         // e.dg = 0;
           e.rank = Fe(e.score);
       });
   
-      // 排序
       r.sort(Je.default);
       r.map((e, index) => {
           e.order = index + 1;
@@ -963,7 +931,6 @@
   
       return r;
   }
-  
   
     c(De, (() => {
       try {
@@ -4049,18 +4016,18 @@
       const groupByTitle = (records) => {
           const map = new Map();
           records.forEach((song) => {
-            const { title, op, opMax } = song;
-            if (!map.has(title)) {
-                map.set(title, { ...song, dg: 1 });
-            } else {
-                const current = map.get(title);
-                const isMaxOp = op > current.op;
-                map.set(title, {
-                    ...song,
-                    op: Math.max(current.op, op),
-                    opMax: Math.max(current.opMax, opMax),
-                    dg: isMaxOp ? 1 : current.dg
-                });
+              const { title, op, opMax } = song;
+              if (!map.has(title)) {
+                  map.set(title, { ...song, dg: 1 });
+              } else {
+                  const current = map.get(title);
+                  const isMaxOp = op > current.op;
+                  map.set(title, {
+                      ...song,
+                      op: Math.max(current.op, op),
+                      opMax: Math.max(current.opMax, opMax),
+                      dg: isMaxOp ? 1 : current.dg
+                  });
               }
           });
           records.forEach((song) => {
