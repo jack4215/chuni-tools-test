@@ -4010,7 +4010,7 @@
     }
     
     function _o(e, t, n) {
-      
+      console.log(t);
       let r, o, s; 
       let a = t.records; 
       const groupByTitle = (records) => {
@@ -4029,8 +4029,8 @@
                 });
             }
         });
-        return Array.from(map.values());
         console.log(t);
+        return Array.from(map.values());
     };
     
 
