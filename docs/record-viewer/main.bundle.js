@@ -919,7 +919,7 @@
   
           e.opMax = Ve(e);
           e.opPercent = (100 * e.op) / e.opMax;
-          e.dg;
+          e.dg = e.dg !== undefined ? e.dg : 0;
           e.rank = Fe(e.score);
       });
   
