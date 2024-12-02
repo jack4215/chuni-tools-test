@@ -846,36 +846,32 @@
 
     function Ge(e, t, n) {
       console.log(e);
-      const r = e, // 數據列表
-          o = t,   // 傳入的對應表
-          s = [];  // 未找到的歌曲集合
-    
-      // 先過濾出每首歌的最大 op 和 opMax
+      const r = e,  // 數據列表
+          o = t,    // 傳入的對應表
+          s = [];   // 未找到的歌曲集合
+  
+      // 先計算每首歌的最大 op 和 opMax
       const maxOpMap = new Map();
       const maxOpMaxMap = new Map();
   
+      // 計算每首歌的最大 op 和 opMax
       r.forEach(song => {
           const { title, op, opMax } = song;
-          if (!maxOpMap.has(title)) {
+          if (!maxOpMap.has(title) || op > maxOpMap.get(title)) {
               maxOpMap.set(title, op);
-          } else {
-              maxOpMap.set(title, Math.max(maxOpMap.get(title), op));
           }
-          
-          if (!maxOpMaxMap.has(title)) {
+          if (!maxOpMaxMap.has(title) || opMax > maxOpMaxMap.get(title)) {
               maxOpMaxMap.set(title, opMax);
-          } else {
-              maxOpMaxMap.set(title, Math.max(maxOpMaxMap.get(title), opMax));
           }
       });
   
-      // 設置每首歌的 `dg` 值
       r.map(e => {
+          // 判斷 newV
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
           if (songData && songData.newV !== undefined) {
               e.newV = songData.newV;  // 保留 newV 的原始數值（如 0, 1, 2）
           } else {
-              e.newV = 0;  // 如果沒有設定 newV，則預設為 0
+              e.newV = 0;  // 如果沒有設定 newV，則預設為 0（或其他合適的預設值）
           }
   
           if ("WE" === e.difficulty) {
@@ -888,10 +884,10 @@
               e.rank = Fe(e.score);
               return;
           }
-  
           if (o[e.title] === undefined) {
               e.title = Xe(e.title);
           }
+  
           songData = o[e.title]; 
           if (songData === undefined) {
               s.push(e);
@@ -942,15 +938,21 @@
           e.opMax = Ve(e);
           e.opPercent = (100 * e.op) / e.opMax;
   
-          // 初始化 dg 值並計算邏輯
-          e.dg = 0; // 默認設為 0
+          // 根據最大 op 和 opMax 設置 dg
+          const maxOp = maxOpMap.get(e.title);
+          const maxOpMax = maxOpMaxMap.get(e.title);
   
-          // 根據最大值設置 dg
-          if (e.op === maxOpMap.get(e.title)) {
-              e.dg = 1; // 如果 op 為最大值，設為 1
-          } else if (e.opMax === maxOpMaxMap.get(e.title)) {
-              e.dg = 2; // 如果 opMax 為最大值，設為 2
+          // 設置 dg
+          if (e.op === maxOp && e.opMax === maxOpMax) {
+              e.dg = 1; // 優先設置為 1，表示 op 是最大的
+          } else if (e.op === maxOp) {
+              e.dg = 1; // 如果 op 是最大，設為 1
+          } else if (e.opMax === maxOpMax) {
+              e.dg = 2; // 如果 opMax 是最大，設為 2
+          } else {
+              e.dg = 0; // 其他情況設為 0
           }
+          e.rank = Fe(e.score);
       });
   
       // 排序
