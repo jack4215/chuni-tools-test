@@ -4016,35 +4016,26 @@
       const groupByTitle = (records) => {
           const map = new Map();
           records.forEach((song) => {
-              const { title, op, opMax } = song;   
-              if (!map.has(title)) {
-                  map.set(title, { ...song, dg: 1 });
-              } else {
-                  const current = map.get(title);
-                  const isMaxOp = op > current.op;
-                  const isMaxOpMax = opMax > current.opMax;
-                  map.set(title, {
-                      ...song,
-                      op: Math.max(current.op, op),
-                      opMax: Math.max(current.opMax, opMax),
-                      dg: isMaxOp ? 1 : isMaxOpMax ? 2 : current.dg
-                  });
+            const { title, op, opMax } = song;
+            if (!map.has(title)) {
+                map.set(title, { ...song, dg: 1 });
+            } else {
+                const current = map.get(title);
+                const isMaxOp = op > current.op;
+                map.set(title, {
+                    ...song,
+                    op: Math.max(current.op, op),
+                    opMax: Math.max(current.opMax, opMax),
+                    dg: isMaxOp ? 1 : current.dg
+                });
               }
           });
           records.forEach((song) => {
               const updated = map.get(song.title);
-              if (updated.op === song.op) {
-                  song.dg = 1;
-              }
-              else if (updated.opMax === song.opMax) {
-                  song.dg = 2;
-              } else {
-                  song.dg = 0;
-              }
+              song.dg = updated.op === song.op ? 1 : song.dg;
           });
           return Array.from(map.values());
       };
-    
       
         e.$$set = (newData) => {
             if ("records" in newData) {
