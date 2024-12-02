@@ -144,7 +144,8 @@
                                             score: a ? n(a) : -1,
                                             difficulty: e,
                                             clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
-                                            idx: t.querySelector('input[name="idx"]').value
+                                            idx: t.querySelector('input[name="idx"]').value,
+                                            dg: 0
                                         };
                                     })).filter((e => e.title && e.score));
                                     // Add hidden song
