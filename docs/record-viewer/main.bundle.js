@@ -3089,9 +3089,8 @@
       }
     }
 
-    function zr(e, t) {
+    function zr(e) {
       let t, n, r;
-      console.log(t);
       function o(e, t) {
         return e[1] === "percentage" || e[1] === "dgpercentage" ? Br : e[1] === "dgvalue" ? Fr : Fr;
       }
