@@ -919,7 +919,7 @@
   
           e.opMax = Ve(e);
           e.opPercent = (100 * e.op) / e.opMax;
-          e.dg = 0;
+          e.dg;
           e.rank = Fe(e.score);
       });
   
@@ -4017,7 +4017,7 @@
         records.forEach((song) => {
             const { title, op, opMax } = song;
             if (!map.has(title)) {
-                map.set(title, { ...song, dg: 1 });
+                map.set(title, { ...song, dg: 0 });
             } else {
                 const current = map.get(title);
                 const isMaxOp = op > current.op;
