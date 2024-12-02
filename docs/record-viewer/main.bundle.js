@@ -4013,21 +4013,24 @@
       let r, o, s; 
       let a = t.records; 
       const groupByTitle = (records) => {
-          const map = new Map();
-          records.forEach((song) => {
-              const { title, op, opMax } = song;
-              if (!map.has(title)) {
-                  map.set(title, { op, opMax });
-              } else {
-                  const current = map.get(title);
-                  map.set(title, {
-                      op: Math.max(current.op, op),
-                      opMax: Math.max(current.opMax, opMax)
-                  });
-              }
-          });
-          return Array.from(map.values());
-      };
+        const map = new Map();
+        records.forEach((song) => {
+            const { title, op, opMax } = song;
+            if (!map.has(title)) {
+                map.set(title, { op, opMax, dg: 1 }); // 初次記錄時 dg 預設為 1
+            } else {
+                const current = map.get(title);
+                const isMaxOp = op > current.op;
+                map.set(title, {
+                    op: Math.max(current.op, op),
+                    opMax: Math.max(current.opMax, opMax),
+                    dg: isMaxOp ? 1 : current.dg // 如果當前 op 大於已存在的 op，設置 dg 為 1
+                });
+            }
+        });
+        return Array.from(map.values());
+    };
+    
 
       e.$$set = (newData) => {
           if ("records" in newData) {
