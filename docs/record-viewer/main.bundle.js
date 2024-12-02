@@ -3093,7 +3093,7 @@
       let t, n, r;
 
       function o(e, t) {
-        return e[1] === "percentage" || e[1] === "dgpercentage" ? Br : Fr;
+        return e[1] === "percentage" || e[1] === "dgpercentage" ? Br : e[1] === "dgvalue" ? Fr : Fr;
       }
       let s = o(e),
         a = s(e);
