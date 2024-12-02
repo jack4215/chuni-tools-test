@@ -4017,7 +4017,7 @@
         records.forEach((song) => {
             const { title, op, opMax } = song;
             if (!map.has(title)) {
-                map.set(title, { ...song, dg: 0 });
+                map.set(title, { ...song, dg: 1 });
             } else {
                 const current = map.get(title);
                 const isMaxOp = op > current.op;
