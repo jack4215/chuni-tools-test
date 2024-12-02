@@ -919,6 +919,7 @@
   
           e.opMax = Ve(e);
           e.opPercent = (100 * e.op) / e.opMax;
+          e.dg = 0;
           e.rank = Fe(e.score);
       });
   
@@ -4017,7 +4018,7 @@
         records.forEach((song) => {
             const { title, op, opMax } = song;
             if (!map.has(title)) {
-                map.set(title, { op, opMax, dg: 0 }); // 初次記錄時 dg 預設為 1
+                map.set(title, { op, opMax, dg }); // 初次記錄時 dg 預設為 1
             } else {
                 const current = map.get(title);
                 const isMaxOp = op > current.op;
