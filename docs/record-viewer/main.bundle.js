@@ -4031,10 +4031,11 @@
         });
         records.forEach((song) => {
             const updated = map.get(song.title);
-            song.dg = updated.op === song.op ? 1 : 0; 
+            song.dg = updated.op === song.op ? 1 : song.dg;
         });
         return Array.from(map.values());
     };
+    
       e.$$set = (newData) => {
           if ("records" in newData) {
               a = newData.records; 
