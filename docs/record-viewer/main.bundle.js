@@ -958,7 +958,7 @@
       tt = Ne("usedConstData", "luminousplus", ["luminousplus","verse"], (() => {
         Nt.updateConstData(), Ht.updateConstData(), At.updateConstData()
       })),
-      nt = Ne("showOverPower", "hide", ["hide", "value", "percentage"]),
+      nt = Ne("showOverPower", "hide", ["hide", "value", "percentage", "dgvalue", "dgpercentage"]),
       rt = function(e, t, n = (() => {})) {
         let r = localStorage.getItem(e);
         (null === r || "true" !== r && "false" !== r) && (r = JSON.stringify(t), localStorage.setItem(e, r));
