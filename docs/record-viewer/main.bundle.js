@@ -4012,7 +4012,7 @@
     function _o(e, t, n) {
       let r, o, s; 
       let a = t.records; 
-
+      console.log(a);
       const groupByTitle = (records) => {
           const map = new Map();
           records.forEach((song) => {
