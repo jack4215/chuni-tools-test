@@ -4009,29 +4009,33 @@
       }
     }
     
-    function _o(e, t, n) {
-      console.log(t);
-      let r, o, s; 
-      let a = t.records; 
-      const groupByTitle = (records) => {
-        const map = new Map();
-        records.forEach((song) => {
-            const { title, op, opMax, dg } = song;
-            if (!map.has(title)) {
-                map.set(title, { op, opMax, dg:1 }); // 初次記錄時 dg 預設為 1
-            } else {
-                const current = map.get(title);
-                const isMaxOp = op > current.op;
-                map.set(title, {
-                    op: Math.max(current.op, op),
-                    opMax: Math.max(current.opMax, opMax),
-                    dg: isMaxOp ? 1 : current.dg // 如果當前 op 大於已存在的 op，設置 dg 為 1
-                });
-            }
-        });
-        console.log(t);
-        return Array.from(map.values());
-    };
+    const groupByTitle = (records) => {
+      const map = new Map();
+      records.forEach((song) => {
+          const { title, op, opMax } = song;
+          if (!map.has(title)) {
+              map.set(title, { ...song, dg: 0 });
+          } else {
+              const current = map.get(title);
+              const isMaxOp = op > current.op;
+              map.set(title, {
+                  ...song,
+                  op: Math.max(current.op, op),
+                  opMax: Math.max(current.opMax, opMax),
+                  dg: isMaxOp ? 1 : current.dg
+              });
+          }
+      });
+  
+      // 更新原始數據集合的 dg
+      records.forEach((song) => {
+          const updated = map.get(song.title);
+          song.dg = updated.op === song.op ? 1 : 0; // 如果是最大值，設定 dg 為 1，否則為 0
+      });
+  
+      return Array.from(map.values());
+  };
+  
     
 
       e.$$set = (newData) => {
