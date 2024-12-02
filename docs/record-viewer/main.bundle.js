@@ -847,17 +847,37 @@
     function Ge(e, t, n) {
       console.log(e);
       const r = e, // 數據列表
-            o = t, // 傳入的對應表
-            s = []; // 未找到的歌曲集合
+          o = t,   // 傳入的對應表
+          s = [];  // 未找到的歌曲集合
+    
+      // 先過濾出每首歌的最大 op 和 opMax
+      const maxOpMap = new Map();
+      const maxOpMaxMap = new Map();
   
+      r.forEach(song => {
+          const { title, op, opMax } = song;
+          if (!maxOpMap.has(title)) {
+              maxOpMap.set(title, op);
+          } else {
+              maxOpMap.set(title, Math.max(maxOpMap.get(title), op));
+          }
+          
+          if (!maxOpMaxMap.has(title)) {
+              maxOpMaxMap.set(title, opMax);
+          } else {
+              maxOpMaxMap.set(title, Math.max(maxOpMaxMap.get(title), opMax));
+          }
+      });
+  
+      // 設置每首歌的 `dg` 值
       r.map(e => {
-          // 判斷 newV
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
           if (songData && songData.newV !== undefined) {
-              e.newV = songData.newV;
+              e.newV = songData.newV;  // 保留 newV 的原始數值（如 0, 1, 2）
           } else {
-              e.newV = 0;
+              e.newV = 0;  // 如果沒有設定 newV，則預設為 0
           }
+  
           if ("WE" === e.difficulty) {
               e.title = Xe(e.title);
               e.const = -1;
@@ -868,6 +888,7 @@
               e.rank = Fe(e.score);
               return;
           }
+  
           if (o[e.title] === undefined) {
               e.title = Xe(e.title);
           }
@@ -920,18 +941,19 @@
   
           e.opMax = Ve(e);
           e.opPercent = (100 * e.op) / e.opMax;
+  
+          // 初始化 dg 值並計算邏輯
           e.dg = 0; // 默認設為 0
-
-          const maxOp = Math.max(...r.filter(song => song.title === e.title).map(song => song.op));
-          const maxOpMax = Math.max(...r.filter(song => song.title === e.title).map(song => song.opMax));
-          if (e.op === maxOp) {
-              e.dg = 1; 
-          } else if (e.opMax === maxOpMax) {
-              e.dg = 2;
+  
+          // 根據最大值設置 dg
+          if (e.op === maxOpMap.get(e.title)) {
+              e.dg = 1; // 如果 op 為最大值，設為 1
+          } else if (e.opMax === maxOpMaxMap.get(e.title)) {
+              e.dg = 2; // 如果 opMax 為最大值，設為 2
           }
-          e.rank = Fe(e.score);
       });
   
+      // 排序
       r.sort(Je.default);
       r.map((e, index) => {
           e.order = index + 1;
@@ -939,6 +961,7 @@
   
       return r;
   }
+  
   
     c(De, (() => {
       try {
