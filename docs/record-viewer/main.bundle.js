@@ -4376,7 +4376,7 @@
     }
     new class extends Se {
       constructor(e) {
-        super(), je(this, e, Go, i, {}, zo, Yo)
+        super(), je(this, e, Yo, Go, i, {}, zo)
       }
     }({
       target: document.body
