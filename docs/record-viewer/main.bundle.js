@@ -854,9 +854,9 @@
           // 判斷 newV
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
           if (songData && songData.newV !== undefined) {
-              e.newV = songData.newV;  // 保留 newV 的原始數值（如 0, 1, 2）
+              e.newV = songData.newV;
           } else {
-              e.newV = 0;  // 如果沒有設定 newV，則預設為 0（或其他合適的預設值）
+              e.newV = 0;
           }
           if ("WE" === e.difficulty) {
               e.title = Xe(e.title);
@@ -920,7 +920,15 @@
   
           e.opMax = Ve(e);
           e.opPercent = (100 * e.op) / e.opMax;
-          e.dg = 0;
+          e.dg = 0; // 默認設為 0
+
+          const maxOp = Math.max(...r.filter(song => song.title === e.title).map(song => song.op));
+          const maxOpMax = Math.max(...r.filter(song => song.title === e.title).map(song => song.opMax));
+          if (e.op === maxOp) {
+              e.dg = 1; 
+          } else if (e.opMax === maxOpMax) {
+              e.dg = 2;
+          }
           e.rank = Fe(e.score);
       });
   
