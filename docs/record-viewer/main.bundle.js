@@ -4010,7 +4010,6 @@
     }
     
     function _o(e, t, n) {
-      console.log(t);
       let r, o, s; 
       let a = t.records; 
       const groupByTitle = (records) => {
@@ -4018,12 +4017,10 @@
         records.forEach((song) => {
             const { title, op, opMax } = song;
             if (!map.has(title)) {
-                // 初始化並標記 dg 為 1
                 map.set(title, { ...song, dg: 1 });
             } else {
                 const current = map.get(title);
                 const isMaxOp = op > current.op;
-                // 更新記錄並標記最大值的 dg 為 1，其餘保持不變
                 map.set(title, {
                     ...song,
                     op: Math.max(current.op, op),
@@ -4032,18 +4029,12 @@
                 });
             }
         });
-    
-        // 更新原始數據集合的 dg
         records.forEach((song) => {
             const updated = map.get(song.title);
-            song.dg = updated.op === song.op ? 1 : 0; // 如果是最大值，設定 dg 為 1，否則為 0
+            song.dg = updated.op === song.op ? 1 : 0; 
         });
-    
         return Array.from(map.values());
     };
- 
-    
-
       e.$$set = (newData) => {
           if ("records" in newData) {
               a = newData.records; 
@@ -4365,7 +4356,7 @@
       console.log(e);
       let r, o, s, a, i, l, c, d, f, h, g, m, v, b, y, w, $, x, k;
       return u(e, Ye, (e => n(14, i = e))), u(e, Ze, (e => n(15, l = e))), u(e, et, (e => n(16, c = e))), u(e, Qe, (e => n(17, d = e))), u(e, nt, (e => n(2, f = e))), u(e, At, (e => n(18, h = e))), u(e, De, (e => n(19, g = e))), u(e, Tt, (e => n(20, m = e))), u(e, $t, (e => n(5, v = e))), u(e, Ae, (e => n(6, b = e))), u(e, wt, (e => n(7, y = e))),u(e, At, (e => n(8, w = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(9, $ = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, jt, (e => n(10, x = e))), u(e, xt, (e => n(11, k = e))), p($t, v = window.location.hash.slice(1), v), e.$$.update = () => {
-        507908 & e.$$.dirty && n(0, r = h.filter((e => ("hide" != f || e.score >= 0) && d[e.difficulty] && c[Ie.find((t => _e[t] == e.genre))] && l >= e.const && e.const >= i))), 1 & e.$$.dirty && n(4, o = (() => {
+        507908 & e.$$.dirty && n(0, r = h.filter((e => ("hide" != f || e.score >= 0) && (!(f === "dgvalue" || f === "dgpercentage") || e.dg === 1) &&d[e.difficulty] && c[Ie.find((t => _e[t] == e.genre))] && l >= e.const && e.const >= i))), 1 & e.$$.dirty && n(4, o = (() => {
           let e = {};
           ["MAX", "SSS+", "SSS", "SS+", "SS", "S+", "S"].forEach((t => e[t] = 0)), ["AAA", "AA", "A", "BBB", "BB", "B", "C", "D"].forEach((t => e[t] = 0));
           for (const t of r) e[t.rank]++;
