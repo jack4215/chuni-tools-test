@@ -4014,41 +4014,66 @@
       let r, o, s; 
       let a = t.records; 
       const groupByTitle = (records) => {
-          const map = new Map();
-          records.forEach((song) => {
-              const { title, op, opMax } = song;
-              if (!map.has(title)) {
-                  map.set(title, { ...song, dg: 1 });
-              } else {
-                  const current = map.get(title);
-                  const isMaxOp = op > current.op;
-                  const isMaxOpMax = opMax > current.opMax;
-                  map.set(title, {
-                      ...song,
-                      op: Math.max(current.op, op),
-                      opMax: Math.max(current.opMax, opMax),
-                      dg: isMaxOp ? 1 : isMaxOpMax ? 2 : current.dg
-                  });
-              }
-          });
-          records.forEach((song) => {
-              const updated = map.get(song.title);
-              song.dg = updated.op === song.op ? 1 : updated.opMax === song.opMax ? 2 : 0;
-          });
-          return Array.from(map.values());
-      };
+        const map = new Map();
+    
+        // 第一輪遍歷：計算最大值並初始化 `dg`
+        records.forEach((song) => {
+            const { title, op, opMax } = song;
+    
+            if (!map.has(title)) {
+                // 初始化，將 `dg` 設為 1（默認是最大 `op` 時的設置）
+                map.set(title, { ...song, dg: 1 });
+            } else {
+                const current = map.get(title);
+    
+                // 判斷是否是最大值
+                const isMaxOp = op > current.op;
+                const isMaxOpMax = opMax > current.opMax;
+    
+                // 更新最大值和 `dg`
+                map.set(title, {
+                    ...song,
+                    op: Math.max(current.op, op),
+                    opMax: Math.max(current.opMax, opMax),
+                    dg: isMaxOp ? 1 : isMaxOpMax ? 2 : current.dg // `dg = 1` 優先於 `dg = 2`
+                });
+            }
+        });
+    
+        // 第二輪遍歷：根據最大值更新 `dg`
+        records.forEach((song) => {
+            const updated = map.get(song.title);
+    
+            // 如果 `op` 是最大值，設置 `dg = 1`
+            if (updated.op === song.op) {
+                song.dg = 1;
+            }
+            // 如果 `opMax` 是最大值且 `dg` 尚未設為 1，設置 `dg = 2`
+            else if (updated.opMax === song.opMax) {
+                song.dg = 2;
+            } else {
+                song.dg = 0; // 其他情況設置為 0
+            }
+        });
+    
+        return Array.from(map.values());
+    };
+    
+      
         e.$$set = (newData) => {
             if ("records" in newData) {
                 a = newData.records; 
                 n(3, a);
             }
         };
+    
         e.$$.update = () => {
             const groupedRecords = groupByTitle(a);  
             if (8 & e.$$.dirty) n(1, r = groupedRecords.reduce((sum, song) => sum + song.op, 0));
             if (8 & e.$$.dirty) n(0, o = groupedRecords.reduce((sum, song) => sum + song.opMax, 0));
             if (3 & e.$$.dirty) n(2, s = (r / o) * 100);  
         };
+    
         return [o, r, s, a]; 
     }
 
