@@ -4014,45 +4014,43 @@
       let r, o, s; 
       let a = t.records; 
       const groupByTitle = (records) => {
-        const map = new Map();
-        records.forEach((song) => {
-            const { title, op, opMax } = song;
-            if (!map.has(title)) {
-                map.set(title, { ...song, dg: 1 });
-            } else {
-                const current = map.get(title);
-                const isMaxOp = op > current.op;
-                map.set(title, {
-                    ...song,
-                    op: Math.max(current.op, op),
-                    opMax: Math.max(current.opMax, opMax),
-                    dg: isMaxOp ? 1 : current.dg
-                });
+          const map = new Map();
+          records.forEach((song) => {
+              const { title, op, opMax } = song;
+              if (!map.has(title)) {
+                  map.set(title, { ...song, dg: 1 });
+              } else {
+                  const current = map.get(title);
+                  const isMaxOp = op > current.op;
+                  const isMaxOpMax = opMax > current.opMax;
+                  map.set(title, {
+                      ...song,
+                      op: Math.max(current.op, op),
+                      opMax: Math.max(current.opMax, opMax),
+                      dg: isMaxOp ? 1 : isMaxOpMax ? 2 : current.dg
+                  });
+              }
+          });
+          records.forEach((song) => {
+              const updated = map.get(song.title);
+              song.dg = updated.op === song.op ? 1 : updated.opMax === song.opMax ? 2 : 0;
+          });
+          return Array.from(map.values());
+      };
+        e.$$set = (newData) => {
+            if ("records" in newData) {
+                a = newData.records; 
+                n(3, a);
             }
-        });
-        records.forEach((song) => {
-            const updated = map.get(song.title);
-            song.dg = updated.op === song.op ? 1 : song.dg;
-        });
-        return Array.from(map.values());
-    };
-    
-      e.$$set = (newData) => {
-          if ("records" in newData) {
-              a = newData.records; 
-              n(3, a);
-          }
-      };
-  
-      e.$$.update = () => {
-          const groupedRecords = groupByTitle(a);  
-          if (8 & e.$$.dirty) n(1, r = groupedRecords.reduce((sum, song) => sum + song.op, 0));
-          if (8 & e.$$.dirty) n(0, o = groupedRecords.reduce((sum, song) => sum + song.opMax, 0));
-          if (3 & e.$$.dirty) n(2, s = (r / o) * 100);  
-      };
-  
-      return [o, r, s, a]; 
-  }
+        };
+        e.$$.update = () => {
+            const groupedRecords = groupByTitle(a);  
+            if (8 & e.$$.dirty) n(1, r = groupedRecords.reduce((sum, song) => sum + song.op, 0));
+            if (8 & e.$$.dirty) n(0, o = groupedRecords.reduce((sum, song) => sum + song.opMax, 0));
+            if (3 & e.$$.dirty) n(2, s = (r / o) * 100);  
+        };
+        return [o, r, s, a]; 
+    }
 
     const Io = class extends Se {
         constructor(e) {
