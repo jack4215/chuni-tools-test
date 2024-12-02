@@ -851,6 +851,9 @@
   
       r.map(e => {
           // 判斷 newV
+          if (e.dg === undefined) {
+            e.dg = 0; // 初始化為 0，防止未定義
+        }
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
           if (songData && songData.newV !== undefined) {
               e.newV = songData.newV;  // 保留 newV 的原始數值（如 0, 1, 2）
@@ -919,7 +922,6 @@
   
           e.opMax = Ve(e);
           e.opPercent = (100 * e.op) / e.opMax;
-          e.dg = e.dg !== undefined ? e.dg : 0;
           e.rank = Fe(e.score);
       });
   
