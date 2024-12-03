@@ -2719,7 +2719,26 @@
           }
         };
   
-        
+        function De(t) {
+          e[13](t)
+        }
+        void 0 !== e[4] && (Ae.value = e[4]), T = new Tn({
+          props: Ae
+        }), Q.push((() => we(T, "value", Ue)));
+        let Le = {
+          label: e[0]("settings.data.playcount")
+        };
+        void 0 !== e[5] && (Le.checked = e[5]), L = new Nn({
+          props: Le
+        }), Q.push((() => we(L, "checked", De)));
+        let Pe = e[5] && br(e);
+  
+        function Oe(t) {
+          e[14](t)
+        }
+        let _e = {
+          label: e[0]("settings.data.showScoreDiff")
+        };
   
         function Ie(t) {
           e[15](t)
@@ -2770,6 +2789,12 @@
               dirty: t,
               ctx: e
             }), !C && 16 & t && (C = !0, r.value = e[4], oe((() => C = !1))), T.$set(r), (!de || 1 & t) && Se !== (Se = e[0]("settings.data.overpower.notify") + "") && (U.innerHTML = Se);
+            const s = {};
+            1 & t && (s.label = e[0]("settings.data.playcount")), !_ && 32 & t && (_ = !0, s.checked = e[5], oe((() => _ = !1))), L.$set(s), e[5] ? Pe ? (Pe.p(e, t), 32 & t && ge(Pe, 1)) : (Pe = br(e), Pe.c(), ge(Pe, 1), Pe.m(o, R)) : Pe && (pe(), me(Pe, 1, 1, (() => {
+              Pe = null
+            })), he());
+            const a = {};
+            1 & t && (a.label = e[0]("settings.data.showScoreDiff")), !B && 64 & t && (B = !0, a.checked = e[6], oe((() => B = !1))), F.$set(a), (!de || 1 & t) && Te !== (Te = e[0]("settings.ui.title") + "") && (G.innerHTML = Te);
             const i = {};
             1 & t && (i.label = e[0]("settings.ui.locale")), 536870912 & t && (i.$$scope = {
               dirty: t,
