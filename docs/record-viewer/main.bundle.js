@@ -850,8 +850,27 @@
             o = t, // 傳入的對應表
             s = []; // 未找到的歌曲集合
   
+      // 計算每首歌的最大 op 並設置 dg
+      const calculateDg = (records) => {
+          const maxOpMap = new Map();
+  
+          // 計算每首歌的最大 op
+          records.forEach(song => {
+              const { title, op } = song;
+              if (!maxOpMap.has(title) || op > maxOpMap.get(title)) {
+                  maxOpMap.set(title, op);
+              }
+          });
+  
+          // 設置 dg
+          records.forEach(song => {
+              const maxOp = maxOpMap.get(song.title);
+              song.dg = song.op === maxOp ? 1 : 0; // 當前 op 為最大值時設置 dg = 1
+          });
+      };
+  
+      // 處理數據
       r.map(e => {
-          // 判斷 newV
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
           if (songData && songData.newV !== undefined) {
               e.newV = songData.newV;
@@ -920,10 +939,16 @@
   
           e.opMax = Ve(e);
           e.opPercent = (100 * e.op) / e.opMax;
-         // e.dg = 0;
           e.rank = Fe(e.score);
       });
   
+      // 設置 dg
+      calculateDg(r);
+  
+      // 通知資料變更
+      n(0, r);
+  
+      // 排序
       r.sort(Je.default);
       r.map((e, index) => {
           e.order = index + 1;
@@ -931,6 +956,7 @@
   
       return r;
   }
+  
   
     c(De, (() => {
       try {
