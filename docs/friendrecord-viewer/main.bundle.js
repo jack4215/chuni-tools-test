@@ -3318,7 +3318,7 @@
           _ = L(t);
   
         function R(e, t) {
-          return e[3] ? qr : Vr
+          return Vr
         }
         let z = R(t),
           F = z(t),
