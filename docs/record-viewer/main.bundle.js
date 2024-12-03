@@ -3562,11 +3562,11 @@
         }, {
           display: "overpowerPercent",
           sort: "opp",
-          condition: "percentage" || "dgpercentage" == l
+          condition: "percentage" == l || "dgpercentage" == l
         }, {
           display: "overpower",
           sort: "op",
-          condition: "value" || "dgvalue"  == l
+          condition: "value" == l || "dgvalue" == l
         }, {
           display: "rank",
           sort: "score",
