@@ -2654,9 +2654,9 @@
         min: 1,
         step: (currentValue) => {
             if (currentValue >= 1 && currentValue < 10) {
-                return 0.5;
+                return .5;
             } else if (currentValue >= 10 && currentValue <= 15.5) {
-                return 0.1;
+                return .1;
             } else {
                 throw new Error("Value out of range.");
             }
