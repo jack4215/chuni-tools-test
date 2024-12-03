@@ -1952,6 +1952,79 @@
         }
       }
     }
+    function linearToNonLinear(sliderValue) {
+      // 滑桿值範圍為 0 ~ 100
+      if (sliderValue <= 66.7) {
+          // 將 0 ~ 66.7 映射為 1 ~ 10（壓縮）
+          return 1 + (9 * (sliderValue / 66.7));
+      } else {
+          // 將 66.7 ~ 100 映射為 10 ~ 15.5（擴展）
+          return 10 + (5.5 * ((sliderValue - 66.7) / 33.3));
+      }
+  }
+  
+  function nonLinearToLinear(actualValue) {
+      // 將實際值（1 ~ 15.5）反映射為滑桿值（0 ~ 100）
+      if (actualValue <= 10) {
+          return ((actualValue - 1) / 9) * 66.7;
+      } else {
+          return 66.7 + ((actualValue - 10) / 5.5) * 33.3;
+      }
+  }
+  function handleSliderChange(event, isLow) {
+    const sliderValue = parseFloat(event.target.value); // 滑桿值
+    const actualValue = linearToNonLinear(sliderValue); // 非線性映射
+
+    if (isLow) {
+        // 更新低值數字框
+        lowValue = actualValue.toFixed(1);
+    } else {
+        // 更新高值數字框
+        highValue = actualValue.toFixed(1);
+    }
+
+    // 同步更新背景漸層和滑桿位置
+    updateSliderBackground();
+    updateSliderPositions();
+}
+
+function handleNumberChange(event, isLow) {
+    const actualValue = parseFloat(event.target.value); // 數字框值
+    const sliderValue = nonLinearToLinear(actualValue); // 反映射為滑桿值
+
+    if (isLow) {
+        lowSlider.value = sliderValue.toFixed(1);
+    } else {
+        highSlider.value = sliderValue.toFixed(1);
+    }
+
+    // 同步更新背景漸層和滑桿位置
+    updateSliderBackground();
+    updateSliderPositions();
+}
+function updateSliderBackground() {
+  const lowPercent = nonLinearToLinear(parseFloat(lowValue)) / 100;
+  const highPercent = nonLinearToLinear(parseFloat(highValue)) / 100;
+
+  sliderBackground.style.background = `linear-gradient(
+      to right,
+      var(--theme-border) 0%,
+      var(--theme-border) ${lowPercent * 100}%,
+      var(--theme-control) ${lowPercent * 100}%,
+      var(--theme-control) ${highPercent * 100}%,
+      var(--theme-border) ${highPercent * 100}%,
+      var(--theme-border) 100%
+  )`;
+}
+
+function updateSliderPositions() {
+  const lowPercent = nonLinearToLinear(parseFloat(lowValue));
+  const highPercent = nonLinearToLinear(parseFloat(highValue));
+
+  lowSlider.style.left = `calc(${lowPercent}% - 0rem)`;
+  highSlider.style.left = `calc(${highPercent}% - 3rem)`;
+}
+
 
     function An(e, t, n) {
       let r, o, {
