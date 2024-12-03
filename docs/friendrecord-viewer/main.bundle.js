@@ -2325,31 +2325,7 @@
           }
         }
       }
-  
-      function br(e) {
-        let t, n, r, o, s = e[0]("settings.data.playcount.notify") + "";
-        return t = new Kn({}), {
-          c() {
-            $e(t.$$.fragment), n = D(), r = H("div"), z(r, "color", "var(--theme-text-dim)"), z(r, "margin", ".5em auto")
-          },
-          m(e, a) {
-            xe(t, e, a), M(e, n, a), M(e, r, a), r.innerHTML = s, o = !0
-          },
-          p(e, t) {
-            (!o || 1 & t) && s !== (s = e[0]("settings.data.playcount.notify") + "") && (r.innerHTML = s)
-          },
-          i(e) {
-            o || (ge(t.$$.fragment, e), o = !0)
-          },
-          o(e) {
-            me(t.$$.fragment, e), o = !1
-          },
-          d(e) {
-            ke(t, e), e && E(n), e && E(r)
-          }
-        }
-      }
-  
+    
       function yr(t) {
         let n, r, o, s = yt.get(t[21]) + "";
         return {
