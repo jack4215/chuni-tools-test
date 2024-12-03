@@ -1934,97 +1934,130 @@
     }
     
     function Un(t) {
+      // 非線性映射函數
+      function mapPercentToValue(percent) {
+        if (percent <= 40) {
+          return 1 + (percent / 40) * (10 - 1);
+        } else {
+          return 10 + ((percent - 40) / 60) * (15.5 - 10);
+        }
+      }
+    
+      function mapValueToPercent(value) {
+        if (value <= 10) {
+          return ((value - 1) / (10 - 1)) * 40;
+        } else {
+          return 40 + ((value - 10) / (15.5 - 10)) * 60;
+        }
+      }
+    
       let n, r, o, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w;
       return {
         c() {
-          n = H("div"), r = H("span"), o = D(), a = H("div"), i = H("div"), l = H("input"), c = D(), d = H("div"), u = H("input"), f = D(), p = H("div"), h = H("div"), g = D(), m = H("input"), v = D(), b = H("input"), l.value = t[6], O(l, "type", "number"), O(l, "min", t[3]), O(l, "max", t[4]), O(l, "step", t[5]), O(l, "inputmode", "decimal"), O(l, "class", "svelte-1aafgfe"), O(i, "class", "low svelte-1aafgfe"), z(i, "left", "calc((100% - 3rem) * " + t[9] + " / 100)"), u.value = t[7], O(u, "type", "number"), O(u, "min", t[3]), O(u, "max", t[4]), O(u, "step", t[5]), O(u, "inputmode", "decimal"), O(u, "class", "svelte-1aafgfe"), O(d, "class", "high svelte-1aafgfe"), z(d, "left", "calc((100% - 3rem) * " + t[8] + " / 100)"), O(a, "class", "indicators svelte-1aafgfe"), O(h, "class", "slider-bg svelte-1aafgfe"), z(h, "background", "linear-gradient( to right, var(--theme-border) 0%, var(--theme-border) " + (t[9] - 1) + "%, var(--theme-control) " + (t[9] - 1) + "%, var(--theme-control) " + (t[8] + 1) + "%, var(--theme-border) " + (t[8] + 1) + "%, var(--theme-border) 100% )"), O(m, "class", "low svelte-1aafgfe"), O(m, "type", "range"), O(m, "min", t[3]), O(m, "max", t[4]), O(m, "step", t[5]), O(b, "class", "high svelte-1aafgfe"), O(b, "type", "range"), O(b, "min", t[3]), O(b, "max", t[4]), O(b, "step", t[5]), O(p, "class", "slider svelte-1aafgfe"), O(n, "class", "wrapper svelte-1aafgfe")
+          n = H("div"), 
+          r = H("span"), 
+          o = D(), 
+          a = H("div"), 
+          i = H("div"), 
+          l = H("input"), 
+          c = D(), 
+          d = H("div"), 
+          u = H("input"), 
+          f = D(), 
+          p = H("div"), 
+          h = H("div"), 
+          g = D(), 
+          m = H("input"), 
+          v = D(), 
+          b = H("input");
+    
+          l.value = t[6];
+          O(l, "type", "number");
+          O(l, "min", t[3]);
+          O(l, "max", t[4]);
+          O(l, "step", t[5]);
+          O(l, "inputmode", "decimal");
+          O(l, "class", "svelte-1aafgfe");
+    
+          O(i, "class", "low svelte-1aafgfe");
+          z(i, "left", "calc((100% - 3rem) * " + t[9] + " / 100)");
+    
+          u.value = t[7];
+          O(u, "type", "number");
+          O(u, "min", t[3]);
+          O(u, "max", t[4]);
+          O(u, "step", t[5]);
+          O(u, "inputmode", "decimal");
+          O(u, "class", "svelte-1aafgfe");
+    
+          O(d, "class", "high svelte-1aafgfe");
+          z(d, "left", "calc((100% - 3rem) * " + t[8] + " / 100)");
+    
+          O(a, "class", "indicators svelte-1aafgfe");
+    
+          O(h, "class", "slider-bg svelte-1aafgfe");
+          z(h, "background", "linear-gradient( to right, var(--theme-border) 0%, var(--theme-border) " + (t[9] - 1) + "%, var(--theme-control) " + (t[9] - 1) + "%, var(--theme-control) " + (t[8] + 1) + "%, var(--theme-border) " + (t[8] + 1) + "%, var(--theme-border) 100% )");
+    
+          O(m, "class", "low svelte-1aafgfe");
+          O(m, "type", "range");
+          O(m, "min", 0); // 設定為百分比範圍
+          O(m, "max", 100);
+          O(m, "step", 0.1);
+          R(m, mapValueToPercent(t[6])); // 初始化為百分比值
+    
+          O(b, "class", "high svelte-1aafgfe");
+          O(b, "type", "range");
+          O(b, "min", 0); // 設定為百分比範圍
+          O(b, "max", 100);
+          O(b, "step", 0.1);
+          R(b, mapValueToPercent(t[7]));
+    
+          O(p, "class", "slider svelte-1aafgfe");
+          O(n, "class", "wrapper svelte-1aafgfe");
         },
         m(e, s) {
-          M(e, n, s), k(n, r), r.innerHTML = t[2], k(n, o), k(n, a), k(a, i), k(i, l), k(a, c), k(a, d), k(d, u), k(n, f), k(n, p), k(p, h), k(p, g), k(p, m), R(m, t[6]), k(p, v), k(p, b), R(b, t[7]), y || (w = [P(l, "change", t[10]), P(u, "change", t[11]), P(m, "change", t[12]), P(m, "input", t[12]), P(m, "change", t[13]), P(m, "input", t[14]), P(b, "change", t[15]), P(b, "input", t[15]), P(b, "change", t[16]), P(b, "input", t[17])], y = !0)
+          M(e, n, s);
+          k(n, r);
+          r.innerHTML = t[2];
+          k(n, o);
+          k(n, a);
+          k(a, i);
+          k(i, l);
+          k(a, c);
+          k(a, d);
+          k(d, u);
+          k(n, f);
+          k(n, p);
+          k(p, h);
+          k(p, g);
+          k(p, m);
+          R(m, mapValueToPercent(t[6]));
+          k(p, v);
+          k(p, b);
+          R(b, mapValueToPercent(t[7]));
+          y || (w = [
+            P(m, "input", (event) => {
+              t[6] = mapPercentToValue(parseFloat(event.target.value));
+              console.log("低值滑桿更新為：", t[6]);
+            }),
+            P(b, "input", (event) => {
+              t[7] = mapPercentToValue(parseFloat(event.target.value));
+              console.log("高值滑桿更新為：", t[7]);
+            })
+          ], y = !0);
         },
         p(e, [t]) {
-          4 & t && (r.innerHTML = e[2]), 64 & t && l.value !== e[6] && (l.value = e[6]), 8 & t && O(l, "min", e[3]), 16 & t && O(l, "max", e[4]), 32 & t && O(l, "step", e[5]), 512 & t && z(i, "left", "calc((100% - 3rem) * " + e[9] + " / 100)"), 128 & t && u.value !== e[7] && (u.value = e[7]), 8 & t && O(u, "min", e[3]), 16 & t && O(u, "max", e[4]), 32 & t && O(u, "step", e[5]), 256 & t && z(d, "left", "calc((100% - 3rem) * " + e[8] + " / 100)"), 768 & t && z(h, "background", "linear-gradient( to right, var(--theme-border) 0%, var(--theme-border) " + (e[9] - 1) + "%, var(--theme-control) " + (e[9] - 1) + "%, var(--theme-control) " + (e[8] + 1) + "%, var(--theme-border) " + (e[8] + 1) + "%, var(--theme-border) 100% )"), 8 & t && O(m, "min", e[3]), 16 & t && O(m, "max", e[4]), 32 & t && O(m, "step", e[5]), 64 & t && R(m, e[6]), 8 & t && O(b, "min", e[3]), 16 & t && O(b, "max", e[4]), 32 & t && O(b, "step", e[5]), 128 & t && R(b, e[7])
+          64 & t && R(m, mapValueToPercent(e[6])); // 更新滑桿低值百分比
+          128 & t && R(b, mapValueToPercent(e[7])); // 更新滑桿高值百分比
         },
         i: e,
         o: e,
         d(e) {
-          e && E(n), y = !1, s(w)
+          e && E(n), y = !1, s(w);
         }
-      }
+      };
     }
-    function linearToNonLinear(sliderValue) {
-      // 滑桿值範圍為 0 ~ 100
-      if (sliderValue <= 66.7) {
-          // 將 0 ~ 66.7 映射為 1 ~ 10（壓縮）
-          return 1 + (9 * (sliderValue / 66.7));
-      } else {
-          // 將 66.7 ~ 100 映射為 10 ~ 15.5（擴展）
-          return 10 + (5.5 * ((sliderValue - 66.7) / 33.3));
-      }
-  }
-  
-  function nonLinearToLinear(actualValue) {
-      // 將實際值（1 ~ 15.5）反映射為滑桿值（0 ~ 100）
-      if (actualValue <= 10) {
-          return ((actualValue - 1) / 9) * 66.7;
-      } else {
-          return 66.7 + ((actualValue - 10) / 5.5) * 33.3;
-      }
-  }
-  function handleSliderChange(event, isLow) {
-    const sliderValue = parseFloat(event.target.value); // 滑桿值
-    const actualValue = linearToNonLinear(sliderValue); // 非線性映射
-
-    if (isLow) {
-        // 更新低值數字框
-        lowValue = actualValue.toFixed(1);
-    } else {
-        // 更新高值數字框
-        highValue = actualValue.toFixed(1);
-    }
-
-    // 同步更新背景漸層和滑桿位置
-    updateSliderBackground();
-    updateSliderPositions();
-}
-
-function handleNumberChange(event, isLow) {
-    const actualValue = parseFloat(event.target.value); // 數字框值
-    const sliderValue = nonLinearToLinear(actualValue); // 反映射為滑桿值
-
-    if (isLow) {
-        lowSlider.value = sliderValue.toFixed(1);
-    } else {
-        highSlider.value = sliderValue.toFixed(1);
-    }
-
-    // 同步更新背景漸層和滑桿位置
-    updateSliderBackground();
-    updateSliderPositions();
-}
-function updateSliderBackground() {
-  const lowPercent = nonLinearToLinear(parseFloat(lowValue)) / 100;
-  const highPercent = nonLinearToLinear(parseFloat(highValue)) / 100;
-
-  sliderBackground.style.background = `linear-gradient(
-      to right,
-      var(--theme-border) 0%,
-      var(--theme-border) ${lowPercent * 100}%,
-      var(--theme-control) ${lowPercent * 100}%,
-      var(--theme-control) ${highPercent * 100}%,
-      var(--theme-border) ${highPercent * 100}%,
-      var(--theme-border) 100%
-  )`;
-}
-
-function updateSliderPositions() {
-  const lowPercent = nonLinearToLinear(parseFloat(lowValue));
-  const highPercent = nonLinearToLinear(parseFloat(highValue));
-
-  lowSlider.style.left = `calc(${lowPercent}% - 0rem)`;
-  highSlider.style.left = `calc(${highPercent}% - 3rem)`;
-}
-
+    
 
     function An(e, t, n) {
       let r, o, {
