@@ -845,7 +845,7 @@
     }
 
     function Ge(e, t, n) {
-      const r = e,o = t,s = [];
+      const r = e, o = t, s = [];  
       r.map(e => {
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
           if (songData && songData.newV !== undefined) {
@@ -866,7 +866,7 @@
           if (o[e.title] === undefined) {
               e.title = Xe(e.title);
           }
-          songData = o[e.title];
+          songData = o[e.title]; 
           if (songData === undefined) {
               s.push(e);
               e.const = -1;
@@ -898,11 +898,11 @@
   
               let bonus = { AJ: 2000, FC: 1000, "": 0 }[e.clear],
                   baseConst = Math.floor(1e4 * e.const),
-                  opRating = e.score < 1007500
-                      ? e.rawRating
+                  opRating = e.score < 1007500 
+                      ? e.rawRating 
                       : baseConst + 20000 + 3 * (e.score - 1007500);
-              opRating = e.score >= 975e3
-                  ? 10 * Math.floor(opRating / 10)
+              opRating = e.score >= 975e3 
+                  ? 10 * Math.floor(opRating / 10) 
                   : 100 * Math.floor(opRating / 100);
               return 5 * (opRating + bonus);
           }(e);
@@ -949,7 +949,7 @@
       });
       return r;
     }
-
+  
     c(De, (() => {
       try {
         Re(window.opener, Le)("saveConfig", {
@@ -4058,7 +4058,7 @@
           if (3 & e.$$.dirty) n(2, s = (r / o) * 100);  
       };
       return [o, r, s, a]; 
-    }
+  }
 
     const Io = class extends Se {
         constructor(e) {
