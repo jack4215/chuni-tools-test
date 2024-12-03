@@ -2652,13 +2652,11 @@
         label: e[0]("settings.filter.const"),
         max: 15.5,
         min: 1,
-        step: (currentValue) => {
-            if (currentValue >= 1 && currentValue < 10) {
-                return .5;
-            } else if (currentValue >= 10 && currentValue <= 15.5) {
-                return .1;
+        step: function (value) {
+            if (value < 10) {
+                return 0.5;
             } else {
-                throw new Error("Value out of range.");
+                return 0.1;
             }
         }
     };
