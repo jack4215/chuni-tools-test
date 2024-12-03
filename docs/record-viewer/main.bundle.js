@@ -923,14 +923,14 @@
          // e.dg = 0;
           e.rank = Fe(e.score);
       });
-      if (r && s.length) {
+      if (n && s.length) {
         const e = {};
         s.forEach((t => {
-            var r;
-            e[r = t.title] ?? (e[r] = []), e[t.title].push(t.difficulty)
+            var n;
+            e[n = t.title] ?? (e[n] = []), e[t.title].push(t.difficulty)
         }));
         console.log(e);
-        alert(r.replace("{{songs}}", Object.entries(e)
+        alert(n.replace("{{songs}}", Object.entries(e)
             .map(([e, t]) => `    ${e} ${t.join(",")}`)
             .join("\n"))
         );
