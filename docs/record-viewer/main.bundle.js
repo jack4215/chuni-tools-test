@@ -2652,8 +2652,16 @@
         label: e[0]("settings.filter.const"),
         max: 15.5,
         min: 1,
-        step: .1
-      };
+        step: (currentValue) => {
+            if (currentValue >= 1 && currentValue < 10) {
+                return 0.5;
+            } else if (currentValue >= 10 && currentValue <= 15.5) {
+                return 0.1;
+            } else {
+                throw new Error("Value out of range.");
+            }
+        }
+    };
       void 0 !== e[1] && (Ne.high = e[1]), void 0 !== e[2] && (Ne.low = e[2]), f = new Dn({
         props: Ne
       }), Q.push((() => we(f, "high", Me))), Q.push((() => we(f, "low", Ee))), m = new Fn({}), b = new Xn({});
