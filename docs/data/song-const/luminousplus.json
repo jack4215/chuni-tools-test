@@ -23,7 +23,14 @@
     "genre": 2,
     "newV": 0
   },
-  
+  "HECATONCHEIR": {
+    "BAS": 3,
+    "ADV": 7,
+    "EXP": 11.8,
+    "MAS": 14.1,
+    "genre": 9,
+    "newV": 0
+  },
   "B.B.K.K.B.K.K.": {
     "BAS": 3,
     "ADV": 5,
