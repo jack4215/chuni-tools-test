@@ -3277,13 +3277,13 @@
             t = H("td"), t.innerHTML = '<span class="svelte-1gjhsjp">  </span>', O(t, "class", "pc-hidden svelte-1gjhsjp"), B(t, "disabled", e[5])
           },
           m(o, s) {
-            M(o, t, s)
+            M(o, t, s), n || (r = P(t, "click", e[8]), n = !0)
           },
           p(e, n) {
             32 & n && B(t, "disabled", e[5])
           },
           d(e) {
-            e && E(t)
+            e && E(t), n = !1, r()
           }
         }
       }
