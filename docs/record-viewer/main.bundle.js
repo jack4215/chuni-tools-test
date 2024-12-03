@@ -844,7 +844,7 @@
       return e.replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#039;/g, "'")
     }
 
-    function Ge(e, t, n) {
+    function Ge(e, t, n, q) {
       console.log(e);
       console.log(n);
       const r = e, // 數據列表
@@ -947,7 +947,7 @@
       calculateDg(r);
   
       // 通知資料變更
-      n(0, r);
+      q(0, r);
   
       // 排序
       r.sort(Je.default);
