@@ -925,7 +925,7 @@
       });
       r.forEach(song => {
           const { maxOp, maxOpMax } = titleMap.get(song.title);
-          if (song.op === maxOp && song.opMax === maxOpMax) {
+          if (song.op === maxOp) {
               song.dg = 1;
           } else if (song.opMax === maxOpMax) {
               song.dg = 2;
