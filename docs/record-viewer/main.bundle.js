@@ -2654,9 +2654,9 @@
         min: 1,
         step: function (value) {
             if (value < 10) {
-                return 0.5;
+                return .5;
             } else {
-                return 0.1;
+                return .1;
             }
         }
     };
