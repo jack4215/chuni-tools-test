@@ -74,7 +74,23 @@
     "genre": 6,
     "newV": 0
   },
-
+  "taboo tears you up": {
+    "BAS": 3,
+    "ADV": 6,
+    "EXP": 9.5,
+    "MAS": 13.8,
+    "ULT": 14.7,
+    "genre": 3,
+    "newV": 0
+  },
+  "ナイト・オブ・ナイツ": {
+    "BAS": 3,
+    "ADV": 6,
+    "EXP": 9,
+    "MAS": 12.2,
+    "genre": 3,
+    "newV": 0
+  },
   "一触即発☆禅ガール": {
     "BAS": 3,
     "ADV": 6,
