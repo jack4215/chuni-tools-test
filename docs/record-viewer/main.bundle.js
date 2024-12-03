@@ -2651,7 +2651,7 @@
       let Ne = {
         label: e[0]("settings.filter.const"),
         max: 15.5,
-        min: 1,
+        min: 10,
         step: .1
     };
       void 0 !== e[1] && (Ne.high = e[1]), void 0 !== e[2] && (Ne.low = e[2]), f = new Dn({
