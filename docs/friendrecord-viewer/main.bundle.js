@@ -3578,8 +3578,8 @@
             condition: "hide" == l,
             nocur: !i
           }, {
-            display: i ? "scoreDiff" : "score",
-            sort: i ? "scoreDiff" : "score"
+            display: "score",
+            sort: "score"
           }, {
             display: "rating",
             sort: "rating"
