@@ -1928,47 +1928,48 @@
         }, Cn)
       }
     };
-    
+    // 將滑桿百分比映射到實際值
+function mapPercentToValue(percent) {
+  if (percent <= 40) {
+    return 1 + (percent / 40) * (10 - 1); // 線性縮放 1 到 10
+  } else {
+    return 10 + ((percent - 40) / 60) * (15.5 - 10); // 線性縮放 10 到 15.5
+  }
+}
+
+// 將實際值映射到滑桿百分比
+function mapValueToPercent(value) {
+  if (value <= 10) {
+    return ((value - 1) / (10 - 1)) * 40;
+  } else {
+    return 40 + ((value - 10) / (15.5 - 10)) * 60;
+  }
+}
+
     function Hn(e) {
       j(e, "svelte-1aafgfe", ".wrapper.svelte-1aafgfe.svelte-1aafgfe{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:0.5rem}.indicators.svelte-1aafgfe.svelte-1aafgfe{height:0.8rem;position:relative}.indicators.svelte-1aafgfe div.svelte-1aafgfe{background-color:var(--theme-bg-sub);height:1.6rem;width:1.6rem;border-radius:40%;display:flex;justify-content:center;align-items:center;position:absolute;border:var(--theme-border) 0.2rem solid}.indicators.svelte-1aafgfe div.low.svelte-1aafgfe{border-bottom-right-radius:0;transform:translateX(-0.4rem)}.indicators.svelte-1aafgfe div.high.svelte-1aafgfe{border-bottom-left-radius:0;transform:translateX(1.6rem)}.slider.svelte-1aafgfe.svelte-1aafgfe{display:flex;-ms-flex-direction:column;flex-direction:column;justify-content:center;width:100%;height:3.5rem;position:relative}.slider-bg.svelte-1aafgfe.svelte-1aafgfe{height:0.4rem;width:calc(100% - 2.6rem);margin-left:1.4rem;background-color:var(--theme-border);position:absolute;border-radius:0.2rem}input[type=number].svelte-1aafgfe.svelte-1aafgfe{background-color:transparent;border:none;color:inherit;font-family:inherit;max-width:150%;text-align:center;-moz-appearance:textfield;appearance:textfield}input.svelte-1aafgfe.svelte-1aafgfe::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}input[type=range].svelte-1aafgfe.svelte-1aafgfe{-webkit-appearance:none;appearance:none;height:0;width:calc(100% - 1.5rem);position:absolute;border-radius:0.2rem;pointer-events:none}input[type=range].low.svelte-1aafgfe.svelte-1aafgfe::-webkit-slider-thumb{border-radius:50% 0 0 50%}input[type=range].low.svelte-1aafgfe.svelte-1aafgfe::-moz-range-thumb{border-radius:50% 0 0 50%}input[type=range].high.svelte-1aafgfe.svelte-1aafgfe{margin-left:1.6rem}input[type=range].svelte-1aafgfe.svelte-1aafgfe::-webkit-slider-thumb{z-index:1;-webkit-appearance:none;pointer-events:all;width:1.5rem;height:2rem;background-color:var(--theme-text-dim);border-radius:0 50% 50% 0;cursor:pointer;transition:0.2s}input[type=range].svelte-1aafgfe.svelte-1aafgfe::-webkit-slider-thumb:hover{background-color:var(--theme-text)}input[type=range].svelte-1aafgfe.svelte-1aafgfe::-webkit-slider-thumb:active{-webkit-box-shadow:0 0 0.5rem var(--theme-text-dim);box-shadow:0 0 0.5rem var(--theme-text-dim)}input[type=range].svelte-1aafgfe.svelte-1aafgfe::-moz-range-thumb{z-index:1;-webkit-appearance:none;pointer-events:all;width:1.5rem;height:2rem;background-color:var(--theme-text-dim);border-radius:0 50% 50% 0;cursor:pointer;transition:0.2s}input[type=range].svelte-1aafgfe.svelte-1aafgfe::-moz-range-thumb:hover{background-color:var(--theme-text)}input[type=range].svelte-1aafgfe.svelte-1aafgfe::-moz-range-thumb:active{-webkit-box-shadow:0 0 0.5rem var(--theme-text-dim);box-shadow:0 0 0.5rem var(--theme-text-dim)}input[type=range].svelte-1aafgfe.svelte-1aafgfe:focus-visible{outline:none}input[type=range].svelte-1aafgfe.svelte-1aafgfe:focus-visible::-webkit-slider-thumb{outline:var(--theme-border) auto 1px}input[type=range].svelte-1aafgfe.svelte-1aafgfe:focus-visible::-moz-range-thumb{outline:var(--theme-border) auto 1px}")
     }
     
     function Un(t) {
-      // 非線性映射函數
-      function mapPercentToValue(percent) {
-        if (percent <= 40) {
-          return 1 + (percent / 40) * (10 - 1);
-        } else {
-          return 10 + ((percent - 40) / 60) * (15.5 - 10);
-        }
-      }
-    
-      function mapValueToPercent(value) {
-        if (value <= 10) {
-          return ((value - 1) / (10 - 1)) * 40;
-        } else {
-          return 40 + ((value - 10) / (15.5 - 10)) * 60;
-        }
-      }
-    
       let n, r, o, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w;
+    
       return {
         c() {
-          n = H("div"), 
-          r = H("span"), 
-          o = D(), 
-          a = H("div"), 
-          i = H("div"), 
-          l = H("input"), 
-          c = D(), 
-          d = H("div"), 
-          u = H("input"), 
-          f = D(), 
-          p = H("div"), 
-          h = H("div"), 
-          g = D(), 
-          m = H("input"), 
-          v = D(), 
+          n = H("div");
+          r = H("span");
+          o = D();
+          a = H("div");
+          i = H("div");
+          l = H("input");
+          c = D();
+          d = H("div");
+          u = H("input");
+          f = D();
+          p = H("div");
+          h = H("div");
+          g = D();
+          m = H("input");
+          v = D();
           b = H("input");
     
           l.value = t[6];
@@ -1994,23 +1995,20 @@
           z(d, "left", "calc((100% - 3rem) * " + t[8] + " / 100)");
     
           O(a, "class", "indicators svelte-1aafgfe");
-    
           O(h, "class", "slider-bg svelte-1aafgfe");
-          z(h, "background", "linear-gradient( to right, var(--theme-border) 0%, var(--theme-border) " + (t[9] - 1) + "%, var(--theme-control) " + (t[9] - 1) + "%, var(--theme-control) " + (t[8] + 1) + "%, var(--theme-border) " + (t[8] + 1) + "%, var(--theme-border) 100% )");
+          z(h, "background", "linear-gradient(to right, var(--theme-border) 0%, var(--theme-border) " + (t[9] - 1) + "%, var(--theme-control) " + (t[9] - 1) + "%, var(--theme-control) " + (t[8] + 1) + "%, var(--theme-border) " + (t[8] + 1) + "%, var(--theme-border) 100%)");
     
           O(m, "class", "low svelte-1aafgfe");
           O(m, "type", "range");
-          O(m, "min", 0); // 設定為百分比範圍
+          O(m, "min", 0); // 滑桿的百分比範圍
           O(m, "max", 100);
           O(m, "step", 0.1);
-          R(m, mapValueToPercent(t[6])); // 初始化為百分比值
     
           O(b, "class", "high svelte-1aafgfe");
           O(b, "type", "range");
-          O(b, "min", 0); // 設定為百分比範圍
+          O(b, "min", 0);
           O(b, "max", 100);
           O(b, "step", 0.1);
-          R(b, mapValueToPercent(t[7]));
     
           O(p, "class", "slider svelte-1aafgfe");
           O(n, "class", "wrapper svelte-1aafgfe");
@@ -2031,30 +2029,49 @@
           k(p, h);
           k(p, g);
           k(p, m);
-          R(m, mapValueToPercent(t[6]));
+          R(m, mapValueToPercent(t[6])); // 初始化低滑桿值
           k(p, v);
           k(p, b);
-          R(b, mapValueToPercent(t[7]));
-          y || (w = [
-            P(m, "input", (event) => {
-              t[6] = mapPercentToValue(parseFloat(event.target.value));
-              console.log("低值滑桿更新為：", t[6]);
-            }),
-            P(b, "input", (event) => {
-              t[7] = mapPercentToValue(parseFloat(event.target.value));
-              console.log("高值滑桿更新為：", t[7]);
-            })
-          ], y = !0);
+          R(b, mapValueToPercent(t[7])); // 初始化高滑桿值
+    
+          y ||
+            (w = [
+              P(l, "change", t[10]),
+              P(u, "change", t[11]),
+              P(m, "input", (e) => {
+                const percent = parseFloat(e.target.value);
+                t[6] = mapPercentToValue(percent); // 更新實際值
+              }),
+              P(m, "change", (e) => {
+                const percent = parseFloat(e.target.value);
+                t[6] = mapPercentToValue(percent); // 確認低滑桿值
+              }),
+              P(b, "input", (e) => {
+                const percent = parseFloat(e.target.value);
+                t[7] = mapPercentToValue(percent); // 更新實際值
+              }),
+              P(b, "change", (e) => {
+                const percent = parseFloat(e.target.value);
+                t[7] = mapPercentToValue(percent); // 確認高滑桿值
+              }),
+            ]),
+            (y = !0);
         },
         p(e, [t]) {
-          64 & t && R(m, mapValueToPercent(e[6])); // 更新滑桿低值百分比
-          128 & t && R(b, mapValueToPercent(e[7])); // 更新滑桿高值百分比
+          // 更新邏輯
+          4 & t && (r.innerHTML = e[2]);
+          64 & t && l.value !== e[6] && (l.value = e[6]);
+          128 & t && u.value !== e[7] && (u.value = e[7]);
+          64 & t && R(m, mapValueToPercent(e[6]));
+          128 & t && R(b, mapValueToPercent(e[7]));
         },
         i: e,
         o: e,
         d(e) {
-          e && E(n), y = !1, s(w);
-        }
+          e && E(n);
+          y = !1;
+          s(w);
+        },
       };
     }
     
