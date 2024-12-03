@@ -845,7 +845,6 @@
     }
 
     function Ge(e, t, n) {
-      console.log(e);
       const r = e,o = t,s = [];
       r.map(e => {
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
@@ -939,7 +938,6 @@
               var n;
               e[n = t.title] ?? (e[n] = []), e[t.title].push(t.difficulty);
           }));
-          console.log(e);
           alert(n.replace("{{songs}}", Object.entries(e)
               .map(([e, t]) => `    ${e} ${t.join(",")}`)
               .join("\n"))
@@ -2904,8 +2902,6 @@
 
     function Ar(e) {
       let t, n, r, o, s, a;
-      console.log("e[0]:", e[0]);
-      console.log("e[1]:", e[1]);
       return t = new Hr({
         props: {
           title: e[4]("player.best.best30"),
@@ -3479,6 +3475,8 @@
     }
 
     function so(e) {
+      console.log(e[3]);
+      console.log(e[4]);
       let t, n, r, o, s, a, i, l, c = e[3],
         d = [];
       for (let t = 0; t < c.length; t += 1) d[t] = ro(to(e, c, t));
@@ -4159,7 +4157,6 @@
     }
 
     function Vo(e) {
-      console.log(e);
       let t, n, r, o;
       t = new Lo({
         props: {
