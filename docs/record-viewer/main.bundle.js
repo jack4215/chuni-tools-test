@@ -846,12 +846,8 @@
 
     function Ge(e, t, n) {
       console.log(e);
-      const r = e, // 數據列表
-            o = t, // 傳入的對應表
-            s = []; // 未找到的歌曲集合
-    
+      const r = e,o = t,s = [];
       r.map(e => {
-          // 判斷 newV
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
           if (songData && songData.newV !== undefined) {
               e.newV = songData.newV;
@@ -871,7 +867,7 @@
           if (o[e.title] === undefined) {
               e.title = Xe(e.title);
           }
-          songData = o[e.title]; 
+          songData = o[e.title];
           if (songData === undefined) {
               s.push(e);
               e.const = -1;
@@ -881,10 +877,8 @@
               if (songData.uncertain?.includes(e.difficulty)) {
                   e.constUncertain = true;
               }
-  
               e.rawRating = function(e) {
                   let rating, baseConst = Math.floor(1e4 * e.const);
-  
                   if (e.score >= 9e5) {
                       let scoreData = Be.find(data => e.score >= data.score);
                       return Math.max(0, baseConst + scoreData.base + scoreData.ratio * (e.score - scoreData.score));
@@ -897,46 +891,48 @@
                   }
                   return Math.max(0, rating);
               }(e);
-  
               e.genre = `${songData.genre}`;
               e.rating = Math.floor(e.rawRating / 100);
           }
-  
           e.op = function(e) {
               if (e.score >= 101e4) return Ve(e);
   
               let bonus = { AJ: 2000, FC: 1000, "": 0 }[e.clear],
                   baseConst = Math.floor(1e4 * e.const),
-                  opRating = e.score < 1007500 
-                      ? e.rawRating 
+                  opRating = e.score < 1007500
+                      ? e.rawRating
                       : baseConst + 20000 + 3 * (e.score - 1007500);
-  
-              opRating = e.score >= 975e3 
-                  ? 10 * Math.floor(opRating / 10) 
+              opRating = e.score >= 975e3
+                  ? 10 * Math.floor(opRating / 10)
                   : 100 * Math.floor(opRating / 100);
-  
               return 5 * (opRating + bonus);
           }(e);
-  
           e.opMax = Ve(e);
           e.opPercent = (100 * e.op) / e.opMax;
           e.rank = Fe(e.score);
       });
-  
-      // 設置 dg 值
       const titleMap = new Map();
       r.forEach(song => {
           if (!titleMap.has(song.title)) {
-              titleMap.set(song.title, song.op);
+              titleMap.set(song.title, { maxOp: song.op, maxOpMax: song.opMax });
           } else {
-              titleMap.set(song.title, Math.max(titleMap.get(song.title), song.op));
+              const current = titleMap.get(song.title);
+              titleMap.set(song.title, {
+                  maxOp: Math.max(current.maxOp, song.op),
+                  maxOpMax: Math.max(current.maxOpMax, song.opMax)
+              });
           }
       });
-  
       r.forEach(song => {
-          song.dg = (titleMap.get(song.title) === song.op) ? 1 : 0;
+          const { maxOp, maxOpMax } = titleMap.get(song.title);
+          if (song.op === maxOp && song.opMax === maxOpMax) {
+              song.dg = 1;
+          } else if (song.opMax === maxOpMax) {
+              song.dg = 2;
+          } else {
+              song.dg = 0;
+          }
       });
-  
       if (n && s.length) {
           const e = {};
           s.forEach((t => {
@@ -948,17 +944,14 @@
               .map(([e, t]) => `    ${e} ${t.join(",")}`)
               .join("\n"))
           );
-      }  
-  
+      }
       r.sort(Je.default);
       r.map((e, index) => {
           e.order = index + 1;
       });
-  
       return r;
-  }
-  
-  
+    }
+
     c(De, (() => {
       try {
         Re(window.opener, Le)("saveConfig", {
@@ -4045,40 +4038,30 @@
           records.forEach((song) => {
               const { title, op, opMax } = song;
               if (!map.has(title)) {
-                  map.set(title, { ...song, dg: 1 });
+                  map.set(title, { op, opMax });
               } else {
                   const current = map.get(title);
-                  const isMaxOp = op > current.op;
                   map.set(title, {
-                      ...song,
                       op: Math.max(current.op, op),
-                      opMax: Math.max(current.opMax, opMax),
-                      dg: isMaxOp ? 1 : current.dg
+                      opMax: Math.max(current.opMax, opMax)
                   });
               }
           });
-          records.forEach((song) => {
-              const updated = map.get(song.title);
-              song.dg = updated.op === song.op ? 1 : song.dg;
-          });
           return Array.from(map.values());
       };
-      
-        e.$$set = (newData) => {
-            if ("records" in newData) {
-                a = newData.records; 
-                n(3, a);
-            }
-        };
-    
-        e.$$.update = () => {
-            const groupedRecords = groupByTitle(a);  
-            if (8 & e.$$.dirty) n(1, r = groupedRecords.reduce((sum, song) => sum + song.op, 0));
-            if (8 & e.$$.dirty) n(0, o = groupedRecords.reduce((sum, song) => sum + song.opMax, 0));
-            if (3 & e.$$.dirty) n(2, s = (r / o) * 100);  
-        };
-    
-        return [o, r, s, a]; 
+      e.$$set = (newData) => {
+          if ("records" in newData) {
+              a = newData.records; 
+              n(3, a);
+          }
+      };
+      e.$$.update = () => {
+          const groupedRecords = groupByTitle(a);  
+          if (8 & e.$$.dirty) n(1, r = groupedRecords.reduce((sum, song) => sum + song.op, 0));
+          if (8 & e.$$.dirty) n(0, o = groupedRecords.reduce((sum, song) => sum + song.opMax, 0));
+          if (3 & e.$$.dirty) n(2, s = (r / o) * 100);  
+      };
+      return [o, r, s, a]; 
     }
 
     const Io = class extends Se {
