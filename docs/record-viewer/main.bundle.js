@@ -3476,7 +3476,6 @@
 
     function so(e) {
       console.log(e[3]);
-      console.log(e[4]);
       let t, n, r, o, s, a, i, l, c = e[3],
         d = [];
       for (let t = 0; t < c.length; t += 1) d[t] = ro(to(e, c, t));
@@ -3540,6 +3539,7 @@
 
     function ao(e, t, n) {
       let r, o, s, a, i, l, c;
+      console.log(e);
       u(e, $t, (e => n(7, s = e))), u(e, rt, (e => n(8, a = e))), u(e, Tt, (e => n(9, i = e))), u(e, nt, (e => n(10, l = e))), u(e, wt, (e => n(5, c = e)));
       let {
         playRecord: d
