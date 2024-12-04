@@ -2657,45 +2657,35 @@
         function Ee(t) {
           e[10](t)
         }
-        // 包裝 filterDiff 的 Proxy
-        let filterDiff = JSON.parse(localStorage.getItem("filterDiff")) || {};
-
-        const filterDiffProxy = new Proxy(filterDiff, {
-          set(target, key, value) {
-            target[key] = value;
-
-            // 當 filterDiff.BAS 更新時，動態修改 Ne.min
-            if (key === "BAS") {
-              updateNe(value === false);
-            }
-
-            // 更新 localStorage
-            localStorage.setItem("filterDiff", JSON.stringify(target));
-
-            return true;
-          }
-        });
-
         // 建立初始 Ne 物件
-        let Ne = {
-          label: e[0]("settings.filter.const"),
-          max: 15.5,
-          min: 1,
-          step: 0.1
-        };
+      let Ne = {
+        label: e[0]("settings.filter.const"),
+        max: 15.5,
+        min: 1,
+        step: 0.1
+      };
 
-        // 定義更新 Ne 的函數
-        function updateNe(isBASFalse) {
-          Ne.min = isBASFalse ? 7 : 1;
-          console.log("Updated Ne:", Ne); // 觀察更新後的值
+      // 定義更新 Ne 的函數
+      function updateNe() {
+        const filterDiff = JSON.parse(localStorage.getItem("filterDiff"));
+        if (filterDiff && filterDiff.BAS === false) {
+          Ne.min = 7;
+        } else {
+          Ne.min = 1; // 如果條件不滿足，恢復預設值
         }
+        console.log("Updated Ne:", Ne); // 觀察 Ne 更新後的值
+        // 在此可以重新渲染或觸發更新邏輯
+      }
 
-        // 初始化
-        updateNe(filterDiff.BAS === false);
+      // 初始執行
+      updateNe();
 
-        // 測試更新
-        filterDiffProxy.BAS = false; // 這會自動觸發 updateNe
-
+      // 監聽 storage 事件
+      window.addEventListener("storage", (event) => {
+        if (event.key === "filterDiff") {
+          updateNe(); // 當 filterDiff 更新時，重新更新 Ne
+        }
+      });
 
         void 0 !== e[1] && (Ne.high = e[1]), void 0 !== e[2] && (Ne.low = e[2]), f = new Dn({
           props: Ne
