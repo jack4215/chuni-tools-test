@@ -1960,6 +1960,8 @@
       }
   
       function An(e, t, n) {
+        console.log(e);
+        console.log(t);
         let r, o, {
             label: s
           } = t,
@@ -2005,7 +2007,7 @@
       }
       const Dn = class extends Se {
         constructor(e) {
-          super(), je(this, e, An, Un, i, {
+          super(), je(this, e, An, Un, i,_n, {
             label: 2,
             min: 3,
             max: 4,
