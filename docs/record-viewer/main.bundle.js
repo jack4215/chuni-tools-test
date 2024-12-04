@@ -1934,7 +1934,6 @@
     }
 
     function Un(t) {
-      console.log(e[3]);
       let n, r, o, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w;
       return {
         c() {
@@ -1944,6 +1943,7 @@
           M(e, n, s), k(n, r), r.innerHTML = t[2], k(n, o), k(n, a), k(a, i), k(i, l), k(a, c), k(a, d), k(d, u), k(n, f), k(n, p), k(p, h), k(p, g), k(p, m), R(m, t[6]), k(p, v), k(p, b), R(b, t[7]), y || (w = [P(l, "change", t[10]), P(u, "change", t[11]), P(m, "change", t[12]), P(m, "input", t[12]), P(m, "change", t[13]), P(m, "input", t[14]), P(b, "change", t[15]), P(b, "input", t[15]), P(b, "change", t[16]), P(b, "input", t[17])], y = !0)
         },
         p(e, [t]) {
+          console.log(e[3]);
           4 & t && (r.innerHTML = e[2]), 64 & t && l.value !== e[6] && (l.value = e[6]), 8 & t && O(l, "min", e[3]), 16 & t && O(l, "max", e[4]), 32 & t && O(l, "step", e[5]), 512 & t && z(i, "left", "calc((100% - 3rem) * " + e[9] + " / 100)"), 128 & t && u.value !== e[7] && (u.value = e[7]), 8 & t && O(u, "min", e[3]), 16 & t && O(u, "max", e[4]), 32 & t && O(u, "step", e[5]), 256 & t && z(d, "left", "calc((100% - 3rem) * " + e[8] + " / 100)"), 768 & t && z(h, "background", "linear-gradient( to right, var(--theme-border) 0%, var(--theme-border) " + (e[9] - 1) + "%, var(--theme-control) " + (e[9] - 1) + "%, var(--theme-control) " + (e[8] + 1) + "%, var(--theme-border) " + (e[8] + 1) + "%, var(--theme-border) 100% )"), 8 & t && O(m, "min", e[3]), 16 & t && O(m, "max", e[4]), 32 & t && O(m, "step", e[5]), 64 & t && R(m, e[6]), 8 & t && O(b, "min", e[3]), 16 & t && O(b, "max", e[4]), 32 & t && O(b, "step", e[5]), 128 & t && R(b, e[7])
         },
         i: e,
