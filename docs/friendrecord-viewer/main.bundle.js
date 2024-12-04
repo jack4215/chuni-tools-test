@@ -1943,31 +1943,7 @@
         let n, r, o, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w;
         return {
           c() {
-            const t1 = 0.25; // 25% 的位置
-        const ten = 10;  // 25% 位置對應的值
-           
-        // 反向映射函數
-        const mapPercentage = (value) => {
-          if (value <= ten) {
-            // 第一段：從 ten 映射到百分比
-            return ((value - a) / (ten - a)) * t1;
-          } else {
-            // 第二段：從 max 映射到百分比
-            return t1 + ((value - ten) / (i - ten)) * (1 - t1);
-          }
-        };
-            n = H("div"), r = H("span"), o = D(), a = H("div"), i = H("div"), l = H("input"), c = D(), d = H("div"), u = H("input"), f = D(), p = H("div"), h = H("div"), g = D(), m = H("input"), v = D(), b = H("input"), l.value = t[6], O(l, "type", "number"), O(l, "min", t[3]), O(l, "max", t[4]), O(l, "step", t[5]), O(l, "inputmode", "decimal"), O(l, "class", "svelte-1aafgfe"), O(i, "class", "low svelte-1aafgfe"), z(i, "left", "calc((100% - 3rem) * " + t[9] + " / 100)"), u.value = t[7], O(u, "type", "number"), O(u, "min", t[3]), O(u, "max", t[4]), O(u, "step", t[5]), O(u, "inputmode", "decimal"), O(u, "class", "svelte-1aafgfe"), O(d, "class", "high svelte-1aafgfe"), z(d, "left", "calc((100% - 3rem) * " + t[8] + " / 100)"), O(a, "class", "indicators svelte-1aafgfe"), O(h, "class", "slider-bg svelte-1aafgfe"), z(h, "background", "linear-gradient( to right, var(--theme-border) 0%, var(--theme-border) " + (t[9] - 1) + "%, var(--theme-control) " + (t[9] - 1) + "%, var(--theme-control) " + (t[8] + 1) + "%, var(--theme-border) " + (t[8] + 1) + "%, var(--theme-border) 100% )"), O(m, "class", "low svelte-1aafgfe"),
-            O(m, "type", "range"),
-            O(m, "min", mapPercentage(t[3]) * 100), // 使用百分比範圍
-            O(m, "max", mapPercentage(t[4]) * 100), // 使用百分比範圍
-            O(m, "step", calculateStep(t[6])),      // 動態調整步進
-            
-            O(b, "class", "high svelte-1aafgfe"),
-            O(b, "type", "range"),
-            O(b, "min", mapPercentage(t[3]) * 100), // 使用百分比範圍
-            O(b, "max", mapPercentage(t[4]) * 100), // 使用百分比範圍
-            O(b, "step", calculateStep(t[7])),      // 動態調整步進
-             O(n, "class", "wrapper svelte-1aafgfe")
+            n = H("div"), r = H("span"), o = D(), a = H("div"), i = H("div"), l = H("input"), c = D(), d = H("div"), u = H("input"), f = D(), p = H("div"), h = H("div"), g = D(), m = H("input"), v = D(), b = H("input"), l.value = t[6], O(l, "type", "number"), O(l, "min", t[3]), O(l, "max", t[4]), O(l, "step", t[5]), O(l, "inputmode", "decimal"), O(l, "class", "svelte-1aafgfe"), O(i, "class", "low svelte-1aafgfe"), z(i, "left", "calc((100% - 3rem) * " + t[9] + " / 100)"), u.value = t[7], O(u, "type", "number"), O(u, "min", t[3]), O(u, "max", t[4]), O(u, "step", t[5]), O(u, "inputmode", "decimal"), O(u, "class", "svelte-1aafgfe"), O(d, "class", "high svelte-1aafgfe"), z(d, "left", "calc((100% - 3rem) * " + t[8] + " / 100)"), O(a, "class", "indicators svelte-1aafgfe"), O(h, "class", "slider-bg svelte-1aafgfe"), z(h, "background", "linear-gradient( to right, var(--theme-border) 0%, var(--theme-border) " + (t[9] - 1) + "%, var(--theme-control) " + (t[9] - 1) + "%, var(--theme-control) " + (t[8] + 1) + "%, var(--theme-border) " + (t[8] + 1) + "%, var(--theme-border) 100% )"), O(m, "class", "low svelte-1aafgfe"), O(m, "type", "range"), O(m, "min", t[3]), O(m, "max", t[4]), O(m, "step", t[5]), O(b, "class", "high svelte-1aafgfe"), O(b, "type", "range"), O(b, "min", t[3]), O(b, "max", t[4]), O(b, "step", t[5]), O(p, "class", "slider svelte-1aafgfe"), O(n, "class", "wrapper svelte-1aafgfe")
           },
           m(e, s) {
             M(e, n, s), k(n, r), r.innerHTML = t[2], k(n, o), k(n, a), k(a, i), k(i, l), k(a, c), k(a, d), k(d, u), k(n, f), k(n, p), k(p, h), k(p, g), k(p, m), R(m, t[6]), k(p, v), k(p, b), R(b, t[7]), y || (w = [P(l, "change", t[10]), P(u, "change", t[11]), P(m, "change", t[12]), P(m, "input", t[12]), P(m, "change", t[13]), P(m, "input", t[14]), P(b, "change", t[15]), P(b, "input", t[15]), P(b, "change", t[16]), P(b, "input", t[17])], y = !0)
@@ -1984,109 +1960,49 @@
       }
   
       function An(e, t, n) {
-        let r, o, { label: s } = t, 
-            { min: a } = t, 
-            { max: i } = t, 
-            { step: l } = t, 
-            { low: c } = t, 
-            { high: d } = t, 
-            f = c, 
-            p = d;
-      
-        const t1 = 0.25; // 25% 的位置
-        const ten = 10;  // 25% 位置對應的值
-      
-        // 分段映射函數
-        const mapValue = (t) => {
-          if (t <= t1) {
-            // 第一段：從 min 到 ten
-            return a + (ten - a) * (t / t1);
-          } else {
-            // 第二段：從 ten 到 max
-            return ten + (i - ten) * ((t - t1) / (1 - t1));
-          }
-        };
-      
-        // 反向映射函數
-        const mapPercentage = (value) => {
-          if (value <= ten) {
-            // 第一段：從 ten 映射到百分比
-            return ((value - a) / (ten - a)) * t1;
-          } else {
-            // 第二段：從 max 映射到百分比
-            return t1 + ((value - ten) / (i - ten)) * (1 - t1);
-          }
-        };
-      
-        return (
-          e.$$set = (e) => {
-            "label" in e && n(2, (s = e.label));
-            "min" in e && n(3, (a = e.min));
-            "max" in e && n(4, (i = e.max));
-            "step" in e && n(5, (l = e.step));
-            "low" in e && n(0, (c = e.low));
-            "high" in e && n(1, (d = e.high));
-          },
-          e.$$.update = () => {
-            // 更新滑桿百分比
-            72 & e.$$.dirty && n(9, (r = mapPercentage(f) * 100));
-            136 & e.$$.dirty && n(8, (o = mapPercentage(p) * 100));
-          },
-          [
-            c,
-            d,
-            s,
-            a,
-            i,
-            l,
-            f,
-            p,
-            o,
-            r,
-            (e) => {
-              // 低位滑桿更新邏輯
-              n(6, (f = mapValue(parseFloat(e.currentTarget.value) / 100) || f));
-              n(6, (f = Math.min(i, Math.max(a, f))));
-              if (f > p) n(7, (p = f));
-              e.currentTarget.value = (mapPercentage(f) * 100).toString();
-              n(0, (c = f));
-              n(1, (d = p));
-            },
-            (e) => {
-              // 高位滑桿更新邏輯
-              n(7, (p = mapValue(parseFloat(e.currentTarget.value) / 100) || p));
-              n(7, (p = Math.min(i, Math.max(a, p))));
-              if (p < f) n(6, (f = p));
-              e.currentTarget.value = (mapPercentage(p) * 100).toString();
-              n(0, (c = f));
-              n(1, (d = p));
-            },
-            function () {
-              f = parseFloat(this.value);
-              n(6, f);
-            },
-            () => {
-              n(0, (c = f));
-              n(1, (d = p));
-            },
-            () => {
-              if (f > p) n(7, (p = f));
-            },
-            function () {
-              p = parseFloat(this.value);
-              n(7, p);
-            },
-            () => {
-              n(0, (c = f));
-              n(1, (d = p));
-            },
-            () => {
-              if (p < f) n(6, (f = p));
-            },
-          ]
-        );
+        let r, o, {
+            label: s
+          } = t,
+          {
+            min: a
+          } = t,
+          {
+            max: i
+          } = t,
+          {
+            step: l
+          } = t,
+          {
+            low: c
+          } = t,
+          {
+            high: d
+          } = t,
+          u = i - a,
+          f = c,
+          p = d;
+        return e.$$set = e => {
+          "label" in e && n(2, s = e.label), "min" in e && n(3, a = e.min), "max" in e && n(4, i = e.max), "step" in e && n(5, l = e.step), "low" in e && n(0, c = e.low), "high" in e && n(1, d = e.high)
+        }, e.$$.update = () => {
+          72 & e.$$.dirty && n(9, r = (f - a) / u * 100), 136 & e.$$.dirty && n(8, o = (p - a) / u * 100)
+        }, [c, d, s, a, i, l, f, p, o, r, e => {
+          n(6, f = parseFloat(e.currentTarget.value) || f), n(6, f = Math.min(i, Math.max(a, f))), f > p && n(7, p = f), e.currentTarget.value = f.toString(), n(0, c = f), n(1, d = p)
+        }, e => {
+          n(7, p = parseFloat(e.currentTarget.value) || p), n(7, p = Math.min(i, Math.max(a, p))), p < f && n(6, f = p), e.currentTarget.value = p.toString(), n(0, c = f), n(1, d = p)
+        }, function() {
+          f = _(this.value), n(6, f)
+        }, () => {
+          n(0, c = f), n(1, d = p)
+        }, () => {
+          f > p && n(7, p = f)
+        }, function() {
+          p = _(this.value), n(7, p)
+        }, () => {
+          n(0, c = f), n(1, d = p)
+        }, () => {
+          p < f && n(6, f = p)
+        }]
       }
-      
       const Dn = class extends Se {
         constructor(e) {
           super(), je(this, e, An, Un, i, {
