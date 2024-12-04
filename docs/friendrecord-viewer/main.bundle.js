@@ -2657,13 +2657,18 @@
         function Ee(t) {
           e[10](t)
         }
+        const filterDiff = JSON.parse(localStorage.getItem("filterDiff"));
         let Ne = {
-          label: e[0]("settings.filter.const"),
-          max: 15.5,
-          min: 1,
-          min: 1,
-          step: .1
+          label: e[0]("settings.filter.const"), // 滑桿標籤
+          max: 15.5,                            // 滑桿最大值
+          min: 1,                               // 滑桿最小值
+          step: 0.1                             // 滑桿步進值
         };
+        
+        // 檢查 filterDiff 的 "BAS" 值是否為 false，若為 false 則更新 Ne.min
+        if (filterDiff && filterDiff.BAS === false) {
+          Ne.min = 7;
+        }
         void 0 !== e[1] && (Ne.high = e[1]), void 0 !== e[2] && (Ne.low = e[2]), f = new Dn({
           props: Ne
         }), Q.push((() => we(f, "high", Me))), Q.push((() => we(f, "low", Ee))), m = new Fn({}), b = new Xn({});
