@@ -2645,6 +2645,8 @@
         Ce = e[0]("settings.main.reset") + "";
 
       function Me(t) {
+        console.log(t);
+        console.log(e[9]);
         e[9](t)
       }
 
