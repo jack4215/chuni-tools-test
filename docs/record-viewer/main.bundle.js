@@ -1978,8 +1978,33 @@
       return e.$$set = e => {
         "label" in e && n(2, s = e.label), "min" in e && n(3, a = e.min), "max" in e && n(4, i = e.max), "step" in e && n(5, l = e.step), "low" in e && n(0, c = e.low), "high" in e && n(1, d = e.high)
       }, e.$$.update = () => {
-        72 & e.$$.dirty && n(9, r = (f - a) / u * 100), 136 & e.$$.dirty && n(8, o = (p - a) / u * 100)
-      }, [c, d, s, a, i, l, f, p, o, r, e => {
+        // 定義分段比例
+        const k1 = 40; // 第一段佔 40%
+        const k2 = 60; // 第二段佔 60%
+    
+        // 更新 low 的百分比位置 r
+        if (f <= 10) {
+            // 第一段計算
+            r = ((f - a) / (10 - a)) * k1;
+        } else {
+            // 第二段計算
+            r = k1 + ((f - 10) / (i - 10)) * k2;
+        }
+    
+        // 更新 high 的百分比位置 o
+        if (p <= 10) {
+            // 第一段計算
+            o = ((p - a) / (10 - a)) * k1;
+        } else {
+            // 第二段計算
+            o = k1 + ((p - 10) / (i - 10)) * k2;
+        }
+    
+        // 通知框架更新
+        n(9, r);
+        n(8, o);
+    }
+    , [c, d, s, a, i, l, f, p, o, r, e => {
         n(6, f = parseFloat(e.currentTarget.value) || f), n(6, f = Math.min(i, Math.max(a, f))), f > p && n(7, p = f), e.currentTarget.value = f.toString(), n(0, c = f), n(1, d = p)
       }, e => {
         n(7, p = parseFloat(e.currentTarget.value) || p), n(7, p = Math.min(i, Math.max(a, p))), p < f && n(6, f = p), e.currentTarget.value = p.toString(), n(0, c = f), n(1, d = p)
