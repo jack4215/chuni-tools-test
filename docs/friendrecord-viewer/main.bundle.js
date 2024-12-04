@@ -2659,6 +2659,7 @@
           label: e[0]("settings.filter.const"),
           max: 15.5,
           min: 1,
+          min: 1,
           step: .1
         };
         console.log(Ne);
@@ -2710,8 +2711,9 @@
   
         function Ue(t) {
           e[12](t)
+          console.log(e[12]);
+          console.log(t);
         }
-        console.log(Ue);
         let Ae = {
           label: e[0]("settings.data.overpower"),
           $$slots: {
