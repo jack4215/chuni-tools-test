@@ -1943,6 +1943,19 @@
         let n, r, o, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w;
         return {
           c() {
+            const t1 = 0.25; // 25% 的位置
+        const ten = 10;  // 25% 位置對應的值
+           
+        // 反向映射函數
+        const mapPercentage = (value) => {
+          if (value <= ten) {
+            // 第一段：從 ten 映射到百分比
+            return ((value - a) / (ten - a)) * t1;
+          } else {
+            // 第二段：從 max 映射到百分比
+            return t1 + ((value - ten) / (i - ten)) * (1 - t1);
+          }
+        };
             n = H("div"), r = H("span"), o = D(), a = H("div"), i = H("div"), l = H("input"), c = D(), d = H("div"), u = H("input"), f = D(), p = H("div"), h = H("div"), g = D(), m = H("input"), v = D(), b = H("input"), l.value = t[6], O(l, "type", "number"), O(l, "min", t[3]), O(l, "max", t[4]), O(l, "step", t[5]), O(l, "inputmode", "decimal"), O(l, "class", "svelte-1aafgfe"), O(i, "class", "low svelte-1aafgfe"), z(i, "left", "calc((100% - 3rem) * " + t[9] + " / 100)"), u.value = t[7], O(u, "type", "number"), O(u, "min", t[3]), O(u, "max", t[4]), O(u, "step", t[5]), O(u, "inputmode", "decimal"), O(u, "class", "svelte-1aafgfe"), O(d, "class", "high svelte-1aafgfe"), z(d, "left", "calc((100% - 3rem) * " + t[8] + " / 100)"), O(a, "class", "indicators svelte-1aafgfe"), O(h, "class", "slider-bg svelte-1aafgfe"), z(h, "background", "linear-gradient( to right, var(--theme-border) 0%, var(--theme-border) " + (t[9] - 1) + "%, var(--theme-control) " + (t[9] - 1) + "%, var(--theme-control) " + (t[8] + 1) + "%, var(--theme-border) " + (t[8] + 1) + "%, var(--theme-border) 100% )"), O(m, "class", "low svelte-1aafgfe"),
             O(m, "type", "range"),
             O(m, "min", mapPercentage(t[3]) * 100), // 使用百分比範圍
