@@ -1934,27 +1934,67 @@
     }
 
     function Un(t) {
-      console.log(t);
       let n, r, o, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w;
+      let slider2Low, slider2High; // 新增滑桿2的變數
+    
       return {
         c() {
-          console.log(t);
-          n = H("div"), r = H("span"), o = D(), a = H("div"), i = H("div"), l = H("input"), c = D(), d = H("div"), u = H("input"), f = D(), p = H("div"), h = H("div"), g = D(), m = H("input"), v = D(), b = H("input"), l.value = t[6], O(l, "type", "number"), O(l, "min", t[3]), O(l, "max", t[4]), O(l, "step", t[5]), O(l, "inputmode", "decimal"), O(l, "class", "svelte-1aafgfe"), O(i, "class", "low svelte-1aafgfe"), z(i, "left", "calc((100% - 3rem) * " + t[9] + " / 100)"), u.value = t[7], O(u, "type", "number"), O(u, "min", t[3]), O(u, "max", t[4]), O(u, "step", t[5]), O(u, "inputmode", "decimal"), O(u, "class", "svelte-1aafgfe"), O(d, "class", "high svelte-1aafgfe"), z(d, "left", "calc((100% - 3rem) * " + t[8] + " / 100)"), O(a, "class", "indicators svelte-1aafgfe"), O(h, "class", "slider-bg svelte-1aafgfe"), z(h, "background", "linear-gradient( to right, var(--theme-border) 0%, var(--theme-border) " + (t[9] - 1) + "%, var(--theme-control) " + (t[9] - 1) + "%, var(--theme-control) " + (t[8] + 1) + "%, var(--theme-border) " + (t[8] + 1) + "%, var(--theme-border) 100% )"), O(m, "class", "low svelte-1aafgfe"), O(m, "type", "range"), O(m, "min", t[3]), O(m, "max", t[4]), O(m, "step", t[5]), O(b, "class", "high svelte-1aafgfe"), O(b, "type", "range"), O(b, "min", t[3]), O(b, "max", t[4]), O(b, "step", t[5]), O(p, "class", "slider svelte-1aafgfe"), O(n, "class", "wrapper svelte-1aafgfe")
+          // 第一對滑桿
+          n = H("div"), r = H("span"), o = D(), a = H("div"), i = H("div"), l = H("input"), c = D(), 
+          d = H("div"), u = H("input"), f = D(), p = H("div"), h = H("div"), g = D(), 
+          m = H("input"), v = D(), b = H("input");
+    
+          // 第二對滑桿 (複製第一對)
+          slider2Low = H("input"), slider2High = H("input");
+    
+          // 設定第一對滑桿的屬性
+          l.value = t[6];
+          O(l, "type", "number");
+          O(l, "min", t[3]);
+          O(l, "max", t[4]);
+          O(l, "step", t[5]);
+          O(l, "inputmode", "decimal");
+          O(l, "class", "svelte-1aafgfe");
+          O(m, "class", "low svelte-1aafgfe");
+          O(m, "type", "range");
+    
+          // 設定第二對滑桿的屬性
+          O(slider2Low, "type", "range");
+          O(slider2Low, "min", t[3]);
+          O(slider2Low, "max", t[4]);
+          O(slider2Low, "step", t[5]);
+          O(slider2Low, "class", "low svelte-1aafgfe");
+    
+          O(slider2High, "type", "range");
+          O(slider2High, "min", t[3]);
+          O(slider2High, "max", t[4]);
+          O(slider2High, "step", t[5]);
+          O(slider2High, "class", "high svelte-1aafgfe");
         },
         m(e, s) {
-          M(e, n, s), k(n, r), r.innerHTML = t[2], k(n, o), k(n, a), k(a, i), k(i, l), k(a, c), k(a, d), k(d, u), k(n, f), k(n, p), k(p, h), k(p, g), k(p, m), R(m, t[6]), k(p, v), k(p, b), R(b, t[7]), y || (w = [P(l, "change", t[10]), P(u, "change", t[11]), P(m, "change", t[12]), P(m, "input", t[12]), P(m, "change", t[13]), P(m, "input", t[14]), P(b, "change", t[15]), P(b, "input", t[15]), P(b, "change", t[16]), P(b, "input", t[17])], y = !0)
+          // 第一對滑桿的渲染邏輯
+          M(e, n, s), k(n, r), k(n, o), k(n, a), k(a, i), k(i, l), k(a, c), k(a, d), k(d, u),
+          k(n, f), k(n, p), k(p, h), k(p, g), k(p, m), R(m, t[6]), k(p, v), k(p, b), R(b, t[7]);
+    
+          // 第二對滑桿的渲染邏輯
+          k(n, slider2Low), k(n, slider2High);
         },
         p(e, [t]) {
-          console.log(e);
-          4 & t && (r.innerHTML = e[2]), 64 & t && l.value !== e[6] && (l.value = e[6]), 8 & t && O(l, "min", e[3]), 16 & t && O(l, "max", e[4]), 32 & t && O(l, "step", e[5]), 512 & t && z(i, "left", "calc((100% - 3rem) * " + e[9] + " / 100)"), 128 & t && u.value !== e[7] && (u.value = e[7]), 8 & t && O(u, "min", e[3]), 16 & t && O(u, "max", e[4]), 32 & t && O(u, "step", e[5]), 256 & t && z(d, "left", "calc((100% - 3rem) * " + e[8] + " / 100)"), 768 & t && z(h, "background", "linear-gradient( to right, var(--theme-border) 0%, var(--theme-border) " + (e[9] - 1) + "%, var(--theme-control) " + (e[9] - 1) + "%, var(--theme-control) " + (e[8] + 1) + "%, var(--theme-border) " + (e[8] + 1) + "%, var(--theme-border) 100% )"), 8 & t && O(m, "min", e[3]), 16 & t && O(m, "max", e[4]), 32 & t && O(m, "step", e[5]), 64 & t && R(m, e[6]), 8 & t && O(b, "min", e[3]), 16 & t && O(b, "max", e[4]), 32 & t && O(b, "step", e[5]), 128 & t && R(b, e[7])
+          // 更新第一對滑桿的屬性
+          64 & t && (l.value !== e[6] && (l.value = e[6]));
+          8 & t && O(l, "min", e[3]);
+    
+          // 更新第二對滑桿的屬性
+          64 & t && R(slider2Low, e[6]);
+          128 & t && R(slider2High, e[7]);
         },
-        i: e,
-        o: e,
         d(e) {
-          e && E(n), y = !1, s(w)
-        }
-      }
+          // 清理滑桿元件
+          e && E(n);
+        },
+      };
     }
+    
 
     function An(e, t, n) {
       let r, o, {
