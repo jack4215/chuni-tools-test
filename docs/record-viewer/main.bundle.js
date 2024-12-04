@@ -1978,24 +1978,8 @@
       return e.$$set = e => {
         "label" in e && n(2, s = e.label), "min" in e && n(3, a = e.min), "max" in e && n(4, i = e.max), "step" in e && n(5, l = e.step), "low" in e && n(0, c = e.low), "high" in e && n(1, d = e.high)
       }, e.$$.update = () => {
-        if (72 & e.$$.dirty) {
-            if (f <= 10) {
-                r = ((f - a) / (10 - a)) * 30;
-            } else {
-                r = 30 + ((f - 10) / (i - 10)) * 70;
-            }
-            n(9, r); // 通知框架更新
-        }
-        if (136 & e.$$.dirty) {
-            if (p <= 10) {
-                o = ((p - a) / (10 - a)) * 30;
-            } else {
-                o = 30 + ((p - 10) / (i - 10)) * 70;
-            }
-            n(8, o); // 通知框架更新
-        }
-    }    
-    , [c, d, s, a, i, l, f, p, o, r, e => {
+        72 & e.$$.dirty && n(9, r = (f - a) / u * 100), 136 & e.$$.dirty && n(8, o = (p - a) / u * 100)
+      }, [c, d, s, a, i, l, f, p, o, r, e => {
         n(6, f = parseFloat(e.currentTarget.value) || f), n(6, f = Math.min(i, Math.max(a, f))), f > p && n(7, p = f), e.currentTarget.value = f.toString(), n(0, c = f), n(1, d = p)
       }, e => {
         n(7, p = parseFloat(e.currentTarget.value) || p), n(7, p = Math.min(i, Math.max(a, p))), p < f && n(6, f = p), e.currentTarget.value = p.toString(), n(0, c = f), n(1, d = p)
@@ -2670,6 +2654,28 @@
         min: 1,
         step: .1
       };
+      function updateNe() {
+        const filterDiff = JSON.parse(localStorage.getItem("filterDiff"));
+        if (filterDiff) {
+          if (!filterDiff.BAS && !filterDiff.ADV && !filterDiff.EXP) {
+            Ne.min = 10;
+          } else if (!filterDiff.BAS && !filterDiff.ADV) {
+            Ne.min = 7; 
+          } else if (!filterDiff.BAS) {
+            Ne.min = 4;
+          } else {
+            Ne.min = 1;
+          }
+        } else {
+          Ne.min = 1;
+        }
+      }
+      updateNe();
+      window.addEventListener("storage", (event) => {
+        if (event.key === "filterDiff") {
+          updateNe();
+        }
+      });
       void 0 !== e[1] && (Ne.high = e[1]), void 0 !== e[2] && (Ne.low = e[2]), f = new Dn({
         props: Ne
       }), Q.push((() => we(f, "high", Me))), Q.push((() => we(f, "low", Ee))), m = new Fn({}), b = new Xn({});
@@ -4073,9 +4079,9 @@
           if (8 & e.$$.dirty) n(0, o = groupedRecords.reduce((sum, song) => sum + song.opMax, 0));
           if (3 & e.$$.dirty) n(2, s = (r / o) * 100);  
       };
+  
       return [o, r, s, a]; 
   }
-
     const Io = class extends Se {
         constructor(e) {
           super(), je(this, e, _o, Oo, i, {
