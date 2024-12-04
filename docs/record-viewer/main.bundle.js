@@ -1973,17 +1973,28 @@
           high: d
         } = t,
         u = i - a,
-        f = c <= 10 
-            ? ((c - a) / (10 - a)) * 30 
-            : 30 + ((c - 10) / (i - 10)) * 70,
-        p = d <= 10 
-            ? ((d - a) / (10 - a)) * 30 
-            : 30 + ((d - 10) / (i - 10)) * 70;
+        f = c,
+        p = d;
       return e.$$set = e => {
         "label" in e && n(2, s = e.label), "min" in e && n(3, a = e.min), "max" in e && n(4, i = e.max), "step" in e && n(5, l = e.step), "low" in e && n(0, c = e.low), "high" in e && n(1, d = e.high)
       }, e.$$.update = () => {
-        72 & e.$$.dirty && n(9, r = (f - a) / u * 100), 136 & e.$$.dirty && n(8, o = (p - a) / u * 100)
-      }    
+        if (72 & e.$$.dirty) {
+            if (f <= 10) {
+                r = ((f - a) / (10 - a)) * 30;
+            } else {
+                r = 30 + ((f - 10) / (i - 10)) * 70;
+            }
+            n(9, r); // 通知框架更新
+        }
+        if (136 & e.$$.dirty) {
+            if (p <= 10) {
+                o = ((p - a) / (10 - a)) * 30;
+            } else {
+                o = 30 + ((p - 10) / (i - 10)) * 70;
+            }
+            n(8, o); // 通知框架更新
+        }
+    }    
     , [c, d, s, a, i, l, f, p, o, r, e => {
         n(6, f = parseFloat(e.currentTarget.value) || f), n(6, f = Math.min(i, Math.max(a, f))), f > p && n(7, p = f), e.currentTarget.value = f.toString(), n(0, c = f), n(1, d = p)
       }, e => {
