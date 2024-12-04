@@ -1973,8 +1973,12 @@
           high: d
         } = t,
         u = i - a,
-        f = c,
-        p = d;
+        f = c <= 10 
+            ? ((c - a) / (10 - a)) * 30 
+            : 30 + ((c - 10) / (i - 10)) * 70,
+        p = d <= 10 
+            ? ((d - a) / (10 - a)) * 30 
+            : 30 + ((d - 10) / (i - 10)) * 70;
       return e.$$set = e => {
         "label" in e && n(2, s = e.label), "min" in e && n(3, a = e.min), "max" in e && n(4, i = e.max), "step" in e && n(5, l = e.step), "low" in e && n(0, c = e.low), "high" in e && n(1, d = e.high)
       }, e.$$.update = () => {
