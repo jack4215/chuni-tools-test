@@ -1960,49 +1960,113 @@
       }
   
       function An(e, t, n) {
-        let r, o, {
-            label: s
-          } = t,
-          {
-            min: a
-          } = t,
-          {
-            max: i
-          } = t,
-          {
-            step: l
-          } = t,
-          {
-            low: c
-          } = t,
-          {
-            high: d
-          } = t,
-          u = i - a,
-          f = c,
-          p = d;
-        return e.$$set = e => {
-          "label" in e && n(2, s = e.label), "min" in e && n(3, a = e.min), "max" in e && n(4, i = e.max), "step" in e && n(5, l = e.step), "low" in e && n(0, c = e.low), "high" in e && n(1, d = e.high)
-        }, e.$$.update = () => {
-          72 & e.$$.dirty && n(9, r = (f - a) / u * 100), 136 & e.$$.dirty && n(8, o = (p - a) / u * 100)
-        }, [c, d, s, a, i, l, f, p, o, r, e => {
-          n(6, f = parseFloat(e.currentTarget.value) || f), n(6, f = Math.min(i, Math.max(a, f))), f > p && n(7, p = f), e.currentTarget.value = f.toString(), n(0, c = f), n(1, d = p)
-        }, e => {
-          n(7, p = parseFloat(e.currentTarget.value) || p), n(7, p = Math.min(i, Math.max(a, p))), p < f && n(6, f = p), e.currentTarget.value = p.toString(), n(0, c = f), n(1, d = p)
-        }, function() {
-          f = _(this.value), n(6, f)
-        }, () => {
-          n(0, c = f), n(1, d = p)
-        }, () => {
-          f > p && n(7, p = f)
-        }, function() {
-          p = _(this.value), n(7, p)
-        }, () => {
-          n(0, c = f), n(1, d = p)
-        }, () => {
-          p < f && n(6, f = p)
-        }]
+        let r, o, { label: s } = t, 
+            { min: a } = t, 
+            { max: i } = t, 
+            { step: l } = t, 
+            { low: c } = t, 
+            { high: d } = t, 
+            u = i - a,
+            f = c,
+            p = d;
+      
+        // 分段映射函數
+        const mapValue = (t) => {
+          const t1 = 0.25; // 分段點位置
+          const y1 = 10;   // 分段點對應的值
+      
+          if (t <= t1) {
+            // 第一段：線性從 min 到 10
+            return a + (y1 - a) * (t / t1);
+          } else {
+            // 第二段：線性從 10 到 max
+            return y1 + (i - y1) * ((t - t1) / (1 - t1));
+          }
+        };
+      
+        // 反向映射：將目標值轉回百分比
+        const mapPercentage = (value) => {
+          const t1 = 0.25;
+          const y1 = 10;
+      
+          if (value <= y1) {
+            // 第一段
+            return ((value - a) / (y1 - a)) * t1;
+          } else {
+            // 第二段
+            return t1 + ((value - y1) / (i - y1)) * (1 - t1);
+          }
+        };
+      
+        return (
+          e.$$set = (e) => {
+            "label" in e && n(2, (s = e.label));
+            "min" in e && n(3, (a = e.min));
+            "max" in e && n(4, (i = e.max));
+            "step" in e && n(5, (l = e.step));
+            "low" in e && n(0, (c = e.low));
+            "high" in e && n(1, (d = e.high));
+          },
+          e.$$.update = () => {
+            // 更新百分比位置
+            72 & e.$$.dirty && n(9, (r = mapPercentage(f) * 100));
+            136 & e.$$.dirty && n(8, (o = mapPercentage(p) * 100));
+          },
+          [
+            c,
+            d,
+            s,
+            a,
+            i,
+            l,
+            f,
+            p,
+            o,
+            r,
+            (e) => {
+              // 處理低位滑桿值變更
+              n(6, (f = mapValue(parseFloat(e.currentTarget.value) / 100) || f));
+              n(6, (f = Math.min(i, Math.max(a, f))));
+              if (f > p) n(7, (p = f));
+              e.currentTarget.value = (mapPercentage(f) * 100).toString();
+              n(0, (c = f));
+              n(1, (d = p));
+            },
+            (e) => {
+              // 處理高位滑桿值變更
+              n(7, (p = mapValue(parseFloat(e.currentTarget.value) / 100) || p));
+              n(7, (p = Math.min(i, Math.max(a, p))));
+              if (p < f) n(6, (f = p));
+              e.currentTarget.value = (mapPercentage(p) * 100).toString();
+              n(0, (c = f));
+              n(1, (d = p));
+            },
+            function () {
+              f = _(this.value);
+              n(6, f);
+            },
+            () => {
+              n(0, (c = f));
+              n(1, (d = p));
+            },
+            () => {
+              if (f > p) n(7, (p = f));
+            },
+            function () {
+              p = _(this.value);
+              n(7, p);
+            },
+            () => {
+              n(0, (c = f));
+              n(1, (d = p));
+            },
+            () => {
+              if (p < f) n(6, (f = p));
+            },
+          ]
+        );
       }
+      
       const Dn = class extends Se {
         constructor(e) {
           super(), je(this, e, An, Un, i, {
