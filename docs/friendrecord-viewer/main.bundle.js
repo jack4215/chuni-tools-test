@@ -2005,7 +2005,7 @@
       }
       const Dn = class extends Se {
         constructor(e) {
-          super(), je(this, e, An, Un, i, {
+          super(), je(this, e, Un, An, i, {
             label: 2,
             min: 3,
             max: 4,
