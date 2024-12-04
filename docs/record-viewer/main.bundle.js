@@ -1975,31 +1975,73 @@
         u = i - a,
         f = c,
         p = d;
-      return e.$$set = e => {
-        "label" in e && n(2, s = e.label), "min" in e && n(3, a = e.min), "max" in e && n(4, i = e.max), "step" in e && n(5, l = e.step), "low" in e && n(0, c = e.low), "high" in e && n(1, d = e.high)
-      }, e.$$.update = () => {
-        const k1 = 40, k2 = 60; // 定義分段比例
-    
-        // 更新 low 的百分比位置 r
-        if (72 & e.$$.dirty) {
-            if (f <= 10) {
-                r = ((f - a) / (10 - a)) * k1;
-            } else {
-                r = k1 + ((f - 10) / (i - 10)) * k2;
-            }
-            n(9, r); // 通知框架更新
-        }
-    
-        // 更新 high 的百分比位置 o
-        if (136 & e.$$.dirty) {
-            if (p <= 10) {
-                o = ((p - a) / (10 - a)) * k1;
-            } else {
-                o = k1 + ((p - 10) / (i - 10)) * k2;
-            }
-            n(8, o); // 通知框架更新
-        }
-    }    
+        return (
+          e.$$set = e => {
+              "label" in e && n(2, s = e.label),
+              "min" in e && n(3, a = e.min),
+              "max" in e && n(4, i = e.max),
+              "step" in e && n(5, l = e.step),
+              "low" in e && n(0, c = e.low),
+              "high" in e && n(1, d = e.high);
+  
+              // 更新滑塊頭的位置樣式
+              const lowThumb = document.querySelector(".low.svelte-1aafgfe");
+              const highThumb = document.querySelector(".high.svelte-1aafgfe");
+  
+              if (lowThumb && "low" in e) {
+                  let r;
+                  if (c <= 10) {
+                      r = ((c - a) / (10 - a)) * 30;
+                  } else {
+                      r = 30 + ((c - 10) / (i - 10)) * 70;
+                  }
+                  lowThumb.style.left = `${r}%`;
+              }
+  
+              if (highThumb && "high" in e) {
+                  let o;
+                  if (d <= 10) {
+                      o = ((d - a) / (10 - a)) * 30;
+                  } else {
+                      o = 30 + ((d - 10) / (i - 10)) * 70;
+                  }
+                  highThumb.style.left = `${o}%`;
+              }
+          },
+  
+          e.$$.update = () => {
+              // 更新 low 的百分比位置
+              if (72 & e.$$.dirty) {
+                  if (f <= 10) {
+                      r = ((f - a) / (10 - a)) * 30;
+                  } else {
+                      r = 30 + ((f - 10) / (i - 10)) * 70;
+                  }
+                  n(9, r); // 通知框架更新
+  
+                  // 更新 low 滑塊頭的位置
+                  const lowThumb = document.querySelector(".low.svelte-1aafgfe");
+                  if (lowThumb) {
+                      lowThumb.style.left = `${r}%`;
+                  }
+              }
+  
+              // 更新 high 的百分比位置
+              if (136 & e.$$.dirty) {
+                  if (p <= 10) {
+                      o = ((p - a) / (10 - a)) * 30;
+                  } else {
+                      o = 30 + ((p - 10) / (i - 10)) * 70;
+                  }
+                  n(8, o); // 通知框架更新
+  
+                  // 更新 high 滑塊頭的位置
+                  const highThumb = document.querySelector(".high.svelte-1aafgfe");
+                  if (highThumb) {
+                      highThumb.style.left = `${o}%`;
+                  }
+              }
+          } 
     , [c, d, s, a, i, l, f, p, o, r, e => {
         n(6, f = parseFloat(e.currentTarget.value) || f), n(6, f = Math.min(i, Math.max(a, f))), f > p && n(7, p = f), e.currentTarget.value = f.toString(), n(0, c = f), n(1, d = p)
       }, e => {
