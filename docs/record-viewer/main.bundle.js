@@ -1996,43 +1996,10 @@
         }
     }    
     , [c, d, s, a, i, l, f, p, o, r, e => {
-      // 更新 low 值 (f)
-      n(6, f = parseFloat(e.currentTarget.value) || f); // 取得輸入值
-      n(6, f = Math.min(i, Math.max(a, f)));           // 限制值在 [min, max] 範圍內
-      f > p && n(7, p = f);                            // 保證 low <= high
-    
-      // 計算滑塊位置 r (low 的百分比位置)
-      if (f <= 10) {
-        r = ((f - a) / (10 - a)) * 30; // 值在 [min, 10] 時映射到 [0%, 30%]
-      } else {
-        r = 30 + ((f - 10) / (i - 10)) * 70; // 值在 [10, max] 時映射到 [30%, 100%]
-      }
-      n(9, r);                              // 更新動畫位置 r
-    
-      e.currentTarget.value = f.toString(); // 同步輸入框顯示
-      n(0, c = f);                          // 更新 low 屬性
-      n(1, d = p);                          // 更新 high 屬性
-    }, 
-    
-    e => {
-      // 更新 high 值 (p)
-      n(7, p = parseFloat(e.currentTarget.value) || p); // 取得輸入值
-      n(7, p = Math.min(i, Math.max(a, p)));           // 限制值在 [min, max] 範圍內
-      p < f && n(6, f = p);                            // 保證 high >= low
-    
-      // 計算滑塊位置 o (high 的百分比位置)
-      if (p <= 10) {
-        o = ((p - a) / (10 - a)) * 30; // 值在 [min, 10] 時映射到 [0%, 30%]
-      } else {
-        o = 30 + ((p - 10) / (i - 10)) * 70; // 值在 [10, max] 時映射到 [30%, 100%]
-      }
-      n(8, o);                              // 更新動畫位置 o
-    
-      e.currentTarget.value = p.toString(); // 同步輸入框顯示
-      n(0, c = f);                          // 更新 low 屬性
-      n(1, d = p);                          // 更新 high 屬性
-    }
-    , function() {
+        n(6, f = parseFloat(e.currentTarget.value) || f), n(6, f = Math.min(i, Math.max(a, f))), f > p && n(7, p = f), e.currentTarget.value = f.toString(), n(0, c = f), n(1, d = p)
+      }, e => {
+        n(7, p = parseFloat(e.currentTarget.value) || p), n(7, p = Math.min(i, Math.max(a, p))), p < f && n(6, f = p), e.currentTarget.value = p.toString(), n(0, c = f), n(1, d = p)
+      }, function() {
         f = _(this.value), n(6, f)
       }, () => {
         n(0, c = f), n(1, d = p)
