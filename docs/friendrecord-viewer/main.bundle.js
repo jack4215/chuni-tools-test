@@ -1960,6 +1960,7 @@
       }
   
       function An(e, t, n) {
+        console.log(e,t,n);
         let r, o, {
             label: s
           } = t,
@@ -2654,7 +2655,6 @@
         function Ee(t) {
           e[10](t)
         }
-        console.log(e);
         let Ne = {
           label: e[0]("settings.filter.const"),
           max: 15.5,
@@ -2662,7 +2662,6 @@
           min: 1,
           step: .1
         };
-        console.log(Ne);
         void 0 !== e[1] && (Ne.high = e[1]), void 0 !== e[2] && (Ne.low = e[2]), f = new Dn({
           props: Ne
         }), Q.push((() => we(f, "high", Me))), Q.push((() => we(f, "low", Ee))), m = new Fn({}), b = new Xn({});
@@ -2711,8 +2710,6 @@
   
         function Ue(t) {
           e[12](t)
-          console.log(e[12]);
-          console.log(t);
         }
         let Ae = {
           label: e[0]("settings.data.overpower"),
