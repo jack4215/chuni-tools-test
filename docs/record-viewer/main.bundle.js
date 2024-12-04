@@ -2206,7 +2206,7 @@
       let n, r, o, a, i, l, c, d, u, f, p, h = t[3]("playcount.fetch.button") + "";
       return {
         c() {
-          n = H("div"), r = H("button"), a = D(), i = H("input"), l = D(), c = H("span"), c.textContent = "～", d = D(), u = H("input"), O(r, "type", "button"), O(r, "class", "btn svelte-1lhvhf8"), r.disabled = o = t[2] || Zn(t[0], t[1]), O(i, "type", "number"), O(i, "min", "1"), O(i, "placeholder", "from"), O(i, "inputmode", "numeric"), O(i, "class", "svelte-1lhvhf8"), O(u, "type", "number"), O(u, "min", "1"), O(u, "placeholder", "to"), O(u, "inputmode", "numeric"), O(u, "class", "svelte-1lhvhf8"), O(n, "class", "wrapper svelte-1lhvhf8"), checkbox = H("input"), O(checkbox, "type", "checkbox"), O(checkbox, "class", "svelte-1aafgfe"), O(checkbox, "class", "svelte-1aafgfe");
+          n = H("div"), r = H("button"), a = D(), i = H("input"), l = D(), c = H("span"), c.textContent = "～", d = D(), u = H("input"), O(r, "type", "button"), O(r, "class", "btn svelte-1lhvhf8"), r.disabled = o = t[2] || Zn(t[0], t[1]), O(i, "type", "number"), O(i, "min", "1"), O(i, "placeholder", "from"), O(i, "inputmode", "numeric"), O(i, "class", "svelte-1lhvhf8"), O(u, "type", "number"), O(u, "min", "1"), O(u, "placeholder", "to"), O(u, "inputmode", "numeric"), O(u, "class", "svelte-1lhvhf8"), O(n, "class", "wrapper svelte-1lhvhf8"), checkbox = H("input"), O(checkbox, "type", "checkbox"), O(checkbox, "class", "svelte-1aafgfe"), k(n, checkbox);
           P(checkbox, "change", () => {
             if (checkbox.checked) {
               t[6] = 9; // 更新低滑桿輸入框的值
