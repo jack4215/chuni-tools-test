@@ -1960,9 +1960,6 @@
       }
   
       function An(e, t, n) {
-        console.log(e);
-        console.log(t);
-        console.log(n);
         let r, o, {
             label: s
           } = t,
