@@ -2041,7 +2041,7 @@
                       highThumb.style.left = `${o}%`;
                   }
               }
-          } 
+  
     , [c, d, s, a, i, l, f, p, o, r, e => {
         n(6, f = parseFloat(e.currentTarget.value) || f), n(6, f = Math.min(i, Math.max(a, f))), f > p && n(7, p = f), e.currentTarget.value = f.toString(), n(0, c = f), n(1, d = p)
       }, e => {
