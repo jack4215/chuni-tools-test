@@ -2179,7 +2179,7 @@
           select = H("select");
 
           // 下拉選單文字
-          r.innerHTML = t[2]("settings.filter.release");
+          span.innerHTML = t[2]("settings.filter.release");
 
           // 下拉選項
           const options = [
