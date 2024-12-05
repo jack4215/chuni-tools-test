@@ -2727,6 +2727,7 @@
     }
 
     function kr(e) {
+      console.log(e);
       let t, n, r, o, a, i, l, c, d, u, f, p, h, g, m, v, b, bb, y, yy, w, $, x, j, S, T, C, N, U, A, L, _, I, R, F, B, V, q, W, J, X, G, Y, Z, K, ee, te, ne, se, ae, ie, le, ce, de, ue, fe, ve = e[0]("settings.main.title") + "",
         ye = e[0]("settings.filter.title") + "",
         je = e[0]("settings.data.title") + "",
