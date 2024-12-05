@@ -2183,8 +2183,26 @@
 
           // 下拉選項
           const options = [
-            { value: "luminousplus", text: "國際版 (LUMINOUS PLUS)" },
-            { value: "verse", text: "日版 (VERSE)" },
+            { value: "0", text: "All" },
+            { value: "1", text: "ORIGIN" },
+            { value: "2", text: "ORIGIN PLUS" },
+            { value: "3", text: "AIR" },
+            { value: "4", text: "AIR PLUS" },
+            { value: "5", text: "STAR" },
+            { value: "6", text: "STAR PLUS" },
+            { value: "7", text: "AMAZON" },
+            { value: "8", text: "AMAZON PLUS" },
+            { value: "9", text: "CRYSTAL" },
+            { value: "10", text: "CRYSTAL PLUS" },
+            { value: "11", text: "PARADISE" },
+            { value: "12", text: "PARADISE LOST" },
+            { value: "13", text: "NEW" },
+            { value: "14", text: "NEW PLUS" },
+            { value: "15", text: "SUN" },
+            { value: "16", text: "SUN PLUS" },
+            { value: "17", text: "LUMINOUS" },
+            { value: "18", text: "LUMINOUS PLUS" },
+            { value: "19", text: "VERSE" },
           ];
           for (let opt of options) {
             const option = H("option");
