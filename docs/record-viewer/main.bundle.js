@@ -2237,8 +2237,8 @@
     }
 
     function Wnn(t) {
-      let n, r, o, s, a, i, l, c, d, u = t[2]("settings.filter.genre") + "",
-        f = t[2]("settings.filter.genre.all") + "",
+      let n, r, o, s, a, i, l, c, d, u = t[2]("settings.filter.release") + "",
+        f = t[2]("settings.filter.release.all") + "",
         p = Rl,
         h = [];
       for (let e = 0; e < p.length; e += 1) h[e] = qn(Vn(t, p, e));
@@ -2254,7 +2254,7 @@
           k(s, a), k(s, i), k(i, l), c || (d = P(i, "click", t[4]), c = !0)
         },
         p(e, [t]) {
-          if (4 & t && u !== (u = e[2]("settings.filter.genre") + "") && (r.innerHTML = u), 3 & t) {
+          if (4 & t && u !== (u = e[2]("settings.filter.release") + "") && (r.innerHTML = u), 3 & t) {
             let n;
             for (p = Rl, n = 0; n < p.length; n += 1) {
               const r = Vnn(e, p, n);
@@ -2263,7 +2263,7 @@
             for (; n < h.length; n += 1) h[n].d(1);
             h.length = p.length
           }
-          4 & t && f !== (f = e[2]("settings.filter.genre.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0])
+          4 & t && f !== (f = e[2]("settings.filter.release.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0])
         },
         i: e,
         o: e,
