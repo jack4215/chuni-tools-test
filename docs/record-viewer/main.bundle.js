@@ -1675,6 +1675,7 @@
     const hn = "chunithm_b40.png";
     async function gn() {
       const e = document.querySelector("main");
+      console.log(e);
       if (null == e) return alert(d(wt)("share.error", {
         error: "resultNode is null"
       }));
@@ -3593,6 +3594,7 @@
     }
 
     function so(e) {
+      console.log(e);
       let t, n, r, o, s, a, i, l, c = e[3],
         d = [];
       for (let t = 0; t < c.length; t += 1) d[t] = ro(to(e, c, t));
