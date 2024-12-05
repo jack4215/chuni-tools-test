@@ -2262,6 +2262,7 @@
             for (; n < h.length; n += 1) h[n].d(1);
             h.length = p.length
           }
+          console.log(e);
           4 & t && f !== (f = e[2]("settings.filter.release.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0])
         },
         i: e,
