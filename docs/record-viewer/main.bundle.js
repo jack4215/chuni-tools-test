@@ -3415,7 +3415,6 @@
 
 
     function Yr(t) {
-      console.log(t);
       let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j = t[0].order + "",
         S = t[0].title + "",
         T = (t[0].const < 0 ? "-" : t[0].const?.toFixed(1) ?? "??.?") + "",
@@ -3471,6 +3470,7 @@
         i: e,
         o: e,
         d(e) {
+          console.log(e);
           e && E(n), N && N.d(), _.d(), F.d(), V && V.d(), q && q.d(), $ = !1, x();
           newVIndicator && newVIndicator.d();
         }
