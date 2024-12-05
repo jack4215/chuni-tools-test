@@ -2152,6 +2152,30 @@
     function Wn(t) {
       let n, r, o, s, a, i, l, c, d, u, f, p, h, dropdown, label, span, select;
     
+      // 選項列表
+      const options = [
+        { value: "0", text: "All" },
+        { value: "1", text: "ORIGIN" },
+        { value: "2", text: "ORIGIN PLUS" },
+        { value: "3", text: "AIR" },
+        { value: "4", text: "AIR PLUS" },
+        { value: "5", text: "STAR" },
+        { value: "6", text: "STAR PLUS" },
+        { value: "7", text: "AMAZON" },
+        { value: "8", text: "AMAZON PLUS" },
+        { value: "9", text: "CRYSTAL" },
+        { value: "10", text: "CRYSTAL PLUS" },
+        { value: "11", text: "PARADISE" },
+        { value: "12", text: "PARADISE LOST" },
+        { value: "13", text: "NEW" },
+        { value: "14", text: "NEW PLUS" },
+        { value: "15", text: "SUN" },
+        { value: "16", text: "SUN PLUS" },
+        { value: "17", text: "LUMINOUS" },
+        { value: "18", text: "LUMINOUS PLUS" },
+        { value: "19", text: "VERSE" },
+      ];
+    
       // 動態生成的按鈕清單
       p = Ie;
       h = [];
@@ -2182,37 +2206,12 @@
           span.innerHTML = t[2]("settings.filter.release");
     
           // 下拉選項
-          const options = [
-            { value: "0", text: "All" },
-            { value: "1", text: "ORIGIN" },
-            { value: "2", text: "ORIGIN PLUS" },
-            { value: "3", text: "AIR" },
-            { value: "4", text: "AIR PLUS" },
-            { value: "5", text: "STAR" },
-            { value: "6", text: "STAR PLUS" },
-            { value: "7", text: "AMAZON" },
-            { value: "8", text: "AMAZON PLUS" },
-            { value: "9", text: "CRYSTAL" },
-            { value: "10", text: "CRYSTAL PLUS" },
-            { value: "11", text: "PARADISE" },
-            { value: "12", text: "PARADISE LOST" },
-            { value: "13", text: "NEW" },
-            { value: "14", text: "NEW PLUS" },
-            { value: "15", text: "SUN" },
-            { value: "16", text: "SUN PLUS" },
-            { value: "17", text: "LUMINOUS" },
-            { value: "18", text: "LUMINOUS PLUS" },
-            { value: "19", text: "VERSE" },
-          ];
           for (let opt of options) {
             const option = H("option");
             option.value = opt.value;
             option.textContent = opt.text;
             select.appendChild(option);
           }
-    
-          // 預設選項
-          select.value = t[3]; // 綁定狀態變數
     
           // 設置屬性與樣式
           O(i, "type", "button");
@@ -2247,12 +2246,11 @@
           k(label, span);
           k(label, select);
     
-          // 綁定事件處理（更新選項值）
-          P(select, "change", (e) => {
-            t[4](e.target.value); // 更新選項
-          });
+          // 初始化選擇的值
+          select.value = t[5]; // 使用存儲的值初始化
     
-          c || (d = P(i, "click", t[5]), c = !0);
+          // 綁定事件處理
+          c || (d = P(select, "change", () => (t[5] = select.value)), c = !0);
         },
         p(e, [t]) {
           // 更新按鈕與下拉選單
@@ -2276,11 +2274,11 @@
             I(l, f);
           }
     
-          // 更新選擇的選項
-          select.value = e[3];
-    
           // 更新「全部」按鈕狀態
           1 & t && B(i, "activated", e[0]);
+    
+          // 更新選擇的值
+          select.value = e[5]; // 根據存儲的值更新下拉選單
         },
         i: e,
         o: e,
