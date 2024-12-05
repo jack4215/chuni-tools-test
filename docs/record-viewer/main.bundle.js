@@ -2179,7 +2179,7 @@
           select = H("select");
 
           // 下拉選單文字
-          span.textContent = "使用的定數資料（版本：JP 20241128v1）";
+          r.innerHTML = t[2]("settings.filter.release");
 
           // 下拉選項
           const options = [
