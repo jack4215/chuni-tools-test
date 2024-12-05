@@ -2151,12 +2151,12 @@
 
     function Wn(t) {
       let n, r, o, s, a, i, l, c, d, u, f, p, h, dropdown, label, span, select;
-
+    
       // 動態生成的按鈕清單
       p = Ie;
       h = [];
       for (let e = 0; e < p.length; e += 1) h[e] = qn(Vn(t, p, e));
-
+    
       return {
         c() {
           // 建立原本結構
@@ -2164,23 +2164,23 @@
           r = H("span");
           o = D();
           s = H("div");
-
+    
           // 動態按鈕
           for (let e = 0; e < h.length; e += 1) h[e].c();
-          console.log(h);
+    
           a = D();
           i = H("button");
           l = A(t[2]("settings.filter.genre.all") + "");
-
+    
           // 下拉選單區塊
           dropdown = H("div");
           label = H("label");
           span = H("span");
           select = H("select");
-
+    
           // 下拉選單文字
           span.innerHTML = t[2]("settings.filter.release");
-
+    
           // 下拉選項
           const options = [
             { value: "0", text: "All" },
@@ -2210,15 +2210,18 @@
             option.textContent = opt.text;
             select.appendChild(option);
           }
-
+    
+          // 預設選項
+          select.value = t[3]; // 綁定狀態變數
+    
           // 設置屬性與樣式
           O(i, "type", "button");
           O(i, "class", "btn-all svelte-by0uiq");
           B(i, "activated", t[0]);
-
+    
           O(s, "class", "btns svelte-by0uiq");
           O(n, "class", "wrapper svelte-by0uiq");
-
+    
           O(label, "class", "svelte-y51pcd");
           O(select, "class", "svelte-y51pcd");
         },
@@ -2229,30 +2232,34 @@
           r.innerHTML = t[2]("settings.filter.genre");
           k(n, o);
           k(n, s);
-
+    
           // 動態插入按鈕
           for (let e = 0; e < h.length; e += 1) h[e] && h[e].m(s, null);
-
+    
           // 插入「全部」按鈕
           k(s, a);
           k(s, i);
           k(i, l);
-
+    
           // 插入下拉選單
           M(e, dropdown, null);
           k(dropdown, label);
           k(label, span);
           k(label, select);
-
-          // 綁定事件處理（可選）
-          c || (d = P(i, "click", t[4]), c = !0);
+    
+          // 綁定事件處理（更新選項值）
+          P(select, "change", (e) => {
+            t[4](e.target.value); // 更新選項
+          });
+    
+          c || (d = P(i, "click", t[5]), c = !0);
         },
         p(e, [t]) {
           // 更新按鈕與下拉選單
           if (4 & t && r.innerHTML !== (u = e[2]("settings.filter.genre"))) {
             r.innerHTML = u;
           }
-
+    
           // 動態按鈕更新
           if (3 & t) {
             let n;
@@ -2263,12 +2270,15 @@
             for (; n < h.length; n += 1) h[n].d(1);
             h.length = p.length;
           }
-
+    
           // 更新「全部」按鈕文字
           if (4 & t && f !== (f = e[2]("settings.filter.genre.all"))) {
             I(l, f);
           }
-
+    
+          // 更新選擇的選項
+          select.value = e[3];
+    
           // 更新「全部」按鈕狀態
           1 & t && B(i, "activated", e[0]);
         },
@@ -2283,6 +2293,7 @@
         },
       };
     }
+    
 
 
     function Jn(e, t, n) {
