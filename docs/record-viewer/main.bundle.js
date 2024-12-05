@@ -2143,121 +2143,121 @@
     }
 
     function Wn(t) {
-  let n, r, o, s, a, i, l, c, d, u, f, p, h, dropdown, label, span, select;
+      let n, r, o, s, a, i, l, c, d, u, f, p, h, dropdown, label, span, select;
 
-  // 動態生成的按鈕清單
-  p = Ie;
-  h = [];
-  for (let e = 0; e < p.length; e += 1) h[e] = qn(Vn(t, p, e));
+      // 動態生成的按鈕清單
+      p = Ie;
+      h = [];
+      for (let e = 0; e < p.length; e += 1) h[e] = qn(Vn(t, p, e));
 
-  return {
-    c() {
-      // 建立原本結構
-      n = H("div");
-      r = H("span");
-      o = D();
-      s = H("div");
+      return {
+        c() {
+          // 建立原本結構
+          n = H("div");
+          r = H("span");
+          o = D();
+          s = H("div");
 
-      // 動態按鈕
-      for (let e = 0; e < h.length; e += 1) h[e].c();
+          // 動態按鈕
+          for (let e = 0; e < h.length; e += 1) h[e].c();
+          console.log(h);
+          a = D();
+          i = H("button");
+          l = A(t[2]("settings.filter.genre.all") + "");
 
-      a = D();
-      i = H("button");
-      l = A(t[2]("settings.filter.genre.all") + "");
+          // 下拉選單區塊
+          dropdown = H("div");
+          label = H("label");
+          span = H("span");
+          select = H("select");
 
-      // 下拉選單區塊
-      dropdown = H("div");
-      label = H("label");
-      span = H("span");
-      select = H("select");
+          // 下拉選單文字
+          span.textContent = "使用的定數資料（版本：JP 20241128v1）";
 
-      // 下拉選單文字
-      span.textContent = "使用的定數資料（版本：JP 20241128v1）";
+          // 下拉選項
+          const options = [
+            { value: "luminousplus", text: "國際版 (LUMINOUS PLUS)" },
+            { value: "verse", text: "日版 (VERSE)" },
+          ];
+          for (let opt of options) {
+            const option = H("option");
+            option.value = opt.value;
+            option.textContent = opt.text;
+            select.appendChild(option);
+          }
 
-      // 下拉選項
-      const options = [
-        { value: "luminousplus", text: "國際版 (LUMINOUS PLUS)" },
-        { value: "verse", text: "日版 (VERSE)" },
-      ];
-      for (let opt of options) {
-        const option = H("option");
-        option.value = opt.value;
-        option.textContent = opt.text;
-        select.appendChild(option);
-      }
+          // 設置屬性與樣式
+          O(i, "type", "button");
+          O(i, "class", "btn-all svelte-by0uiq");
+          B(i, "activated", t[0]);
 
-      // 設置屬性與樣式
-      O(i, "type", "button");
-      O(i, "class", "btn-all svelte-by0uiq");
-      B(i, "activated", t[0]);
+          O(s, "class", "btns svelte-by0uiq");
+          O(n, "class", "wrapper svelte-by0uiq");
 
-      O(s, "class", "btns svelte-by0uiq");
-      O(n, "class", "wrapper svelte-by0uiq");
+          O(label, "class", "svelte-y51pcd");
+          O(select, "class", "svelte-y51pcd");
+        },
+        m(e, f) {
+          // 插入 DOM 節點
+          M(e, n, f);
+          k(n, r);
+          r.innerHTML = t[2]("settings.filter.genre");
+          k(n, o);
+          k(n, s);
 
-      O(label, "class", "svelte-y51pcd");
-      O(select, "class", "svelte-y51pcd");
-    },
-    m(e, f) {
-      // 插入 DOM 節點
-      M(e, n, f);
-      k(n, r);
-      r.innerHTML = t[2]("settings.filter.genre");
-      k(n, o);
-      k(n, s);
+          // 動態插入按鈕
+          for (let e = 0; e < h.length; e += 1) h[e] && h[e].m(s, null);
 
-      // 動態插入按鈕
-      for (let e = 0; e < h.length; e += 1) h[e] && h[e].m(s, null);
+          // 插入「全部」按鈕
+          k(s, a);
+          k(s, i);
+          k(i, l);
 
-      // 插入「全部」按鈕
-      k(s, a);
-      k(s, i);
-      k(i, l);
+          // 插入下拉選單
+          M(e, dropdown, null);
+          k(dropdown, label);
+          k(label, span);
+          k(label, select);
 
-      // 插入下拉選單
-      M(e, dropdown, null);
-      k(dropdown, label);
-      k(label, span);
-      k(label, select);
+          // 綁定事件處理（可選）
+          c || (d = P(i, "click", t[4]), c = !0);
+        },
+        p(e, [t]) {
+          // 更新按鈕與下拉選單
+          if (4 & t && r.innerHTML !== (u = e[2]("settings.filter.genre"))) {
+            r.innerHTML = u;
+          }
 
-      // 綁定事件處理（可選）
-      c || (d = P(i, "click", t[4]), c = !0);
-    },
-    p(e, [t]) {
-      // 更新按鈕與下拉選單
-      if (4 & t && r.innerHTML !== (u = e[2]("settings.filter.genre"))) {
-        r.innerHTML = u;
-      }
+          // 動態按鈕更新
+          if (3 & t) {
+            let n;
+            for (p = Ie, n = 0; n < p.length; n += 1) {
+              const r = Vn(e, p, n);
+              h[n] ? h[n].p(r, t) : (h[n] = qn(r), h[n].c(), h[n].m(s, a));
+            }
+            for (; n < h.length; n += 1) h[n].d(1);
+            h.length = p.length;
+          }
 
-      // 動態按鈕更新
-      if (3 & t) {
-        let n;
-        for (p = Ie, n = 0; n < p.length; n += 1) {
-          const r = Vn(e, p, n);
-          h[n] ? h[n].p(r, t) : (h[n] = qn(r), h[n].c(), h[n].m(s, a));
-        }
-        for (; n < h.length; n += 1) h[n].d(1);
-        h.length = p.length;
-      }
+          // 更新「全部」按鈕文字
+          if (4 & t && f !== (f = e[2]("settings.filter.genre.all"))) {
+            I(l, f);
+          }
 
-      // 更新「全部」按鈕文字
-      if (4 & t && f !== (f = e[2]("settings.filter.genre.all"))) {
-        I(l, f);
-      }
-
-      // 更新「全部」按鈕狀態
-      1 & t && B(i, "activated", e[0]);
-    },
-    i: e,
-    o: e,
-    d(e) {
-      e && E(n);
-      N(h, e);
-      e && E(dropdown);
-      c = !1;
-      d();
-    },
-  };
-}
+          // 更新「全部」按鈕狀態
+          1 & t && B(i, "activated", e[0]);
+        },
+        i: e,
+        o: e,
+        d(e) {
+          e && E(n);
+          N(h, e);
+          e && E(dropdown);
+          c = !1;
+          d();
+        },
+      };
+    }
 
 
     function Jn(e, t, n) {
