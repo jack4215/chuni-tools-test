@@ -2151,80 +2151,59 @@
       }
     }
 
-    function createFilter(t, config) {
-      let n, r, o, s, a, i, l, c, d, 
-        u = t[2](config.titleKey) + "", // 標題翻譯
-        f = t[2](config.allKey) + "",   // 全選按鈕翻譯
-        p = config.filterList,          // 篩選清單
+    function Wn(t) {
+      let n, r, o, s, a, i, l, c, d, u = t[2]("settings.filter.genre") + "",
+        f = t[2]("settings.filter.genre.all") + "",
+        p = Ie,
         h = [];
-    
       for (let e = 0; e < p.length; e += 1) h[e] = qn(Vn(t, p, e));
-    
       return {
         c() {
           n = H("div"), r = H("span"), o = D(), s = H("div");
           for (let e = 0; e < h.length; e += 1) h[e].c();
-          a = D(), i = H("button"), l = A(f), O(i, "type", "button"), O(i, "class", "btn-all svelte-by0uiq"), B(i, "activated", t[0]), O(s, "class", "btns svelte-by0uiq"), O(n, "class", "wrapper svelte-by0uiq");
+          a = D(), i = H("button"), l = A(f), O(i, "type", "button"), O(i, "class", "btn-all svelte-by0uiq"), B(i, "activated", t[0]), O(s, "class", "btns svelte-by0uiq"), O(n, "class", "wrapper svelte-by0uiq")
         },
         m(e, f) {
           M(e, n, f), k(n, r), r.innerHTML = u, k(n, o), k(n, s);
           for (let e = 0; e < h.length; e += 1) h[e] && h[e].m(s, null);
-          k(s, a), k(s, i), k(i, l), c || (d = P(i, "click", t[4]), c = !0);
+          k(s, a), k(s, i), k(i, l), c || (d = P(i, "click", t[4]), c = !0)
         },
         p(e, [t]) {
-          if (4 & t && u !== (u = e[2](config.titleKey) + "") && (r.innerHTML = u), 3 & t) {
+          if (4 & t && u !== (u = e[2]("settings.filter.genre") + "") && (r.innerHTML = u), 3 & t) {
             let n;
-            for (p = config.filterList, n = 0; n < p.length; n += 1) {
+            for (p = Ie, n = 0; n < p.length; n += 1) {
               const r = Vn(e, p, n);
-              h[n] ? h[n].p(r, t) : (h[n] = qn(r), h[n].c(), h[n].m(s, a));
+              h[n] ? h[n].p(r, t) : (h[n] = qn(r), h[n].c(), h[n].m(s, a))
             }
             for (; n < h.length; n += 1) h[n].d(1);
-            h.length = p.length;
+            h.length = p.length
           }
-          4 & t && f !== (f = e[2](config.allKey) + "") && I(l, f), 1 & t && B(i, "activated", e[0]);
+          4 & t && f !== (f = e[2]("settings.filter.genre.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0])
         },
         i: e,
         o: e,
         d(e) {
-          e && E(n), N(h, e), c = !1, d();
+          e && E(n), N(h, e), c = !1, d()
         }
-      };
+      }
     }
     
-    function createFilterState(e, t, n, filterList) {
+    function Jn(e, t, n) {
       let r, o;
       u(e, et, (e => n(1, r = e))), u(e, wt, (e => n(2, o = e)));
-      let s = filterList.every((e => r[e]));
+      let s = Ie.every((e => r[e]));
       return [s, r, o, e => {
-        p(et, r[e] = !r[e], r), n(0, s = filterList.every((e => r[e])));
+        p(et, r[e] = !r[e], r), n(0, s = Ie.every((e => r[e])))
       }, () => {
         n(0, s = !s);
-        for (let e of filterList) p(et, r[e] = s, r);
-      }];
+        for (let e of Ie) p(et, r[e] = s, r)
+      }]
     }
-    
-    const GenericFilter = class extends Se {
-      constructor(e, config) {
-        super(), je(this, e, (t, n) => createFilterState(t, n, e, config.filterList), t => createFilter(t, config), i, {}, Bn);
+    const Xn = class extends Se {
+      constructor(e) {
+        super(), je(this, e, Jn, Wn, i, {}, Bn)
       }
     };
-    
-    // 範例：構建 Gn 篩選器
-    const GnConfig = {
-      titleKey: "settings.filter.genre",
-      allKey: "settings.filter.genre.all",
-      filterList: Gn
-    };
-    const GnFilter = new GenericFilter(GnConfig);
-    
-    // 範例：構建 Yn 篩選器
-    const YnConfig = {
-      titleKey: "settings.filter.release",
-      allKey: "settings.filter.genre.all",
-      filterList: Rl
-    };
-    const YnFilter = new GenericFilter(YnConfig);
-    
 
     function Gn(e) {
       j(e, "svelte-1lhvhf8", ".wrapper.svelte-1lhvhf8{padding:0.5rem;display:flex;gap:0.5rem;align-items:center}input[type=number].svelte-1lhvhf8{background-color:var(--theme-bg-sub);color:var(--theme-text-control);border:none;border-radius:0.2rem;width:4rem;padding:0.5rem;-moz-appearance:textfield;appearance:textfield;flex-grow:1}input[type=number].svelte-1lhvhf8::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}.btn.svelte-1lhvhf8{width:-moz-fit-content;width:fit-content;padding:0.5rem 1.5rem;border-radius:0.8rem;background-color:var(--theme-control);color:var(--theme-text-control)}.btn[disabled].svelte-1lhvhf8{background-color:var(--theme-border);cursor:no-drop}")
