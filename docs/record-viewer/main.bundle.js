@@ -2209,7 +2209,6 @@
     }
 
     function Vnn(e, t, n) {
-      console.log(e);
       const r = e.slice();
       return r[5] = t[n],console.log(e), r
       
@@ -2217,7 +2216,6 @@
 
     function qnn(e) {
       let t, n, r, o, s = e[5] + "";
-      console.log(e);
       function a() {
         return e[3](e[5])
       }
@@ -2238,7 +2236,6 @@
     }
 
     function Wnn(t) {
-      console.log(t);
       let n, r, o, s, a, i, l, c, d, u = t[2]("settings.filter.release") + "",
         f = t[2]("settings.filter.release.all") + "",
         p = Rl,
@@ -2265,7 +2262,6 @@
             for (; n < h.length; n += 1) h[n].d(1);
             h.length = p.length
           }
-          console.log(e[2]);
           4 & t && f !== (f = e[2]("settings.filter.release.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0])
         },
         i: e,
@@ -4480,8 +4476,6 @@
 
     function Yo(e, t, n) {
       let r, o, s, a, i, l, c, d, f, h, g, m, v, b, y, w, $, x, k, j;
-      console.log(e);
-      console.log(et);
       return u(e, Ye, (e => n(14, i = e))), u(e, Ze, (e => n(15, l = e))), u(e, et, (e => n(16, c = e))), u(e, Qe, (e => n(17, d = e))), u(e, At, (e => n(18, h = e))), u(e, eet, (e => n(19, j = e))), u(e, nt, (e => n(2, f = e))), u(e, De, (e => n(20, g = e))), u(e, Tt, (e => n(21, m = e))), u(e, $t, (e => n(5, v = e))), u(e, Ae, (e => n(6, b = e))), u(e, wt, (e => n(7, y = e))),u(e, At, (e => n(8, w = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(9, $ = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, jt, (e => n(10, x = e))), u(e, xt, (e => n(11, k = e))), p($t, v = window.location.hash.slice(1), v), e.$$.update = () => {
         507908 & e.$$.dirty && n(0, r = h.filter((e => ("hide" != f || e.score >= 0) && (!(f === "dgvalue" || f === "dgpercentage") || (e.dg === 1 || e.dg === 2)) && d[e.difficulty] && c[Ie.find((t => _e[t] == e.genre))] && j[Rl.find((t => _s[t] == e.release))] && l >= e.const && e.const >= i))), 1 & e.$$.dirty && n(4, o = (() => {
           let e = {};
