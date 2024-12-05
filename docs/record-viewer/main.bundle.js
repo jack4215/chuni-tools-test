@@ -4479,13 +4479,13 @@
     function Yo(e, t, n) {
       let r, o, s, a, i, l, c, d, f, h, g, m, v, b, y, w, $, x, k, j;
       return u(e, Ye, (e => n(14, i = e))), u(e, Ze, (e => n(15, l = e))), u(e, et, (e => n(16, c = e))), u(e, Qe, (e => n(17, d = e))), u(e, At, (e => n(18, h = e))), u(e, eet, (e => n(19, j = e))), u(e, nt, (e => n(2, f = e))), u(e, De, (e => n(20, g = e))), u(e, Tt, (e => n(21, m = e))), u(e, $t, (e => n(5, v = e))), u(e, Ae, (e => n(6, b = e))), u(e, wt, (e => n(7, y = e))),u(e, At, (e => n(8, w = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(9, $ = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, jt, (e => n(10, x = e))), u(e, xt, (e => n(11, k = e))), p($t, v = window.location.hash.slice(1), v), e.$$.update = () => {
-        507908 & e.$$.dirty && n(0, r = h.filter((e => ("hide" != f || e.score >= 0) && (!(f === "dgvalue" || f === "dgpercentage") || (e.dg === 1 || e.dg === 2)) && d[e.difficulty] && c[Ie.find((t => _e[t] == e.genre))] && j[Rl.find((t => _s[t] == e.release))] && l >= e.const && e.const >= i))), 1 & e.$$.dirty && n(4, o = (() => {
+        507908 & e.$$.dirty && n(0, r = h.filter((e => ("hide" != f || e.score >= 0) && (!(f === "dgvalue" || f === "dgpercentage") || (e.dg === 1 || e.dg === 2)) && d[e.difficulty] && c[Ie.find((t => _e[t] == e.genre))] && j[Rl.find((t => _s[t] == e.release))] && l >= e.const && e.const >= i))), console.log(r), 1 & e.$$.dirty && n(4, o = (() => {
           let e = {};
           ["MAX", "SSS+", "SSS", "SS+", "SS", "S+", "S"].forEach((t => e[t] = 0)), ["AAA", "AA", "A", "BBB", "BB", "B", "C", "D"].forEach((t => e[t] = 0));
           for (const t of r) e[t.rank]++;
           return Object.keys(e).reduce(((t, n) => (e[n] += e[t], n))), e
         })()), 1 & e.$$.dirty && n(1, s = r.filter((e => "AJ" == e.clear)).length), 3 & e.$$.dirty && n(3, a = s + r.filter((e => "FC" == e.clear)).length)
-      },       console.log(r),[r, s, f, a, o, v, b, y, w, $, x, k, function() {
+      },[r, s, f, a, o, v, b, y, w, $, x, k, function() {
         p($t, v = window.location.hash.slice(1), v), "all" !== v && p(Tt, m = !1, m)
       }, async function() {
         Re(window.opener, Le)("saveConfig", {
