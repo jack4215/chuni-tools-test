@@ -852,7 +852,6 @@
     }
 
     function Ge(e, t, n) {
-      console.log(e)
       const r = e, o = t, s = [];  
       r.map(e => {
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
