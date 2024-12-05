@@ -753,6 +753,13 @@
       e["P & A"] = "0", e.niconico = "2", e["東方Project"] = "3", e.ORIGINAL = "5", e.VARIETY = "6", e["イロドリ"] = "7", e["ゲキマイ"] = "9"
     }(_e || (_e = {}));
     const Ie = Object.keys(_e);
+    var _s;
+    ! function(e) {
+      e["ALL"] = "0", e["ORIGIN"] = "1",e["ORIGIN PLUS"] = "2",e["AIR"] = "3",e["AIR PLUS"] = "4",e["STAR"] = "5",e["STAR PLUS"] = "6",e["AMAZON"] = "7", e["AMAZON PLUS"] = "8",
+      e["CRYSTAL"] = "9",e["CRYSTAL PLUS"] = "10",e["PARADISE"] = "11",e["PARADISE LOST"] = "12",e["NEW"] = "13",e["NEW PLUS"] = "14",e["SUN"] = "15",e["SUN PLUS"] = "16",
+      e["LUMINOUS"] = "17",e["LUMINOUS PLUS"] = "18",e["VERSE"] = "19"
+    }(_s || (_s = {}));
+    const Rl = Object.keys(_s);
 
     function Re(e, t) {
       if (!e) throw new Error("Target window does not exist");
