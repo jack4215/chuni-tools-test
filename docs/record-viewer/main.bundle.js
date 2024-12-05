@@ -2187,6 +2187,55 @@
         }
       }
     }
+    
+    function Jn(e, t, n) {
+      let r, o;
+      u(e, et, (e => n(1, r = e))), u(e, wt, (e => n(2, o = e)));
+      let s = Ie.every((e => r[e]));
+      return [s, r, o, e => {
+        p(et, r[e] = !r[e], r), n(0, s = Ie.every((e => r[e])))
+      }, () => {
+        n(0, s = !s);
+        for (let e of Ie) p(et, r[e] = s, r)
+      }]
+    }
+    const Xn = class extends Se {
+      constructor(e) {
+        super(), je(this, e, Jn, Wn, i, {}, Bn)
+      }
+    };
+
+    function Bnn(e) {
+      j(e, "svelte-by0uiq", '.wrapper.svelte-by0uiq{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:1rem}.btns.svelte-by0uiq{display:-ms-grid;display:grid;grid-template-areas:".... .... ....";gap:0.5rem;flex-wrap:wrap}button.svelte-by0uiq{width:100%;padding:0.5rem;border-radius:0.5rem;background-color:var(--theme-bg-sub);border:3px solid var(--theme-control);color:var(--theme-text-control);filter:brightness(0.5)}button.svelte-by0uiq:hover{filter:brightness(0.8)}button.activated.svelte-by0uiq{filter:brightness(1)}.btn-all.svelte-by0uiq{grid-column:2/4;border-color:var(--theme-control-altr)}')
+    }
+
+    function Vnn(e, t, n) {
+      const r = e.slice();
+      return r[5] = t[n], r
+    }
+
+    function qnn(e) {
+      let t, n, r, o, s = e[5] + "";
+
+      function a() {
+        return e[3](e[5])
+      }
+      return {
+        c() {
+          t = H("button"), n = A(s), O(t, "type", "button"), O(t, "class", "svelte-by0uiq"), B(t, "activated", e[1][e[5]])
+        },
+        m(e, s) {
+          M(e, t, s), k(t, n), r || (o = P(t, "click", a), r = !0)
+        },
+        p(n, r) {
+          e = n, 2 & r && B(t, "activated", e[1][e[5]])
+        },
+        d(e) {
+          e && E(t), r = !1, o()
+        }
+      }
+    }
+
     function Wnn(t) {
       let n, r, o, s, a, i, l, c, d, u = t[2]("settings.filter.genre") + "",
         f = t[2]("settings.filter.genre.all") + "",
@@ -2224,7 +2273,7 @@
       }
     }
     
-    function Jn(e, t, n) {
+    function Jnn(e, t, n) {
       let r, o;
       u(e, et, (e => n(1, r = e))), u(e, wt, (e => n(2, o = e)));
       let s = Ie.every((e => r[e]));
@@ -2235,9 +2284,9 @@
         for (let e of Ie) p(et, r[e] = s, r)
       }]
     }
-    const Xn = class extends Se {
+    const Xnn = class extends Se {
       constructor(e) {
-        super(), je(this, e, Jn, Wn, Wnn, i, {}, Bn)
+        super(), je(this, e, Jnn, Wnn, i, {}, Bnn)
       }
     };
 
@@ -2679,7 +2728,7 @@
     }
 
     function kr(e) {
-      let t, n, r, o, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j, S, T, C, N, U, A, L, _, I, R, F, B, V, q, W, J, X, G, Y, Z, K, ee, te, ne, se, ae, ie, le, ce, de, ue, fe, ve = e[0]("settings.main.title") + "",
+      let t, n, r, o, a, i, l, c, d, u, f, p, h, g, m, v, b, bb, y, w, $, x, j, S, T, C, N, U, A, L, _, I, R, F, B, V, q, W, J, X, G, Y, Z, K, ee, te, ne, se, ae, ie, le, ce, de, ue, fe, ve = e[0]("settings.main.title") + "",
         ye = e[0]("settings.filter.title") + "",
         je = e[0]("settings.data.title") + "",
         Se = e[0]("settings.data.overpower.notify") + "",
@@ -2723,7 +2772,7 @@
       });
       void 0 !== e[1] && (Ne.high = e[1]), void 0 !== e[2] && (Ne.low = e[2]), f = new Dn({
         props: Ne
-      }), Q.push((() => we(f, "high", Me))), Q.push((() => we(f, "low", Ee))), m = new Fn({}), b = new Xn({});
+      }), Q.push((() => we(f, "high", Me))), Q.push((() => we(f, "low", Ee))), m = new Fn({}), b = new Xn({}), bb = new Xnn({});
       let He = function(e) {
         let t, n, r;
 
