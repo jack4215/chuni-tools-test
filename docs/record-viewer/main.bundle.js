@@ -2257,8 +2257,8 @@
           if (4 & t && u !== (u = e[2]("settings.filter.genre") + "") && (r.innerHTML = u), 3 & t) {
             let n;
             for (p = Rl, n = 0; n < p.length; n += 1) {
-              const r = Vn(e, p, n);
-              h[n] ? h[n].p(r, t) : (h[n] = qn(r), h[n].c(), h[n].m(s, a))
+              const r = Vnn(e, p, n);
+              h[n] ? h[n].p(r, t) : (h[n] = qnn(r), h[n].c(), h[n].m(s, a))
             }
             for (; n < h.length; n += 1) h[n].d(1);
             h.length = p.length
