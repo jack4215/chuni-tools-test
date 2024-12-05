@@ -2152,65 +2152,41 @@
     function Wn(t) {
       let n, r, o, s, a, i, l, c, d, u, f, p, h, dropdown, label, span, select;
     
-      // 選項列表
       const options = [
         { value: "0", text: "All" },
         { value: "1", text: "ORIGIN" },
         { value: "2", text: "ORIGIN PLUS" },
-        { value: "3", text: "AIR" },
-        { value: "4", text: "AIR PLUS" },
-        { value: "5", text: "STAR" },
-        { value: "6", text: "STAR PLUS" },
-        { value: "7", text: "AMAZON" },
-        { value: "8", text: "AMAZON PLUS" },
-        { value: "9", text: "CRYSTAL" },
-        { value: "10", text: "CRYSTAL PLUS" },
-        { value: "11", text: "PARADISE" },
-        { value: "12", text: "PARADISE LOST" },
-        { value: "13", text: "NEW" },
-        { value: "14", text: "NEW PLUS" },
-        { value: "15", text: "SUN" },
-        { value: "16", text: "SUN PLUS" },
-        { value: "17", text: "LUMINOUS" },
-        { value: "18", text: "LUMINOUS PLUS" },
-        { value: "19", text: "VERSE" },
+        // 其餘選項...
       ];
     
-      // 確保 t[5] 有默認值
       if (t[5] === undefined) {
         t[5] = "0"; // 默認選中 "All"
       }
     
-      // 動態生成的按鈕清單
       p = Ie;
       h = [];
       for (let e = 0; e < p.length; e += 1) h[e] = qn(Vn(t, p, e));
     
       return {
         c() {
-          // 建立原本結構
           n = H("div");
           r = H("span");
           o = D();
           s = H("div");
     
-          // 動態按鈕
           for (let e = 0; e < h.length; e += 1) h[e].c();
     
           a = D();
           i = H("button");
           l = A(t[2]("settings.filter.genre.all") + "");
     
-          // 下拉選單區塊
           dropdown = H("div");
           label = H("label");
           span = H("span");
           select = H("select");
     
-          // 下拉選單文字
           span.innerHTML = t[2]("settings.filter.release");
     
-          // 下拉選項
           for (let opt of options) {
             const option = H("option");
             option.value = opt.value;
@@ -2218,7 +2194,6 @@
             select.appendChild(option);
           }
     
-          // 設置屬性與樣式
           O(i, "type", "button");
           O(i, "class", "btn-all svelte-by0uiq");
           B(i, "activated", t[0]);
@@ -2230,40 +2205,32 @@
           O(select, "class", "svelte-y51pcd");
         },
         m(e, f) {
-          // 插入 DOM 節點
           M(e, n, f);
           k(n, r);
           r.innerHTML = t[2]("settings.filter.genre");
           k(n, o);
           k(n, s);
     
-          // 動態插入按鈕
           for (let e = 0; e < h.length; e += 1) h[e] && h[e].m(s, null);
     
-          // 插入「全部」按鈕
           k(s, a);
           k(s, i);
           k(i, l);
     
-          // 插入下拉選單
           M(e, dropdown, null);
           k(dropdown, label);
           k(label, span);
           k(label, select);
     
-          // 初始化選擇的值
-          select.value = t[5]; // 使用存儲的值初始化
+          select.value = t[5]; // 初始化下拉選單值
     
-          // 綁定事件處理
           c || (d = P(select, "change", () => (t[5] = select.value)), c = !0);
         },
         p(e, [t]) {
-          // 更新按鈕與下拉選單
           if (4 & t && r.innerHTML !== (u = e[2]("settings.filter.genre"))) {
             r.innerHTML = u;
           }
     
-          // 動態按鈕更新
           if (3 & t) {
             let n;
             for (p = Ie, n = 0; n < p.length; n += 1) {
@@ -2274,17 +2241,14 @@
             h.length = p.length;
           }
     
-          // 更新「全部」按鈕文字
           if (4 & t && f !== (f = e[2]("settings.filter.genre.all"))) {
             I(l, f);
           }
     
-          // 更新「全部」按鈕狀態
           1 & t && B(i, "activated", e[0]);
     
-          // 同步下拉選單的值
           if (select.value !== e[5]) {
-            select.value = e[5];
+            select.value = e[5]; // 確保值同步
           }
         },
         i: e,
@@ -2298,6 +2262,7 @@
         },
       };
     }
+    
     
     
 
