@@ -2187,6 +2187,42 @@
         }
       }
     }
+    function Wnn(t) {
+      let n, r, o, s, a, i, l, c, d, u = t[2]("settings.filter.genre") + "",
+        f = t[2]("settings.filter.genre.all") + "",
+        p = Ie,
+        h = [];
+      for (let e = 0; e < p.length; e += 1) h[e] = qn(Vn(t, p, e));
+      return {
+        c() {
+          n = H("div"), r = H("span"), o = D(), s = H("div");
+          for (let e = 0; e < h.length; e += 1) h[e].c();
+          a = D(), i = H("button"), l = A(f), O(i, "type", "button"), O(i, "class", "btn-all svelte-by0uiq"), B(i, "activated", t[0]), O(s, "class", "btns svelte-by0uiq"), O(n, "class", "wrapper svelte-by0uiq")
+        },
+        m(e, f) {
+          M(e, n, f), k(n, r), r.innerHTML = u, k(n, o), k(n, s);
+          for (let e = 0; e < h.length; e += 1) h[e] && h[e].m(s, null);
+          k(s, a), k(s, i), k(i, l), c || (d = P(i, "click", t[4]), c = !0)
+        },
+        p(e, [t]) {
+          if (4 & t && u !== (u = e[2]("settings.filter.genre") + "") && (r.innerHTML = u), 3 & t) {
+            let n;
+            for (p = Ie, n = 0; n < p.length; n += 1) {
+              const r = Vn(e, p, n);
+              h[n] ? h[n].p(r, t) : (h[n] = qn(r), h[n].c(), h[n].m(s, a))
+            }
+            for (; n < h.length; n += 1) h[n].d(1);
+            h.length = p.length
+          }
+          4 & t && f !== (f = e[2]("settings.filter.genre.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0])
+        },
+        i: e,
+        o: e,
+        d(e) {
+          e && E(n), N(h, e), c = !1, d()
+        }
+      }
+    }
     
     function Jn(e, t, n) {
       let r, o;
@@ -2201,7 +2237,7 @@
     }
     const Xn = class extends Se {
       constructor(e) {
-        super(), je(this, e, Jn, Wn, i, {}, Bn)
+        super(), je(this, e, Jn, Wn, Wnn, i, {}, Bn)
       }
     };
 
