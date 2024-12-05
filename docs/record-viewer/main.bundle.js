@@ -2210,7 +2210,7 @@
 
     function Vnn(e, t, n) {
       const r = e.slice();
-      return r[5] = t[n],console.log(e), r
+      return r[5] = t[n], r
       
     }
 
