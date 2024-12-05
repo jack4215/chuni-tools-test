@@ -3421,14 +3421,12 @@
         N = t[0].constUncertain && Ir();
       let newVIndicator = (t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT")) && Vz(T);
       function U(e, t) {
-        console.log(e);
         return "hide" != e[1] ? zr : Rr
       }
       let L = U(t),
         _ = L(t);
 
       function R(e, t) {
-        console.log(e);
         return e[3] ? qr : Vr
       }
       let z = R(t),
@@ -3445,11 +3443,9 @@
           }
         },
         m(e, l) {
-          console.log(e);
           M(e, n, l), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, d), k(n, u), k(u, f), N && N.m(u, null), k(n, p), _.m(n, null), k(n, h), k(n, g), F.m(g, null), k(n, m), k(n, v), k(v, b), k(n, y), V && V.m(n, null), k(n, w), q && q.m(n, null), $ || (x = P(g, "click", t[6]), $ = !0)
         },
         p(e, [t]) {
-          console.log(e);
           1 & t && j !== (j = e[0].order + "") && I(o, j), 1 & t && S !== (S = e[0].title + "") && I(i, S), 1 & t && l !== (l = e[0].difficulty) && O(a, "data-diff", l), 4 & t && (c = 1) && O(a, "colspan", c), 1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T), e[0].constUncertain ? N || (N = Ir(), N.c(), N.m(u, null)) : N && (N.d(1), N = null), L === (L = U(e)) && _ ? _.p(e, t) : (_.d(1), _ = L(e), _ && (_.c(), _.m(n, h))), z === (z = R(e)) && F ? F.p(e, t) : (F.d(1), F = z(e), F && (F.c(), F.m(g, null))), 4 & t && B(g, "clickable", "all" === e[2]), 1 & t && C !== (C = (e[0].const < 0 || -1 == e[0].score ? "-" : null == e[0].rating ? "??.??" : (e[0].rating / 100).toFixed(2)) + "") && I(b, C), V ? V.p(e, t) : (V = Wr(e), V.c(), V.m(n, w)), e[4] && "all" === e[2] ? q ? q.p(e, t) : (q = Jr(e), q.c(), q.m(n, null)) : q && (q.d(1), q = null), 5 & t && B(n, "best30", e[0].order <= ( "new" === e[2] ? 10 : 30)), 5 & t && B(n, "best40", e[0].order <= ("best" === e[2] ? 30 : "new" === e[2] ? 10 : 40)), 1 & t && B(n, "ajc", 101e4 == e[0].score)
           const shouldShowNewV = 
               e[0].newV === 1 || (e[0].newV === 2 && e[0].difficulty === "ULT");
@@ -3473,7 +3469,6 @@
         i: e,
         o: e,
         d(e) {
-          console.log(e);
           e && E(n), N && N.d(), _.d(), F.d(), V && V.d(), q && q.d(), $ = !1, x();
           newVIndicator && newVIndicator.d();
         }
