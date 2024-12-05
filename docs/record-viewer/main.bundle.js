@@ -852,6 +852,7 @@
     }
 
     function Ge(e, t, n) {
+      console.log(e)
       const r = e, o = t, s = [];  
       r.map(e => {
           let songData = t.songs ? t.songs.find(song => song.title === e.title) : t[e.title];
@@ -3414,6 +3415,7 @@
 
 
     function Yr(t) {
+      console.log(t);
       let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j = t[0].order + "",
         S = t[0].title + "",
         T = (t[0].const < 0 ? "-" : t[0].const?.toFixed(1) ?? "??.?") + "",
