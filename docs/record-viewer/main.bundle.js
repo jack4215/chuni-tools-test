@@ -1802,7 +1802,8 @@
 
     function jn(e) {
       let t, n, r, o, s, a, i;
-      const l = e[3].default,
+      const l = e[3].default;
+      console.log(l);
         c = function(e, t, n, r) {
           if (e) {
             const r = f(e, t, n, null);
