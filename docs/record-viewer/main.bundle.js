@@ -3421,12 +3421,14 @@
         N = t[0].constUncertain && Ir();
       let newVIndicator = (t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT")) && Vz(T);
       function U(e, t) {
+        console.log(e);
         return "hide" != e[1] ? zr : Rr
       }
       let L = U(t),
         _ = L(t);
 
       function R(e, t) {
+        console.log(e);
         return e[3] ? qr : Vr
       }
       let z = R(t),
