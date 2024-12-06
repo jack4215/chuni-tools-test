@@ -4486,14 +4486,13 @@
         })()), 1 & e.$$.dirty && n(1, s = r.filter((e => "AJ" == e.clear)).length), 3 & e.$$.dirty && n(3, a = s + r.filter((e => "FC" == e.clear)).length)
       },[r, s, f, a, o, v, b, y, w, $, x, k, function() {
         p($t, v = window.location.hash.slice(1), v), "all" !== v && p(Tt, m = !1, m)
-      }, async function() {
+      }, i, l, h, c, j, d, async function() {
         Re(window.opener, Le)("saveConfig", {
           data: {
             lang: g
           }
         })
-      }, i, l, h, c, j, d] 
-      
+      }] 
     }
     new class extends Se {
       constructor(e) {
