@@ -760,9 +760,7 @@
     const Ie = Object.keys(_e);
     var _s;
     ! function(e) {
-      e["ORI"] = "1", e["ORI+"] = "2", e["AIR"] = "3", e["AIR+"] = "4", e["STR"] = "5", e["STR+"] = "6", e["AMZ"] = "7", e["AMZ+"] = "8",
-      e["CRS"] = "9", e["CRS+"] = "10", e["PAR"] = "11", e["PAR×"] = "12", e["NEW"] = "13", e["NEW+"] = "14", e["SUN"] = "15", e["SUN+"] = "16",
-      e["LMN"] = "17", e["LMN+"] = "18", e["VER"] = "19"
+      e["P & A"] = "0", e.niconico = "2", e["東方Project"] = "3", e.ORIGINAL = "5", e.VARIETY = "6", e["イロドリ"] = "7", e["ゲキマイ"] = "9"
     }(_s || (_s = {}));
     const Rl = Object.keys(_s);
 
