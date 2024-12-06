@@ -2853,7 +2853,7 @@
         label: e[0]("settings.data.showScoreDiff")
       };
 
-      function Iey(t) {
+      function Ie(t) {
         e[15](t)
       }
       void 0 !== e[6] && (_p.checked = e[6]), F = new Nn({
@@ -2874,7 +2874,7 @@
       }
       void 0 !== e[7] && (Re.value = e[7]), Z = new Tn({
         props: Re
-      }), Q.push((() => we(Z, "value", Iey)));
+      }), Q.push((() => we(Z, "value", Ie)));
       let Fe = {
         label: e[0]("settings.ui.theme"),
         $$slots: {
