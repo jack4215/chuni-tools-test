@@ -2120,16 +2120,16 @@
         }
       };
   
-      function Bn(e) {
+      function Bnn(e) {
         j(e, "svelte-by0uiq", '.wrapper.svelte-by0uiq{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:1rem}.btns.svelte-by0uiq{display:-ms-grid;display:grid;grid-template-areas:"... ... ...";gap:0.5rem;flex-wrap:wrap}button.svelte-by0uiq{width:100%;padding:0.5rem;border-radius:0.5rem;background-color:var(--theme-bg-sub);border:3px solid var(--theme-control);color:var(--theme-text-control);filter:brightness(0.5)}button.svelte-by0uiq:hover{filter:brightness(0.8)}button.activated.svelte-by0uiq{filter:brightness(1)}.btn-all.svelte-by0uiq{grid-column:2/4;border-color:var(--theme-control-altr)}')
       }
   
-      function Vn(e, t, n) {
+      function Vnn(e, t, n) {
         const r = e.slice();
         return r[5] = t[n], r
       }
   
-      function qn(e) {
+      function qnn(e) {
         let t, n, r, o, s = e[5] + "";
   
         function a() {
@@ -2151,12 +2151,12 @@
         }
       }
   
-      function Wn(t) {
+      function Wnn(t) {
         let n, r, o, s, a, i, l, c, d, u = t[2]("settings.filter.genre") + "",
           f = t[2]("settings.filter.genre.all") + "",
           p = Ie,
           h = [];
-        for (let e = 0; e < p.length; e += 1) h[e] = qn(Vn(t, p, e));
+        for (let e = 0; e < p.length; e += 1) h[e] = qnn(Vnn(t, p, e));
         return {
           c() {
             n = H("div"), r = H("span"), o = D(), s = H("div");
@@ -2172,8 +2172,8 @@
             if (4 & t && u !== (u = e[2]("settings.filter.genre") + "") && (r.innerHTML = u), 3 & t) {
               let n;
               for (p = Ie, n = 0; n < p.length; n += 1) {
-                const r = Vn(e, p, n);
-                h[n] ? h[n].p(r, t) : (h[n] = qn(r), h[n].c(), h[n].m(s, a))
+                const r = Vnn(e, p, n);
+                h[n] ? h[n].p(r, t) : (h[n] = qnn(r), h[n].c(), h[n].m(s, a))
               }
               for (; n < h.length; n += 1) h[n].d(1);
               h.length = p.length
@@ -2188,7 +2188,7 @@
         }
       }
   
-      function Jn(e, t, n) {
+      function Jnn(e, t, n) {
         let r, o;
         u(e, et, (e => n(1, r = e))), u(e, wt, (e => n(2, o = e)));
         let s = Ie.every((e => r[e]));
@@ -2201,7 +2201,7 @@
       }
       const Xn = class extends Se {
         constructor(e) {
-          super(), je(this, e, Jn, Wn, i, {}, Bn)
+          super(), je(this, e, Jnn, Wnn, i, {}, Bnn)
         }
       };
   
