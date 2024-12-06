@@ -500,8 +500,8 @@
     }
 
     function xe(e, t, n, o) {
-      console.log(e);
-      console.log(t);
+  //    console.log(e);
+  //    console.log(t);
       const {
         fragment: i,
         after_update: l
@@ -513,8 +513,8 @@
     }
 
     function ke(e, t) {
-      console.log(e);
-      console.log(t);
+ //     console.log(e);
+ //     console.log(t);
       const n = e.$$;
       null !== n.fragment && (function(e) {
         const t = [],
