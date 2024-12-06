@@ -356,6 +356,7 @@
     }
 
     function ce(e) {
+      console.log(e);
       if (null !== e.fragment) {
         e.update(), s(e.before_update);
         const t = e.dirty;
@@ -516,6 +517,7 @@
     }
 
     function je(t, n, r, a, i, l, c, d = [-1]) {
+      console.log(t);
       const u = W;
       G(t);
       const f = t.$$ = {
@@ -1834,6 +1836,7 @@
           }(c, l, e, e[2], s ? function(e, t, n, r) {
             if (e[2] && r) {
               const o = e[2](r(n));
+              console.log(e);
               if (void 0 === t.dirty) return o;
               if ("object" == typeof o) {
                 const e = [],
@@ -4479,7 +4482,8 @@
 
     function Yo(e, t, n) {
       let r, o, s, a, i, l, c, d, f, h, g, m, v, b, y, w, $, x, k, j;
-      return u(e, Ye, (e => n(14, i = e))), u(e, Ze, (e => n(15, l = e))), u(e, et, (e => n(16, c = e))), u(e, Qe, (e => n(17, d = e))), u(e, At, (e => n(18, h = e))), u(e, eet, (e => n(19, j = e))), u(e, nt, (e => n(2, f = e))), u(e, De, (e => n(20, g = e))), u(e, Tt, (e => n(21, m = e))), u(e, $t, (e => n(5, v = e))), u(e, Ae, (e => n(6, b = e))), u(e, wt, (e => n(7, y = e))),u(e, At, (e => n(8, w = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(9, $ = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, jt, (e => n(10, x = e))), u(e, xt, (e => n(11, k = e))), p($t, v = window.location.hash.slice(1), v), e.$$.update = () => {
+      return u(e, Ye, (e => n(14, i = e))), u(e, Ze, (e => n(15, l = e))), u(e, et, (e => n(16, c = e))), u(e, Qe, (e => n(17, d = e))), u(e, At, (e => n(18, h = e))), u(e, eet, (e => n(19, j = e))), u(e, nt, (e => n(2, f = e))), u(e, De, (e => n(20, g = e))), u(e, Tt, (e => n(21, m = e))), u(e, $t, (e => n(5, v = e))), u(e, Ae, (e => n(6, b = e))), u(e, wt, (e => n(7, y = e))),u(e, At, (e => n(8, w = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(9, $ = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, jt, (e => n(10, x = e))), u(e, xt, (e => n(11, k = e))), p($t, v = window.location.hash.slice(1), v), 
+      e.$$.update = () => {
         507908 & e.$$.dirty && n(0, r = h.filter((e => ("hide" != f || e.score >= 0) && (!(f === "dgvalue" || f === "dgpercentage") || (e.dg === 1 || e.dg === 2)) && d[e.difficulty] && c[Ie.find((t => _e[t] == e.genre))] && j[Rl.find((t => _s[t] == e.release))] && l >= e.const && e.const >= i))), console.log(r), 1 & e.$$.dirty && n(4, o = (() => {
           let e = {};
           ["MAX", "SSS+", "SSS", "SS+", "SS", "S+", "S"].forEach((t => e[t] = 0)), ["AAA", "AA", "A", "BBB", "BB", "B", "C", "D"].forEach((t => e[t] = 0));
