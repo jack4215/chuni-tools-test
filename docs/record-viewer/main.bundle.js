@@ -2165,7 +2165,7 @@
     function Wn(t) {
       let n, r, o, s, a, i, l, c, d, u = t[2]("settings.filter.genre") + "",
         f = t[2]("settings.filter.genre.all") + "",
-        p = Rl,
+        p = Ie,
         h = [];
       for (let e = 0; e < p.length; e += 1) h[e] = qn(Vn(t, p, e));
       return {
@@ -2182,7 +2182,7 @@
         p(e, [t]) {
           if (4 & t && u !== (u = e[2]("settings.filter.genre") + "") && (r.innerHTML = u), 3 & t) {
             let n;
-            for (p = Rl, n = 0; n < p.length; n += 1) {
+            for (p = Ie, n = 0; n < p.length; n += 1) {
               const r = Vn(e, p, n);
               h[n] ? h[n].p(r, t) : (h[n] = qn(r), h[n].c(), h[n].m(s, a))
             }
@@ -2201,13 +2201,13 @@
     
     function Jn(e, t, n) {
       let r, o;
-      u(e, eet, (e => n(1, r = e))), u(e, wt, (e => n(2, o = e)));
-      let s = Rl.every((e => r[e]));
+      u(e, et, (e => n(1, r = e))), u(e, wt, (e => n(2, o = e)));
+      let s = Ie.every((e => r[e]));
       return [s, r, o, e => {
-        p(eet, r[e] = !r[e], r), n(0, s = Rl.every((e => r[e])))
+        p(et, r[e] = !r[e], r), n(0, s = Ie.every((e => r[e])))
       }, () => {
         n(0, s = !s);
-        for (let e of Rl) p(eet, r[e] = s, r)
+        for (let e of Ie) p(et, r[e] = s, r)
       }]
     }
     const Xn = class extends Se {
@@ -4490,7 +4490,7 @@
 
     function Yo(e, t, n) {
       let r, o, s, a, i, l, c, d, f, h, g, m, v, b, y, w, $, x, k, j;
-      return u(e, Ye, (e => n(14, i = e))), u(e, Ze, (e => n(15, l = e))), u(e, eet, (e => n(16, c = e))), u(e, Qe, (e => n(17, d = e))), u(e, At, (e => n(18, h = e))), u(e, eet, (e => n(19, j = e))), u(e, nt, (e => n(2, f = e))), u(e, De, (e => n(20, g = e))), u(e, Tt, (e => n(21, m = e))), u(e, $t, (e => n(5, v = e))), u(e, Ae, (e => n(6, b = e))), u(e, wt, (e => n(7, y = e))),u(e, At, (e => n(8, w = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(9, $ = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, jt, (e => n(10, x = e))), u(e, xt, (e => n(11, k = e))), p($t, v = window.location.hash.slice(1), v), 
+      return u(e, Ye, (e => n(14, i = e))), u(e, Ze, (e => n(15, l = e))), u(e, et, (e => n(16, c = e))), u(e, Qe, (e => n(17, d = e))), u(e, At, (e => n(18, h = e))), u(e, eet, (e => n(19, j = e))), u(e, nt, (e => n(2, f = e))), u(e, De, (e => n(20, g = e))), u(e, Tt, (e => n(21, m = e))), u(e, $t, (e => n(5, v = e))), u(e, Ae, (e => n(6, b = e))), u(e, wt, (e => n(7, y = e))),u(e, At, (e => n(8, w = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(9, $ = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, jt, (e => n(10, x = e))), u(e, xt, (e => n(11, k = e))), p($t, v = window.location.hash.slice(1), v), 
       e.$$.update = () => {
         console.log(e);
         console.log(t);
