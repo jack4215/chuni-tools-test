@@ -750,10 +750,7 @@
       const Oe = Object.values(Pe);
       var _e;
       ! function(e) {
-        //e["P & A"] = "0", e.niconico = "2", e["東方Project"] = "3", e.ORIGINAL = "5", e.VARIETY = "6", e["イロドリ"] = "7", e["ゲキマイ"] = "9"
-        e["ORI"] = "1", e["ORI+"] = "2", e["AIR"] = "3", e["AIR+"] = "4", e["STR"] = "5", e["STR+"] = "6", e["AMZ"] = "7", e["AMZ+"] = "8",
-      e["CRS"] = "9", e["CRS+"] = "10", e["PAR"] = "11", e["PAR×"] = "12", e["NEW"] = "13", e["NEW+"] = "14", e["SUN"] = "15", e["SUN+"] = "16",
-      e["LMN"] = "17", e["LMN+"] = "18", e["VER"] = "19"
+        e["P & A"] = "0", e.niconico = "2", e["東方Project"] = "3", e.ORIGINAL = "5", e.VARIETY = "6", e["イロドリ"] = "7", e["ゲキマイ"] = "9"
       }(_e || (_e = {}));
       const Ie = Object.keys(_e);
   
@@ -900,7 +897,7 @@
                     return Math.max(0, rating);
                 }(e);
     
-                e.release = `${songData.release}`;
+                e.genre = `${songData.genre}`;
                 e.rating = Math.floor(e.rawRating / 100);
             }
     
@@ -990,7 +987,7 @@
       for (let e of Ie) Ke[e] = !0;
       const et = Ue("filterGenre", Ke),
         tt = Ne("usedConstData", "luminousplus", ["luminousplus","verse"], (() => {
-           At.updateConstData()
+          Nt.updateConstData(), Ht.updateConstData(), At.updateConstData()
         })),
         nt = Ne("showOverPower", "hide", ["hide", "value", "percentage", "dgvalue", "dgpercentage"]),
         rt = function(e, t, n = (() => {})) {
@@ -1150,7 +1147,9 @@
           }
         }
       }
-      const Ut = (() => {
+      const Nt = Et(""),
+        Ht = Et(""),
+        Ut = (() => {
           const {
             subscribe: e,
             set: t
@@ -4399,7 +4398,7 @@
       function Yo(e, t, n) {
         let r, o, s, a, i, l, c, d, f, h, g, m, v, b, y, w, $, x, k;
         return u(e, Ye, (e => n(14, i = e))), u(e, Ze, (e => n(15, l = e))), u(e, et, (e => n(16, c = e))), u(e, Qe, (e => n(17, d = e))), u(e, nt, (e => n(2, f = e))), u(e, At, (e => n(18, h = e))), u(e, De, (e => n(19, g = e))), u(e, Tt, (e => n(20, m = e))), u(e, $t, (e => n(5, v = e))), u(e, Ae, (e => n(6, b = e))), u(e, wt, (e => n(7, y = e))),u(e, At, (e => n(8, w = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(9, $ = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, jt, (e => n(10, x = e))), u(e, xt, (e => n(11, k = e))), p($t, v = window.location.hash.slice(1), v), e.$$.update = () => {
-          507908 & e.$$.dirty && n(0, r = h.filter((e => ("hide" != f || e.score >= 0) && (!(f === "dgvalue" || f === "dgpercentage") || (e.dg === 1 || e.dg === 2)) && d[e.difficulty] && c[Ie.find((t => _e[t] == e.release))] && l >= e.const && e.const >= i))), 1 & e.$$.dirty && n(4, o = (() => {
+          507908 & e.$$.dirty && n(0, r = h.filter((e => ("hide" != f || e.score >= 0) && (!(f === "dgvalue" || f === "dgpercentage") || (e.dg === 1 || e.dg === 2)) && d[e.difficulty] && c[Ie.find((t => _e[t] == e.genre))] && l >= e.const && e.const >= i))), 1 & e.$$.dirty && n(4, o = (() => {
             let e = {};
             ["MAX", "SSS+", "SSS", "SS+", "SS", "S+", "S"].forEach((t => e[t] = 0)), ["AAA", "AA", "A", "BBB", "BB", "B", "C", "D"].forEach((t => e[t] = 0));
             for (const t of r) e[t.rank]++;
