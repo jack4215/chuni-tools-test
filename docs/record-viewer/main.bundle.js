@@ -2849,15 +2849,15 @@
       function Oe(t) {
         e[14](t)
       }
-      let _e = {
+      let _p = {
         label: e[0]("settings.data.showScoreDiff")
       };
 
       function Ie(t) {
         e[15](t)
       }
-      void 0 !== e[6] && (_e.checked = e[6]), F = new Nn({
-        props: _e
+      void 0 !== e[6] && (_p.checked = e[6]), F = new Nn({
+        props: _p
       }), Q.push((() => we(F, "checked", Oe))), q = new lr({});
       let Re = {
         label: e[0]("settings.ui.locale"),
