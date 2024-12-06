@@ -487,15 +487,21 @@
     let ye;
 
     function we(e, t, n) {
+      console.log(e);
+      console.log(t);
       const r = e.$$.props[t];
       void 0 !== r && (e.$$.bound[r] = n, n(e.$$.ctx[r]))
     }
 
     function $e(e) {
+      console.log(e);
+      console.log(t);
       e && e.c()
     }
 
     function xe(e, t, n, o) {
+      console.log(e);
+      console.log(t);
       const {
         fragment: i,
         after_update: l
@@ -507,6 +513,8 @@
     }
 
     function ke(e, t) {
+      console.log(e);
+      console.log(t);
       const n = e.$$;
       null !== n.fragment && (function(e) {
         const t = [],
