@@ -4074,7 +4074,7 @@
         p(e, [t]) {
           if (9 & t) {
             let o;
-            for (w = ["S", "S+", "SS", "SS+", "SSS", "SSS+"], o = 0; o < 6; o += 1) {
+            for (w = ["S", "S+", "SS", "SS+", "SSS", "SSS+"], o = 0; o < 7; o += 1) {
               const s = No(e, w, o);
               $[o] ? $[o].p(s, t) : ($[o] = Ho(s), $[o].c(), $[o].m(n, r))
             }
