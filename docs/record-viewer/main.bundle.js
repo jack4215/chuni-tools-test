@@ -516,7 +516,6 @@
     }
 
     function je(t, n, r, a, i, l, c, d = [-1]) {
-      console.log(t);
       const u = W;
       G(t);
       const f = t.$$ = {
