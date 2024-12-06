@@ -112,8 +112,12 @@
       return c(e, (e => t = e))(), t
     }
 
-    function u(e, t, n) {
+   /* function u(e, t, n) {
       e.$$.on_destroy.push(c(t, n))
+    }*/
+
+    function uu(e, t, n) {
+      e.$$.on_destroy.push(j(t, n))
     }
 
     function f(e, t, n, r) {
