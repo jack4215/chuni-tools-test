@@ -4058,7 +4058,7 @@
     function Ao(t) {
       let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w = ["S", "S+", "SS", "SS+", "SSS", "SSS+"],
         $ = [];
-      for (let e = 0; e < 6; e += 1) $[e] = Ho(No(t, w, e));
+      for (let e = 0; e < 7; e += 1) $[e] = Ho(No(t, w, e));
       let x = t[0].MAX > 0 && Uo(t);
       return {
         c() {
