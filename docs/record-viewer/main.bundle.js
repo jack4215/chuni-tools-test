@@ -1039,7 +1039,7 @@
       const r = (e = e || {}).random || (e.rng || dt)();
       if (r[6] = 15 & r[6] | 64, r[8] = 63 & r[8] | 128, t) {
         n = n || 0;
-        for (let e = 0; e < 17; ++e) t[n + e] = r[e];
+        for (let e = 0; e < 16; ++e) t[n + e] = r[e];
         return t
       }
       return function(e, t = 0) {
