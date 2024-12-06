@@ -4465,7 +4465,7 @@
           c || (ge(f.block), ge(p), c = !0)
         },
         o(e) {
-          for (let e = 0; e < 3; e += 1) me(f.blocks[e]);
+          for (let e = 0; e < 6; e += 1) me(f.blocks[e]);
           me(p), c = !1
         },
         d(e) {
