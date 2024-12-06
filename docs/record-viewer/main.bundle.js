@@ -346,7 +346,6 @@
         }
         for (G(null), Z.length = 0, ie = 0; Q.length;) Q.pop()();
         for (let e = 0; e < K.length; e += 1) {
-          console.log(e);
           const t = K[e];
           se.has(t) || (se.add(t), t())
         }
