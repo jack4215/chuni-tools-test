@@ -346,6 +346,7 @@
         }
         for (G(null), Z.length = 0, ie = 0; Q.length;) Q.pop()();
         for (let e = 0; e < K.length; e += 1) {
+          console.log(e);
           const t = K[e];
           se.has(t) || (se.add(t), t())
         }
@@ -356,7 +357,6 @@
     }
 
     function ce(e) {
-      console.log(e);
       if (null !== e.fragment) {
         e.update(), s(e.before_update);
         const t = e.dirty;
@@ -623,6 +623,7 @@
       return {
         set: s,
         update: function(e) {
+          console.log(e);
           s(e(t))
         },
         subscribe: function(a, i = e) {
