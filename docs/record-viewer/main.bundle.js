@@ -899,9 +899,8 @@
                   }
                   return Math.max(0, rating);
               }(e);
-              e.release = `${songData.release}`;
               e.genre = `${songData.genre}`;
-              
+              e.release = `${songData.release}`;
               e.rating = Math.floor(e.rawRating / 100);
           }
           e.op = function(e) {
