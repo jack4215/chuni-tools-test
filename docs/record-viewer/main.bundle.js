@@ -487,21 +487,15 @@
     let ye;
 
     function we(e, t, n) {
-   //   console.log(e);
-   //   console.log(t);
       const r = e.$$.props[t];
       void 0 !== r && (e.$$.bound[r] = n, n(e.$$.ctx[r]))
     }
 
     function $e(e) {
-   //   console.log(e);
-   //   console.log(t);
       e && e.c()
     }
 
     function xe(e, t, n, o) {
-  //    console.log(e);
-  //    console.log(t);
       const {
         fragment: i,
         after_update: l
@@ -513,8 +507,6 @@
     }
 
     function ke(e, t) {
- //     console.log(e);
- //     console.log(t);
       const n = e.$$;
       null !== n.fragment && (function(e) {
         const t = [],
@@ -524,7 +516,6 @@
     }
 
     function je(t, n, r, a, i, l, c, d = [-1]) {
-  //    console.log(t);
       const u = W;
       G(t);
       const f = t.$$ = {
@@ -630,7 +621,6 @@
       return {
         set: s,
         update: function(e) {
-          console.log(e);
           s(e(t))
         },
         subscribe: function(a, i = e) {
@@ -1684,7 +1674,6 @@
     const hn = "chunithm_b40.png";
     async function gn() {
       const e = document.querySelector("main");
-      console.log(e);
       if (null == e) return alert(d(wt)("share.error", {
         error: "resultNode is null"
       }));
@@ -1844,7 +1833,6 @@
           }(c, l, e, e[2], s ? function(e, t, n, r) {
             if (e[2] && r) {
               const o = e[2](r(n));
-              console.log(e);
               if (void 0 === t.dirty) return o;
               if ("object" == typeof o) {
                 const e = [],
@@ -2902,7 +2890,6 @@
           M(s, t, p), k(t, n), k(t, r), k(t, o), k(o, a), k(o, i), k(o, l), l.innerHTML = ve, k(o, c), k(o, d), d.innerHTML = ye, k(o, u), xe(f, o, null), k(o, g), xe(m, o, null), k(o, v), xe(b, o, null), k(o, y), xe(bb, o, null), k(o, yy), k(o, w), k(o, $), k(o, x), x.innerHTML = je, k(o, j), He && He.m(o, null), k(o, S), xe(T, o, null), k(o, N), k(o, U), U.innerHTML = Se, k(o, A), xe(L, o, null), k(o, I), Pe && Pe.m(o, null), k(o, R), xe(F, o, null), k(o, V), xe(q, o, null), k(o, W), k(o, J), k(o, X), k(o, G), G.innerHTML = Te, k(o, Y), xe(Z, o, null), k(o, ee), xe(te, o, null), k(o, se), k(o, ae), k(o, ie), k(o, le), le.innerHTML = Ce, de = !0, ue || (fe = [P(n, "click", xt.toggle), P(a, "click", xt.toggle), P(le, "click", e[17])], ue = !0)
         },
         p(e, [t]) {
-          console.log(e);
           (!de || 1 & t) && ve !== (ve = e[0]("settings.main.title") + "") && (l.innerHTML = ve), (!de || 1 & t) && ye !== (ye = e[0]("settings.filter.title") + "") && (d.innerHTML = ye);
           const n = {};
           1 & t && (n.label = e[0]("settings.filter.const")), !p && 2 & t && (p = !0, n.high = e[1], oe((() => p = !1))), !h && 4 & t && (h = !0, n.low = e[2], oe((() => h = !1))), f.$set(n), (!de || 1 & t) && je !== (je = e[0]("settings.data.title") + "") && (x.innerHTML = je), He.p(e, t);
@@ -4412,7 +4399,6 @@
     }
 
     function Go(e) {
-      console.log(e);
       let t, n, r, o, s, a, i, l, c, d, u;
       document.title = o = e[7]("main.title");
       let f = {
@@ -4492,8 +4478,7 @@
       let r, o, s, a, i, l, c, d, f, h, g, m, v, b, y, w, $, x, k, j;
       return u(e, Ye, (e => n(14, i = e))), u(e, Ze, (e => n(15, l = e))), u(e, et, (e => n(16, c = e))), u(e, eet, (e => n(17, j = e))), u(e, Qe, (e => n(18, d = e))), u(e, At, (e => n(19, h = e))), u(e, nt, (e => n(2, f = e))), u(e, De, (e => n(20, g = e))), u(e, Tt, (e => n(21, m = e))), u(e, $t, (e => n(5, v = e))), u(e, Ae, (e => n(6, b = e))), u(e, wt, (e => n(7, y = e))),u(e, At, (e => n(8, w = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(9, $ = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, jt, (e => n(10, x = e))), u(e, xt, (e => n(11, k = e))), p($t, v = window.location.hash.slice(1), v), 
       e.$$.update = () => {
-        console.log(e);
-        507908 & e.$$.dirty && n(0, r = h.filter((e => ("hide" != f || e.score >= 0) && (!(f === "dgvalue" || f === "dgpercentage") || (e.dg === 1 || e.dg === 2)) && d[e.difficulty] && c[Ie.find((t => _e[t] == e.genre))] && j[Rl.find((t => _s[t] == e.release))] && l >= e.const && e.const >= i))), console.log(r), 1 & e.$$.dirty && n(4, o = (() => {
+        507908 & e.$$.dirty && n(0, r = h.filter((e => ("hide" != f || e.score >= 0) && (!(f === "dgvalue" || f === "dgpercentage") || (e.dg === 1 || e.dg === 2)) && d[e.difficulty] && c[Ie.find((t => _e[t] == e.genre))] && j[Rl.find((t => _s[t] == e.release))] && l >= e.const && e.const >= i))), 1 & e.$$.dirty && n(4, o = (() => {
           let e = {};
           ["MAX", "SSS+", "SSS", "SS+", "SS", "S+", "S"].forEach((t => e[t] = 0)), ["AAA", "AA", "A", "BBB", "BB", "B", "C", "D"].forEach((t => e[t] = 0));
           for (const t of r) e[t.rank]++;
