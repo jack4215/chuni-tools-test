@@ -487,8 +487,8 @@
     let ye;
 
     function we(e, t, n) {
-      console.log(e);
-      console.log(t);
+   //   console.log(e);
+   //   console.log(t);
       const r = e.$$.props[t];
       void 0 !== r && (e.$$.bound[r] = n, n(e.$$.ctx[r]))
     }
@@ -2783,7 +2783,7 @@
       });
       void 0 !== e[1] && (Ne.high = e[1]), void 0 !== e[2] && (Ne.low = e[2]), f = new Dn({
         props: Ne
-      }), Q.push((() => we(f, "high", Me))), Q.push((() => we(f, "low", Ee))), m = new Fn({}), b = new Xn({}), bb = new Xnn({});
+      }), Q.push((() => we(f, "high", Me))), Q.push((() => we(f, "low", Ee))), m = new Fn({}), bb = new Xn({}), b = new Xnn({});
       let He = function(e) {
         let t, n, r;
 
