@@ -4440,7 +4440,7 @@
             })), t.current !== t.pending) return r(t.pending, 0), !0
         }
         var o
-      }(a = Promise.all([Ut.init(), At.init(), e[19]()]), f);
+      }(a = Promise.all([Ut.init(), At.init(), e[13]()]), f);
       let p = e[11] && Xo();
       return {
         c() {
@@ -4486,13 +4486,14 @@
         })()), 1 & e.$$.dirty && n(1, s = r.filter((e => "AJ" == e.clear)).length), 3 & e.$$.dirty && n(3, a = s + r.filter((e => "FC" == e.clear)).length)
       },[r, s, f, a, o, v, b, y, w, $, x, k, function() {
         p($t, v = window.location.hash.slice(1), v), "all" !== v && p(Tt, m = !1, m)
-      }, i, l, h, c, j, d, async function() {
+      }, async function() {
         Re(window.opener, Le)("saveConfig", {
           data: {
             lang: g
           }
         })
-      }] 
+      }, i, l, h, c, j, d, g ] 
+      
     }
     new class extends Se {
       constructor(e) {
