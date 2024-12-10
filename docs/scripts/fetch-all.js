@@ -64,12 +64,12 @@
             [e.en_US]: {
                 pleaseLogin: "Please login to CHUNITHM-NET first.",
                 needReload: "Please reload CHUNITHM-NET.",
-                analyzeRating: "Analyze Rating"
+                analyzeRating: "Analyze Rating (Beta)"
             },
             [e.zh_TW]: {
                 pleaseLogin: "請先登入 CHUNITHM-NET 再執行本程式。",
                 needReload: "請重新整理 CHUNITHM-NET 再執行本程式。",
-                analyzeRating: "分析遊戲成績"
+                analyzeRating: "分析遊戲成績 (Beta)"
             }
         }[function() {
             const t = new URLSearchParams(location.search);
@@ -144,8 +144,7 @@
                                             score: a ? n(a) : -1,
                                             difficulty: e,
                                             clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
-                                            idx: t.querySelector('input[name="idx"]').value,
-                                            dg: 0
+                                            idx: t.querySelector('input[name="idx"]').value
                                         };
                                     })).filter((e => e.title && e.score));
                                     // Add hidden song
