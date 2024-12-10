@@ -3106,7 +3106,7 @@
     function Lr(e) {
       let t, n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j, S = e[3].name + "",
         T = e[3].rating + "",
-        C = Cr((qe(e[0], 30) / 100) * 0.75 + (qe(e[1], 10) / 100) * 0.25, 4) + "",
+        C = "",
         N = e[3].honor.text + "";
       y = new Hr({
         props: {
