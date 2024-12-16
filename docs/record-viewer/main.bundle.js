@@ -3668,11 +3668,7 @@
           display: "order",
           sort: "rating",
           nocur: !0
-        }, {
-          display: "playOrder",
-          sort: "playOrder",
-          condition: "history" === s
-        }, {
+        },  {
           display: "title",
           sort: "title"
         }, {
