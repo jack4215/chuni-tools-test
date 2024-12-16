@@ -11,7 +11,7 @@
                 return e.origin + t.substring(0, t.lastIndexOf("/scripts"))
             }
         }
-        return "https://jack4215.github.io/chuni-tools"
+        return "https://chuni-test.tsaibee.org"
     }
     function r(e) {
         const t = document.cookie.split(";").map((e => decodeURIComponent(e.trim()))).map((e => e.split("="))).find((t => t[0] === e));
@@ -94,7 +94,7 @@
                 r.rel = "stylesheet",
                 r.href = t("fetch-all") + "/common/styles/inject.css",
                 e.innerText = s.analyzeRating,
-                e.href = t("fetch-all") + "/record-viewer/#all",
+                e.href = t("fetch-all") + "/record-viewer-temp/#all",
                 e.target = "recordViewer",
                 l.getElementsByTagName("head")[0].appendChild(r),
                 r.addEventListener("load", ( () => {
@@ -157,13 +157,13 @@
                                     };   
                                     const difficultyScore = sumScores(records);
                                     const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
-                                 /**/    records.push({
-                                        title: "Latent Kingdom",
+                                 /*   records.push({
+                                        title: "Forsaken Tale",
                                         score: totalHighScore - difficultyScore === 0 ? -1 : totalHighScore - difficultyScore, 
                                         difficulty: e,
                                         clear: "",
-                                        idx: "2605"
-                                    }); /**/
+                                        idx: "9999"
+                                    }); */
                                     // Add hidden song end
                                     return records;
                                 }(t.data.difficulty);
