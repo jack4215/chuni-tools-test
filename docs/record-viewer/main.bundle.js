@@ -4243,7 +4243,7 @@
         }
       }), pp = new io({
         props: {
-          playRecord: e[21],
+          playRecord: e[13],
           shown: "history" === e[5]
         }
       });
