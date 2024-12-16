@@ -987,7 +987,7 @@
     for (let e of Rl) Kee[e] = !0;
     const et = Ue("filterGenre", Ke), eet = Ue("filterRelease", Kee),
       tt = Ne("usedConstData", "luminousplus", ["luminousplus","verse"], (() => {
-        Ht.updateConstData(), At.updateConstData()
+        At.updateConstData(), Ht.updateConstData()
       })),
       nt = Ne("showOverPower", "hide", ["hide", "value", "percentage", "dgvalue", "dgpercentage"]),
       rt = function(e, t, n = (() => {})) {
