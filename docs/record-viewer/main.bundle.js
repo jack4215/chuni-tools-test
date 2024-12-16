@@ -4228,7 +4228,7 @@
       let m = "all" === e[5] && Vo(e);
       c = new io({
         props: {
-          playRecord: e[13],
+          playRecord: e[0],
           shown: "all" === e[5]
         }
       }), u = new io({
@@ -4260,7 +4260,7 @@
             m = null
           })), he());
           const n = {};
-          1 & t && (n.playRecord = e[13]), 32 & t && (n.shown = "all" === e[5]), c.$set(n);
+          1 & t && (n.playRecord = e[0]), 32 & t && (n.shown = "all" === e[5]), c.$set(n);
           const r = {};
           256 & t && (r.playRecord = e[8]), 32 & t && (r.shown = "best" === e[5]), u.$set(r);
           const o = {};
