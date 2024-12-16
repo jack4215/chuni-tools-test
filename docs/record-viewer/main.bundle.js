@@ -3432,7 +3432,7 @@
       }
       let z = R(t),
         F = z(t),
-        V = Wr(t),
+        V = "history" === t[2] && Wr(t),
         q = t[4] && "all" === t[2] && Jr(t);
       return {
         c() {
