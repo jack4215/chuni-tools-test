@@ -3657,7 +3657,7 @@
       let r, o, s, a, i, l, c;
       u(e, $t, (e => n(7, s = e))), u(e, rt, (e => n(8, a = e))), u(e, Tt, (e => n(9, i = e))), u(e, nt, (e => n(10, l = e))), u(e, wt, (e => n(5, c = e)));
       let {
-        playRecord: d
+        playRecord: d = []
       } = t, {
         shown: f = !1
       } = t, p = "rating", h = !1;
