@@ -4223,7 +4223,7 @@
     }
 
     function Bo(e) {
-      let t, n, r, o, s, a, i, l, c, d, u, f, p, h, g;
+      let t, n, r, o, s, a, i, l, c, d, u, f, p, h, pp, hh, g;
       t = new Mo({}), r = new yn({}), a = new Or({});
       let m = "all" === e[5] && Vo(e);
       c = new io({
@@ -4241,11 +4241,16 @@
           playRecord: e[9],
           shown: "new" === e[5]
         }
+      }), pp = new io({
+        props: {
+          playRecord: e[21],
+          shown: "history" === e[5]
+        }
       });
       let v = e[10] && Wo();
       return {
         c() {
-          $e(t.$$.fragment), n = D(), $e(r.$$.fragment), o = D(), s = H("main"), $e(a.$$.fragment), i = D(), m && m.c(), l = D(), $e(c.$$.fragment), d = D(), $e(u.$$.fragment), f = D(), $e(p.$$.fragment), h = D(), v && v.c(), O(s, "class", "svelte-19r2scc")
+          $e(t.$$.fragment), n = D(), $e(r.$$.fragment), o = D(), s = H("main"), $e(a.$$.fragment), i = D(), m && m.c(), l = D(), $e(c.$$.fragment), d = D(), $e(u.$$.fragment), f = D(), $e(p.$$.fragment), h = D(), $e(pp.$$.fragment), hh = D(), v && v.c(), O(s, "class", "svelte-19r2scc")
         },
         m(e, b) {
           xe(t, e, b), M(e, n, b), xe(r, e, b), M(e, o, b), M(e, s, b), xe(a, s, null), k(s, i), m && m.m(s, null), k(s, l), xe(c, s, null), k(s, d), xe(u, s, null), k(s, f), xe(p, s, null), k(s, h), v && v.m(s, null), g = !0
@@ -4259,7 +4264,9 @@
           const r = {};
           256 & t && (r.playRecord = e[8]), 32 & t && (r.shown = "best" === e[5]), u.$set(r);
           const o = {};
-          512 & t && (o.playRecord = e[9]), 32 & t && (o.shown = "new" === e[5]), p.$set(o), e[10] ? v ? 1024 & t && ge(v, 1) : (v = Wo(), v.c(), ge(v, 1), v.m(s, null)) : v && (pe(), me(v, 1, 1, (() => {
+          512 & t && (o.playRecord = e[9]), 32 & t && (o.shown = "new" === e[5]), p.$set(o);
+          const oo = {};
+          1024 & t && (oo.playRecord = e[21]), 32 & t && (oo.shown = "history" === e[5]), pp.$set(o), e[10] ? v ? 2048 & t && ge(v, 1) : (v = Wo(), v.c(), ge(v, 1), v.m(s, null)) : v && (pe(), me(v, 1, 1, (() => {
             v = null
           })), he())
         },
