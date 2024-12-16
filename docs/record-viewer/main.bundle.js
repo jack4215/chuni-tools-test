@@ -4228,7 +4228,7 @@
       let m = "all" === e[5] && Vo(e);
       c = new io({
         props: {
-          playRecord: e[0],
+          playRecord: e[13],
           shown: "all" === e[5]
         }
       }), u = new io({
