@@ -3432,7 +3432,7 @@
       }
       let z = R(t),
         F = z(t),
-        V = Wr(t),
+        V = "history" === t[2] && Wr(t),
         q = t[4] && "all" === t[2] && Jr(t);
       return {
         c() {
@@ -4253,7 +4253,7 @@
           $e(t.$$.fragment), n = D(), $e(r.$$.fragment), o = D(), s = H("main"), $e(a.$$.fragment), i = D(), m && m.c(), l = D(), $e(c.$$.fragment), d = D(), $e(u.$$.fragment), f = D(), $e(p.$$.fragment), h = D(), $e(pp.$$.fragment), hh = D(), v && v.c(), O(s, "class", "svelte-19r2scc")
         },
         m(e, b) {
-          xe(t, e, b), M(e, n, b), xe(r, e, b), M(e, o, b), M(e, s, b), xe(a, s, null), k(s, i), m && m.m(s, null), k(s, l), xe(c, s, null), k(s, d), xe(u, s, null), k(s, f), xe(p, s, null), k(s, h), v && v.m(s, null), g = !0
+          xe(t, e, b), M(e, n, b), xe(r, e, b), M(e, o, b), M(e, s, b), xe(a, s, null), k(s, i), m && m.m(s, null), k(s, l), xe(c, s, null), k(s, d), xe(u, s, null), k(s, f), xe(p, s, null), k(s, h), xe(pp, s, null), k(s, hh), v && v.m(s, null), g = !0
         },
         p(e, t) {
           "all" === e[5] ? m ? (m.p(e, t), 32 & t && ge(m, 1)) : (m = Vo(e), m.c(), ge(m, 1), m.m(s, l)) : m && (pe(), me(m, 1, 1, (() => {
@@ -4271,13 +4271,13 @@
           })), he())
         },
         i(e) {
-          g || (ge(t.$$.fragment, e), ge(r.$$.fragment, e), ge(a.$$.fragment, e), ge(m), ge(c.$$.fragment, e), ge(u.$$.fragment, e), ge(p.$$.fragment, e), ge(v), g = !0)
+          g || (ge(t.$$.fragment, e), ge(r.$$.fragment, e), ge(a.$$.fragment, e), ge(m), ge(c.$$.fragment, e), ge(u.$$.fragment, e), ge(p.$$.fragment, e), ge(pp.$$.fragment, e), ge(v), g = !0)
         },
         o(e) {
-          me(t.$$.fragment, e), me(r.$$.fragment, e), me(a.$$.fragment, e), me(m), me(c.$$.fragment, e), me(u.$$.fragment, e), me(p.$$.fragment, e), me(v), g = !1
+          me(t.$$.fragment, e), me(r.$$.fragment, e), me(a.$$.fragment, e), me(m), me(c.$$.fragment, e), me(u.$$.fragment, e), me(p.$$.fragment, e), ge(pp.$$.fragment, e), me(v), g = !1
         },
         d(e) {
-          ke(t, e), e && E(n), ke(r, e), e && E(o), e && E(s), ke(a), m && m.d(), ke(c), ke(u), ke(p), v && v.d()
+          ke(t, e), e && E(n), ke(r, e), e && E(o), e && E(s), ke(a), m && m.d(), ke(c), ke(u), ke(p), ke(pp), v && v.d()
         }
       }
     }
