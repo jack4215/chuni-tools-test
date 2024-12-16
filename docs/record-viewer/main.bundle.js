@@ -3177,7 +3177,7 @@
 
     function Pr(e, t, n) {
       let r, o, s, a, i, l, c, d, f;
-      return  u(e, At, (e => n(6, a = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(7, i = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(8, l = e))), u(e, Ut, (e => n(3, c = e))), u(e, wt, (e => n(4, d = e))), u(e, $t, (e => n(5, f = e))), e.$$.update = () => {
+      return u(e, At, (e => n(6, a = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(7, i = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(8, l = e))), u(e, Ut, (e => n(3, c = e))), u(e, wt, (e => n(4, d = e))), u(e, $t, (e => n(5, f = e))), e.$$.update = () => {
         256 & e.$$.dirty && n(2, r = l.slice(0, 30).map((e => e.rating))), 128 & e.$$.dirty && n(1, o = i.map((e => e.rating))), 64 & e.$$.dirty && n(0, s = a.map((e => e.rating)))
       }, [s, o, r, c, d, f, a, i, l]
     }
