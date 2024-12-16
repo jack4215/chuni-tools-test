@@ -4266,7 +4266,7 @@
           const o = {};
           512 & t && (o.playRecord = e[9]), 32 & t && (o.shown = "new" === e[5]), p.$set(o);
           const oo = {};
-          512 & t && (oo.playRecord = e[13]), 32 & t && (oo.shown = "history" === e[5]), pp.$set(oo), e[10] ? v ? 1024 & t && ge(v, 1) : (v = Wo(), v.c(), ge(v, 1), v.m(s, null)) : v && (pe(), me(v, 1, 1, (() => {
+          8192 & t && (oo.playRecord = e[13]), 32 & t && (oo.shown = "history" === e[5]), pp.$set(oo), e[10] ? v ? 1024 & t && ge(v, 1) : (v = Wo(), v.c(), ge(v, 1), v.m(s, null)) : v && (pe(), me(v, 1, 1, (() => {
             v = null
           })), he())
         },
