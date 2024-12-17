@@ -991,7 +991,16 @@
           At.updateConstData()
         })),
         nt = Ne("showOverPower", "hide", ["hide", "value", "percentage", "dgvalue", "dgpercentage"]),
-        rt = (localStorage.setItem("showPlaycount", false), false),
+        rt = (() => {
+          localStorage.setItem("showPlaycount", JSON.stringify(false));
+          return {  
+            subscribe: () => {},  
+            set: () => {},  
+            update: () => {},  
+            reset: () => {},  
+            toggle: () => {}  
+          };  
+        })();,
         ot = {
           manual: Number.POSITIVE_INFINITY
         },
