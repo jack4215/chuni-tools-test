@@ -990,29 +990,6 @@
         At.updateConstData(), Ht.updateConstData()
       })),
       nt = Ne("showOverPower", "hide", ["hide", "value", "percentage", "dgvalue", "dgpercentage"]),
-      rt = function(e, t, n = (() => {})) {
-        let r = localStorage.getItem(e);
-        (null === r || "true" !== r && "false" !== r) && (r = JSON.stringify(t), localStorage.setItem(e, r));
-        let o = JSON.parse(r);
-        const {
-          subscribe: s,
-          set: a,
-          update: i
-        } = Ce(o);
-        return {
-          subscribe: s,
-          set(t) {
-            a(t), localStorage.setItem(e, JSON.stringify(t)), n(t)
-          },
-          update: i,
-          reset() {
-            this.set(t)
-          },
-          toggle() {
-            this.update((e => !e))
-          }
-        }
-      }("showPlaycount", !1),
       ot = {
         "1d": 864e5,
         "3d": 2592e5,
@@ -1022,7 +999,7 @@
         manual: Number.POSITIVE_INFINITY
       },
       st = Ne("diffUpdateInterval", "manual", Object.keys(ot)),
-      at = [Ae, De, Ze, Ye, Qe, et, eet, tt, nt, rt],
+      at = [Ae, De, Ze, Ye, Qe, et, eet, tt, nt],
       it = {
         randomUUID: "undefined" != typeof crypto && crypto.randomUUID && crypto.randomUUID.bind(crypto)
       };
@@ -2900,12 +2877,7 @@
             dirty: t,
             ctx: e
           }), !C && 16 & t && (C = !0, r.value = e[4], oe((() => C = !1))), T.$set(r), (!de || 1 & t) && Se !== (Se = e[0]("settings.data.overpower.notify") + "") && (U.innerHTML = Se);
-          const s = {};
-          1 & t && (s.label = e[0]("settings.data.playcount")), !_ && 32 & t && (_ = !0, s.checked = e[5], oe((() => _ = !1))), L.$set(s), e[5] ? Pe ? (Pe.p(e, t), 32 & t && ge(Pe, 1)) : (Pe = br(e), Pe.c(), ge(Pe, 1), Pe.m(o, R)) : Pe && (pe(), me(Pe, 1, 1, (() => {
-            Pe = null
-          })), he());
-          const a = {};
-          1 & t && (a.label = e[0]("settings.data.showScoreDiff")), !B && 64 & t && (B = !0, a.checked = e[6], oe((() => B = !1))), F.$set(a), (!de || 1 & t) && Te !== (Te = e[0]("settings.ui.title") + "") && (G.innerHTML = Te);
+          F.$set(a), (!de || 1 & t) && Te !== (Te = e[0]("settings.ui.title") + "") && (G.innerHTML = Te);
           const i = {};
           1 & t && (i.label = e[0]("settings.ui.locale")), 536870912 & t && (i.$$scope = {
             dirty: t,
@@ -2937,7 +2909,7 @@
 
     function jr(e, t, n) {
       let r, o, s, a, i, l, c, d, f;
-      return u(e, wt, (e => n(0, r = e))), u(e, Ze, (e => n(1, o = e))), u(e, Ye, (e => n(2, s = e))), u(e, tt, (e => n(3, a = e))), u(e, nt, (e => n(4, i = e))), u(e, rt, (e => n(5, l = e))), u(e, Tt, (e => n(6, c = e))), u(e, De, (e => n(7, d = e))), u(e, Ae, (e => n(8, f = e))), [r, o, s, a, i, l, c, d, f, function(e) {
+      return u(e, wt, (e => n(0, r = e))), u(e, Ze, (e => n(1, o = e))), u(e, Ye, (e => n(2, s = e))), u(e, tt, (e => n(3, a = e))), u(e, nt, (e => n(4, i = e))), u(e, Tt, (e => n(6, c = e))), u(e, De, (e => n(7, d = e))), u(e, Ae, (e => n(8, f = e))), [r, o, s, a, i, l, c, d, f, function(e) {
         o = e, Ze.set(o)
       }, function(e) {
         s = e, Ye.set(s)
@@ -2945,8 +2917,6 @@
         a = e, tt.set(a)
       }, function(e) {
         i = e, nt.set(i)
-      }, function(e) {
-        l = e, rt.set(l)
       }, function(e) {
         c = e, Tt.set(c)
       }, function(e) {
@@ -3477,8 +3447,8 @@
     }
 
     function Zr(e, t, n) {
-      let r, o, s, a, i;
-      u(e, nt, (e => n(1, r = e))), u(e, $t, (e => n(2, o = e))), u(e, Tt, (e => n(3, s = e))), u(e, rt, (e => n(4, a = e))), u(e, jt, (e => n(5, i = e)));
+      let r, o, s, i;
+      u(e, nt, (e => n(1, r = e))), u(e, $t, (e => n(2, o = e))), u(e, Tt, (e => n(3, s = e))), u(e, jt, (e => n(5, i = e)));
       let {
         song: l
       } = t;
@@ -3488,12 +3458,6 @@
         "all" === o && Tt.toggle()
       }, function() {
         "all" == o && p(nt, r = r === "percentage" ? "value" : r === "value" ? "percentage" : r === "dgpercentage" ? "dgvalue" : "dgpercentage", r)
-      }, () => {
-        i || gt("songPlayCount", l.difficulty, l.idx).then((e => {
-          n(0, l.playCount = e, l)
-        })).catch((() => {
-          n(0, l.playCount = null, l)
-        }))
       }]
     }
     const Qr = class extends Se {
@@ -3654,8 +3618,8 @@
     }
 
     function ao(e, t, n) {
-      let r, o, s, a, i, l, c;
-      u(e, $t, (e => n(7, s = e))), u(e, rt, (e => n(8, a = e))), u(e, Tt, (e => n(9, i = e))), u(e, nt, (e => n(10, l = e))), u(e, wt, (e => n(5, c = e)));
+      let r, o, s, i, l, c;
+      u(e, $t, (e => n(7, s = e))), u(e, Tt, (e => n(9, i = e))), u(e, nt, (e => n(10, l = e))), u(e, wt, (e => n(5, c = e)));
       let {
         playRecord: d
       } = t, {
@@ -3700,12 +3664,8 @@
         }, {
           display: "ajfc",
           sort: "aj",
-        }, {
-          display: "playcount",
-          sort: "playcount",
-          condition: a && "all" === s
         }])
-      }, [f, p, h, o, r, c, d, s, a, i, l, e => {
+      }, [f, p, h, o, r, c, d, s, i, l, e => {
         p === e.sort ? n(2, h = !h) : (n(1, p = e.sort), n(2, h = !1))
       }, (e, t) => {
         "Enter" !== t.code && "Space" !== t.code || (p === e.sort ? n(2, h = !h) : (n(1, p = e.sort), n(2, h = !1)))
