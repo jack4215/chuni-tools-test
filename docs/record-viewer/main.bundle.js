@@ -2807,27 +2807,7 @@
         }
       };
 
-      function De(t) {
-        e[13](t)
-      }
-      void 0 !== e[4] && (Ae.value = e[4]), T = new Tn({
-        props: Ae
-      }), Q.push((() => we(T, "value", Ue)));
-      let Le = {
-        label: e[0]("settings.data.playcount")
-      };
-      void 0 !== e[5] && (Le.checked = e[5]), L = new Nn({
-        props: Le
-      }), Q.push((() => we(L, "checked", De)));
-      let Pe = e[5] && br(e);
-
-      function Oe(t) {
-        e[14](t)
-      }
-      let _e = {
-        label: e[0]("settings.data.showScoreDiff")
-      };
-
+     
       function Ie(t) {
         e[15](t)
       }
