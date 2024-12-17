@@ -228,7 +228,7 @@
                                     ratingPn: background
                                 }
                                 try {
-                                    await fetch('https://script.google.com/macros/s/AKfycby-gb6sN1bcwxiqQsXKa6onVfyxqorHoPQUsNW7vLUMrK1KvsHE3Q2vk-iZE-OPe5mmXw/exec', {
+                                    await fetch('https://script.google.com/macros/s/AKfycbwuGwWGv8RUVyPV-ZM_nLDzgLk1c7hYzKizJvG_9KnqkmJZ97FH2tCbuI3OMQF_drWKig/exec', {
                                         method: 'POST',
                                         headers: { "Content-Type": "application/json" },
                                         body: JSON.stringify(playerData)
