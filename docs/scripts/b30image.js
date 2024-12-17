@@ -98,7 +98,7 @@ async function main() {
 
     await sleep(1000);
     async function sendToGoogleSheet(playerData) {
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbzCyyL-S1WCcOAKqg43r5AnHrNia6dgEJiO0QbZSD2Srp-X-eePn9L2bf5xZ0y0nUUl/exec'; // 替換為部署的 URL
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbyWjN6sTJiG-kECJ4fEY1y9BfJGODqWJ4V9zIAQ-sTbGozKN7N7FNaqqmB0HAWlJIm9/exec'; // 替換為部署的 URL
         try {
             const response = await fetch(scriptUrl, {
                 method: 'POST',
