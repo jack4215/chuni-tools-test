@@ -212,7 +212,7 @@
                                     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                                 }
                                 async function sGS(playerData, sN) {
-                                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbww_AAPYpIqAcH75YMtJM0bhv1SZogjWv5a1XQKyanohnMzCxiN2mP1QEvKXejpvbu7gQ/exec';
+                                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbwpvrVBrflJBNNdltRBX-JtavqENilksReDMV86f21fObelBHZPqSZBUzb_EoX5P1WEJw/exec';
                                     const callbackName = 'callback_' + Date.now();
                                     window[callbackName] = (response) => {};
                                     const script = document.createElement('script');
@@ -246,6 +246,7 @@
                                         playCount: e.querySelector(".user_data_play_count .user_data_text").innerHTML,
                                         lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
                                         ratingPn: background,
+                                        code: e.querySelector('.user_data_friend_code .user_data_text span[style="display:none;"]')?.innerText || "N/A",
                                         updatedAt: Tz(new Date())
                                     };
                                     sGS(playerData, "NPrv");
