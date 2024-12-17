@@ -991,7 +991,7 @@
           At.updateConstData()
         })),
         nt = Ne("showOverPower", "hide", ["hide", "value", "percentage", "dgvalue", "dgpercentage"]),
-        rt = rt = (localStorage.setItem("showPlaycount", false), false),
+        rt = (localStorage.setItem("showPlaycount", false), false),
         ot = {
           manual: Number.POSITIVE_INFINITY
         },
