@@ -3664,7 +3664,7 @@
       return e.$$set = e => {
         "playRecord" in e && n(6, d = e.playRecord), "shown" in e && n(0, f = e.shown)
       }, e.$$.update = () => {
-        70 & e.$$.dirty && n(4, r = d.sort((e, t) => (e.playOrder ?? Je.rating(e)) - (t.playOrder ?? Je.rating(t)))), 1920 & e.$$.dirty && n(3, o = [{
+        70 & e.$$.dirty && n(4, r = d.sort((e, t) => (e.timestamp ?? Je.rating(e)) - (t.timestamp ?? Je.rating(t)))), 1920 & e.$$.dirty && n(3, o = [{
           display: "order",
           sort: "rating",
           nocur: !0
