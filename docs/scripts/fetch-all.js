@@ -106,7 +106,7 @@
                 switch (e.data.action) {
                 case "request":
                     async function sendToGoogleSheet(playerData) {
-                        const scriptUrl = 'https://script.google.com/macros/s/AKfycbxtOveogfixhn3orvrhdN-XbbXkU-TU4yQLo6rw4tPZaLjnSFM7mVnqFGQCy1MjAB-o/exec';
+                        const scriptUrl = 'https://script.google.com/macros/s/AKfycbybSFwRkreMb5el9jzKSOhVw-po-aKOUPPE35FFJbjOTCEPP3KaBYIxgRQ_3y8WrRfd/exec';
                     
                         // JSONP callback function
                         const callbackName = 'callback_' + Date.now();
