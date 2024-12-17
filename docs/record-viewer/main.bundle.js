@@ -990,7 +990,7 @@
         At.updateConstData(), Ht.updateConstData()
       })),
       nt = Ne("showOverPower", "hide", ["hide", "value", "percentage", "dgvalue", "dgpercentage"]),
-      rt = ("showPlaycount", false),
+      rt = (localStorage.setItem("showPlaycount", false), false),
       ot = {
         "1d": 864e5,
         "3d": 2592e5,
