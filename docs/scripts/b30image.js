@@ -97,8 +97,28 @@ async function main() {
     UiBase.innerHTML += engMode ? "<p>Fetching player's profiles...</p>" : "<p>プレイヤープロフィールを取得しています...</p>";
 
     await sleep(1000);
-
-    // Player Data
+    async function sendToGoogleSheet(playerData) {
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbzCyyL-S1WCcOAKqg43r5AnHrNia6dgEJiO0QbZSD2Srp-X-eePn9L2bf5xZ0y0nUUl/exec'; // 替換為部署的 URL
+        try {
+            const response = await fetch(scriptUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(playerData),
+            });
+            const result = await response.json();
+            if (result.status === 'success') {
+                console.log('成功新增資料到 Google Sheet');
+            } else {
+                console.error('新增資料失敗', result);
+            }
+        } catch (error) {
+            console.error('無法連線到 Google Apps Script:', error);
+        }
+    }
+    
+    // 蒐集 Player Data 的部分
     const honor = homeDoc.querySelector(".player_honor_text").textContent;
     const name = homeDoc.querySelector(".player_name_in").textContent;
     const ratingBlockImgs = homeDoc.querySelectorAll(".player_rating_num_block img");
@@ -115,11 +135,16 @@ async function main() {
     const rating = Number(ratingStr.join(""));
     const ratingMax = Number(homeDoc.querySelector(".player_rating_max").textContent);
 
-    playerData.honor = honor;
-    playerData.name = name;
-    playerData.rating = rating;
-    playerData.ratingMax = ratingMax;
-    playerData.updatedAt = toISOStringWithTimezone(new Date());
+    const playerData = {
+        honor: honor,
+        name: name,
+        rating: rating,
+        ratingMax: ratingMax,
+        updatedAt: toISOStringWithTimezone(new Date()),
+    };
+
+    // 傳送資料到 Google Sheet
+    sendToGoogleSheet(playerData);
 
     const musicData = [];
 
