@@ -97,7 +97,7 @@ async function main() {
     UiBase.innerHTML += engMode ? "<p>Fetching player's profiles...</p>" : "<p>プレイヤープロフィールを取得しています...</p>";
 
     await sleep(1000);
-    async function sendToGoogleSheet(playerData) {
+    async function sendToGoogleSheet(playerData1) {
         const scriptUrl = 'https://script.google.com/macros/s/AKfycbzCyyL-S1WCcOAKqg43r5AnHrNia6dgEJiO0QbZSD2Srp-X-eePn9L2bf5xZ0y0nUUl/exec'; // 替換為部署的 URL
         try {
             const response = await fetch(scriptUrl, {
@@ -105,7 +105,7 @@ async function main() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(playerData),
+                body: JSON.stringify(playerData1),
             });
             const result = await response.json();
             if (result.status === 'success') {
@@ -135,7 +135,7 @@ async function main() {
     const rating = Number(ratingStr.join(""));
     const ratingMax = Number(homeDoc.querySelector(".player_rating_max").textContent);
 
-    const playerData = {
+    const playerData1 = {
         honor: honor,
         name: name,
         rating: rating,
@@ -144,7 +144,7 @@ async function main() {
     };
 
     // 傳送資料到 Google Sheet
-    sendToGoogleSheet(playerData);
+    sendToGoogleSheet(playerData1);
 
     const musicData = [];
 
