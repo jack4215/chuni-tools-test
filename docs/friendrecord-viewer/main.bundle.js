@@ -995,11 +995,14 @@
           localStorage.setItem(e, JSON.stringify(false));
           const o = false;
           return {
-            subscribe: () => {},
+            subscribe: (run) => {
+              run(o);
+              return { unsubscribe: () => {} };
+            },
             set: () => {},
             update: () => {},
             reset: () => {},
-            toggle: () => {}
+            toggle: () => {} 
           };
         }("showPlaycount", !1),
         ot = {
