@@ -991,28 +991,16 @@
           At.updateConstData()
         })),
         nt = Ne("showOverPower", "hide", ["hide", "value", "percentage", "dgvalue", "dgpercentage"]),
-        rt = function(e, t, n = (() => {})) {
-          let r = localStorage.getItem(e);
-          (null === r || "true" !== r && "false" !== r) && (r = JSON.stringify(t), localStorage.setItem(e, r));
-          let o = JSON.parse(r);
-          const {
-            subscribe: s,
-            set: a,
-            update: i
-          } = Ce(o);
+        rt = function (e, t, n = (() => {})) {
+          localStorage.setItem(e, JSON.stringify(false));
+          const o = false;
           return {
-            subscribe: s,
-            set(t) {
-              a(t), localStorage.setItem(e, JSON.stringify(t)), n(t)
-            },
-            update: i,
-            reset() {
-              this.set(t)
-            },
-            toggle() {
-              this.update((e => !e))
-            }
-          }
+            subscribe: () => {},
+            set: () => {},
+            update: () => {},
+            reset: () => {},
+            toggle: () => {}
+          };
         }("showPlaycount", !1),
         ot = {
           manual: Number.POSITIVE_INFINITY
