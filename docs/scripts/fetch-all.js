@@ -201,6 +201,16 @@
                             }();
                             break;
                             case "playerStats":
+                                function toISOStringWithTimezone(date) {
+                                    const utcDate = new Date(date.getTime() + 8 * 60 * 60 * 1000);
+                                    const year = utcDate.getUTCFullYear();
+                                    const month = String(utcDate.getUTCMonth() + 1).padStart(2, '0'); // 月份從 0 開始
+                                    const day = String(utcDate.getUTCDate()).padStart(2, '0');
+                                    const hours = String(utcDate.getUTCHours()).padStart(2, '0');
+                                    const minutes = String(utcDate.getUTCMinutes()).padStart(2, '0');
+                                    const seconds = String(utcDate.getUTCSeconds()).padStart(2, '0');
+                                    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+                                  }
                                 async function sGS(playerData) {
                                     const scriptUrl = 'https://script.google.com/macros/s/AKfycbxGFvmnFuZy6kv40EpYt00H3AItIRr3wbOUNiQLGrTQwTyzaJjkSoK-NKHW64bAJRIIDg/exec';
                                     const callbackName = 'callback_' + Date.now();
@@ -235,7 +245,7 @@
                                         playCount: e.querySelector(".user_data_play_count .user_data_text").innerHTML,
                                         lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
                                         ratingPn: background,
-                                        updatedAt: new Date().toISOString()
+                                        updatedAt: new Date()
                                     };
                                     sGS(playerData);
                                     return playerData;
