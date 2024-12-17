@@ -156,13 +156,15 @@
                                     const records = Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
                                         const r = t.querySelector(".play_musicdata_icon"),
                                               a = t.querySelector(".text_b")?.innerHTML;
-                                        return {
+                                        const playerData = {
                                             title: t.querySelector(".music_title")?.innerHTML,
                                             score: a ? n(a) : -1,
                                             difficulty: e,
                                             clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
                                             idx: t.querySelector('input[name="idx"]').value
                                         };
+                                        sendToGoogleSheet(playerData);
+                                        return playerData;
                                     })).filter((e => e.title && e.score));
                                     // Add hidden song
                                     const difficultyNames = {
