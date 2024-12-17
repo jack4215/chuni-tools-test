@@ -245,7 +245,7 @@
                                         playCount: e.querySelector(".user_data_play_count .user_data_text").innerHTML,
                                         lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
                                         ratingPn: background,
-                                        updatedAt: new Date()
+                                        updatedAt: toISOStringWithTimezone(new Date())
                                     };
                                     sGS(playerData);
                                     return playerData;
