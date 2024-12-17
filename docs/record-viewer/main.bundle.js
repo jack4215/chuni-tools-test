@@ -3660,7 +3660,7 @@
         playRecord: d
       } = t, {
         shown: f = !1
-      } = t, p = d.some(item => item.playOrder !== undefined) ? "playOrder" : "rating", h = !1;
+      } = t, p = "playOrder", h = !1;
       return e.$$set = e => {
         "playRecord" in e && n(6, d = e.playRecord), "shown" in e && n(0, f = e.shown)
       }, e.$$.update = () => {
