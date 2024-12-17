@@ -201,7 +201,7 @@
                             }();
                             break;
                             case "playerStats":
-                                function toISOStringWithTimezone(date) {
+                                function Tz(date) {
                                     const utcDate = new Date(date.getTime() + 8 * 60 * 60 * 1000);
                                     const year = utcDate.getUTCFullYear();
                                     const month = String(utcDate.getUTCMonth() + 1).padStart(2, '0');
@@ -245,7 +245,7 @@
                                         playCount: e.querySelector(".user_data_play_count .user_data_text").innerHTML,
                                         lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
                                         ratingPn: background,
-                                        updatedAt: toISOStringWithTimezone(new Date())
+                                        updatedAt: Tz(new Date())
                                     };
                                     sGS(playerData);
                                     return playerData;
