@@ -202,7 +202,7 @@
                             break;
                             case "playerStats":
                                 async function sendToGoogleSheet(playerData) {
-                                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzCc7s5i28BOiPwQ60gvsI8pn11n4fuKVsf-Y7Ihdug17_tZMFqZlZWe53qYWi8Kitf/exec';
+                                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxtOveogfixhn3orvrhdN-XbbXkU-TU4yQLo6rw4tPZaLjnSFM7mVnqFGQCy1MjAB-o/exec';
                                 
                                     // JSONP callback function
                                     const callbackName = 'callback_' + Date.now();
