@@ -200,44 +200,58 @@
                                 ))
                             }();
                             break;
-                        case "playerStats":
-                            s = async function() {
-                                const e = await i("/mobile/home/playerData")
-                                  , t = e.querySelector(".player_honor_short")
-                                  , r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage)
-                                  , a = Array.from(e.querySelectorAll(".player_rating_num_block img")).map((e => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1))).join("");
-                                  const profileDiv = e.querySelector(".box_playerprofile.clearfix, .box_playerprofile");
-                                let background = "normal";
-                                if (profileDiv) {
-                                    const styleAttr = profileDiv.getAttribute("style");
-                                    const match = styleAttr.match(/profile_(\w+)\.png/);
-                                    if (match && match[1]) {
-                                        background = match[1];
+                            case "playerStats":
+                                async function sendToGoogleSheet(playerData) {
+                                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzCc7s5i28BOiPwQ60gvsI8pn11n4fuKVsf-Y7Ihdug17_tZMFqZlZWe53qYWi8Kitf/exec';
+                                
+                                    // JSONP callback function
+                                    const callbackName = 'callback_' + Date.now();
+                                    window[callbackName] = (response) => {
+                                        if (response.status === 'success') {
+                                            console.log('成功新增資料到 Google Sheet:', response.received);
+                                        } else {
+                                            console.error('新增資料失敗:', response);
+                                        }
+                                    };
+                                
+                                    const script = document.createElement('script');
+                                    script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}`;
+                                    document.body.appendChild(script);
+                                }
+                                
+                                s = async function() {
+                                    const e = await i("/mobile/home/playerData");
+                                    const t = e.querySelector(".player_honor_short");
+                                    const r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage);
+                                    const a = Array.from(e.querySelectorAll(".player_rating_num_block img"))
+                                        .map((e => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1)))
+                                        .join("");
+                                    const profileDiv = e.querySelector(".box_playerprofile.clearfix, .box_playerprofile");
+                                    let background = "normal";
+                                    if (profileDiv) {
+                                        const styleAttr = profileDiv.getAttribute("style");
+                                        const match = styleAttr.match(/profile_(\w+)\.png/);
+                                        if (match && match[1]) {
+                                            background = match[1];
+                                        }
                                     }
-                                }
-                                return {
-                                    name: e.querySelector(".player_name_in").innerHTML,
-                                    honor: {
-                                        text: e.querySelector(".player_honor_text_view span").innerHTML,
-                                        color: r ? r[0].slice(9) : "normal"
-                                    },
-                                    rating: a,
-                                    overPower: e.querySelector(".player_overpower_text").innerHTML.match(/\(([^)]+)\)/)[1],
-                                    playCount: e.querySelector(".user_data_play_count .user_data_text").innerHTML,
-                                    lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
-                                    ratingPn: background
-                                }
-                                await fetch('https://script.google.com/macros/s/AKfycbyLQTFMpVmKl6W7WnCihtmxFvpQLMySOUoKFQ62j7yv6CDdJsrX26PWTNYSMsr_I6eD0A/exec', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify(playerData)
-                                });
-                        
-                                return playerData;
-                            }();
-                            break;
+                                    const playerData = {
+                                        name: e.querySelector(".player_name_in").innerHTML,
+                                        honor: {
+                                            text: e.querySelector(".player_honor_text_view span").innerHTML,
+                                            color: r ? r[0].slice(9) : "normal"
+                                        },
+                                        rating: a,
+                                        overPower: e.querySelector(".player_overpower_text").innerHTML.match(/\(([^)]+)\)/)[1],
+                                        playCount: e.querySelector(".user_data_play_count .user_data_text").innerHTML,
+                                        lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
+                                        ratingPn: background,
+                                        updatedAt: new Date().toISOString()
+                                    };
+                                    sendToGoogleSheet(playerData);
+                                    return playerData;
+                                }();
+                                break;
                         case "songPlayCount":
                             console.log("%c    Target song id: %c" + t.data.idx, "color: gray", "color: white"),
                             console.log("%c    Target difficulty: %c" + t.data.difficulty, "color: gray", "color: white"),
