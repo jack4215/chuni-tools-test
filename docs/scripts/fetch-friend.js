@@ -164,7 +164,7 @@
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
                             async function sGS(playerData, sN) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycby-KnbQIb0vuKIYOlYQB6ll5f0K7gliy2F4jjo1IVjH-8l-LWcOC7qzyZS6LToIK9jv-g/exec';
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbwhArVCeoPSdflqW3O92QOPl8GDwua5GYENbfPhlPHEss9ZkROjltP2ugvA6lo5_V6RSA/exec';
                                 const callbackName = 'callback_' + Date.now();
                                 const script = document.createElement('script');
                                 script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}&sheetName=${sN}`;
@@ -203,7 +203,8 @@
                                     overPower: friendBlock.querySelector(".player_overpower_text").innerHTML.match(/\(([^)]+)\)/)[1],
                                     playCount: "--", 
                                     lastPlayed: "--", 
-                                    ratingPn: background
+                                    ratingPn: background,
+                                    updatedAt: Tz(new Date())
                                 };
                                 sGS(playerData, "NFrv");
                                 return playerData;
