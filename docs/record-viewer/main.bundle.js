@@ -989,9 +989,10 @@
       tt = Ne("usedConstData", "luminousplus", ["luminousplus","verse"], (() => {
         At.updateConstData(), Ht.updateConstData()
       })),
-      nt = Ne("showOverPower", "hide", ["hide", "value", "percentage", "dgvalue", "dgpercentage"]),
-      rt = (localStorage.setItem("showPlaycount", false), false),
-      ot = {
+      nt = Ne("showOverPower", "hide", ["hide", "value", "percentage", "dgvalue", "dgpercentage"]);
+      localStorage.showPlaycount = false;
+      const rt = false;
+      const ot = {
         "1d": 864e5,
         "3d": 2592e5,
         "7d": 6048e5,
