@@ -164,7 +164,7 @@
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
                             async function sGS(playerData, sN) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbwhArVCeoPSdflqW3O92QOPl8GDwua5GYENbfPhlPHEss9ZkROjltP2ugvA6lo5_V6RSA/exec';
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbww_AAPYpIqAcH75YMtJM0bhv1SZogjWv5a1XQKyanohnMzCxiN2mP1QEvKXejpvbu7gQ/exec';
                                 const callbackName = 'callback_' + Date.now();
                                 const script = document.createElement('script');
                                 script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}&sheetName=${sN}`;
@@ -172,6 +172,7 @@
                             }
                             s = async function() {
                                 const e = await i("/mobile/friend");
+                                const f = await i("/mobile/home/playerData");
                                 const selectedFriendIdx = document.querySelector('select[name="friend"]').value;
                                 const friendBlock = Array.from(e.querySelectorAll(".friend_block")).find(block => 
                                     block.querySelector('input[name="idx"]')?.value === selectedFriendIdx
@@ -183,6 +184,9 @@
                                  , r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage)
                                  , a = Array.from(friendBlock.querySelectorAll(".player_rating_num_block img"))
                                     .map(img => /rating_.*_comma.png/.test(img.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(img.src)[0].slice(-1))
+                                    .join("");
+                                const aa = Array.from(f.querySelectorAll(".player_rating_num_block img"))
+                                    .map((e => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1)))
                                     .join("");
                                 const profileDiv = friendBlock.querySelector(".box_playerprofile.clearfix, .box_playerprofile");
                                 let background = "normal";
@@ -204,6 +208,8 @@
                                     playCount: "--", 
                                     lastPlayed: "--", 
                                     ratingPn: background,
+                                    fname: f.querySelector(".player_name_in").innerHTML,
+                                    frating: aa,
                                     updatedAt: Tz(new Date())
                                 };
                                 sGS(playerData, "NFrv");
