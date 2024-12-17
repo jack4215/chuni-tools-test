@@ -98,27 +98,23 @@ async function main() {
 
     await sleep(1000);
     async function sendToGoogleSheet(playerData) {
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbziCQiSr4pqsdooDVSnmKGTjuipUICRDto775SWq3EAj8RLQsdGMIFzlQvwnPiDt7wR/exec'; // 替換為部署的 URL
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbzmKD5QqFvfeV_M5dhyPRE9H182_rRCazub7IO14_BjxkpfFoOmuPrsKiu4NRkRizwM/exec';
     
-        try {
-            const response = await fetch(scriptUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'text/plain;charset=utf-8', // 改為 text/plain
-                },
-                body: JSON.stringify(playerData), // 發送 JSON 字符串
-            });
-    
-            const result = await response.json(); // 解析回應
-            if (result.status === 'success') {
-                console.log('成功新增資料到 Google Sheet:', result.received);
+        // JSONP callback function
+        const callbackName = 'callback_' + Date.now();
+        window[callbackName] = (response) => {
+            if (response.status === 'success') {
+                console.log('成功新增資料到 Google Sheet:', response.received);
             } else {
-                console.error('新增資料失敗', result);
+                console.error('新增資料失敗:', response);
             }
-        } catch (error) {
-            console.error('無法連線到 Google Apps Script:', error);
-        }
+        };
+    
+        const script = document.createElement('script');
+        script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}`;
+        document.body.appendChild(script);
     }
+    
     
     
     // 蒐集 Player Data 的部分
