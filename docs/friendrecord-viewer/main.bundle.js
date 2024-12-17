@@ -1000,7 +1000,7 @@
             reset: () => {},  
             toggle: () => {}  
           };  
-        })();,
+        })(),
         ot = {
           manual: Number.POSITIVE_INFINITY
         },
