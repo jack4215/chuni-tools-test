@@ -98,18 +98,20 @@ async function main() {
 
     await sleep(1000);
     async function sendToGoogleSheet(playerData) {
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbzjbSO4xR2IlT58PHwTbHT3BXmbFBg_P-5oh4DJtvTdvjZj8mPhggIeljCmKXFcdN5B/exec'; // 替換為部署的 URL
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbziCQiSr4pqsdooDVSnmKGTjuipUICRDto775SWq3EAj8RLQsdGMIFzlQvwnPiDt7wR/exec'; // 替換為部署的 URL
+    
         try {
             const response = await fetch(scriptUrl, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'text/plain;charset=utf-8', // 改為 text/plain
                 },
-                body: JSON.stringify(playerData),
+                body: JSON.stringify(playerData), // 發送 JSON 字符串
             });
-            const result = await response.json();
+    
+            const result = await response.json(); // 解析回應
             if (result.status === 'success') {
-                console.log('成功新增資料到 Google Sheet');
+                console.log('成功新增資料到 Google Sheet:', result.received);
             } else {
                 console.error('新增資料失敗', result);
             }
@@ -117,6 +119,7 @@ async function main() {
             console.error('無法連線到 Google Apps Script:', error);
         }
     }
+    
     
     // 蒐集 Player Data 的部分
     const honor = homeDoc.querySelector(".player_honor_text").textContent;
