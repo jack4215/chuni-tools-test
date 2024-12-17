@@ -97,27 +97,8 @@ async function main() {
     UiBase.innerHTML += engMode ? "<p>Fetching player's profiles...</p>" : "<p>プレイヤープロフィールを取得しています...</p>";
 
     await sleep(1000);
-    async function sendToGoogleSheet(playerData) {
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbzCc7s5i28BOiPwQ60gvsI8pn11n4fuKVsf-Y7Ihdug17_tZMFqZlZWe53qYWi8Kitf/exec';
-    
-        // JSONP callback function
-        const callbackName = 'callback_' + Date.now();
-        window[callbackName] = (response) => {
-            if (response.status === 'success') {
-                console.log('成功新增資料到 Google Sheet:', response.received);
-            } else {
-                console.error('新增資料失敗:', response);
-            }
-        };
-    
-        const script = document.createElement('script');
-        script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}`;
-        document.body.appendChild(script);
-    }
-    
-    
-    
-    // 蒐集 Player Data 的部分
+
+    // Player Data
     const honor = homeDoc.querySelector(".player_honor_text").textContent;
     const name = homeDoc.querySelector(".player_name_in").textContent;
     const ratingBlockImgs = homeDoc.querySelectorAll(".player_rating_num_block img");
@@ -139,9 +120,6 @@ async function main() {
     playerData.rating = rating;
     playerData.ratingMax = ratingMax;
     playerData.updatedAt = toISOStringWithTimezone(new Date());
-
-    // 傳送資料到 Google Sheet
-    sendToGoogleSheet(playerData);
 
     const musicData = [];
 

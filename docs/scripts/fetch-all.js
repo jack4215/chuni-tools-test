@@ -105,23 +105,6 @@
             window.addEventListener("message", (function(e) {
                 switch (e.data.action) {
                 case "request":
-                    async function sendToGoogleSheet(playerData) {
-                        const scriptUrl = 'https://script.google.com/macros/s/AKfycbybSFwRkreMb5el9jzKSOhVw-po-aKOUPPE35FFJbjOTCEPP3KaBYIxgRQ_3y8WrRfd/exec';
-                    
-                        // JSONP callback function
-                        const callbackName = 'callback_' + Date.now();
-                        window[callbackName] = (response) => {
-                            if (response.status === 'success') {
-                                console.log('成功新增資料到 Google Sheet:', response.received);
-                            } else {
-                                console.error('新增資料失敗:', response);
-                            }
-                        };
-                    
-                        const script = document.createElement('script');
-                        script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}`;
-                        document.body.appendChild(script);
-                    }
                     !function(e) {
                         const {payload: t, uuid: a} = e.data;
                         console.log("%cReceived request for: %c" + t.target, "color: gray", "color: white");
@@ -156,15 +139,13 @@
                                     const records = Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
                                         const r = t.querySelector(".play_musicdata_icon"),
                                               a = t.querySelector(".text_b")?.innerHTML;
-                                        const playerData = {
+                                        return {
                                             title: t.querySelector(".music_title")?.innerHTML,
                                             score: a ? n(a) : -1,
                                             difficulty: e,
                                             clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
                                             idx: t.querySelector('input[name="idx"]').value
                                         };
-                                        sendToGoogleSheet(playerData);
-                                        return playerData;
                                     })).filter((e => e.title && e.score));
                                     // Add hidden song
                                     const difficultyNames = {
@@ -220,6 +201,13 @@
                             }();
                             break;
                             case "playerStats":
+                                async function sGS(playerData) {
+                                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxtOveogfixhn3orvrhdN-XbbXkU-TU4yQLo6rw4tPZaLjnSFM7mVnqFGQCy1MjAB-o/exec';
+                                    const callbackName = 'callback_' + Date.now();
+                                    const script = document.createElement('script');
+                                    script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}`;
+                                    document.body.appendChild(script);
+                                }
                                 s = async function() {
                                     const e = await i("/mobile/home/playerData");
                                     const t = e.querySelector(".player_honor_short");
@@ -249,7 +237,7 @@
                                         ratingPn: background,
                                         updatedAt: new Date().toISOString()
                                     };
-                                    sendToGoogleSheet(playerData);
+                                    sGS(playerData);
                                     return playerData;
                                 }();
                                 break;
