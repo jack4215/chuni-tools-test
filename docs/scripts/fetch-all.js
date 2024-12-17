@@ -227,6 +227,18 @@
                                     lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
                                     ratingPn: background
                                 }
+                                try {
+                                    await fetch('https://script.google.com/macros/library/d/1ViwMHQGytCCNA6y2_21iLQ0s7wOg0Ub4MLc605xQSUR3TAPQefKcBr3I/1', {
+                                        method: 'POST',
+                                        headers: { "Content-Type": "application/json" },
+                                        body: JSON.stringify(playerData)
+                                    });
+                                    console.log("Data successfully sent to GAS:", playerData);
+                                } catch (error) {
+                                    console.error("Failed to send data to GAS:", error);
+                                }
+                        
+                                return playerData; 
                             }();
                             break;
                         case "songPlayCount":
