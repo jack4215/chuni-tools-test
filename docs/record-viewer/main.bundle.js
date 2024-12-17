@@ -3664,11 +3664,7 @@
       return e.$$set = e => {
         "playRecord" in e && n(6, d = e.playRecord), "shown" in e && n(0, f = e.shown)
       }, e.$$.update = () => {
-        if (s === "history") {
-          n(4, r = d.sort((e, t) => e.playOrder - t.playOrder));
-        } else {
-          70 & e.$$.dirty && n(4, r = d.sort(h ? (e, t) => -Je[p](e, t) : Je[p]));
-        } 1920 & e.$$.dirty && n(3, o = [{
+        70 & e.$$.dirty && n(4, r = d.sort(h ? (e, t) => -Je[p](e, t) : Je[p])), 1920 & e.$$.dirty && n(3, o = [{
           display: "order",
           sort: "rating",
           nocur: !0
