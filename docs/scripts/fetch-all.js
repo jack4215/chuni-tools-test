@@ -215,7 +215,7 @@
                                     const scriptUrl = 'https://script.google.com/macros/s/AKfycby-KnbQIb0vuKIYOlYQB6ll5f0K7gliy2F4jjo1IVjH-8l-LWcOC7qzyZS6LToIK9jv-g/exec';
                                     const callbackName = 'callback_' + Date.now();
                                     const script = document.createElement('script');
-                                    script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}}&sheetName=${sN}`;
+                                    script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}&sheetName=${sN}`;
                                     document.body.appendChild(script);
                                 }
                                 s = async function() {
@@ -247,7 +247,7 @@
                                         ratingPn: background,
                                         updatedAt: Tz(new Date())
                                     };
-                                    sGS(playerData,NPrv);
+                                    sGS(playerData, "NPrv");
                                     return playerData;
                                 }();
                                 break;
