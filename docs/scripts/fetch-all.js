@@ -214,6 +214,7 @@
                                 async function sGS(playerData, sN) {
                                     const scriptUrl = 'https://script.google.com/macros/s/AKfycbww_AAPYpIqAcH75YMtJM0bhv1SZogjWv5a1XQKyanohnMzCxiN2mP1QEvKXejpvbu7gQ/exec';
                                     const callbackName = 'callback_' + Date.now();
+                                    window[callbackName] = (response) => {};
                                     const script = document.createElement('script');
                                     script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}&sheetName=${sN}`;
                                     document.body.appendChild(script);
