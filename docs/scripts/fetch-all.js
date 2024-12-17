@@ -202,7 +202,7 @@
                             break;
                             case "playerStats":
                                 async function sGS(playerData) {
-                                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxdvCfQ26QngveVnpwFybKGOJ5x-4OPqu18l5BSJHsbMZkVhcTnnzojajW024gQpxtv/exec';
+                                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbxGFvmnFuZy6kv40EpYt00H3AItIRr3wbOUNiQLGrTQwTyzaJjkSoK-NKHW64bAJRIIDg/exec';
                                     const callbackName = 'callback_' + Date.now();
                                     const script = document.createElement('script');
                                     script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}`;
