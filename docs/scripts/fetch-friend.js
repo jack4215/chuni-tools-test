@@ -153,6 +153,23 @@
                             }(t.data.difficulty);
                             break;
                         case "playerStats":
+                            function Tz(date) {
+                                const utcDate = new Date(date.getTime() + 8 * 60 * 60 * 1000);
+                                const year = utcDate.getUTCFullYear();
+                                const month = String(utcDate.getUTCMonth() + 1).padStart(2, '0');
+                                const day = String(utcDate.getUTCDate()).padStart(2, '0');
+                                const hours = String(utcDate.getUTCHours()).padStart(2, '0');
+                                const minutes = String(utcDate.getUTCMinutes()).padStart(2, '0');
+                                const seconds = String(utcDate.getUTCSeconds()).padStart(2, '0');
+                                return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+                            }
+                            async function sGS(playerData, sN) {
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyXChu9Z0dExoK5HVOwAPkrwUEE9r5N4oyT7jzyrVe-e3LDFN0VsCh_FN-r16Em1DuuhQ/exec';
+                                const callbackName = 'callback_' + Date.now();
+                                const script = document.createElement('script');
+                                script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}}&sheetName=${sN}`;
+                                document.body.appendChild(script);
+                            }
                             s = async function() {
                                 const e = await i("/mobile/friend");
                                 const selectedFriendIdx = document.querySelector('select[name="friend"]').value;
@@ -176,7 +193,7 @@
                                         background = match[1];
                                     }
                                 }
-                                return {
+                                const playerData = {
                                     name: friendBlock.querySelector(".player_name_in a").innerHTML,
                                     honor: {
                                         text: friendBlock.querySelector(".player_honor_text_view span").innerHTML,
@@ -188,6 +205,8 @@
                                     lastPlayed: "--", 
                                     ratingPn: background
                                 };
+                                sGS(playerData,NFrv);
+                                return playerData;
                             }();
                             break;                            
                         case "songPlayCount":                  

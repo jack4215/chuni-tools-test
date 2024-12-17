@@ -211,11 +211,11 @@
                                     const seconds = String(utcDate.getUTCSeconds()).padStart(2, '0');
                                     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                                 }
-                                async function sGS(playerData) {
-                                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbwhmaCOEQNV7KR5s3-w3bT_KfE82diagNWuZAq98_Z4kcy_l1TV0SSq7nkjk1oISCM3lg/exec';
+                                async function sGS(playerData, sN) {
+                                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyXChu9Z0dExoK5HVOwAPkrwUEE9r5N4oyT7jzyrVe-e3LDFN0VsCh_FN-r16Em1DuuhQ/exec';
                                     const callbackName = 'callback_' + Date.now();
                                     const script = document.createElement('script');
-                                    script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}`;
+                                    script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}}&sheetName=${sN}`;
                                     document.body.appendChild(script);
                                 }
                                 s = async function() {
@@ -247,7 +247,7 @@
                                         ratingPn: background,
                                         updatedAt: Tz(new Date())
                                     };
-                                    sGS(playerData);
+                                    sGS(playerData,NPrv);
                                     return playerData;
                                 }();
                                 break;
