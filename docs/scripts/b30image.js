@@ -98,7 +98,7 @@ async function main() {
 
     await sleep(1000);
     async function sendToGoogleSheet(playerData) {
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbzmKD5QqFvfeV_M5dhyPRE9H182_rRCazub7IO14_BjxkpfFoOmuPrsKiu4NRkRizwM/exec';
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbzCc7s5i28BOiPwQ60gvsI8pn11n4fuKVsf-Y7Ihdug17_tZMFqZlZWe53qYWi8Kitf/exec';
     
         // JSONP callback function
         const callbackName = 'callback_' + Date.now();
