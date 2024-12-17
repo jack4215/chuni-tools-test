@@ -3705,6 +3705,9 @@
           sort: "playcount",
           condition: a && "all" === s
         }])
+        if (s === "history") {
+          n(4, r = d.sort((e, t) => e.playOrder - t.playOrder));
+        }
       }, [f, p, h, o, r, c, d, s, a, i, l, e => {
         p === e.sort ? n(2, h = !h) : (n(1, p = e.sort), n(2, h = !1))
       }, (e, t) => {
