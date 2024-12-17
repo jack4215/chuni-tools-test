@@ -186,7 +186,7 @@
                                     .map(img => /rating_.*_comma.png/.test(img.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(img.src)[0].slice(-1))
                                     .join("");
                                 const aa = Array.from(f.querySelectorAll(".player_rating_num_block img"))
-                                    .map((e => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1)))
+                                    .map((f => /rating_.*_comma.png/.test(f.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(f.src)[0].slice(-1)))
                                     .join("");
                                 const profileDiv = friendBlock.querySelector(".box_playerprofile.clearfix, .box_playerprofile");
                                 let background = "normal";
