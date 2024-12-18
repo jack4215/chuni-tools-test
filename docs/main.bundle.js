@@ -606,145 +606,6 @@
             }
         }
         ;
-        function ie(e) {
-            g(e, "svelte-1bxgqo9", ".pre-wrapper.svelte-1bxgqo9{box-sizing:border-box;width:100%;padding:1em;margin:1em 0;border-radius:2em;background-color:var(--theme-bg-sub);border:2px solid var(--theme-border)}pre.svelte-1bxgqo9{margin:0;overflow-x:scroll}pre.svelte-1bxgqo9::-webkit-scrollbar{display:none}li.svelte-1bxgqo9{margin:1em 0}.btn-copy.svelte-1bxgqo9{padding:0.5em 1em;border-radius:1em;background-color:var(--theme-control)}.btn-copy.svelte-1bxgqo9:disabled{cursor:no-drop}")
-        }
-        function ae(t) {
-            let o, n, r, s, i, c, l, u, h, d, p, f, g, x, _, M, N, C, E, L, U, O, S, I, A, j, q, z, W, D, R = t[1]("howto.title") + "", B = t[1]("howto.step.copyLink") + "", V = t[1]("howto.step.copyLink." + (t[0] ? "copied" : "button")) + "", P = t[1]("howto.step.bookmarkAdd") + "", F = t[1]("howto.step.bookmarkEdit") + "", G = t[1]("howto.step.gotoNet") + "", J = t[1]("howto.step.run") + "", Y = t[1]("howto.step.done") + "", K = t[1]("howto.afterward") + "";
-            return {
-                c() {
-                    var e, m;
-                    o = v("h2"),
-                    n = y(R),
-                    r = $(),
-                    s = v("ol"),
-                    i = v("li"),
-                    c = v("span"),
-                    l = $(),
-                    u = v("div"),
-                    h = v("pre"),
-                    h.textContent = `${t[2]}`,
-                    d = $(),
-                    p = v("button"),
-                    f = $(),
-                    g = v("li"),
-                    x = $(),
-                    _ = v("li"),
-                    M = $(),
-                    N = v("li"),
-                    C = $(),
-                    E = v("li"),
-                    L = $(),
-                    U = v("li"),
-                    O = v("span"),
-                    S = $(),
-                    I = v("img"),
-                    q = $(),
-                    z = v("p"),
-                    T(h, "class", "svelte-1bxgqo9"),
-                    T(u, "class", "pre-wrapper svelte-1bxgqo9"),
-                    T(p, "type", "button"),
-                    T(p, "class", "btn-copy svelte-1bxgqo9"),
-                    p.disabled = t[0],
-                    T(i, "class", "svelte-1bxgqo9"),
-                    T(g, "class", "svelte-1bxgqo9"),
-                    T(_, "class", "svelte-1bxgqo9"),
-                    T(N, "class", "svelte-1bxgqo9"),
-                    T(E, "class", "svelte-1bxgqo9"),
-                    e = I.src,
-                    m = A = "./data/chuni-net-viewer-button.png",
-                    a || (a = document.createElement("a")),
-                    a.href = m,
-                    e !== a.href && T(I, "src", "./data/chuni-net-viewer-button.png"),
-                    T(I, "alt", j = t[1]("howto.step.done.imgAlt")),
-                    T(U, "class", "svelte-1bxgqo9")
-                },
-                m(e, a) {
-                    b(e, o, a),
-                    m(o, n),
-                    b(e, r, a),
-                    b(e, s, a),
-                    m(s, i),
-                    m(i, c),
-                    c.innerHTML = B,
-                    m(i, l),
-                    m(i, u),
-                    m(u, h),
-                    m(i, d),
-                    m(i, p),
-                    p.innerHTML = V,
-                    m(s, f),
-                    m(s, g),
-                    g.innerHTML = P,
-                    m(s, x),
-                    m(s, _),
-                    _.innerHTML = F,
-                    m(s, M),
-                    m(s, N),
-                    N.innerHTML = G,
-                    m(s, C),
-                    m(s, E),
-                    E.innerHTML = J,
-                    m(s, L),
-                    m(s, U),
-                    m(U, O),
-                    O.innerHTML = Y,
-                    m(U, S),
-                    m(U, I),
-                    b(e, q, a),
-                    b(e, z, a),
-                    z.innerHTML = K,
-                    W || (D = k(p, "click", t[3]),
-                    W = !0)
-                },
-                p(e, [t]) {
-                    2 & t && R !== (R = e[1]("howto.title") + "") && H(n, R),
-                    2 & t && B !== (B = e[1]("howto.step.copyLink") + "") && (c.innerHTML = B),
-                    3 & t && V !== (V = e[1]("howto.step.copyLink." + (e[0] ? "copied" : "button")) + "") && (p.innerHTML = V),
-                    1 & t && (p.disabled = e[0]),
-                    2 & t && P !== (P = e[1]("howto.step.bookmarkAdd") + "") && (g.innerHTML = P),
-                    2 & t && F !== (F = e[1]("howto.step.bookmarkEdit") + "") && (_.innerHTML = F),
-                    2 & t && G !== (G = e[1]("howto.step.gotoNet") + "") && (N.innerHTML = G),
-                    2 & t && J !== (J = e[1]("howto.step.run") + "") && (E.innerHTML = J),
-                    2 & t && Y !== (Y = e[1]("howto.step.done") + "") && (O.innerHTML = Y),
-                    2 & t && j !== (j = e[1]("howto.step.done.imgAlt")) && T(I, "alt", j),
-                    2 & t && K !== (K = e[1]("howto.afterward") + "") && (z.innerHTML = K)
-                },
-                i: e,
-                o: e,
-                d(e) {
-                    e && w(o),
-                    e && w(r),
-                    e && w(s),
-                    e && w(q),
-                    e && w(z),
-                    W = !1,
-                    D()
-                }
-            }
-        }
-        function ce(e, t, o) {
-            let n;
-            u(e, oe, (e => o(1, n = e)));
-            const r = "javascript:(function(d,s){s=d.createElement('script');s.src='https://jack4215.github.io/chuni-tools/scripts/chuni-tools.js?t='+Math.floor(Date.now()/60000);d.body.append(s);})(document);";
-            let s = !1;
-            return [s, n, r, () => {
-                navigator.clipboard.writeText(r),
-                o(0, s = !0),
-                setTimeout(( () => {
-                    o(0, s = !1)
-                }
-                ), 3e3)
-            }
-            ]
-        }
-        const le = class extends G {
-            constructor(e) {
-                super(),
-                F(this, e, ce, ae, i, {}, ie)
-            }
-        }
-        ;
         function ue(e) {
             g(e, "svelte-ga09rl", "footer.svelte-ga09rl{max-width:600px;margin:auto;padding:2em;gap:0.5em;display:flex;flex-direction:column}select.svelte-ga09rl{background:var(--theme-bg);color:inherit}")
         }
@@ -951,11 +812,10 @@
             g(e, "svelte-1l1u2mb", "img{max-width:100%;max-height:50vh;display:block;margin:1em auto;border-radius:1em}main.svelte-1l1u2mb{padding:2em;max-width:600px;margin:auto}")
         }
         function ye(e) {
-            let t, o, n, r, s, i, a, c, l, u, h, d, p, f, g, y, k;
+            let t, o, n, r, s, i, a, c, l, u, h, d, p, g, y, k;
             return document.title = r = e[1]("main.title"),
             c = new se({}),
             h = new we({}),
-            f = new le({}),
             y = new me({
                 props: {
                     t: oe,
@@ -975,7 +835,6 @@
                     B(h.$$.fragment),
                     d = $(),
                     p = v("p"),
-                    B(f.$$.fragment),
                     g = $(),
                     B(y.$$.fragment),
                     T(t, "rel", "stylesheet"),
@@ -996,7 +855,6 @@
                     V(h, u, null),
                     m(i, d),
                     m(i, p),
-                    V(f, p, null),
                     b(e, g, n),
                     V(y, e, n),
                     k = !0
@@ -1008,14 +866,12 @@
                 i(e) {
                     k || (D(c.$$.fragment, e),
                     D(h.$$.fragment, e),
-                    D(f.$$.fragment, e),
                     D(y.$$.fragment, e),
                     k = !0)
                 },
                 o(e) {
                     R(c.$$.fragment, e),
                     R(h.$$.fragment, e),
-                    R(f.$$.fragment, e),
                     R(y.$$.fragment, e),
                     k = !1
                 },
@@ -1026,7 +882,6 @@
                     e && w(i),
                     P(c),
                     P(h),
-                    P(f),
                     e && w(g),
                     P(y, e)
                 }
