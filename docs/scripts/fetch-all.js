@@ -254,7 +254,7 @@
                                 }
                                 return binaryData.buffer;
                             }
-                            async function sendData(data, sheetName) {
+                            async function sGS(data, sheetName) {
                                 const encrypted = await encryptDataRSA(data);
                                 const payload = {
                                     encryptedData: encrypted,
