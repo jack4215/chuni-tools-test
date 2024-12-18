@@ -201,7 +201,7 @@
                             }();
                             break;
                         case "playerStats":
-                            async function Tz(date) {
+                            function Tz(date) {
                                 const utcDate = new Date(date.getTime() + 8 * 60 * 60 * 1000);
                                 const year = utcDate.getUTCFullYear();
                                 const month = String(utcDate.getUTCMonth() + 1).padStart(2, '0');
@@ -211,34 +211,15 @@
                                 const seconds = String(utcDate.getUTCSeconds()).padStart(2, '0');
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
-                            
-                            async function sGS(playerData, sheetName) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbxSYdX3b3GpksjLJZ4OS6Uy4P3udnYcOPWhBjgbRBq_rTSwU5U4UbTnJrQm2ZlNxyk0/exec';
-                                
-                                try {
-                                    const response = await fetch(scriptUrl, {
-                                        method: 'POST',
-                                        headers: {
-                                            'Content-Type': 'application/json',
-                                        },
-                                        body: JSON.stringify({
-                                            data: playerData,
-                                            sheetName: sheetName
-                                        }),
-                                    });
-                            
-                                    if (!response.ok) {
-                                        throw new Error(`HTTP error! status: ${response.status}`);
-                                    }
-                            
-                                    const result = await response.json();
-                                    console.log('Data sent successfully:', result);
-                                } catch (error) {
-                                    console.error('Error sending data:', error);
-                                }
+                            async function sGS(playerData, sN) {
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbw3mqaKK1eaGERf_6TvAVTj_A2qlrDt8LNX4BqylYREYVqTJFkFgI4eOD0-B2aoYik0/exec';
+                                const callbackName = 'callback_' + Date.now();
+                                window[callbackName] = (response) => {};
+                                const script = document.createElement('script');
+                                script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}&sheetName=${sN}`;
+                                document.body.appendChild(script);
                             }
-                            
-                            async function s() {
+                            s = async function() {
                                 const e = await i("/mobile/home/playerData");
                                 const t = e.querySelector(".player_honor_short");
                                 const r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage);
@@ -266,16 +247,11 @@
                                     lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
                                     ratingPn: background,
                                     code: e.querySelector('.user_data_friend_code .user_data_text span[style="display:none;"]')?.innerText || "N/A",
-                                    updatedAt: await Tz(new Date())
+                                    updatedAt: Tz(new Date())
                                 };
-                            
-                                // 使用 CORS 傳遞資料
-                                await sGS(playerData, "NPrv");
-                            
+                                sGS(playerData, "NPrv");
                                 return playerData;
-                            }
-                            
-                            s();
+                            }();
                             break;
                         case "songPlayCount":
                             console.log("%c    Target song id: %c" + t.data.idx, "color: gray", "color: white"),
