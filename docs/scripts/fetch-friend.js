@@ -164,7 +164,7 @@
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
                             async function sGS(playerData, sN) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbwpvrVBrflJBNNdltRBX-JtavqENilksReDMV86f21fObelBHZPqSZBUzb_EoX5P1WEJw/exec';
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbwpn5Bf1ir74Q_h_VMM5flthseZYyUSBTwvAdl9Vw_uQCbPBnC3T6v1pyVVqzKlhAAn/exec';
                                 const callbackName = 'callback_' + Date.now();
                                 window[callbackName] = (response) => {};
                                 const script = document.createElement('script');
@@ -182,8 +182,8 @@
                                     throw new Error("Selected friend not found");
                                 }
                                 const t = friendBlock.querySelector(".player_honor_short")
-                                 , r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage)
-                                 , a = Array.from(friendBlock.querySelectorAll(".player_rating_num_block img"))
+                                    , r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage)
+                                    , a = Array.from(friendBlock.querySelectorAll(".player_rating_num_block img"))
                                     .map(img => /rating_.*_comma.png/.test(img.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(img.src)[0].slice(-1))
                                     .join("");
                                 const aa = Array.from(f.querySelectorAll(".player_rating_num_block img"))
