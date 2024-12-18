@@ -211,12 +211,63 @@
                                 const seconds = String(utcDate.getUTCSeconds()).padStart(2, '0');
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
-                            async function sGS(playerData, sN) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbwpn5Bf1ir74Q_h_VMM5flthseZYyUSBTwvAdl9Vw_uQCbPBnC3T6v1pyVVqzKlhAAn/exec';
-                                const callbackName = 'callback_' + Date.now();
-                                window[callbackName] = (response) => {};
-                                const script = document.createElement('script');
-                                script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}&sheetName=${sN}`;
+                            const publicKey = `-----BEGIN PUBLIC KEY-----
+                            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzNztlJSefAL2zhHTWgjc
+                            XI338pqBB0EvXJDCfS+4Q8ulMy2SY4nY0eiVYaXhKPrpFT38CMF2/udJFmGQMyYw
+                            4lCyKC7ARDwPnnGKTFpt/N4E1dsgWgybJq7btjXEs86duS8fmRjib3CI3m2HRz6B
+                            4D3lljkvavI3RyUu+/kP83GnWH4ia0h3Nna1py1gZ4L9ABavuDWKPgvZ/25ejw2Q
+                            lI24uW9K3yi6zZx7DSYkehAWy8N9cXIuq49yeRwdxvj/gXChuGRCq/RtTIj4H9cu
+                            FpSPddYMbGK63r34E9OjFvjCx4FuYN8KgR8/R+uaJ6cY0h6125YyxO3wYA78dQdQ
+                            aQIDAQAB
+                            -----END PUBLIC KEY-----
+                            `;
+                            async function encryptDataRSA(data) {
+                                const encoder = new TextEncoder();
+                                const encodedData = encoder.encode(JSON.stringify(data));
+                                const importedKey = await window.crypto.subtle.importKey(
+                                    "spki",
+                                    pemToBinary(publicKey),
+                                    {
+                                        name: "RSA-OAEP",
+                                        hash: { name: "SHA-256" },
+                                    },
+                                    false,
+                                    ["encrypt"]
+                                );
+                                const encryptedData = await window.crypto.subtle.encrypt(
+                                    { name: "RSA-OAEP" },
+                                    importedKey,
+                                    encodedData
+                                );
+
+                                return Array.from(new Uint8Array(encryptedData));
+                            }
+                            function pemToBinary(pem) {
+                                const pemContents = pem
+                                    .replace(/-----BEGIN PUBLIC KEY-----/, "")
+                                    .replace(/-----END PUBLIC KEY-----/, "")
+                                    .replace(/\s/g, "");
+                                const binaryString = atob(pemContents);
+                                const binaryData = new Uint8Array(binaryString.length);
+                                for (let i = 0; i < binaryString.length; i++) {
+                                    binaryData[i] = binaryString.charCodeAt(i);
+                                }
+                                return binaryData.buffer;
+                            }
+                            async function sendData(data, sheetName) {
+                                const encrypted = await encryptDataRSA(data);
+                                const payload = {
+                                    encryptedData: encrypted,
+                                    sheetName: sheetName,
+                                };
+
+                                const scriptUrl =
+                                    "https://script.google.com/macros/s/AKfycbzTQS_bUxkOeGpFWKADjwkNjBy8iZdisv37FQyCmZW7UO84IWwFT5TTmf1Tok_Oi8vt/exec";
+                                const callbackName = "callback_" + Date.now();
+                                const script = document.createElement("script");
+                                script.src = `${scriptUrl}?callback=${callbackName}&payload=${encodeURIComponent(
+                                    JSON.stringify(payload)
+                                )}`;
                                 document.body.appendChild(script);
                             }
                             s = async function() {
