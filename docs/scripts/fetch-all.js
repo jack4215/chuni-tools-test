@@ -212,16 +212,16 @@
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
                             async function sGS(playerData, sheetName) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbwk-n2kzeDC6vL4TKTFs0ASNwwLVZO9hOpprLps3niQXfhTVoF7Y7No7pFocxk-dH4/exec';
-                                
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyS4MbE06eb4SeVRd_rtNArCAQR6Skeerex2C53woGwt9ZOJ-KjC9XWhZpic_8Tad6u/exec';
+                              
                                 try {
                                   const response = await fetch(scriptUrl, {
                                     method: 'POST',
                                     headers: {
-                                      'Content-Type': 'application/json',
+                                      'Content-Type': 'text/plain;charset=utf-8',
                                     },
                                     body: JSON.stringify({
-                                      ...playerData,
+                                      data: playerData, 
                                       sheetName,
                                     }),
                                   });
@@ -229,12 +229,15 @@
                                   if (!response.ok) {
                                     throw new Error(`Error：${response.status}`);
                                   }
-                                  const result = await response.json();
+
+                                  const textResponse = await response.text();
+                                  const result = JSON.parse(textResponse); 
                                   console.log(result);
                                 } catch (error) {
                                   console.error(error.message);
                                 }
                               }
+                              
                               
                             s = async function() {
                                 const e = await i("/mobile/home/playerData");
