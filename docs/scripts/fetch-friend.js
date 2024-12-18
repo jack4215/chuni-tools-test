@@ -163,13 +163,13 @@
                                 const seconds = String(utcDate.getUTCSeconds()).padStart(2, '0');
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
-                            async function sGS(playerData, sheetName) {
+                            async function sGS(playerData, sN) {
                                 const scriptUrl = 'https://script.google.com/macros/s/AKfycby17CkmfXsXfWmH_DiBYy8UxSre0yqHJl2ZJ5NIku-kiie6xaLMkfYxPVjWmfYuOWtD/exec';
                                 try {
                                   const response = await fetch(scriptUrl, {
                                     method: 'POST',
                                     headers: {'Content-Type': 'text/plain;charset=utf-8',},
-                                    body: JSON.stringify({data: playerData, sheetName,}),
+                                    body: JSON.stringify({data: playerData, sN,}),
                                   });
                                   if (!response.ok) {
                                     throw new Error(`Error：${response.status}`);
