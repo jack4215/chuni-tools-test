@@ -212,7 +212,7 @@
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
                             async function sGS(playerData, sN) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycby17CkmfXsXfWmH_DiBYy8UxSre0yqHJl2ZJ5NIku-kiie6xaLMkfYxPVjWmfYuOWtD/exec';
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbw5_-ottoDvbAGbjBAxV6N2eghGCoczumoBQ_GeE3GEBuFd0q6jvTM7V4phUg3i4KFL/exec';
                                 try {
                                   const response = await fetch(scriptUrl, {
                                     method: 'POST',
@@ -227,7 +227,7 @@
                                 } catch (error) {
                                   throw new Error(error.message);
                                 }
-                            }                             
+                            }                            
                             s = async function() {
                                 const e = await i("/mobile/home/playerData");
                                 const t = e.querySelector(".player_honor_short");
