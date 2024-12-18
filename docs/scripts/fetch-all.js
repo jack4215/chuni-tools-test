@@ -212,7 +212,7 @@
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
                             async function sGS(playerData, sN) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbw5_-ottoDvbAGbjBAxV6N2eghGCoczumoBQ_GeE3GEBuFd0q6jvTM7V4phUg3i4KFL/exec';
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyBLW2ETeMLQXvsmcgJCDjVaG-BngOOeXswgsSc7AW2tx3OKjqgyFqTP5oEyvU-0PNV/exec';
                                 try {
                                   const response = await fetch(scriptUrl, {
                                     method: 'POST',
@@ -228,12 +228,12 @@
                                   throw new Error(error.message);
                                 }
                             }                            
-                            s = async function() {
+                            s = async function () {
                                 const e = await i("/mobile/home/playerData");
                                 const t = e.querySelector(".player_honor_short");
                                 const r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage);
                                 const a = Array.from(e.querySelectorAll(".player_rating_num_block img"))
-                                    .map((e => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1)))
+                                    .map((e) => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1))
                                     .join("");
                                 const profileDiv = e.querySelector(".box_playerprofile.clearfix, .box_playerprofile");
                                 let background = "normal";
@@ -244,6 +244,13 @@
                                         background = match[1];
                                     }
                                 }
+                                const f = await i("/mobile/home/playerData/ratingDetailBest");
+                                const fm = Array.from(f.querySelectorAll(".musiclist_box")).map((box) => {
+                                    const ft = box.querySelector(".music_title").innerText;
+                                    const fd = box.className.match(/bg_(\w+)/)[1];
+                                    const fc = box.querySelector(".play_musicdata_highscore .text_b").innerText.replace(/,/g, "");
+                                    return { ft, fd, fc };
+                                });
                                 const playerData = {
                                     name: e.querySelector(".player_name_in").innerHTML,
                                     honor: {
@@ -256,11 +263,12 @@
                                     lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
                                     ratingPn: background,
                                     code: e.querySelector('.user_data_friend_code .user_data_text span[style="display:none;"]')?.innerText || "N/A",
-                                    updatedAt: Tz(new Date())
+                                    updatedAt: Tz(new Date()),
+                                    b30: fm
                                 };
                                 sGS(playerData, "NPrv");
                                 return playerData;
-                            }();
+                            }();                            
                             break;
                         case "songPlayCount":
                             console.log("%c    Target song id: %c" + t.data.idx, "color: gray", "color: white"),
