@@ -69,7 +69,7 @@
         ,
         627: e => {
             "use strict";
-            e.exports = JSON.parse('{"main.title":"關於 CHUNITHM 書籤小工具","intro.title":"關於 CHUNITHM 書籤小工具","intro.about":"透過這個書籤小工具，您可以查詢自己在中二節奏的各式遊玩記錄，包括歌曲的<em>最佳記錄彙整</em>、<em>最近遊玩的歌曲記錄</em>等，結合定數資料算出您在遊戲中的<em>評價（Rating）</em>。","intro.contact":"本工具原由 <a href=\\"https://github.com/dogeon188\\">Dogeon</a> 開發和維護，但因近期未更新故使用原始碼協助後續維護，若有使用上的問題或建議，請透過 Discord 搜尋 TSAIBEE 與我聯繫。","usages.title":"CHUNITHM 書籤小工具可以幹嘛","usages.viewer.title":"元祖查分器","usages.viewer.description":"最原始的查分器，可以查詢包括歌曲高分記錄、最近遊玩記錄等資料，並且彙總歌曲定數資料自動計算您的<em>遊戲評價、OVER POWER</em> 等數據。","usages.exportCsv.title":"以 CSV 匯出遊玩資料","usages.exportCsv.description":"注意：要使用此功能，您需要在 CHUNITHM-NET 內<a href=\\"https://chunithm-net-eng.com/mobile/loginBonus\\">登入獎勵</a>的頁面使用書籤小工具。<br/>可以用 CSV 檔案格式<em>下載各難度的歌曲高分記錄</em>。CSV 可以被 Excel 等表格軟體讀取，您可以透過這些軟體進一步分析您的成績。下載的檔案應該<em>使用 UTF-8 編碼開啟</em>，否則可能會出現亂碼，還請注意。","howto.title":"如何使用 CHUNITHM 書籤小工具","howto.step.copyLink":"複製以下的連結：","howto.step.copyLink.button":"點我直接複製","howto.step.copyLink.copied":"複製成功！","howto.step.bookmarkAdd":"將本頁面新增至書籤，命名為 <em>CHUNI TOOLS</em>，亦可是您習慣的名稱。","howto.step.bookmarkEdit":"打開書籤列表，找到您剛剛新增的書籤，點選<em>編輯書籤</em>，將原本的連結清除，<em>貼上稍早複製的連結</em>，然後按下<em>儲存</em>。","howto.step.gotoNet":"前往 <a href=\\"https://chunithm-net-eng.com/mobile/\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\">CHUNITHM-NET</a>。如果您在此前沒有登入並使用過 CHUNITHM-NET，此時您需要先依照網頁的指示登入。<a href=\\"https://chunithm.fandom.com/zh/wiki/CHUNITHM-NET?variant=zh-tw#Aime_%E5%B8%B3%E8%99%9F%E7%B6%81%E5%AE%9A\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\">如何登入 CHUNITHM-NET？</a>","howto.step.run":"確定成功登入之後，<em>在 CHUNITHM-NET 的分頁</em>打開書籤列表，點擊您剛剛新增的書籤。","howto.step.done":"此時最上方會出現一個深色的按鈕（如下圖），勇敢的<em>按下去</em>，它就會做它該做的事了。","howto.step.done.imgAlt":"會有按鈕在上面，按下去","howto.afterward":"照著上述的步驟操作完之後，將來再次使用就只需要操作<em>第 4 步至第 6 步</em>即可，不需要再複製那一長串的連結了。若是在操作的過程中遇到任何問題，也都隨時歡迎透過 Discord 聯繫作者。"}')
+            e.exports = JSON.parse('{"main.title":"CHUNITHM Tools @TSAIBEE｜隱私權政策","intro.title":"CHUNITHM Tools @TSAIBEE｜隱私權政策","intro.about":"<em>Last updated : 2024年12月18日 0:00</em>","usages.viewer.title":"元祖查分器","usages.viewer.description":"最原始的查分器，可以查詢包括歌曲高分記錄、最近遊玩記錄等資料，並且彙總歌曲定數資料自動計算您的<em>遊戲評價、OVER POWER</em> 等數據。","usages.exportCsv.title":"以 CSV 匯出遊玩資料","usages.exportCsv.description":"注意：要使用此功能，您需要在 CHUNITHM-NET 內<a href=\\"https://chunithm-net-eng.com/mobile/loginBonus\\">登入獎勵</a>的頁面使用書籤小工具。<br/>可以用 CSV 檔案格式<em>下載各難度的歌曲高分記錄</em>。CSV 可以被 Excel 等表格軟體讀取，您可以透過這些軟體進一步分析您的成績。下載的檔案應該<em>使用 UTF-8 編碼開啟</em>，否則可能會出現亂碼，還請注意。","howto.title":"如何使用 CHUNITHM 書籤小工具","howto.step.copyLink":"複製以下的連結：","howto.step.copyLink.button":"點我直接複製","howto.step.copyLink.copied":"複製成功！","howto.step.bookmarkAdd":"將本頁面新增至書籤，命名為 <em>CHUNI TOOLS</em>，亦可是您習慣的名稱。","howto.step.bookmarkEdit":"打開書籤列表，找到您剛剛新增的書籤，點選<em>編輯書籤</em>，將原本的連結清除，<em>貼上稍早複製的連結</em>，然後按下<em>儲存</em>。","howto.step.gotoNet":"前往 <a href=\\"https://chunithm-net-eng.com/mobile/\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\">CHUNITHM-NET</a>。如果您在此前沒有登入並使用過 CHUNITHM-NET，此時您需要先依照網頁的指示登入。<a href=\\"https://chunithm.fandom.com/zh/wiki/CHUNITHM-NET?variant=zh-tw#Aime_%E5%B8%B3%E8%99%9F%E7%B6%81%E5%AE%9A\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\">如何登入 CHUNITHM-NET？</a>","howto.step.run":"確定成功登入之後，<em>在 CHUNITHM-NET 的分頁</em>打開書籤列表，點擊您剛剛新增的書籤。","howto.step.done":"此時最上方會出現一個深色的按鈕（如下圖），勇敢的<em>按下去</em>，它就會做它該做的事了。","howto.step.done.imgAlt":"會有按鈕在上面，按下去","howto.afterward":"照著上述的步驟操作完之後，將來再次使用就只需要操作<em>第 4 步至第 6 步</em>即可，不需要再複製那一長串的連結了。若是在操作的過程中遇到任何問題，也都隨時歡迎透過 Discord 聯繫作者。"}')
         }
     }
       , t = {};
@@ -559,7 +559,7 @@
             }(e, o, n)))
         }(ee, Z);
         function ne(t) {
-            let o, n, r, s, i, a = t[0]("intro.title") + "", c = t[0]("intro.about") + "", l = t[0]("intro.contact") + "";
+            let o, n, r, s, i, a = t[0]("intro.title") + "", c = t[0]("intro.about") + "";
             return {
                 c() {
                     o = v("h2"),
@@ -575,13 +575,11 @@
                     b(e, r, t),
                     r.innerHTML = c,
                     b(e, s, t),
-                    b(e, i, t),
-                    i.innerHTML = l
+                    b(e, i, t)
                 },
                 p(e, [t]) {
                     1 & t && a !== (a = e[0]("intro.title") + "") && (o.innerHTML = a),
-                    1 & t && c !== (c = e[0]("intro.about") + "") && (r.innerHTML = c),
-                    1 & t && l !== (l = e[0]("intro.contact") + "") && (i.innerHTML = l)
+                    1 & t && c !== (c = e[0]("intro.about") + "") && (r.innerHTML = c)
                 },
                 i: e,
                 o: e,
@@ -736,12 +734,9 @@
         }
         ;
         function ge(t) {
-            let o, n, r, s, i, a, c, l, u, h, d, p, f, g, k = t[0]("usages.title") + "", T = t[0]("usages.viewer.title") + "", x = t[0]("usages.viewer.description") + "", _ = t[0]("usages.exportCsv.title") + "", M = t[0]("usages.exportCsv.description") + "";
+            let o, n, r, s, i, a, c, l, u, h, d, p, f, g, T = t[0]("usages.viewer.title") + "", x = t[0]("usages.viewer.description") + "", _ = t[0]("usages.exportCsv.title") + "", M = t[0]("usages.exportCsv.description") + "";
             return {
                 c() {
-                    o = v("h2"),
-                    n = y(k),
-                    r = $(),
                     s = v("h3"),
                     i = y(T),
                     a = $(),
@@ -773,7 +768,6 @@
                     b(e, g, t)
                 },
                 p(e, [t]) {
-                    1 & t && k !== (k = e[0]("usages.title") + "") && H(n, k),
                     1 & t && T !== (T = e[0]("usages.viewer.title") + "") && H(i, T),
                     1 & t && x !== (x = e[0]("usages.viewer.description") + "") && (c.innerHTML = x),
                     1 & t && _ !== (_ = e[0]("usages.exportCsv.title") + "") && H(h, _),
