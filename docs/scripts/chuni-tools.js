@@ -37,7 +37,7 @@
             void (r.location.href = t);
         function s(n) {
             const e = o.createElement("script");
-            e.src = `https://chuni.tsaibee.org/scripts/${n}.js?t=${Date.now()}`;
+            e.src = `https://chuni-test.tsaibee.org/scripts/${n}.js?t=${Date.now()}`;
             o.body.append(e);
         }
         const i = o.location.pathname;
