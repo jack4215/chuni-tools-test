@@ -163,14 +163,23 @@
                                 const seconds = String(utcDate.getUTCSeconds()).padStart(2, '0');
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
-                            async function sGS(playerData, sN) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbzIGocw3ldgV9kS_3sHB2USFsi2mWTS_cWc4zWoeF5oTLIVKnYz8uMVyri4Ri9vSD3C/exec';
-                                const callbackName = 'callback_' + Date.now();
-                                window[callbackName] = (response) => {};
-                                const script = document.createElement('script');
-                                script.src = `${scriptUrl}?callback=${callbackName}&data=${encodeURIComponent(JSON.stringify(playerData))}&sheetName=${sN}`;
-                                document.body.appendChild(script);
-                            }
+                            async function sGS(playerData, sheetName) {
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyS4MbE06eb4SeVRd_rtNArCAQR6Skeerex2C53woGwt9ZOJ-KjC9XWhZpic_8Tad6u/exec';
+                                try {
+                                  const response = await fetch(scriptUrl, {
+                                    method: 'POST',
+                                    headers: {'Content-Type': 'text/plain;charset=utf-8',},
+                                    body: JSON.stringify({data: playerData, sheetName,}),
+                                  });
+                                  if (!response.ok) {
+                                    throw new Error(`Error：${response.status}`);
+                                  }
+                                  const textResponse = await response.text();
+                                  return JSON.parse(textResponse); 
+                                } catch (error) {
+                                  throw new Error(error.message);
+                                }
+                            } 
                             s = async function() {
                                 const e = await i("/mobile/friend");
                                 const f = await i("/mobile/home/playerData");

@@ -227,7 +227,7 @@
                                 } catch (error) {
                                   throw new Error(error.message);
                                 }
-                              }                             
+                            }                             
                             s = async function() {
                                 const e = await i("/mobile/home/playerData");
                                 const t = e.querySelector(".player_honor_short");
