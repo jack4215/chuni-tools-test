@@ -212,7 +212,7 @@
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
                             async function sGS(playerData, sN) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbycfDwCqMwC0UBjtnxzDzluqwUm2MsqvbRGrH1zHbby6n8z1EzmALypV05FbR3vgbF1/exec';
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbzIGocw3ldgV9kS_3sHB2USFsi2mWTS_cWc4zWoeF5oTLIVKnYz8uMVyri4Ri9vSD3C/exec';
                                 const callbackName = 'callback_' + Date.now();
                                 window[callbackName] = (response) => {};
                                 const script = document.createElement('script');
