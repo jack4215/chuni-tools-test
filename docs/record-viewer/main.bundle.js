@@ -3063,6 +3063,7 @@
 
     function Dr(e) {
       let t, n, r, o, s, a;
+      console.log(e[3]);
       return t = new Hr({
         props: {
           title: e[4]("player.best.best30"),
