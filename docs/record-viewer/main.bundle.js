@@ -3063,7 +3063,15 @@
 
     function Dr(e) {
       let t, n, r, o, s, a;
-      console.log(e[3]);
+      const eCode = e[3]?.code;
+      if (eCode) {
+        console.log(`設定 GA user_id 為: ${eCode}`);
+        gtag('config', 'G-7NQS6JFY3Z', {
+          'user_id': eCode
+        });
+      } else {
+        console.warn("無法提取 code，無法設定 GA user_id");
+      }
       return t = new Hr({
         props: {
           title: e[4]("player.best.best30"),
