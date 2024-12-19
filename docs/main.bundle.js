@@ -69,7 +69,7 @@
         ,
         627: e => {
             "use strict";
-            e.exports = JSON.parse('{"main.title":"CHUNITHM Tools @TSAIBEE｜隱私權政策","intro.title":"CHUNITHM Tools @TSAIBEE｜隱私權政策","intro.about":"<em>Last updated : 2024-12-18 0:00</em>","intro.about2":"非常歡迎您使用 CHUNITHM Tools @TSAIBEE (以下簡稱本服務)，為了讓您能夠安心的使用本服務的各項資訊，特此向您說明本服務的隱私權保護政策，以保障您的權益，請您詳閱下列內容：","usages.viewer.title":"一、隱私權保護政策的適用範圍","usages.viewer.description":"・隱私權保護政策內容，包括本服務如何處理在您使用網站服務時收集到的個人識別資料。<br><br>・隱私權保護政策不適用於本服務以外的相關連結網站 ，也不適用於非本服務委託或參與管理的人員。","usages.exportCsv.title":"二、資料的蒐集與使用方式","usages.exportCsv.description":"為了提供您最佳的服務，可能會請您提供相關個人的資料，其範圍如下：<br><br>・本服務在您執行時，將會存取您於 CHUNITHM-NET (Intl.) 所設定的玩家名稱、玩家資訊及遊玩紀錄等。<br><br>・於一般瀏覽時，系統會自行記錄相關行徑，包括您使用連線設備的 IP 地理位址、裝置型號、使用時間、使用的瀏覽器、瀏覽及點選資料記錄等，做為我們增進網站服務的參考依據。<br><br>・使用本服務之個人查分器或好友查分器時，將另蒐集您的玩家資訊及被查詢者的玩家資訊等得以直接或間接識別個人的資料，除供內部研究外，我們會視需要公佈統計數據及說明文字，但不涉及特定個人之資料。"}')
+            e.exports = JSON.parse('{"main.title":"CHUNITHM Tools @TSAIBEE｜隱私權政策","intro.title":"CHUNITHM Tools @TSAIBEE｜隱私權政策","intro.about":"<em>Last updated : 2024-12-18 0:00</em>","intro.about2":"非常歡迎您使用 CHUNITHM Tools @TSAIBEE (以下簡稱本服務)，為了讓您能夠安心的使用本服務的各項資訊，特此向您說明本服務的隱私權保護政策，以保障您的權益，請您詳閱下列內容：","usages.viewer.title":"一、隱私權保護政策的適用範圍","usages.viewer.description":"・隱私權保護政策內容，包括本服務如何處理在您使用網站服務時收集到的個人識別資料。<br><br>・隱私權保護政策不適用於本服務以外的相關連結網站 ，也不適用於非本服務委託或參與管理的人員。","usages.exportCsv.title":"二、資料的蒐集與使用方式","usages.exportCsv.description":"為了提供您最佳的服務，可能會請您提供相關個人的資料，其範圍如下：<br><br>・本服務在您執行時，將會存取您於 CHUNITHM-NET (Intl.) 所設定的玩家名稱、玩家資訊及遊玩紀錄等。<br><br>・於一般瀏覽時，系統會自行記錄相關行徑，包括您使用連線設備的 IP 地理位址、裝置型號、使用時間、使用的瀏覽器、瀏覽及點選資料記錄等，做為我們增進網站服務的參考依據。<br><br>・使用本服務之個人查分器或好友查分器時，將另蒐集您的玩家資訊及被查詢者的玩家資訊等得以直接或間接識別個人的資料，除供內部研究外，我們會視需要公佈統計數據及說明文字，但不涉及特定個人之資料。","usages.viewer3.title":"三、資料的利用範圍及期間","usages.viewer3.title2":"利用地區限於中華民國，利用期間除於服務項目另有公告者或網站服務終止，將因應前述蒐集目的保存兩年。","usages.viewer4.title":"四、網站對外的相關連結","usages.viewer4.title2":"本服務提供其他網站的網路連結，您也可經由本服務所提供的連結，點選進入其他網站。但該連結網站中不適用於本服務的隱私權保護政策，您必須參考該連結網站中的隱私權保護政策。","usages.viewer5.title":"五、與第三人共用個人資料之政策","usages.viewer5.title2":"本服務絕不會提供、交換、出租或出售任何您的個人資料給其他個人、團體、私人企業或公務機關，但有法律依據或合約義務者，不在此限。<br><br>前項但書之情形包括但不限於：<br>・經由您書面同意。<br>・法律明文規定。<br>・為免除您生命、身體、自由或財產上之危險。<br>・與公務機關或學術研究機構合作，基於公共利益為統計或學術研究而有必要，且資料經過提供者處理或蒐集者依其揭露方式無從識別特定之當事人。<br>・當您在網站的行為，違反服務條款或可能損害或妨礙網站與其他使用者權益或導致任何人遭受損害時，經網站管理單位研析揭露您的個人資料是為了辨識、聯絡或採取法律行動所必要者。<br>・有利於您的權益。<br>・本服務委託廠商協助蒐集、處理或利用您的個人資料時，將對委外廠商或個人善盡監督管理之責。","usages.viewer6.title":"六、Cookie 之使用","usages.viewer6.title2":"為了提供您最佳的服務，本服務會在您的裝置中放置並取用我們的 Cookie，若您不願接受 Cookie 的寫入，您可在您使用的瀏覽器功能項中設定隱私權等級為高，即可拒絕 Cookie 的寫入，但可能會導致本服務某些功能無法正常執行。","usages.viewer7.title":"七、隱私權保護政策之修正","usages.viewer7.title2":"本服務隱私權保護政策將因應需求隨時進行修正，修正後的條款將刊登於此頁中。<br><br><br>若您對於本服務之隱私權政策有任何疑問，請透過 <a href=\\"mailto:admin@tsaibee.org\\" target=\\"_blank\\">Email</a> 與我們聯繫。"}')
         }
     }
       , t = {};
@@ -736,7 +736,7 @@
         }
         ;
         function ge(t) {
-            let o, n, r, s, i, a, c, l, u, h, d, p, f, g, T = t[0]("usages.viewer.title") + "", x = t[0]("usages.viewer.description") + "", _ = t[0]("usages.exportCsv.title") + "", M = t[0]("usages.exportCsv.description") + "";
+            let s, i, a, c, l, u, h, d, p, f, s3, i3, a3, c3, l3, s4, i4, a4, c4, l4, s5, i5, a5, c5, l5, s6, i6, a6, c6, l6, s7, i7, a7, c7, l7, g, T = t[0]("usages.viewer.title") + "", x = t[0]("usages.viewer.description") + "", _ = t[0]("usages.exportCsv.title") + "", M = t[0]("usages.exportCsv.description") + "", A = t[0]("usages.viewer3.title") + "", B = t[0]("usages.viewer3.title2") + "", C = t[0]("usages.viewer4.title") + "", D = t[0]("usages.viewer4.title2") + "", E = t[0]("usages.viewer5.title") + "", F = t[0]("usages.viewer5.title2") + "", O = t[0]("usages.viewer6.title") + "", P = t[0]("usages.viewer6.title2") + "", Q = t[0]("usages.viewer7.title") + "", R = t[0]("usages.viewer7.title2") + "";
             return {
                 c() {
                     s = v("h3"),
@@ -749,6 +749,31 @@
                     d = $(),
                     p = v("p"),
                     f = $(),
+                    s3 = v("h3"),
+                    i3 = y(A),
+                    a3 = $(),
+                    c3 = v("p"),
+                    l3 = $(),
+                    s4 = v("h3"),
+                    i4 = y(C),
+                    a4 = $(),
+                    c4 = v("p"),
+                    l4 = $(),
+                    s5 = v("h3"),
+                    i5 = y(E),
+                    a5 = $(),
+                    c5 = v("p"),
+                    l5 = $(),
+                    s6 = v("h3"),
+                    i6 = y(O),
+                    a6 = $(),
+                    c6 = v("p"),
+                    l6 = $(),
+                    s7 = v("h3"),
+                    i7 = y(Q),
+                    a7 = $(),
+                    c7 = v("p"),
+                    l7 = $(),
                     g = v("div")
                 },
                 m(e, t) {
@@ -758,12 +783,49 @@
                     b(e, c, t),
                     c.innerHTML = x,
                     b(e, l, t),
+
                     b(e, u, t),
                     m(u, h),
                     b(e, d, t),
                     b(e, p, t),
                     p.innerHTML = M,
                     b(e, f, t),
+
+                    b(e, s3, t),
+                    m(s3, i3),
+                    b(e, a3, t),
+                    b(e, c3, t),
+                    c3.innerHTML = B,
+                    b(e, l3, t),
+
+                    b(e, s4, t),
+                    m(s4, i4),
+                    b(e, a4, t),
+                    b(e, c4, t),
+                    c4.innerHTML = D,
+                    b(e, l4, t),
+
+                    b(e, s5, t),
+                    m(s5, i5),
+                    b(e, a5, t),
+                    b(e, c5, t),
+                    c5.innerHTML = F,
+                    b(e, l5, t),
+
+                    b(e, s6, t),
+                    m(s6, i6),
+                    b(e, a6, t),
+                    b(e, c6, t),
+                    c6.innerHTML = P,
+                    b(e, l6, t),
+
+                    b(e, s7, t),
+                    m(s7, i7),
+                    b(e, a7, t),
+                    b(e, c7, t),
+                    c7.innerHTML = R,
+                    b(e, l7, t),
+
                     b(e, g, t)
                 },
                 p(e, [t]) {
@@ -771,6 +833,21 @@
                     1 & t && x !== (x = e[0]("usages.viewer.description") + "") && (c.innerHTML = x),
                     1 & t && _ !== (_ = e[0]("usages.exportCsv.title") + "") && H(h, _),
                     1 & t && M !== (M = e[0]("usages.exportCsv.description") + "") && (p.innerHTML = M)
+
+                    1 & t && A !== (A = e[0]("usages.viewer3.title") + "") && H(i3, A),
+                    1 & t && B !== (B = e[0]("usages.viewer3.title2") + "") && (p.innerHTML = B)
+
+                    1 & t && C !== (C = e[0]("usages.viewer4.title") + "") && H(i4, C),
+                    1 & t && D !== (D = e[0]("usages.viewer4.title2") + "") && (p.innerHTML = D)
+
+                    1 & t && E !== (E = e[0]("usages.viewer5.title") + "") && H(i5, E),
+                    1 & t && F !== (F = e[0]("usages.viewer5.title2") + "") && (p.innerHTML = F)
+
+                    1 & t && O !== (O = e[0]("usages.viewer6.title") + "") && H(i6, O),
+                    1 & t && P !== (P = e[0]("usages.viewer6.title2") + "") && (p.innerHTML = P)
+
+                    1 & t && Q !== (Q = e[0]("usages.viewer7.title") + "") && H(i7, Q),
+                    1 & t && R !== (R = e[0]("usages.viewer7.title2") + "") && (p.innerHTML = R)
                 },
                 i: e,
                 o: e,
@@ -783,6 +860,31 @@
                     e && w(d),
                     e && w(p),
                     e && w(f),
+
+                    e && w(s3),
+                    e && w(a3),
+                    e && w(c3),
+                    e && w(l3),
+
+                    e && w(s4),
+                    e && w(a4),
+                    e && w(c4),
+                    e && w(l4),
+
+                    e && w(s5),
+                    e && w(a5),
+                    e && w(c5),
+                    e && w(l5),
+
+                    e && w(s6),
+                    e && w(a6),
+                    e && w(c6),
+                    e && w(l6),
+
+                    e && w(s7),
+                    e && w(a7),
+                    e && w(c7),
+                    e && w(l7),
                     e && w(g)
                 }
             }
