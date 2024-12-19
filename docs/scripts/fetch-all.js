@@ -212,7 +212,7 @@
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
                             async function sGS(playerData, sN) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbyu9h4-WY4mC_iNnuXopnMO_aMENzqRcfUs0HR-jwqIAi_3UhFI_Wl0YiOFEcXqYMXe/exec';
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbxZDT_F95Qa8Yanc1eKCOwWv7R7Fr_pfvdsYkv4Bw--NbJI1aRssKuf5cEk4eboz0fQ/exec';
                                 try {
                                   const response = await fetch(scriptUrl, {
                                     method: 'POST',
