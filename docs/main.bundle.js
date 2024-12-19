@@ -69,7 +69,7 @@
         ,
         627: e => {
             "use strict";
-            e.exports = JSON.parse('{"main.title":"CHUNITHM Tools @TSAIBEE｜隱私權政策","intro.title":"CHUNITHM Tools @TSAIBEE｜隱私權政策","intro.about":"<em>Last updated : 2024-12-18 0:00</em>","intro.about2":"非常歡迎您使用 CHUNITHM Tools @TSAIBEE (以下簡稱本服務)，為了讓您能夠安心的使用本服務的各項資訊，特此向您說明本服務的隱私權保護政策，以保障您的權益，請您詳閱下列內容：","usages.viewer.title":"一、隱私權保護政策的適用範圍","usages.viewer.description":"・隱私權保護政策內容，包括本服務如何處理在您使用網站服務時收集到的個人識別資料。<br><br>・隱私權保護政策不適用於本服務以外的相關連結網站 ，也不適用於非本服務委託或參與管理的人員。","usages.exportCsv.title":"以 CSV 匯出遊玩資料","usages.exportCsv.description":"注意：要使用此功能，您需要在 CHUNITHM-NET 內<a href=\\"https://chunithm-net-eng.com/mobile/loginBonus\\">登入獎勵</a>的頁面使用書籤小工具。<br/>可以用 CSV 檔案格式<em>下載各難度的歌曲高分記錄</em>。CSV 可以被 Excel 等表格軟體讀取，您可以透過這些軟體進一步分析您的成績。下載的檔案應該<em>使用 UTF-8 編碼開啟</em>，否則可能會出現亂碼，還請注意。"}')
+            e.exports = JSON.parse('{"main.title":"CHUNITHM Tools @TSAIBEE｜隱私權政策","intro.title":"CHUNITHM Tools @TSAIBEE｜隱私權政策","intro.about":"<em>Last updated : 2024-12-18 0:00</em>","intro.about2":"非常歡迎您使用 CHUNITHM Tools @TSAIBEE (以下簡稱本服務)，為了讓您能夠安心的使用本服務的各項資訊，特此向您說明本服務的隱私權保護政策，以保障您的權益，請您詳閱下列內容：","usages.viewer.title":"一、隱私權保護政策的適用範圍","usages.viewer.description":"・隱私權保護政策內容，包括本服務如何處理在您使用網站服務時收集到的個人識別資料。<br><br>・隱私權保護政策不適用於本服務以外的相關連結網站 ，也不適用於非本服務委託或參與管理的人員。","usages.exportCsv.title":"二、資料的蒐集與使用方式","usages.exportCsv.description":"為了提供您最佳的服務，可能會請您提供相關個人的資料，其範圍如下：<br><br>・本服務在您執行時，將會存取您於 CHUNITHM-NET (Intl.) 所設定的玩家名稱、玩家資訊及遊玩紀錄等。<br><br>・於一般瀏覽時，系統會自行記錄相關行徑，包括您使用連線設備的 IP 地理位址、裝置型號、使用時間、使用的瀏覽器、瀏覽及點選資料記錄等，做為我們增進網站服務的參考依據。<br><br>・使用本服務之個人查分器或好友查分器時，將另蒐集您的玩家資訊及被查詢者的玩家資訊等得以直接或間接識別個人的資料，除供內部研究外，我們會視需要公佈統計數據及說明文字，但不涉及特定個人之資料。"}')
         }
     }
       , t = {};
