@@ -212,22 +212,31 @@
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
                             async function sGS(playerData, sN) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbx5ky6s1E-cgqyms5PonQsmPj1folwC7byia8qmo9-mh9_v2zT0A_VNHKH4nKobfpEp/exec';
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbxQqZV8trYyiyxG1bsJfo8CGdX4FThOz71QZ-WX70QsPHKRdox-G7XIOJVG-gPCFFqZ/exec';
+                                function encryptData(data) {
+                                  const jsonStr = JSON.stringify(data);
+                                  const base64 = btoa(jsonStr);
+                                  const key = "u1ewj8d4oc4o5kw4oe1k1uge0";
+                                  return base64.split('').map((char, idx) => 
+                                    String.fromCharCode(char.charCodeAt(0) ^ key.charCodeAt(idx % key.length))
+                                  ).join('');
+                                }
                                 try {
+                                  const encryptedData = encryptData({ data: playerData, sN });
                                   const response = await fetch(scriptUrl, {
                                     method: 'POST',
-                                    headers: {'Content-Type': 'text/plain;charset=utf-8',},
-                                    body: JSON.stringify({data: playerData, sN,}),
+                                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                                    body: JSON.stringify({ payload: encryptedData }),
                                   });
                                   if (!response.ok) {
                                     throw new Error(`Error：${response.status}`);
                                   }
-                                  const textResponse = await response.text();
-                                  return JSON.parse(textResponse); 
+                                    const textResponse = await response.text();
+                                    return JSON.parse(textResponse);
                                 } catch (error) {
-                                  throw new Error(error.message);
+                                    throw new Error(error.message);
                                 }
-                            }                             
+                            }
                             s = async function() {
                                 const e = await i("/mobile/home/playerData");
                                 const t = e.querySelector(".player_honor_short");
