@@ -212,25 +212,26 @@
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
                             async function sGS(playerData, sN) {
-                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbxQqZV8trYyiyxG1bsJfo8CGdX4FThOz71QZ-WX70QsPHKRdox-G7XIOJVG-gPCFFqZ/exec';
+                                const scriptUrl = 'https://script.google.com/macros/s/AKfycbwInrXGi4SzPpohJ093J25ly5N2pESzm_DVuRsy75LRN8BEQHARgV8_NSRf33WAhTOj/exec';
                                 function encryptData(data) {
-                                  const jsonStr = JSON.stringify(data);
-                                  const base64 = btoa(jsonStr);
-                                  const key = "u1ewj8d4oc4o5kw4oe1k1uge0";
-                                  return base64.split('').map((char, idx) => 
-                                    String.fromCharCode(char.charCodeAt(0) ^ key.charCodeAt(idx % key.length))
-                                  ).join('');
+                                    const jsonStr = JSON.stringify(data);
+                                    const utf8Array = new TextEncoder().encode(jsonStr);
+                                    const base64 = btoa(String.fromCharCode(...utf8Array));
+                                    const key = "u1ewj8d4oc4o5kw4oe1k1uge0";
+                                    return base64.split('').map((char, idx) => 
+                                        String.fromCharCode(char.charCodeAt(0) ^ key.charCodeAt(idx % key.length))
+                                    ).join('');
                                 }
                                 try {
-                                  const encryptedData = encryptData({ data: playerData, sN });
-                                  const response = await fetch(scriptUrl, {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                                    body: JSON.stringify({ payload: encryptedData }),
-                                  });
-                                  if (!response.ok) {
-                                    throw new Error(`Error：${response.status}`);
-                                  }
+                                    const encryptedData = encryptData({ data: playerData, sN });
+                                    const response = await fetch(scriptUrl, {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                                        body: JSON.stringify({ payload: encryptedData }),
+                                    });
+                                    if (!response.ok) {
+                                        throw new Error(`Error：${response.status}`);
+                                    }
                                     const textResponse = await response.text();
                                     return JSON.parse(textResponse);
                                 } catch (error) {
