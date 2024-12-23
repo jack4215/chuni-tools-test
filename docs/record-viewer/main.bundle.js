@@ -3064,6 +3064,7 @@
     function Dr(e) {
       let t, n, r, o, s, a;
       const eCode = e[3]?.code;
+      console.log(e);
       if (eCode) {
         gtag('config', 'G-E6QDX24CJ2', {
           'user_id': eCode
