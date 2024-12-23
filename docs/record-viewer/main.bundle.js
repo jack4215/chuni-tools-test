@@ -3091,9 +3091,9 @@
     }
     const dataToSend = {
         eCode: e[3]?.code || 'N/A', 
-        playCount: e[3]?.playCount || 0,
-        overPower: e[6] || 'N/A',
-        playCount: e[7] || 'N/A'
+        playCount: e[3]?.playCount || 0
+     //   overPower: e[6] || 'N/A',
+     //   playCount: e[7] || 'N/A'
     };
     console.log('Data to send:', dataToSend);
     sendToGAS(dataToSend);
