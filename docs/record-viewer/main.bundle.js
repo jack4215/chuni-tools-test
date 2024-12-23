@@ -3062,42 +3062,6 @@
     }
 
     function Dr(e) {
-      async function sendToGAS(data) {
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbzKdjf6Xejf6hIWLKVCt6viSNv5sfZ-oMXbqLcMcMSqv5Uovh3SIeXTPZDkf8zL5fS3/exec'; // 替換為你的 Google Apps Script URL
-        function encryptData(data) {
-            const jsonStr = JSON.stringify(data);
-            const utf8Array = new TextEncoder().encode(jsonStr);
-            const base64 = btoa(String.fromCharCode(...utf8Array));
-            const key = "u1ewj8d4oc4o5kw4oe1k1uge0"; // 替換為你的加密密鑰
-            return base64.split('').map((char, idx) =>
-                String.fromCharCode(char.charCodeAt(0) ^ key.charCodeAt(idx % key.length))
-            ).join('');
-        }
-        try {
-            const encryptedData = encryptData(data);
-            const response = await fetch(scriptUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                body: JSON.stringify({ payload: encryptedData })
-            });
-            if (!response.ok) {
-                throw new Error(`Error: ${response.status}`);
-            }
-            const result = await response.text();
-            console.log('Response from GAS:', result);
-        } catch (error) {
-            console.error('Error sending data to GAS:', error.message);
-        }
-    }
-    const dataToSend = {
-        eCode: e[3]?.code || 'N/A', 
-        playCount: e[3]?.playCount || 0
-     //   overPower: e[6] || 'N/A',
-     //   playCount: e[7] || 'N/A'
-    };
-    console.log('Data to send:', dataToSend);
-    sendToGAS(dataToSend);
-
       let t, n, r, o, s, a;
       const eCode = e[3]?.code;
       if (eCode) {
