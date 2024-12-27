@@ -349,7 +349,7 @@
     "BAS": 3,
     "ADV": 5,
     "EXP": 9.5,
-    "MAS": 13.3,
+    "MAS": 13.5,
     "genre": 5,
     "release": 1,
     "newV": 0
@@ -12132,7 +12132,7 @@
     "BAS": 3,
     "ADV": 6,
     "EXP": 10.3,
-    "MAS": 13.4,
+    "MAS": 13.2,
     "genre": 5,
     "release": 17,
     "newV": 0
@@ -12303,7 +12303,7 @@
     "BAS": 3,
     "ADV": 6,
     "EXP": 9.5,
-    "MAS": 12.3,
+    "MAS": 12.5,
     "genre": 0,
     "release": 18,
     "newV": 0
@@ -12347,7 +12347,7 @@
   "Rrhar'il": {
     "BAS": 4,
     "ADV": 9.5,
-    "EXP": 12.3,
+    "EXP": 12.5,
     "MAS": 15.1,
     "genre": 6,
     "release": 18,
@@ -12366,7 +12366,7 @@
     "BAS": 3,
     "ADV": 6,
     "EXP": 10.5,
-    "MAS": 12.9,
+    "MAS": 13,
     "genre": 7,
     "release": 18,
     "newV": 0
@@ -12383,7 +12383,7 @@
   "其のエメラルドを見よ": {
     "BAS": 4,
     "ADV": 8.5,
-    "EXP": 12.1,
+    "EXP": 12.5,
     "MAS": 15.1,
     "genre": 9,
     "release": 18,
@@ -12509,7 +12509,7 @@
   "DRE4M1N9": {
     "BAS": 3,
     "ADV": 7.5,
-    "EXP": 11.7,
+    "EXP": 12.5,
     "MAS": 13.7,
     "genre": 5,
     "release": 18,
@@ -13212,6 +13212,42 @@
     "EXP": 11.9,
     "MAS": 14.1,
     "genre": 5,
+    "release": 19,
+    "newV": 1
+  },
+  "inkar-usi": {
+    "BAS": 1,
+    "ADV": 5,
+    "EXP": 10.2,
+    "MAS": 13,
+    "genre": 6,
+    "release": 19,
+    "newV": 1
+  },
+  "Tie me down gently": {
+    "BAS": 3,
+    "ADV": 6,
+    "EXP": 10.9,
+    "MAS": 14.1,
+    "genre": 6,
+    "release": 19,
+    "newV": 1
+  },
+  "Ringed Genesis": {
+    "BAS": 3,
+    "ADV": 6,
+    "EXP": 11.3,
+    "MAS": 14.4,
+    "genre": 6,
+    "release": 19,
+    "newV": 1
+  },
+  "Tempestissimo": {
+    "BAS": 5,
+    "ADV": 6,
+    "EXP": 13.9,
+    "MAS": 15.1,
+    "genre": 6,
     "release": 19,
     "newV": 1
   }
