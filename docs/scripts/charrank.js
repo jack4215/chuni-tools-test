@@ -61,7 +61,7 @@ function getCharacterLevel() {
     return parseInt(level, 10) || 0;
 }
 
-function calculateTotalExperience(level) {
+function totalExpCal(level) {
     if (level < 1) return 0;
 
     let totalExp = 0;
@@ -84,12 +84,12 @@ function charRankInfo() {
     const level = getCharacterLevel();
     const expPercentage = getExpPercentage();
     const levelExp = getExpForLevel(level);
-    const totalExp = calculateTotalExperience(level) + Math.floor((levelExp * expPercentage) / 100);
+    const totalExp = totalExpCal(level) + Math.floor((levelExp * expPercentage) / 100);
 
-    const lv50TotalExp = calculateTotalExperience(50);
-    const lv100TotalExp = calculateTotalExperience(100);
-    const lv150TotalExp = calculateTotalExperience(150);
-    const lv200TotalExp = calculateTotalExperience(200);
+    const lv50TotalExp = totalExpCal(50);
+    const lv100TotalExp = totalExpCal(100);
+    const lv150TotalExp = totalExpCal(150);
+    const lv200TotalExp = totalExpCal(200);
 
     const resultContainer = document.createElement("div");
     resultContainer.className = "character-info-container";
