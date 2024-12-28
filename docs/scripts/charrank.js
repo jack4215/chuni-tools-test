@@ -1,22 +1,4 @@
-function getCharacterLevel() {
-    const levelBox = document.querySelector(".character_lv_box_num");
-    if (!levelBox) return 0;
-
-    const numberImages = levelBox.querySelectorAll("img");
-    const level = Array.from(numberImages)
-        .map(img => {
-            const src = img.getAttribute("src");
-            const match = src.match(/num_lv_(\d)\.png/);
-            return match ? match[1] : "0";
-        })
-        .join("");
-
-    return parseInt(level, 10) || 0;
-}
-
-function calculateTotalExperience(level) {
-    if (level < 1) return 0;
-
+function getExpForLevel(level) {
     const expMap = [
         { range: [1, 9], exp: 2 },
         { range: [10, 14], exp: 10 },
@@ -59,25 +41,55 @@ function calculateTotalExperience(level) {
         { range: [195, 199], exp: 970 },
     ];
 
+    const range = expMap.find(({ range }) => level >= range[0] && level <= range[1]);
+    return range ? range.exp : 0;
+}
+
+function getCharacterLevel() {
+    const levelBox = document.querySelector(".character_lv_box_num");
+    if (!levelBox) return 0;
+
+    const numberImages = levelBox.querySelectorAll("img");
+    const level = Array.from(numberImages)
+        .map(img => {
+            const src = img.getAttribute("src");
+            const match = src.match(/num_lv_(\d)\.png/);
+            return match ? match[1] : "0";
+        })
+        .join("");
+
+    return parseInt(level, 10) || 0;
+}
+
+function calculateTotalExperience(level) {
+    if (level < 1) return 0;
+
     let totalExp = 0;
     for (let i = 1; i < level; i++) {
-        const range = expMap.find(({ range }) => i >= range[0] && i <= range[1]);
-        if (range) {
-            totalExp += range.exp;
-        }
+        totalExp += getExpForLevel(i);
     }
     return totalExp;
 }
 
+function getExpPercentage() {
+    const gageBase = document.querySelector(".character_gage_base img");
+    if (!gageBase) return 0;
+
+    const width = parseFloat(gageBase.getAttribute("width").replace("px", ""));
+    const remainingPx = 374 - width;
+    return (remainingPx / 374) * 100;
+}
+
 function displayCharacterInfo() {
     const level = getCharacterLevel();
-    const totalExp = calculateTotalExperience(level);
+    const expPercentage = getExpPercentage();
+    const levelExp = getExpForLevel(level);
+    const totalExp = calculateTotalExperience(level) + Math.floor((levelExp * expPercentage) / 100);
 
     const resultContainer = document.createElement("div");
     resultContainer.className = "character-info-container";
     resultContainer.innerHTML = `
-        <p>Rank：${level}</p>
-        <p>Exp：${totalExp}</p>
+        <p>Rank：${level} (${expPercentage.toFixed(1)}%) / Exp：${totalExp}</p>
     `;
 
     const style = document.createElement("style");
