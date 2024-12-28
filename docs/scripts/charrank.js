@@ -17,86 +17,53 @@ function getCharacterLevel() {
 function calculateTotalExperience(level) {
     if (level < 1) return 0;
 
+    const expMap = [
+        { range: [1, 9], exp: 2 },
+        { range: [10, 14], exp: 10 },
+        { range: [15, 19], exp: 15 },
+        { range: [20, 24], exp: 20 },
+        { range: [25, 29], exp: 30 },
+        { range: [30, 34], exp: 40 },
+        { range: [35, 39], exp: 50 },
+        { range: [40, 44], exp: 60 },
+        { range: [45, 49], exp: 70 },
+        { range: [50, 54], exp: 90 },
+        { range: [55, 59], exp: 110 },
+        { range: [60, 64], exp: 130 },
+        { range: [65, 69], exp: 150 },
+        { range: [70, 74], exp: 170 },
+        { range: [75, 79], exp: 190 },
+        { range: [80, 84], exp: 210 },
+        { range: [85, 89], exp: 230 },
+        { range: [90, 94], exp: 250 },
+        { range: [95, 99], exp: 270 },
+        { range: [100, 104], exp: 300 },
+        { range: [105, 109], exp: 330 },
+        { range: [110, 114], exp: 360 },
+        { range: [115, 119], exp: 390 },
+        { range: [120, 124], exp: 420 },
+        { range: [125, 129], exp: 450 },
+        { range: [130, 134], exp: 480 },
+        { range: [135, 139], exp: 510 },
+        { range: [140, 144], exp: 540 },
+        { range: [145, 149], exp: 570 },
+        { range: [150, 154], exp: 610 },
+        { range: [155, 159], exp: 650 },
+        { range: [160, 164], exp: 690 },
+        { range: [165, 169], exp: 730 },
+        { range: [170, 174], exp: 770 },
+        { range: [175, 179], exp: 810 },
+        { range: [180, 184], exp: 850 },
+        { range: [185, 189], exp: 890 },
+        { range: [190, 194], exp: 930 },
+        { range: [195, 199], exp: 970 },
+    ];
+
     let totalExp = 0;
     for (let i = 1; i < level; i++) {
-        if (i < 10) {
-            totalExp += 2;
-        } else if (i < 15) {
-            totalExp += 10;
-        } else if (i < 20) {
-            totalExp += 15;
-        } else if (i < 25) {
-            totalExp += 20;
-        } else if (i < 30) {
-            totalExp += 30;
-        } else if (i < 35) {
-            totalExp += 40;
-        } else if (i < 40) {
-            totalExp += 50;
-        } else if (i < 45) {
-            totalExp += 60;
-        } else if (i < 50) {
-            totalExp += 70;
-        } else if (i < 55) {
-            totalExp += 90;
-        } else if (i < 60) {
-            totalExp += 110;
-        } else if (i < 65) {
-            totalExp += 130;
-        } else if (i < 70) {
-            totalExp += 150;
-        } else if (i < 75) {
-            totalExp += 170;
-        } else if (i < 80) {
-            totalExp += 190;
-        } else if (i < 85) {
-            totalExp += 210;
-        } else if (i < 90) {
-            totalExp += 230;
-        } else if (i < 95) {
-            totalExp += 250;
-        } else if (i < 100) {
-            totalExp += 270;
-        } else if (i < 105) {
-            totalExp += 300;
-        } else if (i < 110) {
-            totalExp += 330;
-        } else if (i < 115) {
-            totalExp += 360;
-        } else if (i < 120) {
-            totalExp += 390;
-        } else if (i < 125) {
-            totalExp += 420;
-        } else if (i < 130) {
-            totalExp += 450;
-        } else if (i < 135) {
-            totalExp += 480;
-        } else if (i < 140) {
-            totalExp += 510;
-        } else if (i < 145) {
-            totalExp += 540;
-        } else if (i < 150) {
-            totalExp += 570;
-        } else if (i < 155) {
-            totalExp += 610;
-        } else if (i < 160) {
-            totalExp += 650;
-        } else if (i < 165) {
-            totalExp += 690;
-        } else if (i < 170) {
-            totalExp += 730;
-        } else if (i < 175) {
-            totalExp += 770;
-        } else if (i < 180) {
-            totalExp += 810;
-        } else if (i < 185) {
-            totalExp += 850;
-        } else if (i < 190) {
-            totalExp += 890;
-        } else if (i < 195) {
-            totalExp += 930;
-        } else if (i < 200) {
-            totalExp += 970;
+        const range = expMap.find(({ range }) => i >= range[0] && i <= range[1]);
+        if (range) {
+            totalExp += range.exp;
         }
     }
     return totalExp;
