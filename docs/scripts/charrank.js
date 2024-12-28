@@ -113,6 +113,8 @@ function displayCharacterInfo() {
                 <td>${Math.max(0, lv200TotalExp - totalExp)}</td>
             </tr>
         </table>
+        <br>
+        <p>僅供參考 For reference only</p>
     `;
 
     const style = document.createElement("style");
