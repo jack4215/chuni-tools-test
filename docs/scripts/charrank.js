@@ -61,7 +61,7 @@ function getCharacterLevel() {
     return parseInt(level, 10) || 0;
 }
 
-function totalExpCal(level) {
+function calculateTotalExperience(level) {
     if (level < 1) return 0;
 
     let totalExp = 0;
@@ -80,20 +80,23 @@ function getExpPercentage() {
     return (remainingPx / 374) * 100;
 }
 
-function charRankInfo() {
+function displayCharacterInfo() {
     const level = getCharacterLevel();
     const expPercentage = getExpPercentage();
     const levelExp = getExpForLevel(level);
-    const totalExp = totalExpCal(level) + Math.floor((levelExp * expPercentage) / 100);
+    let totalExp = calculateTotalExperience(level) + Math.floor((levelExp * expPercentage) / 100);
+    const maxLevelBox = document.querySelector(".character_lv_box_max");
+    if (maxLevelBox) {
+        totalExp -= levelExp;
+    }
+    const lv50TotalExp = calculateTotalExperience(50);
+    const lv100TotalExp = calculateTotalExperience(100);
+    const lv150TotalExp = calculateTotalExperience(150);
+    const lv200TotalExp = calculateTotalExperience(200);
 
-    const lv50TotalExp = totalExpCal(50);
-    const lv100TotalExp = totalExpCal(100);
-    const lv150TotalExp = totalExpCal(150);
-    const lv200TotalExp = totalExpCal(200);
-
-    const resultContainer = document.createElement("div");
-    resultContainer.className = "character-info-container";
-    resultContainer.innerHTML = `
+    const resultDiv = document.createElement("div");
+    resultDiv.className = "character-info-container";
+    resultDiv.innerHTML = `
         <p>RANK：${level} (${expPercentage.toFixed(1)}%) → EXP：${totalExp}</p>
         <table class="info-table">
             <tr>
@@ -148,8 +151,8 @@ function charRankInfo() {
 
     const characterBlock = document.querySelector(".character_block");
     if (characterBlock) {
-        characterBlock.insertAdjacentElement("afterend", resultContainer);
+        characterBlock.insertAdjacentElement("afterend", resultDiv);
     }
 }
 
-charRankInfo();
+displayCharacterInfo();
