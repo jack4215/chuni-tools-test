@@ -86,17 +86,40 @@ function displayCharacterInfo() {
     const levelExp = getExpForLevel(level);
     const totalExp = calculateTotalExperience(level) + Math.floor((levelExp * expPercentage) / 100);
 
+    const lv50TotalExp = calculateTotalExperience(50);
+    const lv100TotalExp = calculateTotalExperience(100);
+    const lv150TotalExp = calculateTotalExperience(150);
+    const lv200TotalExp = calculateTotalExperience(200);
+
     const resultContainer = document.createElement("div");
     resultContainer.className = "character-info-container";
     resultContainer.innerHTML = `
-        <p>Rank：${level} (${expPercentage.toFixed(1)}%) / Exp：${totalExp}</p>
+        <p>RANK：${level} (${expPercentage.toFixed(1)}%) → EXP：${totalExp}</p>
+        <table class="info-table">
+            <tr>
+                <td>LV.50</td>
+                <td>${Math.max(0, lv50TotalExp - totalExp)}</td>
+            </tr>
+            <tr>
+                <td>LV.100</td>
+                <td>${Math.max(0, lv100TotalExp - totalExp)}</td>
+            </tr>
+            <tr>
+                <td>LV.150</td>
+                <td>${Math.max(0, lv150TotalExp - totalExp)}</td>
+            </tr>
+            <tr>
+                <td>LV.200</td>
+                <td>${Math.max(0, lv200TotalExp - totalExp)}</td>
+            </tr>
+        </table>
     `;
 
     const style = document.createElement("style");
     style.textContent = `
         .character-info-container {
             padding: 8px;
-            background-color: #405c7b;
+            background-color: #3b3b3b;
             margin: 10px auto;
             width: 404px;
             text-align: center;
@@ -105,6 +128,18 @@ function displayCharacterInfo() {
         }
         .character-info-container p {
             margin: 5px 0;
+        }
+        .info-table {
+            width: 100%;
+            margin-top: 10px;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+        .info-table td {
+            width: 50%;
+            padding: 4px;
+            border: 1px solid #ededed;
+            text-align: center;
         }
     `;
     document.head.appendChild(style);
