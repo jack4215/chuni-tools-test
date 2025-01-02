@@ -127,7 +127,7 @@
                 downloadCSV: "Download Song Record as CSV",
                 downloading: "Downloading {{diff}} data...",
                 downloaded: "Completed!",
-                triggerScript: "B30 Image @Qman",
+                triggerScript: "chuni Rd",
                 loadingMessage: "Loading song data, please do not click the button again."
             },
             [e.zh_TW]: {
@@ -136,7 +136,7 @@
                 downloadCSV: "以CSV下載歌曲記錄",
                 downloading: "正在下載 {{diff}} 資料...",
                 downloaded: "下載完成！",
-                triggerScript: "B30 圖片 @Qman",
+                triggerScript: "chuni Rd",
                 loadingMessage: "正在載入歌曲資料，請勿重複點擊按鈕。"
             }
         }[function() {
