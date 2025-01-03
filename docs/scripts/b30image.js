@@ -250,43 +250,6 @@
         }, !1, !1)
     }
 
-    function B(e) {
-        "jp2" === l ? (H(R(19), R(7)), me(void 0, O("record/netBattlelog"), null, function(n, t) {
-            if (n) {
-                let n = t.responseText,
-                    i = null;
-                if (i = n.match(/\/images\/battlerank\/battlerank_([a-zA-Z0-9]*)\.png" \/>/)) {
-                    let e = 0;
-                    if ("Elite" === i[1]) p.br = 60;
-                    else if ("Unplayed" !== i[1]) {
-                        switch (i[1].substr(0, i[1].length - 1)) {
-                            case "SS":
-                                e = 0;
-                                break;
-                            case "S":
-                                e = 10;
-                                break;
-                            case "A":
-                                e = 20;
-                                break;
-                            case "B":
-                                e = 30;
-                                break;
-                            case "C":
-                                e = 40;
-                                break;
-                            case "D":
-                                e = 50
-                        }
-                        let n = le(i[1].substr(i[1].length - 1, 1));
-                        Number.isNaN(n) ? e = 0 : e += ae(n, 1, 3), p.br = e
-                    }
-                } else(i = n.match(/\/images\/battlerank\/battle_rank_([a-zA-Z0-9]*)\.png" \/>/)) && ("ex1" === i[1] ? p.br = 5 : "ex2" === i[1] ? p.br = 6 : "ex3" === i[1] && (p.br = 7));
-                (i = n.match(/<div class="net_battle_total_count_text">([\d]*?)戦<\/div>/)) && (p.bc += le(i[1])), ee(e)
-            } else D(R(2), "120301")
-        })) : ee(e)
-    }
-
     function W(e) {
         H(R(11), R(7)), me(void 0, O("home/playerData/"), null, function(n, t) {
             if (n) {
@@ -597,6 +560,6 @@
                 return !1
             }(l)) return void D(R(0) + ": " + s[l], "110002");
         let e = location.pathname;
-        ["/", "/mobile/", "/mobile/error/"].includes(e) ? D(R(1), "110003") : (k(), H("", R(3)), "jp2" === l ? Y([Q, K, $, J, F, X, B, G, z]) : "jp_lim" === l && Y([Q, K, Z, J, q, W, G, z]))
+        ["/", "/mobile/", "/mobile/error/"].includes(e) ? D(R(1), "110003") : (k(), H("", R(3)), "jp2" === l ? Y([Q, K, $, J, F, X, G, z]) : "jp_lim" === l && Y([Q, K, Z, J, q, W, G, z]))
     }()
 }(document);
