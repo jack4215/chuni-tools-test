@@ -19,7 +19,7 @@
             ]
         ],
         s = {
-            jp_lim: "CHUNITHM Paradice Lost (Limited)",
+            jp_lim: "Paradice Lost (Limited)",
             jp2: "CHUNITHM New",
             int: "CHUNITHM International ver."
         },
