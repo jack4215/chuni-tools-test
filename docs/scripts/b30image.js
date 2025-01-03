@@ -554,7 +554,6 @@
         if (! function(e) {
                 switch (e) {
                     case "jp2":
-                    case "jp_lim":
                         return !0
                 }
                 return !1
