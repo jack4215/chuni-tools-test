@@ -44,7 +44,7 @@
                 <p>新版查分器將於 2025-04-03 停用</p>
                 <p>屆時請改回使用原有書籤工具</p><br>
                 <p>The Beta Version Record Viewer will be retired on April 3, 2025.</p>
-                <p>Please switch back to using the original tools by then.</p><br>
+                <p>Please switch back to the original tools by then.</p><br>
                 <p><a href="https://github.com/jack4215/chuni-tools/blob/main/README.MD" target="_blank">完整內容 / More Details.</a></p>
             `;
             const style = document.createElement("style");
