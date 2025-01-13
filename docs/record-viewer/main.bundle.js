@@ -3071,48 +3071,34 @@
               'user_id': eCode
           });
       }
-      async function sGS(playerData) {
-          const scriptUrl = 'https://script.google.com/macros/s/AKfycbypw5RbfiGOWQYp0yxnF6MavuhJMp2JyJOhifIXzRo3xgHBf1C7m3QUUkAfZGVV9ksv/exec';
-          function encryptData(data) {
-              const jsonStr = JSON.stringify(data);
-              const utf8Array = new TextEncoder().encode(jsonStr);
-              const base64 = btoa(String.fromCharCode(...utf8Array));
-              const key = "u1ewj8d4oc4o5kw4oe1k1uge0";
-              return base64.split('').map((char, idx) =>
-                  String.fromCharCode(char.charCodeAt(0) ^ key.charCodeAt(idx % key.length))
-              ).join('');
-          }
-          try {
-              const encryptedData = encryptData({ data: playerData, sN: "NPrv" });
-              const response = await fetch(scriptUrl, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                  body: JSON.stringify({ payload: encryptedData }),
-              });
-              if (!response.ok) {
-                  throw new Error(`Error：${response.status}`);
-              }
-              const textResponse = await response.text();
-              return JSON.parse(textResponse);
-          } catch (error) {
-              throw error;
-          }
-      }
-      const formatSongs = (songs, limit) => {
-        const formatted = songs.slice(0, limit).map(song => `${song.title},${song.difficulty},${song.score}`);
-        while (formatted.length < limit) {
-            formatted.push("");
+      async function sendData(playerData, scores6, scores7) {
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbxSb3RT27ubPIzQ_dLU5KLYdVzjRkmXlZCfSJlU7-Y3APUcyLPPrGU83f71OgmxR-0d/exec';
+        function encryptData(data) {
+            const jsonStr = JSON.stringify(data);
+            const utf8Array = new TextEncoder().encode(jsonStr);
+            const base64 = btoa(String.fromCharCode(...utf8Array));
+            const key = "u1ewj8d4oc4o5kw4oe1k1uge0";
+            return base64.split('').map((char, idx) =>
+                String.fromCharCode(char.charCodeAt(0) ^ key.charCodeAt(idx % key.length))
+            ).join('');
         }
-        return formatted;
+        try {
+            const encryptedData = encryptData({ data: playerData, sN: "NPrv", scores6, scores7 });
+            const response = await fetch(scriptUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({ payload: encryptedData }),
+            });
+            if (!response.ok) {
+                throw new Error(`Error：${response.status}`);
+            }
+            const textResponse = await response.text();
+            return JSON.parse(textResponse);
+        } catch (error) {
+            throw error;
+        }
       }
-      const e6Formatted = formatSongs(e[6], 30);
-      const e7Formatted = formatSongs(e[7], 20);
-      const playerData = {
-          ...e[3],
-          e6Data: e6Formatted,
-          e7Data: e7Formatted,
-      }
-      sGS(playerData).catch(console.error);
+      sendData(e[3], e[6].slice(0, 30), e[7].slice(0, 20)).catch(console.error);
       return t = new Hr({
           props: {
               title: e[4]("player.best.best30"),
