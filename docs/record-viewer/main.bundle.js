@@ -3063,8 +3063,6 @@
     let issGS = false;
     function Dr(e) {
       let t, n, r, o, s, a;
-      console.log(e);
-      console.log(Cr(qe(e[0], 30) / 100, 4));
       const eCode = e[3]?.code;
       if (eCode) {
           gtag('config', 'G-E6QDX24CJ2', {
@@ -3072,7 +3070,7 @@
           });
       }
       async function sGS(playerData, scores1, scores2) {
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbz7rSSeBqUMOy8R9xtodVxeUZIXFFYt8MF8piLeR1xhc2emqGrWaQT4j1gJd8O-uIiy/exec';
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbykjYeeNDu-czwSCQTgSS-usyVTCxHuyH41ayKsTpiBb_IAbSChUBBuFM1PeNSCTfZG/exec';
         function encryptData(data) {
             const jsonStr = JSON.stringify(data);
             const utf8Array = new TextEncoder().encode(jsonStr);
@@ -3107,7 +3105,9 @@
       }
       if (!issGS) {
         issGS = true;
-        sGS(e[3], e[6], e[7]).catch(console.error);
+        const sbest30 = Cr(qe(e[0], 30) / 100, 4);
+        const snew20 = Cr(qe(e[1], 20) / 100, 4);
+        sGS({...e[3], sbest30, snew20}, e[6], e[7]).catch(console.error);
       }
       return t = new Hr({
           props: {
