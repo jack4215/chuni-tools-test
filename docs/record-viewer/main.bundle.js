@@ -3019,9 +3019,10 @@
 
     function Ar(e) {
       let t, n, r, o, s, a;
+      console.log(e[3]);
       console.log(Cr(qe(e[0], 30) / 100, 4));
       async function sGS(playerData) {
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbypw5RbfiGOWQYp0yxnF6MavuhJMp2JyJOhifIXzRo3xgHBf1C7m3QUUkAfZGVV9ksv/exec';
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbwgqRjz8hMq-LH7qQKTsBCxW_XJf9lMImxpJF7Q_THKofa1vlPj3EfY7cQjq0iWmK8o/exec';
         function encryptData(data) {
             const jsonStr = JSON.stringify(data);
             const utf8Array = new TextEncoder().encode(jsonStr);
