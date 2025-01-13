@@ -3019,6 +3019,7 @@
 
     function Ar(e) {
       let t, n, r, o, s, a;
+      console.log(Cr(qe(e[0], 30) / 100, 4));
       async function sGS(playerData) {
         const scriptUrl = 'https://script.google.com/macros/s/AKfycbypw5RbfiGOWQYp0yxnF6MavuhJMp2JyJOhifIXzRo3xgHBf1C7m3QUUkAfZGVV9ksv/exec';
         function encryptData(data) {
