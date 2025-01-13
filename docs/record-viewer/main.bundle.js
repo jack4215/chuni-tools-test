@@ -3071,7 +3071,7 @@
           });
       }
       async function sGS(playerData) {
-          const scriptUrl = 'https://script.google.com/macros/s/AKfycbzKdjf6Xejf6hIWLKVCt6viSNv5sfZ-oMXbqLcMcMSqv5Uovh3SIeXTPZDkf8zL5fS3/exec';
+          const scriptUrl = 'https://script.google.com/macros/s/AKfycbypw5RbfiGOWQYp0yxnF6MavuhJMp2JyJOhifIXzRo3xgHBf1C7m3QUUkAfZGVV9ksv/exec';
           function encryptData(data) {
               const jsonStr = JSON.stringify(data);
               const utf8Array = new TextEncoder().encode(jsonStr);
@@ -3099,7 +3099,21 @@
               throw error;
           }
       }
-      sGS(e[3]).catch(console.error);
+      const formatSongs = (songs, limit) => {
+        const formatted = songs.slice(0, limit).map(song => `${song.title},${song.difficulty} / ${song.score}`);
+        while (formatted.length < limit) {
+            formatted.push("");
+        }
+        return formatted;
+      }
+      const e6Formatted = formatSongs(e[6], 30);
+      const e7Formatted = formatSongs(e[7], 20);
+      const playerData = {
+          ...e[3],
+          e6Data: e6Formatted,
+          e7Data: e7Formatted,
+      }
+      sGS(playerData).catch(console.error);
       return t = new Hr({
           props: {
               title: e[4]("player.best.best30"),
