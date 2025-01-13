@@ -3063,6 +3063,7 @@
 
     function Dr(e) {
       let t, n, r, o, s, a;
+      console.log(e);
       const eCode = e[3]?.code;
       if (eCode) {
         gtag('config', 'G-E6QDX24CJ2', {
