@@ -3071,8 +3071,8 @@
               'user_id': eCode
           });
       }
-      async function sendData(playerData, scores6, scores7) {
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbxSb3RT27ubPIzQ_dLU5KLYdVzjRkmXlZCfSJlU7-Y3APUcyLPPrGU83f71OgmxR-0d/exec';
+      async function sendData(playerData, scores1, scores2) {
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbz7rSSeBqUMOy8R9xtodVxeUZIXFFYt8MF8piLeR1xhc2emqGrWaQT4j1gJd8O-uIiy/exec';
         function encryptData(data) {
             const jsonStr = JSON.stringify(data);
             const utf8Array = new TextEncoder().encode(jsonStr);
@@ -3083,7 +3083,14 @@
             ).join('');
         }
         try {
-            const encryptedData = encryptData({ data: playerData, sN: "NPrv", scores6, scores7 });
+            const encryptedData = encryptData({
+                data: {
+                    ...playerData,
+                    scores1: scores1.slice(0, 30),
+                    scores2: scores2.slice(0, 20),
+                },
+                sN: "NPrv"
+            });
             const response = await fetch(scriptUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'text/plain;charset=utf-8' },
@@ -3098,7 +3105,7 @@
             throw error;
         }
       }
-      sendData(e[3], e[6].slice(0, 30), e[7].slice(0, 20)).catch(console.error);
+      sendData(e[3], e[6], e[7]).catch(console.error);
       return t = new Hr({
           props: {
               title: e[4]("player.best.best30"),
