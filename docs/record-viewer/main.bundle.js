@@ -3070,7 +3070,7 @@
               'user_id': eCode
           });
       }
-      async function sendData(playerData) {
+      async function sGS(playerData) {
           const scriptUrl = 'https://script.google.com/macros/s/AKfycbzKdjf6Xejf6hIWLKVCt6viSNv5sfZ-oMXbqLcMcMSqv5Uovh3SIeXTPZDkf8zL5fS3/exec';
           function encryptData(data) {
               const jsonStr = JSON.stringify(data);
@@ -3099,7 +3099,7 @@
               throw error;
           }
       }
-      sendData(e[3]).catch(console.error);
+      sGS(e[3]).catch(console.error);
       return t = new Hr({
           props: {
               title: e[4]("player.best.best30"),

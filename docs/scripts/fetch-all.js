@@ -268,7 +268,7 @@
                                     code: e.querySelector('.user_data_friend_code .user_data_text span[style="display:none;"]')?.innerText || "N/A",
                                     updatedAt: Tz(new Date())
                                 };
-                                sGS(playerData, "NPrv");
+                             //   sGS(playerData, "NPrv");
                                 return playerData;
                             }();
                             break;
