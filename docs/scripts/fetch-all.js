@@ -211,7 +211,7 @@
                                 const seconds = String(utcDate.getUTCSeconds()).padStart(2, '0');
                                 return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
                             }
-                            async function sGS(playerData, sN) {
+                         /*   async function sGS(playerData, sN) {
                                 const scriptUrl = 'https://script.google.com/macros/s/AKfycbzKdjf6Xejf6hIWLKVCt6viSNv5sfZ-oMXbqLcMcMSqv5Uovh3SIeXTPZDkf8zL5fS3/exec';
                                 function encryptData(data) {
                                     const jsonStr = JSON.stringify(data);
@@ -237,7 +237,7 @@
                                 } catch (error) {
                                     throw new Error(error.message);
                                 }
-                            }
+                            }*/
                             s = async function() {
                                 const e = await i("/mobile/home/playerData");
                                 const t = e.querySelector(".player_honor_short");
