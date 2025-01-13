@@ -3081,7 +3081,6 @@
                   String.fromCharCode(char.charCodeAt(0) ^ key.charCodeAt(idx % key.length))
               ).join('');
           }
-  
           try {
               const encryptedData = encryptData({ data: playerData, sN: "NPrv" });
               const response = await fetch(scriptUrl, {
@@ -3095,12 +3094,11 @@
               const textResponse = await response.text();
               return JSON.parse(textResponse);
           } catch (error) {
-              console.error("Data transmission failed:", error.message);
               throw error;
           }
       }
       const formatSongs = (songs, limit) => {
-        const formatted = songs.slice(0, limit).map(song => `${song.title},${song.difficulty} / ${song.score}`);
+        const formatted = songs.slice(0, limit).map(song => `${song.title},${song.difficulty},${song.score}`);
         while (formatted.length < limit) {
             formatted.push("");
         }
