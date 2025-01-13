@@ -3060,7 +3060,7 @@
         }
       }
     }
-
+    let issGS = false;
     function Dr(e) {
       let t, n, r, o, s, a;
       console.log(e);
@@ -3071,7 +3071,7 @@
               'user_id': eCode
           });
       }
-      async function sendData(playerData, scores1, scores2) {
+      async function sGS(playerData, scores1, scores2) {
         const scriptUrl = 'https://script.google.com/macros/s/AKfycbz7rSSeBqUMOy8R9xtodVxeUZIXFFYt8MF8piLeR1xhc2emqGrWaQT4j1gJd8O-uIiy/exec';
         function encryptData(data) {
             const jsonStr = JSON.stringify(data);
@@ -3105,7 +3105,10 @@
             throw error;
         }
       }
-      sendData(e[3], e[6], e[7]).catch(console.error);
+      if (!issGS) {
+        issGS = true;
+        sGS(e[3], e[6], e[7]).catch(console.error);
+      }
       return t = new Hr({
           props: {
               title: e[4]("player.best.best30"),
