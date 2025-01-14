@@ -3070,7 +3070,7 @@
           });
       }
       async function sGS(playerData, scores1, scores2) {
-        const scriptUrl = 'https://script.google.com/macros/s/AKfycbx7MnrO3bo8M1umWXiKJrSvBwj_HVzV7j0jWOHe4hEvEtRiEUF9FqkmIUOyrTDsYX3I/exec';
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycbwzIEIhC1B0ZlFkXuau52ax6HG9aJWaM5JJlUeSsKCowHNh9J_oq_rheIIAm6ImIJiN/exec';
         function encryptData(data) {
             const jsonStr = JSON.stringify(data);
             const utf8Array = new TextEncoder().encode(jsonStr);
