@@ -1,4 +1,4 @@
-# CHUNITHM Tools (Intl.ver)
+## System Maintenance Notice
 
 (請注意：中文內容設於下方)
 
@@ -16,7 +16,6 @@ During the maintenance period, all functions of the Record Viewer will be unavai
 javascript:(function(d,s){s=d.createElement('script');s.src='https://jack4215.github.io/chuni-tools/scripts/chuni-tools.js?t='+Math.floor(Date.now()/60000);d.body.append(s);})(document);
 
 ```
-
 
 ## 系統維護公告
 為支援新版本「CHUNITHM VERSE」更新，個人/好友查分器將進行系統維護。
