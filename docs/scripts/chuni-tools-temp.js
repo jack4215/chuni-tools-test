@@ -41,11 +41,16 @@
             const resultContainer = document.createElement("div");
             resultContainer.className = "chuni-tools-container";
             resultContainer.innerHTML = `
-                <p>新版查分器將於 2025-04-03 停用</p>
-                <p>屆時請改回使用原有書籤工具</p><br>
-                <p>The Beta Version Record Viewer will be retired on April 3, 2025.</p>
+                <p>新版查分器將於 2025-04-17 棄用</p>
+                <p>屆時請改回使用原書籤工具</p><br>
+                <p>The Beta Version Record Viewer will be deprecated on April 17, 2025.</p>
                 <p>Please switch back to the original tools by then.</p><br>
-                <p><a href="https://github.com/jack4215/chuni-tools/blob/main/README.MD" target="_blank">完整內容 / More Details.</a></p>
+                <p></p>
+                <p>預定於 2025-04-17 1:00 ~ 1:30 (GMT+8) 進行系統維護</p>
+                <p>期間將無法使用查分器所有功能</p><br>
+                <p>Scheduled maintenance is planned for April 17, 2025, from 1:00 to 1:30 (GMT+8).</p>
+                <p>During this period, all functions of the Record Viewer will be unavailable.</p><br>
+                <p><a href="https://github.com/jack4215/chuni-tools/blob/main/README.MD" target="_blank">更多資訊 / More Details.</a></p>
             `;
             const style = document.createElement("style");
             style.textContent = `
