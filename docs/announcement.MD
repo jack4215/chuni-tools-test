@@ -6,10 +6,6 @@ We sincerely apologize for any inconvenience this may cause and appreciate your 
 
 ![image](https://chuni-test.tsaibee.org/data/2.jpg)
 
-```js
-javascript:(function(d,s){s=d.createElement('script');s.src='https://jack4215.github.io/chuni-tools/scripts/chuni-tools.js?t='+Math.floor(Date.now()/60000);d.body.append(s);})(document);
-
-```
 
 ## 系統維護公告 (2025.04)
 
@@ -19,6 +15,3 @@ javascript:(function(d,s){s=d.createElement('script');s.src='https://jack4215.gi
 
 ![image](https://chuni-test.tsaibee.org/data/1.jpg)
 
-```js
-javascript:(function(d,s){s=d.createElement('script');s.src='https://jack4215.github.io/chuni-tools/scripts/chuni-tools.js?t='+Math.floor(Date.now()/60000);d.body.append(s);})(document);
-```
