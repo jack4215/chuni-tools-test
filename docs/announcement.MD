@@ -1,4 +1,4 @@
-## System Maintenance Notice
+## System Maintenance Notice (2025.04)
 
 To support the update for the new version "CHUNITHM VERSE", the Personal/Friends Record Viewer will undergo system maintenance.
 
@@ -11,7 +11,7 @@ javascript:(function(d,s){s=d.createElement('script');s.src='https://jack4215.gi
 
 ```
 
-## 系統維護公告
+## 系統維護公告 (2025.04)
 
 為支援新版本「CHUNITHM VERSE」更新，個人/好友查分器將進行系統維護。
 
