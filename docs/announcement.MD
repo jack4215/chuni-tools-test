@@ -1,6 +1,7 @@
 ## System Maintenance Notice
 
 To support the update for the new version "CHUNITHM VERSE", the Personal/Friends Record Viewer will undergo system maintenance.
+
 We sincerely apologize for any inconvenience this may cause and appreciate your continued support.
 
 ![image](https://chuni-test.tsaibee.org/data/2.jpg)
@@ -13,6 +14,7 @@ javascript:(function(d,s){s=d.createElement('script');s.src='https://jack4215.gi
 ## 系統維護公告
 
 為支援新版本「CHUNITHM VERSE」更新，個人/好友查分器將進行系統維護。
+
 為此所造成的不便深感抱歉，並感謝您對於本服務的支持。
 
 ![image](https://chuni-test.tsaibee.org/data/1.jpg)
