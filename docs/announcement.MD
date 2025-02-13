@@ -16,5 +16,5 @@ We sincerely apologize for any inconvenience this may cause and appreciate your 
 
 ![image](https://chuni-test.tsaibee.org/data/1.jpg)
 
-＊原有書籤請至[本網站](https://chuni.tsaibee.org/)複製使用. 
+＊原書籤請至[本網站](https://chuni.tsaibee.org/)複製使用
 
