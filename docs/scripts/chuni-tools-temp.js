@@ -46,7 +46,8 @@
                 <p>The Beta Version Record Viewer will be deprecated on April 17, 2025.</p>
                 <p>Please switch back to the original tools by then.</p><br>
                 <p></p>
-                <p>預定於 2025-04-17 1:00 ~ 1:30 (GMT+8) 進行系統維護</p>
+                <p>預定於 2025-04-17 1:00~1:30 (GMT+8)</p>
+                <p>進行系統維護</p>
                 <p>期間將無法使用查分器所有功能</p><br>
                 <p>Scheduled maintenance is planned for April 17, 2025, from 1:00 to 1:30 (GMT+8).</p>
                 <p>During this period, all functions of the Record Viewer will be unavailable.</p><br>
