@@ -6,6 +6,7 @@ We sincerely apologize for any inconvenience this may cause and appreciate your 
 
 ![image](https://chuni-test.tsaibee.org/data/2.jpg)
 
+＊Please copy and use the original bookmarks from [this website](https://chuni.tsaibee.org/).
 
 ## 系統維護公告 (2025.04)
 
@@ -14,4 +15,6 @@ We sincerely apologize for any inconvenience this may cause and appreciate your 
 為此所造成的不便深感抱歉，並感謝您對於本服務的支持。
 
 ![image](https://chuni-test.tsaibee.org/data/1.jpg)
+
+＊原有書籤請至[本網站](https://chuni.tsaibee.org/)複製使用. 
 
