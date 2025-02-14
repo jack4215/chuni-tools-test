@@ -43,8 +43,8 @@
             resultContainer.innerHTML = `
                 <p>新版查分器將於 2025-04-17 棄用</p>
                 <p>屆時請改回使用原書籤工具</p><br>
-                <p>The Beta Version Record Viewer will be deprecated on April 17, 2025.</p>
-                <p>Please switch back to the original tools by then.</p><br>
+                <p>The Beta version Record Viewer will be deprecated on April 17, 2025.</p>
+                <p>Please use the original bookmark by then.</p><br>
                 <p></p>
                 <p>預定於 2025-04-17 1:00~1:30 (GMT+8)</p>
                 <p>進行系統維護</p>
