@@ -51,7 +51,7 @@
                 <p>期間將無法使用查分器所有功能</p><br>
                 <p>System maintenance is scheduled for April 17, 2025, from 1:00 to 1:30 (GMT+8).</p>
                 <p>During this period, all functions of the Record Viewer will be unavailable.</p><br>
-                <p><a href="https://github.com/jack4215/chuni-tools/blob/main/README.MD" target="_blank">更多資訊 / More Details.</a></p>
+                <p><a href="https://chuni.tsaibee.org/notice" target="_blank">更多資訊 / More Details.</a></p>
             `;
             const style = document.createElement("style");
             style.textContent = `
