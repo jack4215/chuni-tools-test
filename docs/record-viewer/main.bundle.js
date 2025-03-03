@@ -56,7 +56,7 @@
       },
       621: e => {
         "use strict";
-        e.exports = JSON.parse('{"locale.name":"한국어","footer.chooseLang":"언어 선택"","footer.source":"본 웹사이트는 GitHub Pages를 통해 구축되었으며, <a href=\\"https://github.com/jack4215/chuni-tools\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\">GitHub</a> 에서 소스 코드를 확인할 수 있습니다.<br/><br/>Developed and maintained by TSAIBEE"}')
+        e.exports = JSON.parse('{"locale.name":"한국어","footer.chooseLang":"언어 선택","footer.source":"본 웹사이트는 GitHub Pages를 통해 구축되었으며, <a href=\\"https://github.com/jack4215/chuni-tools\\" target=\\"_blank\\" rel=\\"noreferrer noopener\\">GitHub</a> 에서 소스 코드를 확인할 수 있습니다.<br/><br/>Developed and maintained by TSAIBEE"}')
       },
       903: e => {
         "use strict";
