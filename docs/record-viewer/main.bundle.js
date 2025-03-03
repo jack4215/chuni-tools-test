@@ -736,7 +736,7 @@
         }
       }
     }! function(e) {
-      e.en_US = "en_US", e.zh_TW = "zh_TW"
+      e.en_US = "en_US", e.zh_TW = "zh_TW", e.ko = "ko"
     }(Ee || (Ee = {}));
     const Ae = Ne("theme", "dark", ["dark", "purple", "black"]),
       De = Ne("language", function() {
@@ -747,7 +747,9 @@
             case Ee.en_US:
               return Ee.en_US;
             case Ee.zh_TW:
-              return Ee.zh_TW
+              return Ee.zh_TW;
+            case Ee.ko:
+              return Ee.ko
           }
           return null
         }() || (navigator.language.startsWith("zh") ? Ee.zh_TW : Ee.en_US)
