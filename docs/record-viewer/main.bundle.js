@@ -754,7 +754,7 @@
           return null
         }() || (navigator.language.startsWith("zh") ? Ee.zh_TW : Ee.en_US)
       }(), Object.values(Ee)),
-      Le = "https://new.chunithm-net.com/chuni-mobile/html";
+      Le = "https://chunithm-net-eng.com";
     var Pe;
     ! function(e) {
       e.basic = "BAS", e.advanced = "ADV", e.expert = "EXP", e.master = "MAS", e.ultima = "ULT"
