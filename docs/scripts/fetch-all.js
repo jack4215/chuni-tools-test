@@ -227,7 +227,6 @@
                                             const response = await fetch("/data/title.json");
                                             const titleData = await response.json();
                                             const matchedTitle = titleData.find(item => item.image === imageUrl);
-                            
                                             if (matchedTitle) {
                                                 honorText = matchedTitle.title;
                                                 honorColor = matchedTitle.genre;
@@ -263,7 +262,6 @@
                                     code: e.querySelector('.user_data_friend_code .user_data_text span[style="display:none;"]')?.innerText || "N/A",
                                     updatedAt: Tz(new Date())
                                 };
-                                
                                 return playerData;
                             }();                            
                             break;
