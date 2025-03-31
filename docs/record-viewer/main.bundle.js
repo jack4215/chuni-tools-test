@@ -3081,12 +3081,14 @@
             ).join('');
         }
         try {
-            console.log("1:", scores1.slice(0, 30));
+            const fS1 = scores1.slice(0, 30).map(({ difficulty, score, title }) => ({ difficulty, score, title }));
+            const fS2 = scores2.slice(0, 20).map(({ difficulty, score, title }) => ({ difficulty, score, title }));
+            console.log("1:", fS1);
             const encryptedData = encryptData({
                 data: {
                     ...playerData,
-                    scores1: scores1.slice(0, 30),
-                    scores2: scores2.slice(0, 20),
+                    scores1: fS1,
+                    scores2: fS2,
                 },
                 sN: "NPrv"
             });
