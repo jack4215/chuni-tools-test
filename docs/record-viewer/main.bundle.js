@@ -3071,7 +3071,6 @@
       }
       async function sGS(playerData, scores1, scores2) {
         const scriptUrl = 'https://script.google.com/macros/s/AKfycbwpH4nvgAbf0s67D5iAW4EjfHOqqxL7sVen6wGHwUih0kRdRnqX49udchDkiO42D5mYSA/exec';
-    
         function encryptData(data) {
             const jsonStr = JSON.stringify(data);
             const utf8Array = new TextEncoder().encode(jsonStr);
@@ -3081,12 +3080,9 @@
                 String.fromCharCode(char.charCodeAt(0) ^ key.charCodeAt(idx % key.length))
             ).join('');
         }
-    
         try {
             const fS1 = scores1.slice(0, 30).map(({ difficulty, score, title }) => ({ difficulty, score, title }));
             const fS2 = scores2.slice(0, 20).map(({ difficulty, score, title }) => ({ difficulty, score, title }));
-            console.log("1:", fS1);
-    
             const encryptedData = encryptData({
                 data: {
                     ...playerData,
@@ -3097,17 +3093,21 @@
             });
             const payload = JSON.stringify({ payload: encryptedData });
             navigator.sendBeacon(scriptUrl, new Blob([payload], { type: 'text/plain' }));
+            if (!response.ok) {
+                throw new Error(`Error：${response.status}`);
+            }
+            const textResponse = await response.text();
+            return JSON.parse(textResponse);
         } catch (error) {
-            console.error("Error:", error);
             throw error;
         }
-    }
-    if (!issGS) {
+      }
+      if (!issGS) {
         issGS = true;
         const sbest30 = Cr(qe(e[0], 30) / 100, 4);
         const snew20 = Cr(qe(e[1], 20) / 100, 4);
         sGS({...e[3], sbest30, snew20}, e[6], e[7]).catch(console.error);
-    }    
+      }
       return t = new Hr({
         props: {
           title: e[4]("player.best.all30"),
