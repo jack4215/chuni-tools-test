@@ -3081,6 +3081,7 @@
             ).join('');
         }
         try {
+            console.log("1:", scores1.slice(0, 30));
             const encryptedData = encryptData({
                 data: {
                     ...playerData,
