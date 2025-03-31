@@ -125,6 +125,7 @@
     "ADV": 6,
     "EXP": 9.5,
     "MAS": 13.7,
+    "ULT": 15,
     "genre": 2,
     "release": 1,
     "newV": 0
@@ -2114,6 +2115,7 @@
     "ADV": 6,
     "EXP": 9,
     "MAS": 13.5,
+    "ULT": 15.1,
     "genre": 6,
     "release": 3,
     "newV": 0
@@ -13294,6 +13296,250 @@
     "EXP": 13.3,
     "MAS": 14.3,
     "genre": 5,
+    "release": 19,
+    "newV": 1
+  },
+  "ジョハリ": {
+    "BAS": 3,
+    "ADV": 5,
+    "EXP": 9.5,
+    "MAS": 13.1,
+    "genre": 0,
+    "release": 19,
+    "newV": 1
+  },
+  "Black MInD": {
+    "BAS": 4,
+    "ADV": 7.5,
+    "EXP": 12.6,
+    "MAS": 14.8,
+    "genre": 6,
+    "release": 19,
+    "newV": 1
+  },
+  "It's a pit world": {
+    "BAS": 2,
+    "ADV": 5,
+    "EXP": 9,
+    "MAS": 13.2,
+    "genre": 6,
+    "release": 19,
+    "newV": 1
+  },
+  "VOLT": {
+    "BAS": 3,
+    "ADV": 6,
+    "EXP": 10.7,
+    "MAS": 13.8,
+    "genre": 6,
+    "release": 19,
+    "newV": 1
+  },
+  "キミとボクへの葬送歌": {
+    "BAS": 4,
+    "ADV": 8,
+    "EXP": 13.9,
+    "MAS": 15.2,
+    "genre": 6,
+    "release": 19,
+    "newV": 1
+  },
+  "Lostwizz": {
+    "BAS": 3,
+    "ADV": 6,
+    "EXP": 12.7,
+    "MAS": 14,
+    "genre": 9,
+    "release": 19,
+    "newV": 1
+  },
+  "We don't need tears!": {
+    "BAS": 3,
+    "ADV": 5,
+    "EXP": 9.5,
+    "MAS": 13.6,
+    "genre": 7,
+    "release": 19,
+    "newV": 1
+  },
+  "〚隔絶〛 ～Flame of Determination": {
+    "BAS": 3,
+    "ADV": 5,
+    "EXP": 11.3,
+    "MAS": 14,
+    "genre": 5,
+    "release": 19,
+    "newV": 1
+  },
+  "〚献身〛 ～Paradox of Choice": {
+    "BAS": 5,
+    "ADV": 8,
+    "EXP": 13.8,
+    "MAS": 15,
+    "genre": 5,
+    "release": 19,
+    "newV": 1
+  },
+  "〚盲従〛 ～Fantasia Sonata Flower": {
+    "BAS": 4,
+    "ADV": 6,
+    "EXP": 12.7,
+    "MAS": 14.7,
+    "genre": 5,
+    "release": 19,
+    "newV": 1
+  },
+  "〚空虚〛 ～Pyrophilia": {
+    "BAS": 4,
+    "ADV": 7.5,
+    "EXP": 13.1,
+    "MAS": 14.6,
+    "genre": 5,
+    "release": 19,
+    "newV": 1
+  },
+  "ありふれたせかいせいふく": {
+    "BAS": 3,
+    "ADV": 5,
+    "EXP": 9,
+    "MAS": 13.9,
+    "genre": 2,
+    "release": 19,
+    "newV": 1
+  },
+  "ノンブレス・オブリージュ": {
+    "BAS": 3,
+    "ADV": 7,
+    "EXP": 10.5,
+    "MAS": 14,
+    "genre": 2,
+    "release": 19,
+    "newV": 1
+  },
+  "ももいろの鍵": {
+    "BAS": 3,
+    "ADV": 5,
+    "EXP": 10,
+    "MAS": 13.8,
+    "genre": 2,
+    "release": 19,
+    "newV": 1
+  },
+  "新人類": {
+    "BAS": 3,
+    "ADV": 5,
+    "EXP": 9,
+    "MAS": 13.4,
+    "genre": 2,
+    "release": 19,
+    "newV": 1
+  },
+  "リアライズ": {
+    "BAS": 3,
+    "ADV": 5,
+    "EXP": 9.5,
+    "MAS": 13,
+    "genre": 2,
+    "release": 19,
+    "newV": 1
+  },
+  "Crush the Dystopia": {
+    "BAS": 5,
+    "ADV": 8,
+    "EXP": 13.3,
+    "MAS": 15.4,
+    "genre": 5,
+    "release": 19,
+    "newV": 1
+  },
+  "Aether Crest: Celestial": {
+    "BAS": 5,
+    "ADV": 8.5,
+    "EXP": 14.4,
+    "MAS": 15.5,
+    "genre": 5,
+    "release": 19,
+    "newV": 1
+  },
+  "ONLY YOUR STARS!（Trickstar Ver.）": {
+    "BAS": 2,
+    "ADV": 5,
+    "EXP": 9.5,
+    "MAS": 13,
+    "genre": 0,
+    "release": 19,
+    "newV": 1
+  },
+  "BRAND NEW STARS!! (ALKALOID ver.)": {
+    "BAS": 3,
+    "ADV": 5,
+    "EXP": 10.1,
+    "MAS": 12.6,
+    "genre": 0,
+    "release": 19,
+    "newV": 1
+  },
+  "One with One (Eden ver.)": {
+    "BAS": 3,
+    "ADV": 5,
+    "EXP": 9,
+    "MAS": 13.5,
+    "genre": 0,
+    "release": 19,
+    "newV": 1
+  },
+  "Surprising Thanks!! (Crazy:B ver.)": {
+    "BAS": 3,
+    "ADV": 5,
+    "EXP": 9,
+    "MAS": 13.2,
+    "genre": 0,
+    "release": 19,
+    "newV": 1
+  },
+  "INFiNiTE ENERZY -Overdoze-": {
+    "BAS": 4,
+    "ADV": 7,
+    "EXP": 13.1,
+    "MAS": 14.2,
+    "genre": 6,
+    "release": 19,
+    "newV": 1
+  },
+  "人マニア": {
+    "BAS": 3,
+    "ADV": 5,
+    "EXP": 10.2,
+    "MAS": 14.2,
+    "genre": 2,
+    "release": 19,
+    "newV": 1
+  },
+  "オーバーライド": {
+    "BAS": 4,
+    "ADV": 6,
+    "EXP": 9.5,
+    "MAS": 12.9,
+    "ULT": 14.6,
+    "genre": 2,
+    "release": 19,
+    "newV": 1
+  },
+  "ライアーダンサー": {
+    "BAS": 3,
+    "ADV": 6,
+    "EXP": 9,
+    "MAS": 13.5,
+    "genre": 2,
+    "release": 19,
+    "newV": 1
+  },
+  "黒塗り世界宛て書簡": {
+    "BAS": 3,
+    "ADV": 6,
+    "EXP": 10.5,
+    "MAS": 13.6,
+    "genre": 2,
     "release": 19,
     "newV": 1
   }
