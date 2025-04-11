@@ -4570,9 +4570,17 @@
       e.$$.update = () => {
         507908 & e.$$.dirty && n(0, r = h.filter((e => ("hide" != f || e.score >= 0) && ("clr" != f || e.score >= 0) && (!(f === "dgvalue" || f === "dgpercentage") || (e.dg === 1 || e.dg === 2)) && (!(f === "eudgvalue" || f === "eudgpercentage") || ((e.dg === 1 || e.dg === 2) && e.score >= 0)) && d[e.difficulty] && c[Ie.find((t => _e[t] == e.genre))] && j[Rl.find((t => _s[t] == e.release))] && l >= e.const && e.const >= i))), 1 & e.$$.dirty && n(4, o = (() => {
           let e = {};
-          ["MAX", "SSS+", "SSS", "SS+", "SS", "S+", "S"].forEach((t => e[t] = 0)), ["AAA", "AA", "A", "BBB", "BB", "B", "C", "D"].forEach((t => e[t] = 0));
-          for (const t of r) e[t.rank]++;
-          return Object.keys(e).reduce(((t, n) => (e[n] += e[t], n))), e
+          const rankOrder = ["MAX", "SSS+", "SSS", "SS+", "SS", "S+", "S", "AAA", "AA", "A", "BBB", "BB", "B", "C", "D"];
+          rankOrder.forEach(t => e[t] = 0);
+          const clear2Order = ["CTS", "ABS", "BRV", "HRD", "CLR"];
+          clear2Order.forEach(t => e[t] = 0);
+          for (const t of r) {
+            if (t.rank in e) e[t.rank]++;
+            if (t.clear2 in e) e[t.clear2]++;
+          }
+          rankOrder.reduce((prev, curr) => (e[curr] += e[prev] || 0, curr));
+          clear2Order.reduce((prev, curr) => (e[curr] += e[prev] || 0, curr));
+          return e;
         })()), 1 & e.$$.dirty && n(1, s = r.filter((e => "AJ" == e.clear)).length), 3 & e.$$.dirty && n(3, a = s + r.filter((e => "FC" == e.clear)).length)
       },[r, s, f, a, o, v, b, y, w, $, x, k, function() {
         p($t, v = window.location.hash.slice(1), v), "all" !== v && p(Tt, m = !1, m)
