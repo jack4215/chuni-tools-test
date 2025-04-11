@@ -4577,7 +4577,7 @@
 
     function Go(e) {
       let t, n, r, o, cp, s, a, i, l, c, d, u;
-      document.title = o = e[7]("main.title");
+      document.title = o = e[8]("main.title");
       let f = {
         ctx: e,
         current: null,
