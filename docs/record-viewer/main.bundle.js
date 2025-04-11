@@ -4139,25 +4139,25 @@
     }
 
     function Ao(t) {
-      let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w = ["S", "S+", "SS", "SS+", "SSS", "SSS+"],
+      let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w = ["S", "S+", "SS", "SS+", "SSS", "SSS+", "CLR", "HRD", "BRV", "ABS", "CTS"],
         $ = [];
-      for (let e = 0; e < 6; e += 1) $[e] = Ho(No(t, w, e));
+      for (let e = 0; e < 11; e += 1) $[e] = Ho(No(t, w, e));
       let x = t[0].MAX > 0 && Uo(t);
       return {
         c() {
           n = H("div");
-          for (let e = 0; e < 6; e += 1) $[e].c();
+          for (let e = 0; e < 11; e += 1) $[e].c();
           r = D(), x && x.c(), o = D(), s = H("div"), a = H("div"), a.textContent = "FC", i = D(), l = H("div"), c = A(t[1]), d = D(), u = H("div"), f = H("div"), f.textContent = "AJ", p = D(), h = H("div"), g = A(t[2]), m = D(), v = H("div"), b = A("/"), y = A(t[3]), O(a, "class", "svelte-1cp0kbr"), O(l, "class", "svelte-1cp0kbr"), O(s, "class", "item fc svelte-1cp0kbr"), B(s, "zero", 0 == t[1]), B(s, "full", t[1] == t[3]), O(f, "class", "svelte-1cp0kbr"), O(h, "class", "svelte-1cp0kbr"), O(u, "class", "item aj svelte-1cp0kbr"), B(u, "zero", 0 == t[2]), B(u, "full", t[2] == t[3]), O(v, "class", "total svelte-1cp0kbr"), O(n, "class", "wrapper svelte-1cp0kbr")
         },
         m(e, t) {
           M(e, n, t);
-          for (let e = 0; e < 6; e += 1) $[e] && $[e].m(n, null);
+          for (let e = 0; e < 11; e += 1) $[e] && $[e].m(n, null);
           k(n, r), x && x.m(n, null), k(n, o), k(n, s), k(s, a), k(s, i), k(s, l), k(l, c), k(n, d), k(n, u), k(u, f), k(u, p), k(u, h), k(h, g), k(n, m), k(n, v), k(v, b), k(v, y)
         },
         p(e, [t]) {
           if (9 & t) {
             let o;
-            for (w = ["S", "S+", "SS", "SS+", "SSS", "SSS+"], o = 0; o < 6; o += 1) {
+            for (w = ["S", "S+", "SS", "SS+", "SSS", "SSS+", "CLR", "HRD", "BRV", "ABS", "CTS"], o = 0; o < 11; o += 1) {
               const s = No(e, w, o);
               $[o] ? $[o].p(s, t) : ($[o] = Ho(s), $[o].c(), $[o].m(n, r))
             }
