@@ -4094,7 +4094,7 @@
     };
 
     function Eo(e) {
-      j(e, "svelte-1cp0kbr", ".wrapper.svelte-1cp0kbr.svelte-1cp0kbr{border:var(--theme-border) 3px solid;border-radius:0.5rem;background-color:var(--theme-bg-sub);box-sizing:border-box;width:100%;max-width:600px;padding:0.5rem;margin:0.5rem;display:flex;justify-content:space-evenly;text-align:center;gap:0.8em;overflow-x:scroll}.wrapper.svelte-1cp0kbr.svelte-1cp0kbr::-webkit-scrollbar{display:none}.item.svelte-1cp0kbr.svelte-1cp0kbr{display:flex;-ms-flex-direction:column;flex-direction:column}.item.svelte-1cp0kbr div.svelte-1cp0kbr:nth-child(1){color:var(--theme-label)}.item.svelte-1cp0kbr div.svelte-1cp0kbr:nth-child(2){font-size:1.2em;font-weight:bold}.item.fc.svelte-1cp0kbr div.svelte-1cp0kbr:nth-child(1){color:var(--theme-clear-fc)}.item.aj.svelte-1cp0kbr div.svelte-1cp0kbr:nth-child(1){color:var(--theme-clear-aj)}.item.mx.svelte-1cp0kbr:not(.zero) div.svelte-1cp0kbr:nth-child(2),.item.full.svelte-1cp0kbr div.svelte-1cp0kbr:nth-child(2){color:var(--theme-clear-aj);text-shadow:0 0 10px var(--theme-clear-aj)}.item.zero.svelte-1cp0kbr div.svelte-1cp0kbr:nth-child(2){color:var(--theme-text-dim)}.total.svelte-1cp0kbr.svelte-1cp0kbr{color:var(--theme-text-dim);font-size:0.8rem;display:flex;align-items:end}")
+      j( e, "svelte-1cp0kbr", `.wrapper.svelte-1cp0kbr{border:var(--theme-border) 3px solid;border-radius:0.5rem;background-color:var(--theme-bg-sub);box-sizing:border-box;width:100%;max-width:600px;padding:0.5rem;margin:0.5rem;display:flex;justify-content:space-evenly;text-align:center;gap:0.8em;overflow-x:scroll}.wrapper.svelte-1cp0kbr::-webkit-scrollbar{display:none} .item.svelte-1cp0kbr{display:flex;flex-direction:column} .item.svelte-1cp0kbr div:nth-child(1){color:var(--theme-label)} .item.svelte-1cp0kbr div:nth-child(2){font-size:1.2em;font-weight:bold} .item.fc.svelte-1cp0kbr div:nth-child(1){color:var(--theme-clear-fc)} .item.aj.svelte-1cp0kbr div:nth-child(1){color:var(--theme-clear-aj)} .item.mx.svelte-1cp0kbr:not(.zero) div:nth-child(2), .item.full.svelte-1cp0kbr div:nth-child(2){color:var(--theme-clear-aj);text-shadow:0 0 10px var(--theme-clear-aj)} .item.zero.svelte-1cp0kbr div:nth-child(2){color:var(--theme-text-dim)} .total.svelte-1cp0kbr{color:var(--theme-text-dim);font-size:0.8rem;display:flex;align-items:end}` );
     }
 
     function No(e, t, n) {
@@ -4139,38 +4139,111 @@
     }
 
     function Ao(t) {
-      let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w = ["S", "S+", "SS", "SS+", "SSS", "SSS+", "CLR", "HRD", "BRV", "ABS", "CTS"],
-        $ = [];
-      for (let e = 0; e < 11; e += 1) $[e] = Ho(No(t, w, e));
-      let x = t[0].MAX > 0 && Uo(t);
+      let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, C;
+      let S1 = ["S", "S+", "SS", "SS+", "SSS", "SSS+"];
+      let S2 = ["CLR", "HRD", "BRV", "ABS", "CTS"];
+      let z1 = [], z2 = [];
+    
+      for (let e = 0; e < 6; e++) z1[e] = Ho(No(t, S1, e));
+      for (let e = 0; e < 5; e++) z2[e] = Ho(No(t, S2, e));
+      let _ = t[0].MAX > 0 && Uo(t);
+    
       return {
         c() {
           n = H("div");
-          for (let e = 0; e < 11; e += 1) $[e].c();
-          r = D(), x && x.c(), o = D(), s = H("div"), a = H("div"), a.textContent = "FC", i = D(), l = H("div"), c = A(t[1]), d = D(), u = H("div"), f = H("div"), f.textContent = "AJ", p = D(), h = H("div"), g = A(t[2]), m = D(), v = H("div"), b = A("/"), y = A(t[3]), O(a, "class", "svelte-1cp0kbr"), O(l, "class", "svelte-1cp0kbr"), O(s, "class", "item fc svelte-1cp0kbr"), B(s, "zero", 0 == t[1]), B(s, "full", t[1] == t[3]), O(f, "class", "svelte-1cp0kbr"), O(h, "class", "svelte-1cp0kbr"), O(u, "class", "item aj svelte-1cp0kbr"), B(u, "zero", 0 == t[2]), B(u, "full", t[2] == t[3]), O(v, "class", "total svelte-1cp0kbr"), O(n, "class", "wrapper svelte-1cp0kbr")
+          for (let e = 0; e < 6; e++) z1[e].c();
+          r = D();
+          o = H("div");
+          for (let e = 0; e < 5; e++) z2[e].c();
+          s = D();
+          _ && _.c();
+          a = D();
+          i = H("div");
+          l = H("div");
+          l.textContent = "FC";
+          c = D();
+          d = H("div");
+          u = A(t[1]);
+          f = D();
+          p = H("div");
+          h = H("div");
+          h.textContent = "AJ";
+          g = D();
+          m = H("div");
+          v = A(t[2]);
+          b = D();
+          y = H("div");
+          w = A("/");
+          $ = A(t[3]);
+    
+          O(n, "class", "wrapper svelte-1cp0kbr");
+          O(o, "class", "wrapper svelte-1cp0kbr");
+          O(l, "class", "svelte-1cp0kbr");
+          O(d, "class", "svelte-1cp0kbr");
+          O(i, "class", "item fc svelte-1cp0kbr");
+          B(i, "zero", 0 == t[1]);
+          B(i, "full", t[1] == t[3]);
+          O(h, "class", "svelte-1cp0kbr");
+          O(m, "class", "svelte-1cp0kbr");
+          O(p, "class", "item aj svelte-1cp0kbr");
+          B(p, "zero", 0 == t[2]);
+          B(p, "full", t[2] == t[3]);
+          O(y, "class", "total svelte-1cp0kbr");
         },
         m(e, t) {
           M(e, n, t);
-          for (let e = 0; e < 11; e += 1) $[e] && $[e].m(n, null);
-          k(n, r), x && x.m(n, null), k(n, o), k(n, s), k(s, a), k(s, i), k(s, l), k(l, c), k(n, d), k(n, u), k(u, f), k(u, p), k(u, h), k(h, g), k(n, m), k(n, v), k(v, b), k(v, y)
+          for (let e = 0; e < 6; e++) z1[e].m(n, null);
+          M(e, r, t);
+          M(e, o, t);
+          for (let e = 0; e < 5; e++) z2[e].m(o, null);
+          M(e, s, t);
+          _ && _.m(e, t);
+          M(e, a, t);
+          M(e, i, t);
+          k(i, l);
+          k(i, c);
+          k(i, d);
+          k(d, u);
+          M(e, f, t);
+          M(e, p, t);
+          k(p, h);
+          k(p, g);
+          k(p, m);
+          k(m, v);
+          M(e, b, t);
+          M(e, y, t);
+          k(y, w);
+          k(y, $);
         },
         p(e, [t]) {
           if (9 & t) {
-            let o;
-            for (w = ["S", "S+", "SS", "SS+", "SSS", "SSS+", "CLR", "HRD", "BRV", "ABS", "CTS"], o = 0; o < 11; o += 1) {
-              const s = No(e, w, o);
-              $[o] ? $[o].p(s, t) : ($[o] = Ho(s), $[o].c(), $[o].m(n, r))
+            let r;
+            for (r = 0; r < 6; r++) {
+              const o = No(e, S1, r);
+              z1[r] ? z1[r].p(o, t) : ((z1[r] = Ho(o)), z1[r].c(), z1[r].m(n, null));
             }
-            for (; o < 11; o += 1) $[o].d(1)
+            for (r = 0; r < 5; r++) {
+              const o = No(e, S2, r);
+              z2[r] ? z2[r].p(o, t) : ((z2[r] = Ho(o)), z2[r].c(), z2[r].m(o, null));
+            }
           }
-          e[0].MAX > 0 ? x ? x.p(e, t) : (x = Uo(e), x.c(), x.m(n, o)) : x && (x.d(1), x = null), 2 & t && I(c, e[1]), 2 & t && B(s, "zero", 0 == e[1]), 10 & t && B(s, "full", e[1] == e[3]), 4 & t && I(g, e[2]), 4 & t && B(u, "zero", 0 == e[2]), 12 & t && B(u, "full", e[2] == e[3]), 8 & t && I(y, e[3])
+          e[0].MAX > 0
+            ? _ ? _.p(e, t) : ((_ = Uo(e)), _.c(), _.m(y.parentNode, b))
+            : _ && (_.d(1), (_ = null));
+          2 & t && I(u, e[1]);
+          2 & t && B(i, "zero", 0 == e[1]);
+          10 & t && B(i, "full", e[1] == e[3]);
+          4 & t && I(v, e[2]);
+          4 & t && B(p, "zero", 0 == e[2]);
+          12 & t && B(p, "full", e[2] == e[3]);
+          8 & t && I($, e[3]);
         },
         i: e,
         o: e,
         d(e) {
-          e && E(n), N($, e), x && x.d()
+          e && E(n), N(z1, e), e && E(o), N(z2, e), _ && _.d(), e && E(i), e && E(p), e && E(y);
         }
-      }
+      };
     }
 
     function Do(e, t, n) {
