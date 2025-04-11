@@ -4148,21 +4148,18 @@
       let Mx = t[0].MAX > 0 && Uo(t);
       return {
         c() {
-          // 第一行 wrapper
           n = H("div");
           for (let e = 0; e < 6; e++) z1[e].c();
           r = D();
           Mx && Mx.c();
           o = D();
-          s = H("div"); // total
+          s = H("div");
           a = A("/" + t[3]);
           O(n, "class", "wrapper svelte-1cp0kbr");
           O(s, "class", "total svelte-1cp0kbr");
-          // 第二行 wrapper
           i = H("div");
           for (let e = 0; e < 5; e++) z2[e].c();
           l = D();
-          // FC
           c = H("div");
           d = H("div");
           d.textContent = "FC";
@@ -4174,7 +4171,6 @@
           O(c, "class", "item fc svelte-1cp0kbr");
           B(c, "zero", 0 == t[1]);
           B(c, "full", t[1] == t[3]);
-          // AJ
           h = H("div");
           g = H("div");
           g.textContent = "AJ";
@@ -4213,7 +4209,6 @@
         p(e, [t]) {
           if (1 & t) {
             for (let r = 0; r < 6; r++) {
-
               const o = No(e, S1, r);
               z1[r] ? z1[r].p(o, t) : ((z1[r] = Ho(o)), z1[r].c(), z1[r].m(n, null));
             }
@@ -4225,7 +4220,6 @@
           e[0].MAX > 0
             ? Mx ? Mx.p(e, t) : ((Mx = Uo(e)), Mx.c(), Mx.m(n, o))
             : Mx && (Mx.d(1), Mx = null);
-    
           8 & t && I(a, "/" + e[3]);
           2 & t && I(p, e[1]);
           2 & t && B(c, "zero", 0 == e[1]);
