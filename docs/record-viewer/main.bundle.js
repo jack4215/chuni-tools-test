@@ -4369,7 +4369,7 @@
           total: e[0].length
         }
       });
-      let s = "hide" != e[2] && qo(e);
+      let s = e[2] != "hide" && e[2] != "clr" && qo(e);
       return {
         c() {
           $e(t.$$.fragment), n = D(), s && s.c(), r = L()
