@@ -4576,7 +4576,7 @@
     }
 
     function Go(e) {
-      let t, n, r, o, s, a, i, l, c, d, u;
+      let t, n, r, o, cp, s, a, i, l, c, d, u;
       document.title = o = e[7]("main.title");
       let f = {
         ctx: e,
@@ -4666,7 +4666,7 @@
           for (const t of r) e[t.clear2]++;
           return Object.keys(e).reduce(((t, n) => (e[n] += e[t], n))), e
         })()), 1 & e.$$.dirty && n(1, s = r.filter((e => "AJ" == e.clear)).length), 3 & e.$$.dirty && n(3, a = s + r.filter((e => "FC" == e.clear)).length)
-      },[r, s, f, a, o, p, v, b, y, w, $, x, k, function() {
+      },[r, s, f, a, o, cp, v, b, y, w, $, x, k, function() {
         p($t, v = window.location.hash.slice(1), v), "all" !== v && p(Tt, m = !1, m)
       }, async function() {
         Re(window.opener, Le)("saveConfig", {
