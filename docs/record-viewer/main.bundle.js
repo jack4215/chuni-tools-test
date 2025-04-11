@@ -4139,112 +4139,119 @@
     }
 
     function Ao(t) {
-      let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, C;
+      let n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y;
       let S1 = ["S", "S+", "SS", "SS+", "SSS", "SSS+"];
       let S2 = ["CLR", "HRD", "BRV", "ABS", "CTS"];
       let z1 = [], z2 = [];
     
       for (let e = 0; e < 6; e++) z1[e] = Ho(No(t, S1, e));
       for (let e = 0; e < 5; e++) z2[e] = Ho(No(t, S2, e));
-      let _ = t[0].MAX > 0 && Uo(t);
+      let Mx = t[0].MAX > 0 && Uo(t);
     
       return {
         c() {
+          // 第一行 wrapper
           n = H("div");
           for (let e = 0; e < 6; e++) z1[e].c();
           r = D();
-          o = H("div");
-          for (let e = 0; e < 5; e++) z2[e].c();
-          s = D();
-          _ && _.c();
-          a = D();
-          i = H("div");
-          l = H("div");
-          l.textContent = "FC";
-          c = D();
-          d = H("div");
-          u = A(t[1]);
-          f = D();
-          p = H("div");
-          h = H("div");
-          h.textContent = "AJ";
-          g = D();
-          m = H("div");
-          v = A(t[2]);
-          b = D();
-          y = H("div");
-          w = A("/");
-          $ = A(t[3]);
-    
+          Mx && Mx.c();
+          o = D();
+          s = H("div"); // total
+          a = A(t[3]);
           O(n, "class", "wrapper svelte-1cp0kbr");
-          O(o, "class", "wrapper svelte-1cp0kbr");
-          O(l, "class", "svelte-1cp0kbr");
+          O(s, "class", "total svelte-1cp0kbr");
+    
+          // 第二行 wrapper
+          i = H("div");
+          for (let e = 0; e < 5; e++) z2[e].c();
+          l = D();
+    
+          // FC
+          c = H("div");
+          d = H("div");
+          d.textContent = "FC";
+          u = D();
+          f = H("div");
+          p = A(t[1]);
           O(d, "class", "svelte-1cp0kbr");
-          O(i, "class", "item fc svelte-1cp0kbr");
-          B(i, "zero", 0 == t[1]);
-          B(i, "full", t[1] == t[3]);
-          O(h, "class", "svelte-1cp0kbr");
-          O(m, "class", "svelte-1cp0kbr");
-          O(p, "class", "item aj svelte-1cp0kbr");
-          B(p, "zero", 0 == t[2]);
-          B(p, "full", t[2] == t[3]);
+          O(f, "class", "svelte-1cp0kbr");
+          O(c, "class", "item fc svelte-1cp0kbr");
+          B(c, "zero", 0 == t[1]);
+          B(c, "full", t[1] == t[3]);
+    
+          // AJ
+          h = H("div");
+          g = H("div");
+          g.textContent = "AJ";
+          m = D();
+          v = H("div");
+          b = A(t[2]);
+          O(g, "class", "svelte-1cp0kbr");
+          O(v, "class", "svelte-1cp0kbr");
+          O(h, "class", "item aj svelte-1cp0kbr");
+          B(h, "zero", 0 == t[2]);
+          B(h, "full", t[2] == t[3]);
+    
+          // 第二行 total
+          y = H("div");
+          y.textContent = `${t[1] + t[2]}/${t[3]}`;
+          O(i, "class", "wrapper svelte-1cp0kbr");
           O(y, "class", "total svelte-1cp0kbr");
         },
         m(e, t) {
           M(e, n, t);
           for (let e = 0; e < 6; e++) z1[e].m(n, null);
-          M(e, r, t);
-          M(e, o, t);
-          for (let e = 0; e < 5; e++) z2[e].m(o, null);
-          M(e, s, t);
-          _ && _.m(e, t);
-          M(e, a, t);
+          k(n, r);
+          Mx && Mx.m(n, null);
+          k(n, o);
+          k(n, s);
+          k(s, a);
+    
           M(e, i, t);
+          for (let e = 0; e < 5; e++) z2[e].m(i, null);
           k(i, l);
           k(i, c);
-          k(i, d);
-          k(d, u);
-          M(e, f, t);
-          M(e, p, t);
-          k(p, h);
-          k(p, g);
-          k(p, m);
-          k(m, v);
-          M(e, b, t);
-          M(e, y, t);
-          k(y, w);
-          k(y, $);
+          k(c, d);
+          k(c, u);
+          k(c, f);
+          k(f, p);
+          k(i, h);
+          k(h, g);
+          k(h, m);
+          k(h, v);
+          k(v, b);
+          k(i, y);
         },
         p(e, [t]) {
-          if (9 & t) {
-            let r;
-            for (r = 0; r < 6; r++) {
+          if (1 & t) {
+            for (let r = 0; r < 6; r++) {
               const o = No(e, S1, r);
               z1[r] ? z1[r].p(o, t) : ((z1[r] = Ho(o)), z1[r].c(), z1[r].m(n, null));
             }
-            for (r = 0; r < 5; r++) {
+            for (let r = 0; r < 5; r++) {
               const o = No(e, S2, r);
-              z2[r] ? z2[r].p(o, t) : ((z2[r] = Ho(o)), z2[r].c(), z2[r].m(o, null));
+              z2[r] ? z2[r].p(o, t) : ((z2[r] = Ho(o)), z2[r].c(), z2[r].m(i, null));
             }
           }
+    
           e[0].MAX > 0
-            ? _ ? _.p(e, t) : ((_ = Uo(e)), _.c(), _.m(y.parentNode, b))
-            : _ && (_.d(1), (_ = null));
-          2 & t && I(u, e[1]);
-          2 & t && B(i, "zero", 0 == e[1]);
-          10 & t && B(i, "full", e[1] == e[3]);
-          4 & t && I(v, e[2]);
-          4 & t && B(p, "zero", 0 == e[2]);
-          12 & t && B(p, "full", e[2] == e[3]);
-          8 & t && I($, e[3]);
+            ? Mx ? Mx.p(e, t) : ((Mx = Uo(e)), Mx.c(), Mx.m(n, o))
+            : Mx && (Mx.d(1), Mx = null);
+    
+          8 & t && I(a, e[3]);
+          2 & t && I(p, e[1]);
+          2 & t && B(c, "zero", 0 == e[1]);
+          10 & t && B(c, "full", e[1] == e[3]);
+          4 & t && I(b, e[2]);
+          4 & t && B(h, "zero", 0 == e[2]);
+          12 & t && B(h, "full", e[2] == e[3]);
+          14 & t && I(y, `${e[1] + e[2]}/${e[3]}`);
         },
-        i: e,
-        o: e,
         d(e) {
-          e && E(n), N(z1, e), e && E(o), N(z2, e), _ && _.d(), e && E(i), e && E(p), e && E(y);
+          e && E(n), N(z1, e), Mx && Mx.d(e), e && E(i), N(z2, e), e && E(c), e && E(h), e && E(y);
         }
       };
-    }
+    }    
 
     function Do(e, t, n) {
       let {
