@@ -4161,7 +4161,7 @@
               const s = No(e, w, o);
               $[o] ? $[o].p(s, t) : ($[o] = Ho(s), $[o].c(), $[o].m(n, r))
             }
-            for (; o < 6; o += 1) $[o].d(1)
+            for (; o < 11; o += 1) $[o].d(1)
           }
           e[0].MAX > 0 ? x ? x.p(e, t) : (x = Uo(e), x.c(), x.m(n, o)) : x && (x.d(1), x = null), 2 & t && I(c, e[1]), 2 & t && B(s, "zero", 0 == e[1]), 10 & t && B(s, "full", e[1] == e[3]), 4 & t && I(g, e[2]), 4 & t && B(u, "zero", 0 == e[2]), 12 & t && B(u, "full", e[2] == e[3]), 8 & t && I(y, e[3])
         },
