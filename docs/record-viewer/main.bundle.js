@@ -4155,7 +4155,7 @@
           Mx && Mx.c();
           o = D();
           s = H("div"); // total
-          a = A(t[3]);
+          a = A("/" + t[3]);
           O(n, "class", "wrapper svelte-1cp0kbr");
           O(s, "class", "total svelte-1cp0kbr");
           // 第二行 wrapper
@@ -4186,11 +4186,6 @@
           O(h, "class", "item aj svelte-1cp0kbr");
           B(h, "zero", 0 == t[2]);
           B(h, "full", t[2] == t[3]);
-          // 第二行 total
-          y = H("div");
-          y.textContent = `${t[1] + t[2]}/${t[3]}`;
-          O(i, "class", "wrapper svelte-1cp0kbr");
-          O(y, "class", "total svelte-1cp0kbr");
         },
         m(e, t) {
           M(e, n, t);
@@ -4213,7 +4208,6 @@
           k(h, m);
           k(h, v);
           k(v, b);
-          k(i, y);
         },
         p(e, [t]) {
           if (1 & t) {
@@ -4238,10 +4232,9 @@
           4 & t && I(b, e[2]);
           4 & t && B(h, "zero", 0 == e[2]);
           12 & t && B(h, "full", e[2] == e[3]);
-          14 & t && I(y, `${e[1] + e[2]}/${e[3]}`);
         },
         d(e) {
-          e && E(n), N(z1, e), Mx && Mx.d(e), e && E(i), N(z2, e), e && E(c), e && E(h), e && E(y);
+          e && E(n), N(z1, e), Mx && Mx.d(e), e && E(i), N(z2, e), e && E(c), e && E(h);
         }
       };
     }
