@@ -3767,8 +3767,7 @@
         }, {
           display: "clr",
           sort: "clr",
-          condition: "clr" == l,
-          nocur: !i
+          condition: "clr" == l
         }, {
           display: i ? "scoreDiff" : "score",
           sort: i ? "scoreDiff" : "score"
