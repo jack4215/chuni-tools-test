@@ -3277,6 +3277,24 @@
       }
     }
 
+    function Rrr(e) {
+      let t, n, r, o = e[0].clear2 + "";
+      return {
+        c() {
+          t = H("td"), n = A(o), O(t, "data-clr", r = e[0].clear2), O(t, "class", "svelte-1gjhsjp")
+        },
+        m(e, r) {
+          M(e, t, r), k(t, n)
+        },
+        p(e, s) {
+          1 & s && o !== (o = e[0].clear2 + "") && I(n, o), 1 & s && r !== (r = e[0].clear2) && O(t, "data-clr", r)
+        },
+        d(e) {
+          e && E(t)
+        }
+      }
+    }
+
     function zr(e) {
       let t, n, r;
       function o(e, t) {
@@ -3475,7 +3493,9 @@
         N = t[0].constUncertain && Ir();
       let newVIndicator = (t[0].newV === 1 || (t[0].newV === 2 && t[0].difficulty === "ULT")) && Vz(T);
       function U(e, t) {
-        return "hide" != e[1] ? zr : Rr
+        if (e[1] === "hide") return Rr;
+        if (e[1] === "clr") return Rrr;
+        return zr;
       }
       let L = U(t),
         _ = L(t);
