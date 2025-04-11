@@ -195,6 +195,7 @@
                                         score: n(t),
                                         difficulty: "ultimate" == a ? "ULT" : "worldsend" == a ? "WE" : o[a],
                                         clear: c.some((e => e.querySelector('img[src*="alljustice"]'))) ? "AJ" : c.some((e => e.querySelector('img[src*="fullcombo"]'))) ? "FC" : "",
+                                        clear2: c.some((e => e.querySelector('img[src*="clear"]'))) ? "CLR" : c.some((e => e.querySelector('img[src*="hard"]'))) ? "HRD" : c.some((e => e.querySelector('img[src*="absolutep"]'))) ? "ABS" : c.some((e => e.querySelector('img[src*="absolute"]'))) ? "BRV" : c.some((e => e.querySelector('img[src*="catastrophy"]'))) ? "CTS" : "",
                                         timestamp: Date.parse(e.querySelector(".play_datalist_date").innerHTML)
                                     }
                                 }
