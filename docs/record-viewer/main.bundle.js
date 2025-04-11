@@ -4143,11 +4143,9 @@
       let S1 = ["S", "S+", "SS", "SS+", "SSS", "SSS+"];
       let S2 = ["CLR", "HRD", "BRV", "ABS", "CTS"];
       let z1 = [], z2 = [];
-    
       for (let e = 0; e < 6; e++) z1[e] = Ho(No(t, S1, e));
       for (let e = 0; e < 5; e++) z2[e] = Ho(No(t, S2, e));
       let Mx = t[0].MAX > 0 && Uo(t);
-    
       return {
         c() {
           // 第一行 wrapper
@@ -4157,15 +4155,13 @@
           Mx && Mx.c();
           o = D();
           s = H("div"); // total
-          a = A("/" + t[3]);
+          a = A(t[3]);
           O(n, "class", "wrapper svelte-1cp0kbr");
           O(s, "class", "total svelte-1cp0kbr");
-    
           // 第二行 wrapper
           i = H("div");
           for (let e = 0; e < 5; e++) z2[e].c();
           l = D();
-    
           // FC
           c = H("div");
           d = H("div");
@@ -4178,7 +4174,6 @@
           O(c, "class", "item fc svelte-1cp0kbr");
           B(c, "zero", 0 == t[1]);
           B(c, "full", t[1] == t[3]);
-    
           // AJ
           h = H("div");
           g = H("div");
@@ -4191,6 +4186,11 @@
           O(h, "class", "item aj svelte-1cp0kbr");
           B(h, "zero", 0 == t[2]);
           B(h, "full", t[2] == t[3]);
+          // 第二行 total
+          y = H("div");
+          y.textContent = `${t[1] + t[2]}/${t[3]}`;
+          O(i, "class", "wrapper svelte-1cp0kbr");
+          O(y, "class", "total svelte-1cp0kbr");
         },
         m(e, t) {
           M(e, n, t);
@@ -4200,7 +4200,6 @@
           k(n, o);
           k(n, s);
           k(s, a);
-    
           M(e, i, t);
           for (let e = 0; e < 5; e++) z2[e].m(i, null);
           k(i, l);
@@ -4214,10 +4213,12 @@
           k(h, m);
           k(h, v);
           k(v, b);
+          k(i, y);
         },
         p(e, [t]) {
           if (1 & t) {
             for (let r = 0; r < 6; r++) {
+
               const o = No(e, S1, r);
               z1[r] ? z1[r].p(o, t) : ((z1[r] = Ho(o)), z1[r].c(), z1[r].m(n, null));
             }
@@ -4226,7 +4227,6 @@
               z2[r] ? z2[r].p(o, t) : ((z2[r] = Ho(o)), z2[r].c(), z2[r].m(i, null));
             }
           }
-    
           e[0].MAX > 0
             ? Mx ? Mx.p(e, t) : ((Mx = Uo(e)), Mx.c(), Mx.m(n, o))
             : Mx && (Mx.d(1), Mx = null);
@@ -4238,9 +4238,10 @@
           4 & t && I(b, e[2]);
           4 & t && B(h, "zero", 0 == e[2]);
           12 & t && B(h, "full", e[2] == e[3]);
+          14 & t && I(y, `${e[1] + e[2]}/${e[3]}`);
         },
         d(e) {
-          e && E(n), N(z1, e), Mx && Mx.d(e), e && E(i), N(z2, e), e && E(c), e && E(h)
+          e && E(n), N(z1, e), Mx && Mx.d(e), e && E(i), N(z2, e), e && E(c), e && E(h), e && E(y);
         }
       };
     }
