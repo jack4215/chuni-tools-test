@@ -4186,6 +4186,7 @@
           O(h, "class", "item aj svelte-1cp0kbr");
           B(h, "zero", 0 == t[2]);
           B(h, "full", t[2] == t[3]);
+          O(i, "class", "wrapper svelte-1cp0kbr");
         },
         m(e, t) {
           M(e, n, t);
