@@ -840,12 +840,12 @@
       score: (e, t) => t.score - e.score || e.order - t.order,
       scoreDiff: (e, t) => t.scoreDiff - e.scoreDiff || e.order - t.order,
       rating: (e, t) => e.order - t.order,
-      clr: (e, t) => {
+      aj: (e, t) => {
         if (e.clear == t.clear) return e.order - t.order;
         const n = ["", "FC", "AJ"];
         return n.indexOf(t.clear) - n.indexOf(e.clear)
       },
-      aj: (e, t) => {
+      clr: (e, t) => {
         if (e.clear2 == t.clear2) return e.order - t.order;
         const nn = ["", "CLR", "HRD", "BRV", "ABS", "CTS"];
         return nn.indexOf(t.clear2) - nn.indexOf(e.clear2)
