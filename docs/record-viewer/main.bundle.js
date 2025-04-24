@@ -2055,7 +2055,7 @@
 
     function _n(e) {
       let t, n, r, o, s, a = e[4] + "";
-      console.log(e);
+
       function i() {
         return e[3](e[4])
       }
@@ -2144,13 +2144,13 @@
       }
       return {
         c() {
-          t = H("button"), n = A(s), O(t, "type", "button"), t.disabled = e[2], O(t, "class", "svelte-by0uiq"), B(t, "activated", e[1][e[5]])
+          t = H("button"), n = A(s), O(t, "type", "button"), O(t, "class", "svelte-by0uiq"), B(t, "activated", e[1][e[5]])
         },
         m(e, s) {
           M(e, t, s), k(t, n), r || (o = P(t, "click", a), r = !0)
         },
         p(n, r) {
-          e = n, 4 & r && (t.disabled = e[2]), 2 & r && B(t, "activated", e[1][e[5]])
+          e = n, 2 & r && B(t, "activated", e[1][e[5]])
         },
         d(e) {
           e && E(t), r = !1, o()
@@ -2224,19 +2224,18 @@
 
     function qnn(e) {
       let t, n, r, o, s = e[5] + "";
-      console.log(e);
       function a() {
         return e[3](e[5])
       }
       return {
         c() {
-          t = H("button"), n = A(s), O(t, "type", "button"), t.disabled = e[2], O(t, "class", "svelte-by0uoq"), B(t, "activated", e[1][e[5]])
+          t = H("button"), n = A(s), O(t, "type", "button"), O(t, "class", "svelte-by0uoq"), B(t, "activated", e[1][e[5]])
         },
         m(e, s) {
           M(e, t, s), k(t, n), r || (o = P(t, "click", a), r = !0)
         },
         p(n, r) {
-          e = n, 4 & r && (t.disabled = e[2]), 2 & r && B(t, "activated", e[1][e[5]])
+          e = n, 2 & r && B(t, "activated", e[1][e[5]])
         },
         d(e) {
           e && E(t), r = !1, o()
