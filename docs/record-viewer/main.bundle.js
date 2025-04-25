@@ -2174,7 +2174,7 @@
         m(e, f) {
           M(e, n, f), k(n, r), r.innerHTML = u, k(n, o), k(n, s);
           for (let e = 0; e < h.length; e += 1) h[e] && h[e].m(s, null);
-          k(s, a), k(s, i), k(i, l), c || (d = P(i, "click", t[4]), c = !0)
+          k(s, a), k(s, i), k(i, l), c || (d = P(i, "click", t[5]), c = !0)
         },
         p(e, [t]) {
           if (4 & t && u !== (u = e[2]("settings.filter.genre") + "") && (r.innerHTML = u), 3 & t) {
