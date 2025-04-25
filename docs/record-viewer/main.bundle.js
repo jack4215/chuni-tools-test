@@ -2199,12 +2199,12 @@
       let r, o, v;
       u(e, et, (e => n(1, r = e))), u(e, wt, (e => n(2, o = e))), u(e, jt, (e => n(6, v = e)));
       let s = Ie.every((e => r[e]));
-      return [s, r, o, v, e => {
+      return [s, r, o, e => {
         p(et, r[e] = !r[e], r), n(0, s = Ie.every((e => r[e])))
       }, () => {
         n(0, s = !s);
         for (let e of Ie) p(et, r[e] = s, r)
-      }]
+      }, v]
     }
     const Xn = class extends Se {
       constructor(e) {
