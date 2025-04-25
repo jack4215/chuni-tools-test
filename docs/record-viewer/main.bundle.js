@@ -2134,9 +2134,7 @@
 
     function Vn(e, t, n) {
       const r = e.slice();
-      r[6] = t[n];
-      r[3] = e[3];
-      return r;
+      return r[6] = t[n], r
     }
 
     function qn(e) {
