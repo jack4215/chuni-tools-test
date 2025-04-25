@@ -2128,23 +2128,23 @@
     };
 
     function Bn(e) {
-      j(e, "svelte-by0uiq", '.wrapper.svelte-by0uiq{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:1rem}.btns.svelte-by0uiq{display:-ms-grid;display:grid;grid-template-areas:"... ... ...";gap:0.5rem;flex-wrap:wrap}button.svelte-by0uiq{width:100%;padding:0.5rem;border-radius:0.5rem;background-color:var(--theme-bg-sub);border:3px solid var(--theme-control);color:var(--theme-text-control);filter:brightness(0.5)}button.svelte-by0uiq:hover{filter:brightness(0.8)}button.activated.svelte-by0uiq{filter:brightness(1)}.btn-all.svelte-by0uiq{grid-column:2/4;border-color:var(--theme-control-altr)}')
+      j(e, "svelte-by0uiq", '.wrapper.svelte-by0uiq{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:1rem}.btns.svelte-by0uiq{display:-ms-grid;display:grid;grid-template-areas:"... ... ...";gap:0.5rem;flex-wrap:wrap}button.svelte-by0uiq{width:100%;padding:0.5rem;border-radius:0.5rem;background-color:var(--theme-bg-sub);border:3px solid var(--theme-control);color:var(--theme-text-control);filter:brightness(0.5)}button.svelte-by0uiq:hover{filter:brightness(0.8)}button.activated.svelte-by0uiq{filter:brightness(1)}.btn-all.svelte-by0uiq{grid-column:2/4;border-color:var(--theme-control-altr)}button[disabled].svelte-by0uiq{cursor:no-drop;border:3px solid var(--theme-bg-sub)}')
     }
 
     function Vn(e, t, n) {
       const r = e.slice();
-      return r[5] = t[n], r
+      return r[6] = t[n], r
     }
 
     function qn(e) {
       let t, n, r, o, s = e[5] + "";
-
+      console.log(e);
       function a() {
         return e[3](e[5])
       }
       return {
         c() {
-          t = H("button"), n = A(s), O(t, "type", "button"), O(t, "class", "svelte-by0uiq"), B(t, "activated", e[1][e[5]])
+          t = H("button"), n = A(s), O(t, "type", "button"), t.disabled = e[2], O(t, "class", "svelte-by0uiq"), B(t, "activated", e[1][e[6]])
         },
         m(e, s) {
           M(e, t, s), k(t, n), r || (o = P(t, "click", a), r = !0)
@@ -2196,10 +2196,10 @@
     }
 
     function Jn(e, t, n) {
-      let r, o;
-      u(e, et, (e => n(1, r = e))), u(e, wt, (e => n(2, o = e)));
+      let r, o, v;
+      u(e, et, (e => n(1, r = e))), u(e, wt, (e => n(2, o = e))), u(e, jt, (e => n(6, v = e)));
       let s = Ie.every((e => r[e]));
-      return [s, r, o, e => {
+      return [s, r, o, v, e => {
         p(et, r[e] = !r[e], r), n(0, s = Ie.every((e => r[e])))
       }, () => {
         n(0, s = !s);
@@ -2213,7 +2213,7 @@
     };
 
     function Bnn(e) {
-      j(e, "svelte-by0uoq", '.wrapper.svelte-by0uoq{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:1rem}.btns.svelte-by0uoq{display:-ms-grid;display:grid;grid-template-columns: repeat(4, 1fr);grid-template-areas:".... .... ....";gap:0.5rem;flex-wrap:wrap}button.svelte-by0uoq{width:100%;padding:0.5rem;border-radius:0.5rem;background-color:var(--theme-bg-sub);border:3px solid var(--theme-control);color:var(--theme-text-control);filter:brightness(0.5)}button.svelte-by0uoq:hover{filter:brightness(0.8)}button.activated.svelte-by0uoq{filter:brightness(1)}.btn-all.svelte-by0uoq{grid-column:2/4;border-color:var(--theme-control-altr)}')
+      j(e, "svelte-by0uoq", '.wrapper.svelte-by0uoq{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:1rem}.btns.svelte-by0uoq{display:-ms-grid;display:grid;grid-template-columns: repeat(4, 1fr);grid-template-areas:".... .... ....";gap:0.5rem;flex-wrap:wrap}button.svelte-by0uoq{width:100%;padding:0.5rem;border-radius:0.5rem;background-color:var(--theme-bg-sub);border:3px solid var(--theme-control);color:var(--theme-text-control);filter:brightness(0.5)}button.svelte-by0uoq:hover{filter:brightness(0.8)}button.activated.svelte-by0uoq{filter:brightness(1)}.btn-all.svelte-by0uoq{grid-column:2/4;border-color:var(--theme-control-altr)}button[disabled].svelte-by0uoq{cursor:no-drop;border:3px solid var(--theme-bg-sub)}')
     }
 
     function Vnn(e, t, n) {
