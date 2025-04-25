@@ -2771,11 +2771,7 @@
         } else {
           Ne.min = 1;
         }
-        if (f) {
-          f.$set({ min: Ne.min });
-        }
       }
-      
       updateNe();
       window.addEventListener("storage", (event) => {
         if (event.key === "filterDiff") {
