@@ -2145,13 +2145,13 @@
       }
       return {
         c() {
-          t = H("button"), n = A(s), O(t, "type", "button"), O(t, "class", "svelte-by0uiq"), B(t, "activated", e[1][e[6]])
+          t = H("button"), n = A(s), O(t, "type", "button"), t.disabled = e[2], O(t, "class", "svelte-by0uiq"), B(t, "activated", e[1][e[6]])
         },
         m(e, s) {
           M(e, t, s), k(t, n), r || (o = P(t, "click", a), r = !0)
         },
         p(n, r) {
-          e = n, 2 & r && B(t, "activated", e[1][e[6]])
+          e = n, 4 & r && (t.disabled = e[2]), 2 & r && B(t, "activated", e[1][e[6]])
         },
         d(e) {
           e && E(t), r = !1, o()
