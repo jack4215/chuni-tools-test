@@ -2339,7 +2339,7 @@
               progress: `${r}`,
               all: `${n}`
             })), null == s.playCount && (s.playCount = await gt("songPlayCount", s.difficulty, s.idx), At.set(i));
-            p(jt, r = !1, r), p(St, a = !1, a)
+            At.set(i), sFS = i, p(jt, r = !1, r), p(St, a = !1, a)
           } catch {
             p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s), setTimeout((() => {
               p(jt, r = !1, r)
