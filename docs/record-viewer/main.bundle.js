@@ -2758,20 +2758,20 @@
       };
       function updateNe() {
         const filterDiff = JSON.parse(localStorage.getItem("filterDiff"));
-        let newMin = 1;
         if (filterDiff) {
           if (!filterDiff.BAS && !filterDiff.ADV && !filterDiff.EXP) {
-            newMin = 10;
+            Ne.min = 10;
           } else if (!filterDiff.BAS && !filterDiff.ADV) {
-            newMin = 7; 
+            Ne.min = 7; 
           } else if (!filterDiff.BAS) {
-            newMin = 4;
+            Ne.min = 4;
+          } else {
+            Ne.min = 1;
           }
+        } else {
+          Ne.min = 1;
         }
-        Ne.min = newMin;
-        f.$set({ min: newMin });
       }
-      
       updateNe();
       window.addEventListener("storage", (event) => {
         if (event.key === "filterDiff") {
