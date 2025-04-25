@@ -2168,7 +2168,7 @@
         c() {
           n = H("div"), r = H("span"), o = D(), s = H("div");
           for (let e = 0; e < h.length; e += 1) h[e].c();
-          a = D(), i = H("button"), l = A(f), O(i, "type", "button"), O(i, "class", "btn-all svelte-by0uiq"), B(i, "activated", t[0]), O(s, "class", "btns svelte-by0uiq"), O(n, "class", "wrapper svelte-by0uiq")
+          a = D(), i = H("button"), l = A(f), O(i, "type", "button"), O(i, "class", "btn-all svelte-by0uiq"), B(i, "activated", t[0]), i.disabled = t[5], O(s, "class", "btns svelte-by0uiq"), O(n, "class", "wrapper svelte-by0uiq")
         },
         m(e, f) {
           M(e, n, f), k(n, r), r.innerHTML = u, k(n, o), k(n, s);
@@ -2185,7 +2185,7 @@
             for (; n < h.length; n += 1) h[n].d(1);
             h.length = p.length
           }
-          4 & t && f !== (f = e[2]("settings.filter.genre.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0])
+          4 & t && f !== (f = e[2]("settings.filter.genre.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0]), 32 & t && (i.disabled = e[5])
         },
         i: e,
         o: e,
@@ -2253,7 +2253,7 @@
         c() {
           n = H("div"), r = H("span"), o = D(), s = H("div");
           for (let e = 0; e < h.length; e += 1) h[e].c();
-          a = D(), i = H("button"), l = A(f), O(i, "type", "button"), O(i, "class", "btn-all svelte-by0uoq"), B(i, "activated", t[0]), O(s, "class", "btns svelte-by0uoq"), O(n, "class", "wrapper svelte-by0uoq")
+          a = D(), i = H("button"), l = A(f), O(i, "type", "button"), O(i, "class", "btn-all svelte-by0uoq"), B(i, "activated", t[0]), i.disabled = t[5], O(s, "class", "btns svelte-by0uoq"), O(n, "class", "wrapper svelte-by0uoq")
         },
         m(e, f) {
           M(e, n, f), k(n, r), r.innerHTML = u, k(n, o), k(n, s);
@@ -2270,7 +2270,7 @@
             for (; n < h.length; n += 1) h[n].d(1);
             h.length = p.length
           }
-          4 & t && f !== (f = e[2]("settings.filter.release.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0])
+          4 & t && f !== (f = e[2]("settings.filter.release.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0]), 32 & t && (i.disabled = e[5])
         },
         i: e,
         o: e,
