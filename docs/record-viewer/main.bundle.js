@@ -2185,7 +2185,7 @@
             for (; n < h.length; n += 1) h[n].d(1);
             h.length = p.length
           }
-          4 & t && f !== (f = e[2]("settings.filter.genre.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0]), 32 & t && (i.disabled = e[5])
+          4 & t && f !== (f = e[2]("settings.filter.genre.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0])/*, 32 & t && (i.disabled = e[5])*/
         },
         i: e,
         o: e,
@@ -2270,7 +2270,7 @@
             for (; n < h.length; n += 1) h[n].d(1);
             h.length = p.length
           }
-          4 & t && f !== (f = e[2]("settings.filter.release.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0]), 32 & t && (i.disabled = e[5])
+          4 & t && f !== (f = e[2]("settings.filter.release.all") + "") && I(l, f), 1 & t && B(i, "activated", e[0])/*, 32 & t && (i.disabled = e[5])*/
         },
         i: e,
         o: e,
