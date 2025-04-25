@@ -2338,8 +2338,8 @@
             for (const [r, s] of sFS.slice(e - 1, t).entries()) kt.set(o("playcount.fetch.progress", {
               progress: `${r}`,
               all: `${n}`
-            })), null == s.playCount && (s.playCount = await gt("songPlayCount", s.difficulty, s.idx), At.set(i));
-            At.set(sFS), p(jt, r = !1, r), p(St, a = !1, a)
+            })), null == s.playCount && (s.playCount = await gt("songPlayCount", s.difficulty, s.idx), At.set(sFS));
+            p(jt, r = !1, r), p(St, a = !1, a)
           } catch {
             p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s), setTimeout((() => {
               p(jt, r = !1, r)
