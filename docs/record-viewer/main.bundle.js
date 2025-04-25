@@ -1993,7 +1993,7 @@
         f = c,
         p = d;
       return e.$$set = e => {
-        "label" in e && n(2, s = e.label), "min" in e && n(3, a = e.min), "max" in e && n(4, i = e.max), "step" in e && n(5, l = e.step), "low" in e && n(0, c = e.low), "high" in e && n(1, d = e.high), ("min" in e || "max" in e) && (n(6, f = f), n(7, p = p))
+        "label" in e && n(2, s = e.label), "min" in e && n(3, a = e.min), "max" in e && n(4, i = e.max), "step" in e && n(5, l = e.step), "low" in e && n(0, c = e.low), "high" in e && n(1, d = e.high)
       }, e.$$.update = () => {
         72 & e.$$.dirty && n(9, r = (f - a) / u * 100), 136 & e.$$.dirty && n(8, o = (p - a) / u * 100)
       }, [c, d, s, a, i, l, f, p, o, r, e => {
@@ -2773,6 +2773,7 @@
         }
       }
       updateNe();
+      f.$set({ min: Ne.min });
       window.addEventListener("storage", (event) => {
         if (event.key === "filterDiff") {
           updateNe();
