@@ -77,7 +77,7 @@
     function e() {}
     const t = e => e;
     let sFS = [];
-    
+
     function r(e) {
       return e()
     }
@@ -2055,7 +2055,6 @@
 
     function _n(e) {
       let t, n, r, o, s, a = e[4] + "";
-      console.log(e);
 
       function i() {
         return e[3](e[4])
@@ -2129,29 +2128,29 @@
     };
 
     function Bn(e) {
-      j(e, "svelte-by0uiq", '.wrapper.svelte-by0uiq{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:1rem}.btns.svelte-by0uiq{display:-ms-grid;display:grid;grid-template-areas:"... ... ...";gap:0.5rem;flex-wrap:wrap}button.svelte-by0uiq{width:100%;padding:0.5rem;border-radius:0.5rem;background-color:var(--theme-bg-sub);border:3px solid var(--theme-control);color:var(--theme-text-control);filter:brightness(0.5)}button.svelte-by0uiq:hover{filter:brightness(0.8)}button.activated.svelte-by0uiq{filter:brightness(1)}.btn-all.svelte-by0uiq{grid-column:2/4;border-color:var(--theme-control-altr)}button[disabled].svelte-by0uiq{cursor:no-drop;border:3px solid var(--theme-bg-sub)}')
+      j(e, "svelte-by0uiq", '.wrapper.svelte-by0uiq{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:1rem}.btns.svelte-by0uiq{display:-ms-grid;display:grid;grid-template-areas:"... ... ...";gap:0.5rem;flex-wrap:wrap}button.svelte-by0uiq{width:100%;padding:0.5rem;border-radius:0.5rem;background-color:var(--theme-bg-sub);border:3px solid var(--theme-control);color:var(--theme-text-control);filter:brightness(0.5)}button.svelte-by0uiq:hover{filter:brightness(0.8)}button.activated.svelte-by0uiq{filter:brightness(1)}.btn-all.svelte-by0uiq{grid-column:2/4;border-color:var(--theme-control-altr)}')
     }
 
     function Vn(e, t, n) {
       const r = e.slice();
-      return r[6] = t[n], r
+      return r[5] = t[n], r
     }
 
     function qn(e) {
-      let t, n, r, o, s = e[6] + "";
-      console.log(e);
+      let t, n, r, o, s = e[5] + "";
+
       function a() {
-        return e[4](e[6])
+        return e[3](e[5])
       }
       return {
         c() {
-          t = H("button"), n = A(s), O(t, "type", "button"), t.disabled = e[3], O(t, "class", "svelte-by0uiq"), B(t, "activated", e[1][e[6]])
+          t = H("button"), n = A(s), O(t, "type", "button"), O(t, "class", "svelte-by0uiq"), B(t, "activated", e[1][e[5]])
         },
         m(e, s) {
           M(e, t, s), k(t, n), r || (o = P(t, "click", a), r = !0)
         },
         p(n, r) {
-          e = n, 8 & r && (t.disabled = e[3]), 2 & r && B(t, "activated", e[1][e[6]])
+          e = n, 2 & r && B(t, "activated", e[1][e[5]])
         },
         d(e) {
           e && E(t), r = !1, o()
@@ -2174,7 +2173,7 @@
         m(e, f) {
           M(e, n, f), k(n, r), r.innerHTML = u, k(n, o), k(n, s);
           for (let e = 0; e < h.length; e += 1) h[e] && h[e].m(s, null);
-          k(s, a), k(s, i), k(i, l), c || (d = P(i, "click", t[5]), c = !0)
+          k(s, a), k(s, i), k(i, l), c || (d = P(i, "click", t[4]), c = !0)
         },
         p(e, [t]) {
           if (4 & t && u !== (u = e[2]("settings.filter.genre") + "") && (r.innerHTML = u), 3 & t) {
@@ -2197,10 +2196,10 @@
     }
 
     function Jn(e, t, n) {
-      let r, o, v;
-      u(e, et, (e => n(1, r = e))), u(e, wt, (e => n(2, o = e))), u(e, jt, (e => n(3, v = e)));
+      let r, o;
+      u(e, et, (e => n(1, r = e))), u(e, wt, (e => n(2, o = e)));
       let s = Ie.every((e => r[e]));
-      return [s, r, o, v, e => {
+      return [s, r, o, e => {
         p(et, r[e] = !r[e], r), n(0, s = Ie.every((e => r[e])))
       }, () => {
         n(0, s = !s);
@@ -2214,7 +2213,7 @@
     };
 
     function Bnn(e) {
-      j(e, "svelte-by0uoq", '.wrapper.svelte-by0uoq{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:1rem}.btns.svelte-by0uoq{display:-ms-grid;display:grid;grid-template-columns: repeat(4, 1fr);grid-template-areas:".... .... ....";gap:0.5rem;flex-wrap:wrap}button.svelte-by0uoq{width:100%;padding:0.5rem;border-radius:0.5rem;background-color:var(--theme-bg-sub);border:3px solid var(--theme-control);color:var(--theme-text-control);filter:brightness(0.5)}button.svelte-by0uoq:hover{filter:brightness(0.8)}button.activated.svelte-by0uoq{filter:brightness(1)}.btn-all.svelte-by0uoq{grid-column:2/4;border-color:var(--theme-control-altr)}button[disabled].svelte-by0uoq{cursor:no-drop;border:3px solid var(--theme-bg-sub)}')
+      j(e, "svelte-by0uoq", '.wrapper.svelte-by0uoq{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:1rem}.btns.svelte-by0uoq{display:-ms-grid;display:grid;grid-template-columns: repeat(4, 1fr);grid-template-areas:".... .... ....";gap:0.5rem;flex-wrap:wrap}button.svelte-by0uoq{width:100%;padding:0.5rem;border-radius:0.5rem;background-color:var(--theme-bg-sub);border:3px solid var(--theme-control);color:var(--theme-text-control);filter:brightness(0.5)}button.svelte-by0uoq:hover{filter:brightness(0.8)}button.activated.svelte-by0uoq{filter:brightness(1)}.btn-all.svelte-by0uoq{grid-column:2/4;border-color:var(--theme-control-altr)}')
     }
 
     function Vnn(e, t, n) {
