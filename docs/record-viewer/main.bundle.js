@@ -1905,7 +1905,6 @@
     }
 
     function Mn(t) {
-      console.log(t);
       let n, r, o, s, a, i, l, c;
       return {
         c() {
@@ -1952,6 +1951,7 @@
 
     function Un(t) {
       let n, r, o, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w;
+      console.log(t);
       return {
         c() {
           n = H("div"), r = H("span"), o = D(), a = H("div"), i = H("div"), l = H("input"), c = D(), d = H("div"), u = H("input"), f = D(), p = H("div"), h = H("div"), g = D(), m = H("input"), v = D(), b = H("input"), l.value = t[6], O(l, "type", "number"), O(l, "min", t[3]), O(l, "max", t[4]), O(l, "step", t[5]), O(l, "inputmode", "decimal"), O(l, "class", "svelte-1aafgfe"), O(i, "class", "low svelte-1aafgfe"), z(i, "left", "calc((100% - 3rem) * " + t[9] + " / 100)"), u.value = t[7], O(u, "type", "number"), O(u, "min", t[3]), O(u, "max", t[4]), O(u, "step", t[5]), O(u, "inputmode", "decimal"), O(u, "class", "svelte-1aafgfe"), O(d, "class", "high svelte-1aafgfe"), z(d, "left", "calc((100% - 3rem) * " + t[8] + " / 100)"), O(a, "class", "indicators svelte-1aafgfe"), O(h, "class", "slider-bg svelte-1aafgfe"), z(h, "background", "linear-gradient( to right, var(--theme-border) 0%, var(--theme-border) " + (t[9] - 1) + "%, var(--theme-control) " + (t[9] - 1) + "%, var(--theme-control) " + (t[8] + 1) + "%, var(--theme-border) " + (t[8] + 1) + "%, var(--theme-border) 100% )"), O(m, "class", "low svelte-1aafgfe"), O(m, "type", "range"), O(m, "min", t[3]), O(m, "max", t[4]), O(m, "step", t[5]), O(b, "class", "high svelte-1aafgfe"), O(b, "type", "range"), O(b, "min", t[3]), O(b, "max", t[4]), O(b, "step", t[5]), O(p, "class", "slider svelte-1aafgfe"), O(n, "class", "wrapper svelte-1aafgfe")
