@@ -3190,13 +3190,13 @@
       function getBackgroundShine(ratingPn) {
         switch (ratingPn) {
             case "silver":
-                return "linear-gradient(120deg, rgba(255,255,255,0) 16%, #8ad0f325 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #8ad0f330 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #8ad0f320 60%, rgba(255,255,255,0) 75%)";
+                return "linear-gradient(130deg, rgba(255, 255, 255, 0) 16%, #ade4ff25 19%, rgba(255, 255, 255, 0) 28%, rgba(255, 255, 255, 0) 30%, #ade4ff30 35%, rgba(255, 255, 255, 0) 42%, rgba(255, 255, 255, 0) 50%, #ade4ff20 60%, rgba(255, 255, 255, 0) 75%)";
             case "gold":
-                return "linear-gradient(120deg, rgba(255,255,255,0) 16%, #e7d53d25 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #e7d53d30 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #e7d53d20 60%, rgba(255,255,255,0) 75%)";
+                return "linear-gradient(130deg, rgba(255,255,255,0) 16%, #e7d53d25 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #e7d53d30 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #e7d53d20 60%, rgba(255,255,255,0) 75%)";
             case "platina":
-                return "linear-gradient(120deg, rgba(255,255,255,0) 16%, #c8b79e25 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #c8b79e30 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #c8b79e20 60%, rgba(255,255,255,0) 75%)";
+                return "linear-gradient(130deg, rgba(255,255,255,0) 16%, #c8b79e25 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #c8b79e30 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #c8b79e20 60%, rgba(255,255,255,0) 75%)";
             case "rainbow":
-                return "linear-gradient(120deg, rgba(255,255,255,0) 16%, #9c5fc525 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #9c5fc530 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #9c5fc520 60%, rgba(255,255,255,0) 75%)";
+                return "linear-gradient(130deg, rgba(255,255,255,0) 16%, #9c5fc525 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #9c5fc530 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #9c5fc520 60%, rgba(255,255,255,0) 75%)";
             default:
               return null;
         }
