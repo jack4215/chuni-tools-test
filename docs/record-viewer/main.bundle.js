@@ -3187,7 +3187,7 @@
                 return null;
         }
       }
-      function getShineBackground(ratingPn) {
+      function getBackgroundShine(ratingPn) {
         switch (ratingPn) {
             case "silver":
                 return "linear-gradient(120deg, rgba(255,255,255,0) 16%, #8ad0f325 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #8ad0f330 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #8ad0f320 60%, rgba(255,255,255,0) 75%)";
@@ -3209,7 +3209,7 @@
         c() {
           t = H("div"),this.t = t, n = H("h2"), r = A(S), o = D(), s = H("div"), a = H("h2"), i = A(T), l = D(), c = H("span"), d = A("OP "), u = A(C), f = D(), p = H("div"), h = H("span"), g = A(N), v = D(), b = H("div"), $e(y.$$.fragment), w = D(), x && x.c(), O(n, "class", "stats-name svelte-1rv2o5c"), O(a, "class", "svelte-1rv2o5c"), O(c, "class", "svelte-1rv2o5c"), O(s, "class", "stats-rating svelte-1rv2o5c"), O(p, "class", "stats-honor svelte-1rv2o5c"), O(p, "data-honor", m = e[3].honor.color), B(p, "marquee", !0), O(b, "class", "stats-items svelte-1rv2o5c"), O(t, "class", "wrapper svelte-1rv2o5c"), O(t, "style", `background: ${getBackgroundColor(e[3].ratingPn)}`)
           const bgColor = getBackgroundColor(e[3].ratingPn);
-          const bgShine = getShineBackground(e[3].ratingPn);
+          const bgShine = getBackgroundShine(e[3].ratingPn);
           if (bgColor) {
               O(t, "style", `background: ${bgColor}`);
               const shine = H("div");
@@ -3233,7 +3233,7 @@
             L[o] = null
           })), he()), ~$ ? (x = L[$], x ? x.p(e, t) : (x = L[$] = U[$](e), x.c()), ge(x, 1), x.m(b, null)) : x = null);
           const bgColor = getBackgroundColor(e[3].ratingPn);
-          const bgShine = getShineBackground(e[3].ratingPn);
+          const bgShine = getBackgroundShine(e[3].ratingPn);
           const bgColor2 = this.t.querySelector('.shine');
           if (bgColor) {
               O(this.t, "style", `background: ${bgColor}`);
