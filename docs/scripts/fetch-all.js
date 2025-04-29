@@ -11,7 +11,7 @@
                 return e.origin + t.substring(0, t.lastIndexOf("/scripts"))
             }
         }
-        return "https://chuni-test.tsaibee.org"
+        return "https://chuni.tsaibee.org"
     }
     function r(e) {
         const t = document.cookie.split(";").map((e => decodeURIComponent(e.trim()))).map((e => e.split("="))).find((t => t[0] === e));
@@ -64,12 +64,12 @@
             [e.en_US]: {
                 pleaseLogin: "Please login to CHUNITHM-NET first.",
                 needReload: "Please reload CHUNITHM-NET.",
-                analyzeRating: "Analyze Rating (Beta)"
+                analyzeRating: "Analyze Rating"
             },
             [e.zh_TW]: {
                 pleaseLogin: "請先登入 CHUNITHM-NET 再執行本程式。",
                 needReload: "請重新整理 CHUNITHM-NET 再執行本程式。",
-                analyzeRating: "分析遊戲成績 (Beta)"
+                analyzeRating: "分析遊戲成績"
             }
         }[function() {
             const t = new URLSearchParams(location.search);
@@ -144,10 +144,10 @@
                                             score: a ? n(a) : -1,
                                             difficulty: e,
                                             clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
-                                            clear2: r?.querySelector('img[src*="clear"]') ? "CLR" : r?.querySelector('img[src*="hard"]') ? "HRD" : r?.querySelector('img[src*="absolutep"]') ? "ABS" : r?.querySelector('img[src*="absolute"]') ? "BRV" : r?.querySelector('img[src*="catastrophy"]') ? "CTS" : "",
+                                            clear2: r?.querySelector('img[src*="clear"]') ? "CLR" : r?.querySelector('img[src*="hard"]') ? "HRD" : r?.querySelector('img[src*="absolute"]') ? "ABS" : r?.querySelector('img[src*="brave"]') ? "BRV" : r?.querySelector('img[src*="catastrophy"]') ? "CTS" : "",
                                             idx: t.querySelector('input[name="idx"]').value
                                         };
-                                    })).filter((e => e.title && e.score));
+                                    })).filter((e => e.title && e.score && !e.title.includes("Floor Killer") && !e.title.includes("Dig Delight!")));
                                     // Add hidden song
                                     const difficultyNames = {
                                         [o.ultima]: "ultima",
@@ -158,13 +158,16 @@
                                     };   
                                     const difficultyScore = sumScores(records);
                                     const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
-                                 /*   records.push({
-                                        title: "Forsaken Tale",
-                                        score: totalHighScore - difficultyScore === 0 ? -1 : totalHighScore - difficultyScore, 
-                                        difficulty: e,
-                                        clear: "",
-                                        idx: "2652"
-                                    }); */
+                                    if (e === o.ultima) {
+                                        records.push({
+                                            title: "Theatore Creatore",
+                                            score: totalHighScore - difficultyScore === 0 ? -1 : totalHighScore - difficultyScore, 
+                                            difficulty: e,
+                                            clear: "",
+                                            clear2: "",
+                                            idx: "2712"
+                                        });
+                                    }
                                     // Add hidden song end
                                     return records;
                                 }(t.data.difficulty);
@@ -195,7 +198,7 @@
                                         score: n(t),
                                         difficulty: "ultimate" == a ? "ULT" : "worldsend" == a ? "WE" : o[a],
                                         clear: c.some((e => e.querySelector('img[src*="alljustice"]'))) ? "AJ" : c.some((e => e.querySelector('img[src*="fullcombo"]'))) ? "FC" : "",
-                                        clear2: c.some((e => e.querySelector('img[src*="clear"]'))) ? "CLR" : c.some((e => e.querySelector('img[src*="hard"]'))) ? "HRD" : c.some((e => e.querySelector('img[src*="absolutep"]'))) ? "ABS" : c.some((e => e.querySelector('img[src*="absolute"]'))) ? "BRV" : c.some((e => e.querySelector('img[src*="catastrophy"]'))) ? "CTS" : "",
+                                        clear2: c.some((e => e.querySelector('img[src*="clear"]'))) ? "CLR" : c.some((e => e.querySelector('img[src*="hard"]'))) ? "HRD" : c.some((e => e.querySelector('img[src*="absolute"]'))) ? "ABS" : c.some((e => e.querySelector('img[src*="brave"]'))) ? "BRV" : c.some((e => e.querySelector('img[src*="catastrophy"]'))) ? "CTS" : "",
                                         timestamp: Date.parse(e.querySelector(".play_datalist_date").innerHTML)
                                     }
                                 }
@@ -203,21 +206,11 @@
                             }();
                             break;
                         case "playerStats":
-                            function Tz(date) {
-                                const utcDate = new Date(date.getTime() + 8 * 60 * 60 * 1000);
-                                const year = utcDate.getUTCFullYear();
-                                const month = String(utcDate.getUTCMonth() + 1).padStart(2, '0');
-                                const day = String(utcDate.getUTCDate()).padStart(2, '0');
-                                const hours = String(utcDate.getUTCHours()).padStart(2, '0');
-                                const minutes = String(utcDate.getUTCMinutes()).padStart(2, '0');
-                                const seconds = String(utcDate.getUTCSeconds()).padStart(2, '0');
-                                return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-                            }
                             s = async function() {
                                 const e = await i("/mobile/home/playerData");
-                                const t = e.querySelector(".player_honor_short");
+                                const t = e.querySelectorAll(".player_honor_short")[0];
                                 const r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage);
-                                let honorTextElement = e.querySelector(".player_honor_text_view span");
+                                let honorTextElement = t.querySelector(".player_honor_text_view span");
                                 let honorText = honorTextElement ? honorTextElement.innerHTML : null;
                                 let honorColor = r ? r[0].slice(9) : "normal";
                                 if (!honorText && t) {
@@ -234,15 +227,10 @@
                                                 honorColor = matchedTitle.genre;
                                             }
                                         } catch (error) {
-                                            console.error("Error fetching title.json:", error);
+                                            console.error("Error:", error);
                                         }
                                     }
                                 }
-                                /* 
-                                const response = await fetch(`https://chuni.tsaibee.org/data/title-aprilfools.json?t=${Date.now()}`);
-                                const t = await response.json();
-                                const r = t[Math.floor(Math.random() * t.length)];
-                                */
                                 const a = Array.from(e.querySelectorAll(".player_rating_num_block img"))
                                     .map((e => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1)))
                                     .join("");
@@ -260,8 +248,6 @@
                                     honor: {
                                         text: honorText || "Unknown",
                                         color: honorColor
-                                        /* text: r.title,
-                                        color: r.genre */
                                     },
                                     rating: a,
                                     overPower: e.querySelector(".player_overpower_text").innerHTML.match(/\(([^)]+)\)/)[1],
@@ -269,7 +255,6 @@
                                     lastPlayed: Date.parse(e.querySelector(".player_lastplaydate_text").innerHTML),
                                     ratingPn: background,
                                     code: e.querySelector('.user_data_friend_code .user_data_text span[style="display:none;"]')?.innerText || "N/A",
-                                    updatedAt: Tz(new Date())
                                 };
                                 return playerData;
                             }();
