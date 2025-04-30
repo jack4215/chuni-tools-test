@@ -3164,7 +3164,7 @@
       let t, n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j, S = e[3].name + "",
         T = e[3].rating + "",
         C = e[3].overPower + "",
-        N = e[3].honor.text + "";
+        N = e[3].honor;
       y = new Hr({
         props: {
           title: e[4]("player.generic.generatedAt"),
@@ -3207,63 +3207,109 @@
       }
       return ~($ = P(e)) && (x = L[$] = U[$](e)), {
         c() {
-          t = H("div"),this.t = t, n = H("h2"), r = A(S), o = D(), s = H("div"), a = H("h2"), i = A(T), l = D(), c = H("span"), d = A("OP "), u = A(C), f = D(), p = H("div"), h = H("span"), g = A(N), v = D(), b = H("div"), $e(y.$$.fragment), w = D(), x && x.c(), O(n, "class", "stats-name svelte-1rv2o5c"), O(a, "class", "svelte-1rv2o5c"), O(c, "class", "svelte-1rv2o5c"), O(s, "class", "stats-rating svelte-1rv2o5c"), O(p, "class", "stats-honor svelte-1rv2o5c"), O(p, "data-honor", m = e[3].honor.color), B(p, "marquee", !0), O(b, "class", "stats-items svelte-1rv2o5c"), O(t, "class", "wrapper svelte-1rv2o5c"), O(t, "style", `background: ${getBackgroundColor(e[3].ratingPn)}`)
+          t = H("div"); this.t = t;
+          n = H("h2"); r = A(S);
+          o = D();
+          s = H("div");
+          a = H("h2"); i = A(T);
+          l = D(); c = H("span"); d = A("OP "); u = A(C);
+          f = D();
+          p = H("div");
+          h = H("ul"); 
+          O(h, "class", "marquee honor-marquee");
+          v = D(); b = H("div");
+          $e(y.$$.fragment); w = D(); x && x.c();
+          O(n, "class", "stats-name svelte-1rv2o5c");
+          O(a, "class", "svelte-1rv2o5c");
+          O(c, "class", "svelte-1rv2o5c");
+          O(s, "class", "stats-rating svelte-1rv2o5c");
+          O(p, "class", "stats-honor svelte-1rv2o5c");
+          O(p, "data-honor", m = e[3].honor.color);
+          O(b, "class", "stats-items svelte-1rv2o5c");
+    
           const bgColor = getBackgroundColor(e[3].ratingPn);
           const bgShine = getBackgroundShine(e[3].ratingPn);
           if (bgColor) {
-              O(t, "style", `background: ${bgColor}`);
-              const shine = H("div");
-              O(shine, "class", "shine svelte-1rv2o5c");
-              if (bgShine) {
-                  O(shine, "style", `background: ${bgShine}`);
-              }
-              k(t, shine);
+            O(t, "style", `background: ${bgColor}`);
+            const shine = H("div");
+            O(shine, "class", "shine svelte-1rv2o5c");
+            if (bgShine) O(shine, "style", `background: ${bgShine}`);
+            k(t, shine);
           }
+    
           O(t, "class", "wrapper svelte-1rv2o5c");
         },
-        m(e, m) {
-          M(e, t, m), k(t, n), k(n, r), k(t, o), k(t, s), k(s, a), k(a, i), k(s, l), k(s, c), k(c, d), k(c, u), k(t, f), k(t, p), k(p, h), k(h, g), k(t, v), k(t, b), xe(y, b, null), k(b, w), ~$ && L[$].m(b, null), j = !0
+        m(e, M) {
+          M(e, t, M);
+          k(t, n); k(n, r); k(t, o);
+          k(t, s); k(s, a); k(a, i); k(s, l); k(s, c); k(c, d); k(c, u);
+          k(t, f); k(t, p); k(p, h);
+          N.forEach(item => {
+            const li = document.createElement("li");
+            li.className = "item " + (item.color || "");
+            li.textContent = item.text;
+            h.appendChild(li);
+          });
+          $(h).marquee({
+            duration: 8000,
+            gap: 50,
+            delayBeforeStart: 0,
+            direction: 'left',
+            duplicated: true
+          });
+          k(t, v); k(t, b); xe(y, b, null); k(b, w);
+          ~$ && L[$].m(b, null);
+          j = !0;
         },
         p(e, [t]) {
-          (!j || 8 & t) && S !== (S = e[3].name + "") && I(r, S), (!j || 8 & t) && T !== (T = e[3].rating + "") && I(i, T), (!j || 8 & t) && C !== (C = e[3].overPower + "") && I(u, C), (!j || 8 & t) && N !== (N = e[3].honor.text + "") && I(g, N), (!j || 8 & t && m !== (m = e[3].honor.color)) && O(p, "data-honor", m);
+          if ((!j || 8 & t) && S !== (S = e[3].name + "")) I(r, S);
+          if ((!j || 8 & t) && T !== (T = e[3].rating + "")) I(i, T);
+          if ((!j || 8 & t) && C !== (C = e[3].overPower + "")) I(u, C);
+    
+          if ((!j || 8 & t && m !== (m = e[3].honor.color))) {
+            O(p, "data-honor", m);
+          }
+    
           const n = {};
-          16 & t && (n.title = e[4]("player.generic.generatedAt")), y.$set(n);
+          16 & t && (n.title = e[4]("player.generic.generatedAt"));
+          y.$set(n);
+    
           let o = $;
           $ = P(e), $ === o ? ~$ && L[$].p(e, t) : (x && (pe(), me(L[o], 1, 1, (() => {
             L[o] = null
           })), he()), ~$ ? (x = L[$], x ? x.p(e, t) : (x = L[$] = U[$](e), x.c()), ge(x, 1), x.m(b, null)) : x = null);
+    
           const bgColor = getBackgroundColor(e[3].ratingPn);
           const bgShine = getBackgroundShine(e[3].ratingPn);
           const bgColor2 = this.t.querySelector('.shine');
           if (bgColor) {
-              O(this.t, "style", `background: ${bgColor}`);
-              if (!bgColor2) {
-                  const shine = H("div");
-                  O(shine, "class", "shine svelte-1rv2o5c");
-                  if (bgShine) {
-                      O(shine, "style", `background: ${bgShine}`);
-                  }
-                  k(this.t, shine);
-              } else {
-                  if (bgShine) {
-                      O(bgColor2, "style", `background: ${bgShine}`);
-                  }
-              }
+            O(this.t, "style", `background: ${bgColor}`);
+            if (!bgColor2) {
+              const shine = H("div");
+              O(shine, "class", "shine svelte-1rv2o5c");
+              if (bgShine) O(shine, "style", `background: ${bgShine}`);
+              k(this.t, shine);
+            } else {
+              if (bgShine) O(bgColor2, "style", `background: ${bgShine}`);
+            }
           } else {
-              this.t.removeAttribute("style");
-              if (bgColor2) {
-                  E(bgColor2);
-              }
+            this.t.removeAttribute("style");
+            if (bgColor2) E(bgColor2);
           }
         },
         i(e) {
-          j || (ge(y.$$.fragment, e), ge(x), j = !0)
+          j || (ge(y.$$.fragment, e), ge(x), j = !0);
         },
         o(e) {
-          me(y.$$.fragment, e), me(x), j = !1
+          me(y.$$.fragment, e), me(x), j = !1;
         },
         d(e) {
-          e && E(t), ke(y), ~$ && L[$].d()
+          e && E(t);
+          ke(y);
+          if (h && $(h).data("marquee")) {
+            $(h).marquee("destroy");
+          }
+          ~$ && L[$].d();
         }
       }
     }
