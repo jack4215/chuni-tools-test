@@ -208,36 +208,28 @@
                         case "playerStats":
                             s = async function() {
                                 const e = await i("/mobile/home/playerData");
-                                const honorElements = e.querySelectorAll(".player_honor_block .player_honor_short");
-                                let honors = [];
-                                for (const t of honorElements) {
-                                    const r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage);
-                                    let honorTextElement = t.querySelector(".player_honor_text_view span");
-                                    let honorText = honorTextElement ? honorTextElement.innerHTML : null;
-                                    let honorColor = r ? r[0].slice(9) : "normal";
-                                    if (!honorText && t) {
-                                        const backgroundImage = t.style.backgroundImage;
-                                        const imageUrlMatch = backgroundImage ? backgroundImage.match(/url\(["']?(.*?)["']?\)/) : null;
-                                        const imageUrl = imageUrlMatch ? imageUrlMatch[1] : null;
-                                        if (imageUrl) {
-                                            try {
-                                                const response = await fetch(`https://chuni.tsaibee.org/data/title.json?t=${Date.now()}`);
-                                                const titleData = await response.json();
-                                                const matchedTitle = titleData.find(item => item.image === imageUrl);
-                                                if (matchedTitle) {
-                                                    honorText = matchedTitle.title;
-                                                    honorColor = matchedTitle.genre;
-                                                }
-                                            } catch (error) {
-                                                console.error("Error:", error);
+                                const t = e.querySelectorAll(".player_honor_short")[0];
+                                const r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage);
+                                let honorTextElement = t.querySelector(".player_honor_text_view span");
+                                let honorText = honorTextElement ? honorTextElement.innerHTML : null;
+                                let honorColor = r ? r[0].slice(9) : "normal";
+                                if (!honorText && t) {
+                                    const backgroundImage = t.style.backgroundImage;
+                                    const imageUrlMatch = backgroundImage ? backgroundImage.match(/url\(["']?(.*?)["']?\)/) : null;
+                                    const imageUrl = imageUrlMatch ? imageUrlMatch[1] : null;
+                                    if (imageUrl) {
+                                        try {
+                                            const response = await fetch(`https://chuni.tsaibee.org/data/title.json?t=${Date.now()}`);
+                                            const titleData = await response.json();
+                                            const matchedTitle = titleData.find(item => item.image === imageUrl);
+                                            if (matchedTitle) {
+                                                honorText = matchedTitle.title;
+                                                honorColor = matchedTitle.genre;
                                             }
+                                        } catch (error) {
+                                            console.error("Error:", error);
                                         }
                                     }
-
-                                    honors.push({
-                                        text: honorText || "Unknown",
-                                        color: honorColor
-                                    });
                                 }
                                 const a = Array.from(e.querySelectorAll(".player_rating_num_block img"))
                                     .map((e => /rating_.*_comma.png/.test(e.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(e.src)[0].slice(-1)))
@@ -253,7 +245,10 @@
                                 }
                                 const playerData = {
                                     name: e.querySelector(".player_name_in").innerHTML,
-                                    honor: honors,
+                                    honor: {
+                                        text: honorText || "Unknown",
+                                        color: honorColor
+                                    },
                                     rating: a,
                                     overPower: e.querySelector(".player_overpower_text").innerHTML.match(/\(([^)]+)\)/)[1],
                                     playCount: e.querySelector(".user_data_play_count .user_data_text").innerHTML,

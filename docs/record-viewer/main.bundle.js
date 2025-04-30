@@ -3162,155 +3162,111 @@
 
     function Lr(e) {
       let t, n, r, o, s, a, i, l, c, d, u, f, p, h, g, m, v, b, y, w, $, x, j, S = e[3].name + "",
-          T = e[3].rating + "",
-          C = e[3].overPower + "",
-          N = e[3].honor.text + "";
-      
+        T = e[3].rating + "",
+        C = e[3].overPower + "",
+        N = e[3].honor.text + "";
       y = new Hr({
-          props: {
-              title: e[4]("player.generic.generatedAt"),
-              content: (new Date).toLocaleDateString()
-          }
+        props: {
+          title: e[4]("player.generic.generatedAt"),
+          content: (new Date).toLocaleDateString()
+        }
       });
       const U = [Dr, Ar],
-          L = [];
-  
+        L = [];
       function getBackgroundColor(ratingPn) {
-          switch (ratingPn) {
-              case "silver":
-                  return "linear-gradient(135deg, #2d4e61, #345f77, #253655, #1b4255) padding-box, linear-gradient(135deg, #5c91af, #6592ab, #647ba5, #618b9f) border-box; border: 3px solid transparent";
-              case "gold":
-                  return "linear-gradient(135deg, #575007, #675e00, #554203, #514006, #535208) padding-box, linear-gradient(135deg, #898129, #817a33, #a9975c, #776732, #83822c) border-box; border: 3px solid transparent";
-              case "platina":
-                  return "linear-gradient(135deg, #5b503f, #5b574c, #4f402c, #3f3527, #595750) padding-box, linear-gradient(135deg, #8f816b, #8b8470, #87745b, #817058, #9d998c) border-box; border: 3px solid transparent";
-              case "rainbow":
-                  return "linear-gradient(135deg, #534565, #512d43, #3c2951, #394659, #245d1e) padding-box, linear-gradient(135deg, #9b83bb, #995f83, #8d6cb1, #758aa7, #56934f) border-box; border: 3px solid transparent";
-              default:
-                  return null;
-          }
+        switch (ratingPn) {
+            case "silver":
+                return "linear-gradient(135deg, #2d4e61, #345f77, #253655, #1b4255) padding-box, linear-gradient(135deg, #5c91af, #6592ab, #647ba5, #618b9f) border-box; border: 3px solid transparent"; 
+            case "gold":
+                return "linear-gradient(135deg, #575007, #675e00, #554203, #514006, #535208) padding-box, linear-gradient(135deg, #898129, #817a33, #a9975c, #776732, #83822c) border-box; border: 3px solid transparent"; 
+            case "platina":
+                return "linear-gradient(135deg, #5b503f, #5b574c, #4f402c, #3f3527, #595750) padding-box, linear-gradient(135deg, #8f816b, #8b8470, #87745b, #817058, #9d998c) border-box; border: 3px solid transparent"; 
+            case "rainbow":
+                return "linear-gradient(135deg, #534565, #512d43, #3c2951, #394659, #245d1e) padding-box, linear-gradient(135deg, #9b83bb, #995f83, #8d6cb1, #758aa7, #56934f) border-box; border: 3px solid transparent";
+            default:
+                return null;
+        }
       }
-  
       function getBackgroundShine(ratingPn) {
-          switch (ratingPn) {
-              case "silver":
-                  return "linear-gradient(130deg, rgba(255,255,255,0) 16%, #ade4ff25 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #ade4ff30 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #ade4ff20 60%, rgba(255,255,255,0) 75%)";
-              case "gold":
-                  return "linear-gradient(130deg, rgba(255,255,255,0) 16%, #f7ef8a25 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #f7ef8a30 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #f7ef8a20 60%, rgba(255,255,255,0) 75%)";
-              case "platina":
-                  return "linear-gradient(130deg, rgba(255,255,255,0) 16%, #ffe6bf25 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #ffe6bf30 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #ffe6bf20 60%, rgba(255,255,255,0) 75%)";
-              case "rainbow":
-                  return "linear-gradient(130deg, rgba(255,255,255,0) 16%, #fbf1f825 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #d0b7eb30 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #d5fdd120 60%, rgba(255,255,255,0) 75%)";
-              default:
-                  return null;
-          }
+        switch (ratingPn) {
+            case "silver":
+                return "linear-gradient(130deg, rgba(255,255,255,0) 16%, #ade4ff25 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #ade4ff30 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #ade4ff20 60%, rgba(255,255,255,0) 75%)";
+            case "gold":
+                return "linear-gradient(130deg, rgba(255,255,255,0) 16%, #f7ef8a25 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #f7ef8a30 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #f7ef8a20 60%, rgba(255,255,255,0) 75%)";
+            case "platina":
+                return "linear-gradient(130deg, rgba(255,255,255,0) 16%, #ffe6bf25 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #ffe6bf30 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #ffe6bf20 60%, rgba(255,255,255,0) 75%)";
+            case "rainbow":
+                return "linear-gradient(130deg, rgba(255,255,255,0) 16%, #fbf1f825 19%, rgba(255,255,255,0) 28%, rgba(255,255,255,0) 30%, #d0b7eb30 35%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 50%, #d5fdd120 60%, rgba(255,255,255,0) 75%)";
+            default:
+              return null;
+        }
       }
-  
+
       function P(e, t) {
-          return "all" === e[5] ? 0 : "curr" === e[5] || "best" === e[5] || "history" === e[5] ? 1 : -1
+        return "all" === e[5] ? 0 : "curr" === e[5] || "best" === e[5] || "history" === e[5] ? 1 : -1
       }
-  
       return ~($ = P(e)) && (x = L[$] = U[$](e)), {
-          c() {
-              t = H("div"), this.t = t, n = H("h2"), r = A(S), o = D(), s = H("div"), a = H("h2"), i = A(T), l = D(), c = H("span"), d = A("OP "), u = A(C), f = D(), p = H("div"), h = H("ul");
-              O(h, "class", "marquee");
-  
-              // 動態生成 honor 項目
-              if (Array.isArray(e[3].honor)) {
-                  e[3].honor.forEach(honor => {
-                      const li = H("li");
-                      O(li, "class", `item ${honor.color || ""}`);
-                      li.textContent = honor.text;
-                      k(h, li);
-                  });
+        c() {
+          t = H("div"),this.t = t, n = H("h2"), r = A(S), o = D(), s = H("div"), a = H("h2"), i = A(T), l = D(), c = H("span"), d = A("OP "), u = A(C), f = D(), p = H("div"), h = H("span"), g = A(N), v = D(), b = H("div"), $e(y.$$.fragment), w = D(), x && x.c(), O(n, "class", "stats-name svelte-1rv2o5c"), O(a, "class", "svelte-1rv2o5c"), O(c, "class", "svelte-1rv2o5c"), O(s, "class", "stats-rating svelte-1rv2o5c"), O(p, "class", "stats-honor svelte-1rv2o5c"), O(p, "data-honor", m = e[3].honor.color), B(p, "marquee", !0), O(b, "class", "stats-items svelte-1rv2o5c"), O(t, "class", "wrapper svelte-1rv2o5c"), O(t, "style", `background: ${getBackgroundColor(e[3].ratingPn)}`)
+          const bgColor = getBackgroundColor(e[3].ratingPn);
+          const bgShine = getBackgroundShine(e[3].ratingPn);
+          if (bgColor) {
+              O(t, "style", `background: ${bgColor}`);
+              const shine = H("div");
+              O(shine, "class", "shine svelte-1rv2o5c");
+              if (bgShine) {
+                  O(shine, "style", `background: ${bgShine}`);
               }
-  
-              k(p, h);  // 把 ul 加入到 div 中
-              k(t, n), k(n, r), k(t, o), k(t, s), k(s, a), k(a, i), k(s, l), k(s, c), k(c, d), k(c, u), k(t, f), k(t, p), k(t, b), $e(y.$$.fragment), k(t, v), k(t, b), k(b, w);
-              O(n, "class", "stats-name svelte-1rv2o5c"), O(a, "class", "svelte-1rv2o5c"), O(c, "class", "svelte-1rv2o5c"), O(s, "class", "stats-rating svelte-1rv2o5c"), O(p, "class", "stats-honor svelte-1rv2o5c"), O(p, "data-honor", m = e[3].honor.color), O(b, "class", "stats-items svelte-1rv2o5c"), O(t, "class", "wrapper svelte-1rv2o5c"), O(t, "style", `background: ${getBackgroundColor(e[3].ratingPn)}`);
-  
-              const bgColor = getBackgroundColor(e[3].ratingPn);
-              const bgShine = getBackgroundShine(e[3].ratingPn);
-              if (bgColor) {
-                  O(t, "style", `background: ${bgColor}`);
+              k(t, shine);
+          }
+          O(t, "class", "wrapper svelte-1rv2o5c");
+        },
+        m(e, m) {
+          M(e, t, m), k(t, n), k(n, r), k(t, o), k(t, s), k(s, a), k(a, i), k(s, l), k(s, c), k(c, d), k(c, u), k(t, f), k(t, p), k(p, h), k(h, g), k(t, v), k(t, b), xe(y, b, null), k(b, w), ~$ && L[$].m(b, null), j = !0
+        },
+        p(e, [t]) {
+          (!j || 8 & t) && S !== (S = e[3].name + "") && I(r, S), (!j || 8 & t) && T !== (T = e[3].rating + "") && I(i, T), (!j || 8 & t) && C !== (C = e[3].overPower + "") && I(u, C), (!j || 8 & t) && N !== (N = e[3].honor.text + "") && I(g, N), (!j || 8 & t && m !== (m = e[3].honor.color)) && O(p, "data-honor", m);
+          const n = {};
+          16 & t && (n.title = e[4]("player.generic.generatedAt")), y.$set(n);
+          let o = $;
+          $ = P(e), $ === o ? ~$ && L[$].p(e, t) : (x && (pe(), me(L[o], 1, 1, (() => {
+            L[o] = null
+          })), he()), ~$ ? (x = L[$], x ? x.p(e, t) : (x = L[$] = U[$](e), x.c()), ge(x, 1), x.m(b, null)) : x = null);
+          const bgColor = getBackgroundColor(e[3].ratingPn);
+          const bgShine = getBackgroundShine(e[3].ratingPn);
+          const bgColor2 = this.t.querySelector('.shine');
+          if (bgColor) {
+              O(this.t, "style", `background: ${bgColor}`);
+              if (!bgColor2) {
                   const shine = H("div");
                   O(shine, "class", "shine svelte-1rv2o5c");
                   if (bgShine) {
                       O(shine, "style", `background: ${bgShine}`);
                   }
-                  k(t, shine);
-              }
-              O(t, "class", "wrapper svelte-1rv2o5c");
-          },
-          m(e, m) {
-              M(e, t, m), k(t, n), k(n, r), k(t, o), k(t, s), k(s, a), k(a, i), k(s, l), k(s, c), k(c, d), k(c, u), k(t, f), k(t, p), k(p, h), k(h, g), k(t, v), k(t, b), xe(y, b, null), k(b, w), ~$ && L[$].m(b, null), j = !0;
-  
-              // 初始化 Marquee 插件
-              setTimeout(() => {
-                  $(".marquee").marquee({
-                      duration: 8000,
-                      gap: 50,
-                      delayBeforeStart: 0,
-                      direction: "left",
-                      duplicated: true
-                  });
-              }, 0);
-          },
-          p(e, [t]) {
-              if (!j || 8 & t) {
-                  while (h.firstChild) h.removeChild(h.firstChild);  // 清空原本的項目
-                  if (Array.isArray(e[3].honor)) {
-                      e[3].honor.forEach(honor => {
-                          const li = H("li");
-                          O(li, "class", `item ${honor.color || ""}`);
-                          li.textContent = honor.text;
-                          k(h, li);
-                      });
-                      $(".marquee").marquee("destroy").marquee({
-                          duration: 8000,
-                          gap: 50,
-                          delayBeforeStart: 0,
-                          direction: "left",
-                          duplicated: true
-                      });
-                  }
-              }
-  
-              const bgColor = getBackgroundColor(e[3].ratingPn);
-              const bgShine = getBackgroundShine(e[3].ratingPn);
-              const bgColor2 = this.t.querySelector('.shine');
-              if (bgColor) {
-                  O(this.t, "style", `background: ${bgColor}`);
-                  if (!bgColor2) {
-                      const shine = H("div");
-                      O(shine, "class", "shine svelte-1rv2o5c");
-                      if (bgShine) {
-                          O(shine, "style", `background: ${bgShine}`);
-                      }
-                      k(this.t, shine);
-                  } else {
-                      if (bgShine) {
-                          O(bgColor2, "style", `background: ${bgShine}`);
-                      }
-                  }
+                  k(this.t, shine);
               } else {
-                  this.t.removeAttribute("style");
-                  if (bgColor2) {
-                      E(bgColor2);
+                  if (bgShine) {
+                      O(bgColor2, "style", `background: ${bgShine}`);
                   }
               }
-          },
-          i(e) {
-              j || (ge(y.$$.fragment, e), ge(x), j = !0)
-          },
-          o(e) {
-              me(y.$$.fragment, e), me(x), j = !1
-          },
-          d(e) {
-              e && E(t), ke(y), ~$ && L[$].d(), $(".marquee").marquee("destroy");  // 銷毀 marquee 插件
+          } else {
+              this.t.removeAttribute("style");
+              if (bgColor2) {
+                  E(bgColor2);
+              }
           }
+        },
+        i(e) {
+          j || (ge(y.$$.fragment, e), ge(x), j = !0)
+        },
+        o(e) {
+          me(y.$$.fragment, e), me(x), j = !1
+        },
+        d(e) {
+          e && E(t), ke(y), ~$ && L[$].d()
+        }
       }
-  }
-  
+    }
 
     function Pr(e, t, n) {
       let r, o, s, a, i, l, c, d, f;
