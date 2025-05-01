@@ -103,98 +103,65 @@
                 }
                 ))
                 function insertClearButtons() {
+                    const difficulties = ["ULT"];
+                    const types = ["FC", "AJ"];
+                    const stateKey = "clearStatus_250417";
+                    const defaultState = { BAS: "", ADV: "", EXP: "", MAS: "", ULT: "" };
+                    const state = JSON.parse(localStorage.getItem(stateKey) || JSON.stringify(defaultState));
+                    const colorMap = { BAS: "#8ae29a", ADV: "#ea8a55", EXP: "#ed5a77", MAS: "#dd8aee", ULT: "#78deff" };
                     const container = document.createElement("div");
-                    container.id = "clear-select-container";
                     container.className = "clear-select-container";
-                
                     const title = document.createElement("p");
                     title.id = "clear-toggle-title";
                     title.innerText = "Select Theatore Creatore Status ▼";
                     title.style.cursor = "pointer";
                     container.appendChild(title);
-                
                     const grid = document.createElement("div");
                     grid.className = "clear-grid";
                     grid.style.display = "none";
                     container.appendChild(grid);
-                    const defaultState = { BAS: "", ADV: "", EXP: "", MAS: "", ULT: "" };
-                    const state = JSON.parse(localStorage.getItem("clearStatus_250417") || JSON.stringify(defaultState));
-                    const colorMap = {
-                        BAS: "#8ae29a",
-                        ADV: "#ea8a55",
-                        EXP: "#ed5a77",
-                        MAS: "#dd8aee",
-                        ULT: "#78deff",
-                    };
-
+                
                     const labelRow = document.createElement("div");
                     labelRow.className = "clear-row";
-                    Object.entries(o).forEach(([key, value]) => {
-                        if (value !== "ULT") return;
+                    difficulties.forEach(diff => {
                         const label = document.createElement("div");
                         label.className = "diff-label";
-                        label.innerText = value;
-                        label.style.color = colorMap[value] || "#fff";
+                        label.innerText = diff;
+                        label.style.color = colorMap[diff];
                         labelRow.appendChild(label);
                     });
                     grid.appendChild(labelRow);
-                
-                    const fcRow = document.createElement("div");
-                    fcRow.className = "clear-row";
-                    Object.entries(o).forEach(([key, value]) => {
-                        if (value !== "ULT") return;
-                        const btn = document.createElement("button");
-                        btn.className = "sort-btn";
-                        btn.innerText = "FC";
-                        btn.dataset.difficulty = value;
-                        btn.dataset.type = "FC";
-                        if (state[value] === "FC") {
-                            btn.classList.add("selected", "fc");
-                        }
-                        btn.addEventListener("click", () => {
-                            const allBtns = grid.querySelectorAll(`button[data-difficulty="${value}"]`);
-                            if (state[value] === "FC") {
-                                state[value] = "";
-                                btn.classList.remove("selected", "fc");
-                            } else {
-                                state[value] = "FC";
-                                allBtns.forEach(b => b.classList.remove("selected", "fc", "aj"));
-                                btn.classList.add("selected", "fc");
-                            }
-                            localStorage.setItem("clearStatus_250417", JSON.stringify(state));
-                        });
-                
-                        fcRow.appendChild(btn);
-                    });
-                    grid.appendChild(fcRow);
 
-                    const ajRow = document.createElement("div");
-                    ajRow.className = "clear-row";
-                    Object.entries(o).forEach(([key, value]) => {
-                        if (value !== "ULT") return;
-                        const btn = document.createElement("button");
-                        btn.className = "sort-btn";
-                        btn.innerText = "AJ";
-                        btn.dataset.difficulty = value;
-                        btn.dataset.type = "AJ";
-                        if (state[value] === "AJ") {
-                            btn.classList.add("selected", "aj");
-                        }
-                        btn.addEventListener("click", () => {
-                            const allBtns = grid.querySelectorAll(`button[data-difficulty="${value}"]`);
-                            if (state[value] === "AJ") {
-                                state[value] = "";
-                                btn.classList.remove("selected", "aj");
-                            } else {
-                                state[value] = "AJ";
-                                allBtns.forEach(b => b.classList.remove("selected", "fc", "aj"));
-                                btn.classList.add("selected", "aj");
+                    const createRow = (type) => {
+                        const row = document.createElement("div");
+                        row.className = "clear-row";
+                
+                        difficulties.forEach(diff => {
+                            const btn = document.createElement("button");
+                            btn.className = "sort-btn";
+                            btn.innerText = type;
+                            btn.dataset.difficulty = diff;
+                            btn.dataset.type = type;
+                            if (state[diff] === type) {
+                                btn.classList.add("selected", type.toLowerCase());
                             }
-                            localStorage.setItem("clearStatus_250417", JSON.stringify(state));
+                            btn.addEventListener("click", () => {
+                                const allBtns = grid.querySelectorAll(`button[data-difficulty="${diff}"]`);
+                                if (state[diff] === type) {
+                                    state[diff] = "";
+                                    btn.classList.remove("selected", type.toLowerCase());
+                                } else {
+                                    state[diff] = type;
+                                    allBtns.forEach(b => b.classList.remove("selected", "fc", "aj"));
+                                    btn.classList.add("selected", type.toLowerCase());
+                                }
+                                localStorage.setItem(stateKey, JSON.stringify(state));
+                            });
+                            row.appendChild(btn);
                         });
-                        ajRow.appendChild(btn);
-                    });
-                    grid.appendChild(ajRow);
+                        grid.appendChild(row);
+                    };
+                    types.forEach(createRow);
                     title.addEventListener("click", () => {
                         const isHidden = grid.style.display === "none";
                         grid.style.display = isHidden ? "grid" : "none";
@@ -229,13 +196,13 @@
                             justify-content: center;
                             gap: 6px;
                         }
-                        .clear-grid .diff-label {
+                        .diff-label {
                             font-weight: bold;
                             font-size: 15px;
                             padding: 5px 0;
                             width: 20%;
                         }
-                        .clear-grid .sort-btn {
+                        .sort-btn {
                             padding: 10px;
                             border: none;
                             border-radius: 7px;
@@ -246,18 +213,18 @@
                             transition: background-color 0.2s, color 0.2s;
                             width: 20%;
                         }
-                        .clear-grid .sort-btn.selected.fc {
+                        .sort-btn.selected.fc {
                             background-color: #a3ccf5;
                             color: #000;
                         }
-                        .clear-grid .sort-btn.selected.aj {
+                        .sort-btn.selected.aj {
                             background-color: #ffd744;
                             color: #000;
                         }
                     `;
                     document.head.appendChild(style);
                     document.querySelector(".chuni-tool-btn")?.insertAdjacentElement("afterend", container);
-                }
+                }                
             }(),
             window.addEventListener("message", (function(e) {
                 switch (e.data.action) {
