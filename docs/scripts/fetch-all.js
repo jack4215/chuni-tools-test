@@ -106,10 +106,8 @@
                     const container = document.createElement("div");
                     container.id = "clear-select-container";
                     container.style.marginTop = "10px";
-                
                     const defaultState = { BAS: "", ADV: "", EXP: "", MAS: "", ULT: "" };
                     const state = JSON.parse(localStorage.getItem("clearStatus") || JSON.stringify(defaultState));
-                
                     Object.entries(o).forEach(([key, value]) => {
                         ["FC", "AJ"].forEach(type => {
                             const btn = document.createElement("button");
@@ -118,15 +116,12 @@
                             btn.innerText = `${value} ${type}`;
                             btn.dataset.difficulty = value;
                             btn.dataset.type = type;
-                
                             if (state[value] === type) {
                                 btn.classList.add("selected");
                             }
-                
                             btn.addEventListener("click", () => {
                                 const current = state[value];
                                 const allBtns = container.querySelectorAll(`button[data-difficulty="${value}"]`);
-                
                                 if (current === type) {
                                     state[value] = "";
                                     btn.classList.remove("selected");
@@ -135,7 +130,6 @@
                                     allBtns.forEach(b => b.classList.remove("selected"));
                                     btn.classList.add("selected");
                                 }
-                
                                 localStorage.setItem("clearStatus", JSON.stringify(state));
                                 console.log("目前選取狀態：", state);
                             });
@@ -155,10 +149,8 @@
                         }
                     `;
                     document.head.appendChild(style);
-                
                     document.querySelector(".chuni-tool-btn")?.insertAdjacentElement("afterend", container);
                 }
-                
             }(),
             window.addEventListener("message", (function(e) {
                 switch (e.data.action) {
