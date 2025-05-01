@@ -98,9 +98,67 @@
                 e.target = "recordViewer",
                 l.getElementsByTagName("head")[0].appendChild(r),
                 r.addEventListener("load", ( () => {
-                    l.querySelector(".clearfix")?.insertAdjacentElement("afterend", e)
+                    l.querySelector(".clearfix")?.insertAdjacentElement("afterend", e);
+                    insertClearButtons();
                 }
                 ))
+                function insertClearButtons() {
+                    const container = document.createElement("div");
+                    container.id = "clear-select-container";
+                    container.style.marginTop = "10px";
+                
+                    const defaultState = { BAS: "", ADV: "", EXP: "", MAS: "", ULT: "" };
+                    const state = JSON.parse(localStorage.getItem("clearStatus") || JSON.stringify(defaultState));
+                
+                    Object.entries(o).forEach(([key, value]) => {
+                        ["FC", "AJ"].forEach(type => {
+                            const btn = document.createElement("button");
+                            btn.className = "sort-btn";
+                            btn.id = `${value.toLowerCase()}_${type.toLowerCase()}`;
+                            btn.innerText = `${value} ${type}`;
+                            btn.dataset.difficulty = value;
+                            btn.dataset.type = type;
+                
+                            if (state[value] === type) {
+                                btn.classList.add("selected");
+                            }
+                
+                            btn.addEventListener("click", () => {
+                                const current = state[value];
+                                const allBtns = container.querySelectorAll(`button[data-difficulty="${value}"]`);
+                
+                                if (current === type) {
+                                    state[value] = "";
+                                    btn.classList.remove("selected");
+                                } else {
+                                    state[value] = type;
+                                    allBtns.forEach(b => b.classList.remove("selected"));
+                                    btn.classList.add("selected");
+                                }
+                
+                                localStorage.setItem("clearStatus", JSON.stringify(state));
+                                console.log("目前選取狀態：", state);
+                            });
+                
+                            container.appendChild(btn);
+                        });
+                    });
+                
+                    const style = document.createElement("style");
+                    style.textContent = `
+                        #clear-select-container .sort-btn.selected {
+                            background-color: #88f;
+                            color: white;
+                        }
+                        #clear-select-container .sort-btn {
+                            margin: 2px;
+                        }
+                    `;
+                    document.head.appendChild(style);
+                
+                    document.querySelector(".chuni-tool-btn")?.insertAdjacentElement("afterend", container);
+                }
+                
             }(),
             window.addEventListener("message", (function(e) {
                 switch (e.data.action) {
@@ -158,16 +216,16 @@
                                     const difficultyScore = sumScores(records);
                                     // Add hidden song
                                     const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
-                                    if (e === o.ultima) {
+                                    const clearStatus = JSON.parse(localStorage.getItem("clearStatus") || "{}");
                                         records.push({
                                             title: "Theatore Creatore",
                                             score: totalHighScore - difficultyScore === 0 ? -1 : totalHighScore - difficultyScore, 
                                             difficulty: e,
-                                            clear: "",
+                                            clear: clearStatus[e] || "",
                                             clear2: "",
                                             idx: "2712"
                                         });
-                                    }
+
                                     // Add hidden song end
                                     return records;
                                 }(t.data.difficulty);
@@ -184,7 +242,7 @@
                                 const totalHighScoreDiv = doc.querySelector(".mb_5.text_b");
                                 return totalHighScoreDiv ? totalHighScoreDiv.innerText.replace(/,/g, "").trim() : "Error";
                             }         
-                            // Calculate total score end         
+                            // Calculate total score end     
                         case "playHistory":
                             s = async function() {
                                 const e = await i("/mobile/record/playlog");
