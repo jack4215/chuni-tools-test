@@ -113,7 +113,7 @@
                     container.className = "clear-select-container";
                     const title = document.createElement("p");
                     title.id = "clear-toggle-title";
-                    title.innerText = "Select Theatore Creatore Status ▼";
+                    title.innerText = "Select \"Theatore Creatore\" Status ▼";
                     title.style.cursor = "pointer";
                     container.appendChild(title);
                     const grid = document.createElement("div");
@@ -165,7 +165,7 @@
                     title.addEventListener("click", () => {
                         const isHidden = grid.style.display === "none";
                         grid.style.display = isHidden ? "grid" : "none";
-                        title.innerText = `Select Theatore Creatore Status ${isHidden ? "▲" : "▼"}`;
+                        title.innerText = `Select \"Theatore Creatore\" Status ${isHidden ? "▲" : "▼"}`;
                     });
                     const style = document.createElement("style");
                     style.textContent = `
