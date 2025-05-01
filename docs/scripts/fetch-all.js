@@ -283,15 +283,16 @@
                                     // Add hidden song
                                     const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
                                     const clearStatus = JSON.parse(localStorage.getItem("clearStatus_250417") || "{}");
+                                    if (e === o.ultima) {
                                         records.push({
                                             title: "Theatore Creatore",
                                             score: totalHighScore - difficultyScore === 0 ? -1 : totalHighScore - difficultyScore, 
                                             difficulty: e,
-                                            clear: clearStatus[e] || "",
+                                            clear: "",
                                             clear2: "",
                                             idx: "2712"
                                         });
-
+                                    }
                                     // Add hidden song end
                                     return records;
                                 }(t.data.difficulty);
