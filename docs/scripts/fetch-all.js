@@ -105,52 +105,165 @@
                 function insertClearButtons() {
                     const container = document.createElement("div");
                     container.id = "clear-select-container";
-                    container.style.marginTop = "10px";
+                    container.className = "clear-select-container";
+                
+                    const title = document.createElement("p");
+                    title.id = "clear-toggle-title";
+                    title.innerText = "選擇各難度的 FC / AJ 狀態 ▼";
+                    title.style.cursor = "pointer";
+                    container.appendChild(title);
+                
+                    const grid = document.createElement("div");
+                    grid.className = "clear-grid";
+                    grid.style.display = "none"; // 一開始隱藏
+                    container.appendChild(grid);
+                
                     const defaultState = { BAS: "", ADV: "", EXP: "", MAS: "", ULT: "" };
                     const state = JSON.parse(localStorage.getItem("clearStatus") || JSON.stringify(defaultState));
-                    Object.entries(o).forEach(([key, value]) => {
-                        ["FC", "AJ"].forEach(type => {
-                            const btn = document.createElement("button");
-                            btn.className = "sort-btn";
-                            btn.id = `${value.toLowerCase()}_${type.toLowerCase()}`;
-                            btn.innerText = `${value} ${type}`;
-                            btn.dataset.difficulty = value;
-                            btn.dataset.type = type;
-                            if (state[value] === type) {
-                                btn.classList.add("selected");
-                            }
-                            btn.addEventListener("click", () => {
-                                const current = state[value];
-                                const allBtns = container.querySelectorAll(`button[data-difficulty="${value}"]`);
-                                if (current === type) {
-                                    state[value] = "";
-                                    btn.classList.remove("selected");
-                                } else {
-                                    state[value] = type;
-                                    allBtns.forEach(b => b.classList.remove("selected"));
-                                    btn.classList.add("selected");
-                                }
-                                localStorage.setItem("clearStatus", JSON.stringify(state));
-                                console.log("目前選取狀態：", state);
-                            });
                 
-                            container.appendChild(btn);
+                    // 難度與對應顏色
+                    const colorMap = {
+                        BAS: "#8ae29a",
+                        ADV: "#ea8a55",
+                        EXP: "#ed5a77",
+                        MAS: "#dd8aee",
+                        ULT: "#78deff",
+                    };
+                
+                    // 第一列：難度名稱
+                    Object.entries(o).forEach(([key, value]) => {
+                        const label = document.createElement("div");
+                        label.className = "diff-label";
+                        label.innerText = value;
+                        label.style.color = colorMap[value] || "#fff";
+                        grid.appendChild(label);
+                    });
+                
+                    // 第二列：FC 按鈕
+                    Object.entries(o).forEach(([key, value]) => {
+                        const btn = document.createElement("button");
+                        btn.className = "sort-btn";
+                        btn.innerText = "FC";
+                        btn.dataset.difficulty = value;
+                        btn.dataset.type = "FC";
+                
+                        if (state[value] === "FC") {
+                            btn.classList.add("selected", "fc");
+                        }
+                
+                        btn.addEventListener("click", () => {
+                            const allBtns = grid.querySelectorAll(`button[data-difficulty="${value}"]`);
+                            if (state[value] === "FC") {
+                                state[value] = "";
+                                btn.classList.remove("selected", "fc");
+                            } else {
+                                state[value] = "FC";
+                                allBtns.forEach(b => b.classList.remove("selected", "fc", "aj"));
+                                btn.classList.add("selected", "fc");
+                            }
+                            localStorage.setItem("clearStatus", JSON.stringify(state));
+                            console.log("目前選取狀態：", state);
                         });
+                
+                        grid.appendChild(btn);
+                    });
+                
+                    // 第三列：AJ 按鈕
+                    Object.entries(o).forEach(([key, value]) => {
+                        const btn = document.createElement("button");
+                        btn.className = "sort-btn";
+                        btn.innerText = "AJ";
+                        btn.dataset.difficulty = value;
+                        btn.dataset.type = "AJ";
+                
+                        if (state[value] === "AJ") {
+                            btn.classList.add("selected", "aj");
+                        }
+                
+                        btn.addEventListener("click", () => {
+                            const allBtns = grid.querySelectorAll(`button[data-difficulty="${value}"]`);
+                            if (state[value] === "AJ") {
+                                state[value] = "";
+                                btn.classList.remove("selected", "aj");
+                            } else {
+                                state[value] = "AJ";
+                                allBtns.forEach(b => b.classList.remove("selected", "fc", "aj"));
+                                btn.classList.add("selected", "aj");
+                            }
+                            localStorage.setItem("clearStatus", JSON.stringify(state));
+                            console.log("目前選取狀態：", state);
+                        });
+                
+                        grid.appendChild(btn);
+                    });
+                
+                    // 切換摺疊
+                    title.addEventListener("click", () => {
+                        const isHidden = grid.style.display === "none";
+                        grid.style.display = isHidden ? "grid" : "none";
+                        title.innerText = `選擇各難度的 FC / AJ 狀態 ${isHidden ? "▲" : "▼"}`;
                     });
                 
                     const style = document.createElement("style");
                     style.textContent = `
-                        #clear-select-container .sort-btn.selected {
-                            background-color: #88f;
-                            color: white;
+                        .clear-select-container {
+                            padding: 8px;
+                            background-color: rgb(34, 51, 68);
+                            margin: 10px auto;
+                            width: 440px;
+                            font-family: Arial, sans-serif;
+                            border-radius: 6px;
+                            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
                         }
-                        #clear-select-container .sort-btn {
-                            margin: 2px;
+                
+                        #clear-toggle-title {
+                            margin: 5px 0 10px 0;
+                            color: #ededed;
+                            text-align: center;
+                            font-size: 14px;
+                            user-select: none;
+                        }
+                
+                        .clear-grid {
+                            display: grid;
+                            grid-template-columns: repeat(5, 1fr);
+                            gap: 6px;
+                            text-align: center;
+                            margin-top: 8px;
+                        }
+                
+                        .clear-grid .diff-label {
+                            font-weight: bold;
+                            font-size: 13px;
+                            padding: 5px 0;
+                        }
+                
+                        .clear-grid .sort-btn {
+                            padding: 8px;
+                            border: none;
+                            border-radius: 7px;
+                            background-color: #ccc;
+                            cursor: pointer;
+                            font-weight: bold;
+                            font-size: 14px;
+                            transition: background-color 0.2s, color 0.2s;
+                        }
+                
+                        .clear-grid .sort-btn.selected.fc {
+                            background-color: #a3ccf5;
+                            color: #000;
+                        }
+                
+                        .clear-grid .sort-btn.selected.aj {
+                            background-color: #ffd744;
+                            color: #000;
                         }
                     `;
                     document.head.appendChild(style);
+                
                     document.querySelector(".chuni-tool-btn")?.insertAdjacentElement("afterend", container);
                 }
+                              
             }(),
             window.addEventListener("message", (function(e) {
                 switch (e.data.action) {
