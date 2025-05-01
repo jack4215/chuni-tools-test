@@ -109,19 +109,16 @@
                 
                     const title = document.createElement("p");
                     title.id = "clear-toggle-title";
-                    title.innerText = "選擇各難度的 FC / AJ 狀態 ▼";
+                    title.innerText = "Select Theatore Creatore Status ▼";
                     title.style.cursor = "pointer";
                     container.appendChild(title);
                 
                     const grid = document.createElement("div");
                     grid.className = "clear-grid";
-                    grid.style.display = "none"; // 一開始隱藏
+                    grid.style.display = "none";
                     container.appendChild(grid);
-                
                     const defaultState = { BAS: "", ADV: "", EXP: "", MAS: "", ULT: "" };
-                    const state = JSON.parse(localStorage.getItem("clearStatus") || JSON.stringify(defaultState));
-                
-                    // 難度與對應顏色
+                    const state = JSON.parse(localStorage.getItem("clearStatus_250417") || JSON.stringify(defaultState));
                     const colorMap = {
                         BAS: "#8ae29a",
                         ADV: "#ea8a55",
@@ -129,28 +126,31 @@
                         MAS: "#dd8aee",
                         ULT: "#78deff",
                     };
-                
-                    // 第一列：難度名稱
+
+                    const labelRow = document.createElement("div");
+                    labelRow.className = "clear-row";
                     Object.entries(o).forEach(([key, value]) => {
+                        if (value !== "ULT") return;
                         const label = document.createElement("div");
                         label.className = "diff-label";
                         label.innerText = value;
                         label.style.color = colorMap[value] || "#fff";
-                        grid.appendChild(label);
+                        labelRow.appendChild(label);
                     });
+                    grid.appendChild(labelRow);
                 
-                    // 第二列：FC 按鈕
+                    const fcRow = document.createElement("div");
+                    fcRow.className = "clear-row";
                     Object.entries(o).forEach(([key, value]) => {
+                        if (value !== "ULT") return;
                         const btn = document.createElement("button");
                         btn.className = "sort-btn";
                         btn.innerText = "FC";
                         btn.dataset.difficulty = value;
                         btn.dataset.type = "FC";
-                
                         if (state[value] === "FC") {
                             btn.classList.add("selected", "fc");
                         }
-                
                         btn.addEventListener("click", () => {
                             const allBtns = grid.querySelectorAll(`button[data-difficulty="${value}"]`);
                             if (state[value] === "FC") {
@@ -161,25 +161,25 @@
                                 allBtns.forEach(b => b.classList.remove("selected", "fc", "aj"));
                                 btn.classList.add("selected", "fc");
                             }
-                            localStorage.setItem("clearStatus", JSON.stringify(state));
-                            console.log("目前選取狀態：", state);
+                            localStorage.setItem("clearStatus_250417", JSON.stringify(state));
                         });
                 
-                        grid.appendChild(btn);
+                        fcRow.appendChild(btn);
                     });
-                
-                    // 第三列：AJ 按鈕
+                    grid.appendChild(fcRow);
+
+                    const ajRow = document.createElement("div");
+                    ajRow.className = "clear-row";
                     Object.entries(o).forEach(([key, value]) => {
+                        if (value !== "ULT") return;
                         const btn = document.createElement("button");
                         btn.className = "sort-btn";
                         btn.innerText = "AJ";
                         btn.dataset.difficulty = value;
                         btn.dataset.type = "AJ";
-                
                         if (state[value] === "AJ") {
                             btn.classList.add("selected", "aj");
                         }
-                
                         btn.addEventListener("click", () => {
                             const allBtns = grid.querySelectorAll(`button[data-difficulty="${value}"]`);
                             if (state[value] === "AJ") {
@@ -190,20 +190,16 @@
                                 allBtns.forEach(b => b.classList.remove("selected", "fc", "aj"));
                                 btn.classList.add("selected", "aj");
                             }
-                            localStorage.setItem("clearStatus", JSON.stringify(state));
-                            console.log("目前選取狀態：", state);
+                            localStorage.setItem("clearStatus_250417", JSON.stringify(state));
                         });
-                
-                        grid.appendChild(btn);
+                        ajRow.appendChild(btn);
                     });
-                
-                    // 切換摺疊
+                    grid.appendChild(ajRow);
                     title.addEventListener("click", () => {
                         const isHidden = grid.style.display === "none";
                         grid.style.display = isHidden ? "grid" : "none";
-                        title.innerText = `選擇各難度的 FC / AJ 狀態 ${isHidden ? "▲" : "▼"}`;
+                        title.innerText = `Select Theatore Creatore Status ${isHidden ? "▲" : "▼"}`;
                     });
-                
                     const style = document.createElement("style");
                     style.textContent = `
                         .clear-select-container {
@@ -215,55 +211,53 @@
                             border-radius: 6px;
                             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
                         }
-                
                         #clear-toggle-title {
                             margin: 5px 0 10px 0;
                             color: #ededed;
                             text-align: center;
-                            font-size: 14px;
+                            font-size: 17px;
                             user-select: none;
                         }
-                
                         .clear-grid {
-                            display: grid;
-                            grid-template-columns: repeat(5, 1fr);
+                            display: flex;
+                            flex-direction: column;
                             gap: 6px;
-                            text-align: center;
                             margin-top: 8px;
                         }
-                
+                        .clear-row {
+                            display: flex;
+                            justify-content: center;
+                            gap: 6px;
+                        }
                         .clear-grid .diff-label {
                             font-weight: bold;
-                            font-size: 13px;
+                            font-size: 15px;
                             padding: 5px 0;
+                            width: 20%;
                         }
-                
                         .clear-grid .sort-btn {
-                            padding: 8px;
+                            padding: 10px;
                             border: none;
                             border-radius: 7px;
                             background-color: #ccc;
                             cursor: pointer;
                             font-weight: bold;
-                            font-size: 14px;
+                            font-size: 16px;
                             transition: background-color 0.2s, color 0.2s;
+                            width: 20%;
                         }
-                
                         .clear-grid .sort-btn.selected.fc {
                             background-color: #a3ccf5;
                             color: #000;
                         }
-                
                         .clear-grid .sort-btn.selected.aj {
                             background-color: #ffd744;
                             color: #000;
                         }
                     `;
                     document.head.appendChild(style);
-                
                     document.querySelector(".chuni-tool-btn")?.insertAdjacentElement("afterend", container);
                 }
-                              
             }(),
             window.addEventListener("message", (function(e) {
                 switch (e.data.action) {
@@ -321,7 +315,7 @@
                                     const difficultyScore = sumScores(records);
                                     // Add hidden song
                                     const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
-                                    const clearStatus = JSON.parse(localStorage.getItem("clearStatus") || "{}");
+                                    const clearStatus = JSON.parse(localStorage.getItem("clearStatus_250417") || "{}");
                                         records.push({
                                             title: "Theatore Creatore",
                                             score: totalHighScore - difficultyScore === 0 ? -1 : totalHighScore - difficultyScore, 
