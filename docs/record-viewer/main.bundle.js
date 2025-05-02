@@ -1680,40 +1680,53 @@
       return r
     }
     const hn = "chunithm_b40.png";
-    async function gn() {
-      const e = document.querySelector("main");
-      if (null == e) return alert(d(wt)("share.error", {
-        error: "resultNode is null"
-      }));
-      let t = e?.cloneNode(!0);
-      t.id = "copied-main", t.querySelectorAll("tbody tr:nth-child(n+41)").forEach((e => {
-        e.remove()
-      })), e?.parentElement?.appendChild(t), pn(t, {
-        backgroundColor: window.getComputedStyle(document.body).backgroundColor
-      }).then((async e => {
-        if (t.remove(), null != e)
-          if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-            const t = new File([e], hn, {
-              type: e.type
-            });
-            navigator?.canShare({
-              files: [t]
-            }) && navigator.share({
-              files: [t]
-            }).catch(console.log)
-          } else {
-            const t = document.createElement("a");
-            t.href = window.URL.createObjectURL(e), t.download = hn, t.click()
-          }
-        else alert(d(wt)("share.error", {
-          error: "result blob is null"
-        }))
-      })).catch((e => {
-        alert(d(wt)("share.error", {
-          error: e
-        }))
-      }))
+
+async function gn() {
+  const e = document.querySelector("main");
+  if (e == null) {
+    alert(d(wt)("share.error", { error: "resultNode is null" }));
+    return;
+  }
+
+  // 克隆 main
+  let t = e.cloneNode(true);
+  t.id = "copied-main";
+
+  // 將 clone 加入畫面中（這一步是必要的，否則無法正確 layout）
+  e.parentElement?.appendChild(t);
+
+  // 移除 41 列以後的列
+  t.querySelectorAll("tbody tr:nth-child(n+41)").forEach(tr => tr.remove());
+
+  // 等待兩個 animation frame，讓瀏覽器完成 layout（這是關鍵）
+  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+
+  // 開始轉換圖片
+  pn(t, {
+    backgroundColor: window.getComputedStyle(document.body).backgroundColor
+  }).then(async blob => {
+    t.remove(); // 清除 clone
+
+    if (blob != null) {
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        const file = new File([blob], hn, { type: blob.type });
+        if (navigator?.canShare?.({ files: [file] })) {
+          navigator.share({ files: [file] }).catch(console.log);
+        }
+      } else {
+        const a = document.createElement("a");
+        a.href = window.URL.createObjectURL(blob);
+        a.download = hn;
+        a.click();
+      }
+    } else {
+      alert(d(wt)("share.error", { error: "result blob is null" }));
     }
+  }).catch(error => {
+    alert(d(wt)("share.error", { error }));
+  });
+}
+
 
     function mn(e) {
       j(e, "svelte-iy49t2", ".wrapper.svelte-iy49t2{display:flex;-ms-flex-direction:row;z-index:2;flex-direction:row;justify-content:space-between;align-items:center;gap:1em;position:fixed;right:1rem;top:0.6rem}button.svelte-iy49t2{width:2rem;height:2rem;background:var(--theme-border);opacity:0.8;border-radius:40%;font-weight:bold}svg.svelte-iy49t2{overflow:visible}")
