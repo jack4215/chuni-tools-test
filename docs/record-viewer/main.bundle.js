@@ -1686,13 +1686,9 @@
         error: "resultNode is null"
       }));
       let t = e?.cloneNode(!0);
-      t.id = "copied-main", e.parentElement?.appendChild(t);
-      await new Promise(r => requestAnimationFrame(r)); 
-      t.querySelectorAll("tbody tr:nth-child(n+41)").forEach((e => {
-        e.remove();
-      }));
-      await new Promise(r => requestAnimationFrame(r));
-      pn(t, {
+      t.id = "copied-main", t.querySelectorAll("tbody tr:nth-child(n+41)").forEach((e => {
+        e.remove()
+      })), e?.parentElement?.appendChild(t), pn(t, {
         backgroundColor: window.getComputedStyle(document.body).backgroundColor
       }).then((async e => {
         if (t.remove(), null != e)
