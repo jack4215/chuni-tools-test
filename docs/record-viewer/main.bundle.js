@@ -1622,110 +1622,161 @@
         t.appendChild(r), e.firstChild ? e.insertBefore(t, e.firstChild) : e.appendChild(t)
       }
     }
-    async function fn(e, t = {}) {
-      const {
-        width: n,
-        height: r
-      } = Ot(e, t), o = await Qt(e, t, !0);
-      return await un(o, t), await sn(o, t),
-        function(e, t) {
-          const {
-            style: n
-          } = e;
-          t.backgroundColor && (n.backgroundColor = t.backgroundColor), t.width && (n.width = `${t.width}px`), t.height && (n.height = `${t.height}px`);
-          const r = t.style;
-          null != r && Object.keys(r).forEach((e => {
-            n[e] = r[e]
-          }))
-        }(o, t), await async function(e, t, n) {
-          const r = "http://www.w3.org/2000/svg",
-            o = document.createElementNS(r, "svg"),
-            s = document.createElementNS(r, "foreignObject");
-          return o.setAttribute("width", `${t}`), o.setAttribute("height", `${n}`), o.setAttribute("viewBox", `0 0 ${t} ${n}`), s.setAttribute("width", "100%"), s.setAttribute("height", "100%"), s.setAttribute("x", "0"), s.setAttribute("y", "0"), s.setAttribute("externalResourcesRequired", "true"), o.appendChild(s), s.appendChild(e), async function(e) {
-            return Promise.resolve().then((() => (new XMLSerializer).serializeToString(e))).then(encodeURIComponent).then((e => `data:image/svg+xml;charset=utf-8,${e}`))
-          }(o)
-        }(o, n, r)
-    }
-    async function pn(e, t = {}) {
-      const n = await async function(e, t = {}) {
-        const {
-          width: n,
-          height: r
-        } = Ot(e, t), o = await fn(e, t), s = await It(o), a = document.createElement("canvas"), i = a.getContext("2d"), l = t.pixelRatio || function() {
-          let e, t;
-          try {
-            t = process
-          } catch (e) {}
-          const n = t && t.env ? t.env.devicePixelRatio : null;
-          return n && (e = parseInt(n, 10), Number.isNaN(e) && (e = 1)), e || window.devicePixelRatio || 1
-        }(), c = t.canvasWidth || n, d = t.canvasHeight || r;
-        return a.width = c * l, a.height = d * l, t.skipAutoScale || function(e) {
-          (e.width > _t || e.height > _t) && (e.width > _t && e.height > _t ? e.width > e.height ? (e.height *= _t / e.width, e.width = _t) : (e.width *= _t / e.height, e.height = _t) : e.width > _t ? (e.height *= _t / e.width, e.width = _t) : (e.width *= _t / e.height, e.height = _t))
-        }(a), a.style.width = `${c}`, a.style.height = `${d}`, t.backgroundColor && (i.fillStyle = t.backgroundColor, i.fillRect(0, 0, a.width, a.height)), i.drawImage(s, 0, 0, a.width, a.height), a
-      }(e, t), r = await
-
-      function(e, t = {}) {
-        return e.toBlob ? new Promise((n => {
-          e.toBlob(n, t.type ? t.type : "image/png", t.quality ? t.quality : 1)
-        })) : new Promise((n => {
-          const r = window.atob(e.toDataURL(t.type ? t.type : void 0, t.quality ? t.quality : void 0).split(",")[1]),
-            o = r.length,
-            s = new Uint8Array(o);
-          for (let e = 0; e < o; e += 1) s[e] = r.charCodeAt(e);
-          n(new Blob([s], {
-            type: t.type ? t.type : "image/png"
-          }))
-        }))
-      }(n);
-      return r
-    }
     const hn = "chunithm_b40.png";
 
-async function gn() {
-  const e = document.querySelector("main");
-  if (e == null) {
-    alert(d(wt)("share.error", { error: "resultNode is null" }));
-    return;
+// === 修正：fn 中強制加上 height fallback ===
+async function fn(e, t = {}) {
+  const { width: n, height: r } = Ot(e, t);
+  const o = await Qt(e, t, !0);
+  await un(o, t);
+  await sn(o, t);
+
+  // 設定樣式
+  (function(e, t) {
+    const { style: n } = e;
+    t.backgroundColor && (n.backgroundColor = t.backgroundColor);
+    t.width && (n.width = `${t.width}px`);
+    t.height && (n.height = `${t.height}px`);
+
+    // 若沒傳入 height，則補上元素實際 scrollHeight
+    if (!t.height) {
+      const fallbackHeight = e.scrollHeight || e.offsetHeight || 2000;
+      n.height = `${fallbackHeight}px`;
+    }
+
+    const r = t.style;
+    if (r != null) {
+      Object.keys(r).forEach((key => {
+        n[key] = r[key];
+      }));
+    }
+  })(o, t);
+
+  // 建立 SVG + foreignObject
+  return await (async function(e, t, n) {
+    const r = "http://www.w3.org/2000/svg";
+    const o = document.createElementNS(r, "svg");
+    const s = document.createElementNS(r, "foreignObject");
+    o.setAttribute("width", `${t}`);
+    o.setAttribute("height", `${n}`);
+    o.setAttribute("viewBox", `0 0 ${t} ${n}`);
+    s.setAttribute("width", "100%");
+    s.setAttribute("height", "100%");
+    s.setAttribute("x", "0");
+    s.setAttribute("y", "0");
+    s.setAttribute("externalResourcesRequired", "true");
+    o.appendChild(s);
+    s.appendChild(e);
+
+    return await Promise.resolve()
+      .then(() => (new XMLSerializer).serializeToString(o))
+      .then(encodeURIComponent)
+      .then(str => `data:image/svg+xml;charset=utf-8,${str}`);
+  })(o, n, r);
+}
+
+// === 修正：pn 中實際取得元素尺寸 ===
+async function pn(e, t = {}) {
+  // 改用 getBoundingClientRect 取得實際尺寸
+  const bounding = e.getBoundingClientRect();
+  const width = Math.ceil(bounding.width);
+  const height = Math.ceil(bounding.height);
+
+  const svgDataUrl = await fn(e, { ...t, width, height });
+  const img = await It(svgDataUrl);
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  const pixelRatio = t.pixelRatio || window.devicePixelRatio || 1;
+  const canvasWidth = t.canvasWidth || width;
+  const canvasHeight = t.canvasHeight || height;
+
+  canvas.width = canvasWidth * pixelRatio;
+  canvas.height = canvasHeight * pixelRatio;
+
+  // 自動縮放（可選）
+  if (!t.skipAutoScale) {
+    (function(e) {
+      (e.width > _t || e.height > _t) && (e.width > _t && e.height > _t
+        ? e.width > e.height
+          ? (e.height *= _t / e.width, e.width = _t)
+          : (e.width *= _t / e.height, e.height = _t)
+        : e.width > _t
+          ? (e.height *= _t / e.width, e.width = _t)
+          : (e.width *= _t / e.height, e.height = _t));
+    })(canvas);
   }
 
-  // 克隆 main
-  let t = e.cloneNode(true);
-  t.id = "copied-main";
+  canvas.style.width = `${canvasWidth}px`;
+  canvas.style.height = `${canvasHeight}px`;
 
-  // 將 clone 加入畫面中（這一步是必要的，否則無法正確 layout）
-  e.parentElement?.appendChild(t);
+  if (t.backgroundColor) {
+    ctx.fillStyle = t.backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }
 
-  // 移除 41 列以後的列
-  t.querySelectorAll("tbody tr:nth-child(n+41)").forEach(tr => tr.remove());
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-  // 等待兩個 animation frame，讓瀏覽器完成 layout（這是關鍵）
-  await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
-
-  // 開始轉換圖片
-  pn(t, {
-    backgroundColor: window.getComputedStyle(document.body).backgroundColor
-  }).then(async blob => {
-    t.remove(); // 清除 clone
-
-    if (blob != null) {
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        const file = new File([blob], hn, { type: blob.type });
-        if (navigator?.canShare?.({ files: [file] })) {
-          navigator.share({ files: [file] }).catch(console.log);
-        }
-      } else {
-        const a = document.createElement("a");
-        a.href = window.URL.createObjectURL(blob);
-        a.download = hn;
-        a.click();
-      }
-    } else {
-      alert(d(wt)("share.error", { error: "result blob is null" }));
-    }
-  }).catch(error => {
-    alert(d(wt)("share.error", { error }));
+  return await new Promise(resolve => {
+    canvas.toBlob(blob => resolve(blob), t.type || "image/png", t.quality || 1);
   });
 }
+
+// === 主導出函式 gn ===
+async function gn() {
+  const e = document.querySelector("main");
+  if (!e) {
+    return alert(d(wt)("share.error", {
+      error: "resultNode is null"
+    }));
+  }
+
+  const t = e.cloneNode(!0);
+  t.id = "copied-main";
+  e.parentElement?.appendChild(t);
+
+  // 等待渲染
+  await new Promise(r => requestAnimationFrame(r));
+  await new Promise(r => requestAnimationFrame(r));
+
+  // 移除第 41 行（含）以後
+  t.querySelectorAll("tbody tr:nth-child(n+41)").forEach(el => el.remove());
+
+  const bounding = t.getBoundingClientRect();
+  const width = Math.ceil(bounding.width);
+  const height = Math.ceil(bounding.height);
+
+  pn(t, {
+    backgroundColor: window.getComputedStyle(document.body).backgroundColor,
+    width,
+    height
+  }).then(async blob => {
+    t.remove();
+    if (!blob) {
+      alert(d(wt)("share.error", {
+        error: "result blob is null"
+      }));
+      return;
+    }
+
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+      const file = new File([blob], hn, { type: blob.type });
+      if (navigator?.canShare?.({ files: [file] })) {
+        navigator.share({ files: [file] }).catch(console.log);
+      }
+    } else {
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      link.download = hn;
+      link.click();
+    }
+  }).catch(err => {
+    alert(d(wt)("share.error", {
+      error: err
+    }));
+  });
+}
+
 
 
     function mn(e) {
