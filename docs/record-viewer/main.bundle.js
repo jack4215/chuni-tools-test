@@ -1686,7 +1686,7 @@
         error: "resultNode is null"
       }));
       let t = e?.cloneNode(!0);
-      t.id = "copied-main", t.querySelectorAll("tbody tr:nth-child(n+41)").forEach((e => {
+      t.id = "copied-main", t.querySelectorAll("tbody tr:nth-child(n+42)").forEach((e => {
         e.remove()
       })), e?.parentElement?.appendChild(t), pn(t, {
         backgroundColor: window.getComputedStyle(document.body).backgroundColor
