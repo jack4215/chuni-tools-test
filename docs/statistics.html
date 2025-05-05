@@ -61,6 +61,14 @@
       font-size: 15px;
     }
 
+    #last-updated {
+      font-size: 12px;
+      color: #f08d79;
+      text-align: left !important; 
+      margin-bottom: 0.5em;
+      font-weight: bold;
+    }
+
     .spinner {
       margin: 1.5rem auto;
       border: 0.5rem solid var(--theme-bg-sub);
@@ -96,10 +104,12 @@
       Now Loading...
     </div>
     <div class="table-wrapper" style="display: none;">
+      <div id="last-updated" style="margin-bottom: 1em; display: none;"></div>
       <table id="data-table">
         <thead></thead>
         <tbody></tbody>
       </table>
+      <div id="footer" style="margin-top: 2em;">Developed and maintained by TSAIBEE</div>
     </div>
   </div>
 
@@ -134,6 +144,7 @@
       .then(data => {
         const tableWrapper = document.querySelector('.table-wrapper');
         const loading = document.getElementById('loading');
+        const lastUpdated = document.getElementById('last-updated');
         const thead = document.querySelector('#data-table thead');
         const tbody = document.querySelector('#data-table tbody');
         thead.innerHTML = `
@@ -159,6 +170,11 @@
           `;
           tbody.appendChild(tr);
         });
+
+        if (data.length >= 20) {
+          lastUpdated.textContent = 'Last updated : ' + data[20]['Rating'];
+          lastUpdated.style.display = 'block';
+        }
 
         loading.style.display = 'none';
         tableWrapper.style.display = 'block';
