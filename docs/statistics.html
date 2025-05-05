@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CHUNITHM Tools @TSAIBEE｜Statistics</title>
   <style>
     :root {
@@ -12,6 +12,8 @@
       --table-text-color: #cecece;
       --table-border-color: #444;
       --table-header-bg: #2c3a4b;
+      --theme-bg-sub: #334;
+      --theme-label: #fff;
     }
 
     body {
@@ -25,7 +27,7 @@
 
     .content {
       padding: 2em;
-      max-width: 700px;
+      max-width: 600px;
       margin: auto;
     }
 
@@ -36,7 +38,7 @@
     table {
       border-collapse: collapse;
       width: 100%;
-      min-width: 660px;
+      min-width: 600px;
       background-color: var(--table-bg-color);
       color: var(--table-text-color);
     }
@@ -49,6 +51,28 @@
 
     th {
       background-color: var(--table-header-bg);
+    }
+
+    #loading {
+      text-align: center;
+      margin-top: 10rem;
+      color: var(--text-color);
+      font-size: 15px;
+    }
+
+    .spinner {
+      margin: 1.5rem auto;
+      border: 0.5rem solid var(--theme-bg-sub);
+      border-top-color: var(--theme-label);
+      border-radius: 50%;
+      width: 4rem;
+      height: 4rem;
+      animation: spin 1s cubic-bezier(0.5, 0.2, 0.5, 0.8) infinite;
+    }
+
+    @keyframes spin {
+      0%   { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
     @media (max-width: 660px) {
       table {
@@ -66,18 +90,13 @@
 <body>
   <div class="content">
     <h2>CHUNITHM Tools @TSAIBEE｜Statistics</h2>
-    <div class="table-wrapper">
+    <div id="loading">
+      <div class="spinner"></div>
+      Now Loading...
+    </div>
+    <div class="table-wrapper" style="display: none;">
       <table id="data-table">
-        <thead>
-          <tr>
-            <th>　</th>
-            <th>Rating</th>
-            <th>OP</th>
-            <th>P.C.</th>
-            <th>B30</th>
-            <th>C20</th>
-          </tr>
-        </thead>
+        <thead></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -112,8 +131,22 @@
     fetch(url)
       .then(res => res.json())
       .then(data => {
+        const tableWrapper = document.querySelector('.table-wrapper');
+        const loading = document.getElementById('loading');
+        const thead = document.querySelector('#data-table thead');
         const tbody = document.querySelector('#data-table tbody');
-        data.forEach(row => {
+        thead.innerHTML = `
+          <tr>
+            <th>　</th>
+            <th>Rating</th>
+            <th>OP</th>
+            <th>P.C.</th>
+            <th>B30</th>
+            <th>C20</th>
+          </tr>
+        `;
+
+        data.slice(0, 19).forEach(row => {
           const tr = document.createElement('tr');
           tr.innerHTML = `
             <td>${row['PR'] || ''}</td>
@@ -125,6 +158,9 @@
           `;
           tbody.appendChild(tr);
         });
+
+        loading.style.display = 'none';
+        tableWrapper.style.display = 'block';
       });
   </script>
 </body>
