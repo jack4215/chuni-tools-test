@@ -4,29 +4,73 @@
   <meta charset="UTF-8">
   <title>試算表自訂表格</title>
   <style>
-    body { font-family: Arial; margin: 20px; }
-    table { border-collapse: collapse; width: 100%; }
-    th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
-    th { background-color: #f2f2f2; }
+    :root {
+      --bg-color: #151f28;
+      --text-color: #ffffff;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    .content {
+      padding: 2em;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #fff;
+      color: #000;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
   </style>
 </head>
 <body>
-  <h2>自訂資料表格</h2>
-  <table id="data-table">
-    <thead>
-      <tr>
-        <th>　</th>
-        <th>Rating</th>
-        <th>OP</th>
-        <th>P.C.</th>
-        <th>B30</th>
-        <th>C20</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+  <div class="content">
+    <h3>Chuni Tools statistics (Verse)</h3>
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>　</th>
+          <th>Rating</th>
+          <th>OP</th>
+          <th>P.C.</th>
+          <th>B30</th>
+          <th>C20</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
 
   <script>
+    const theme = localStorage.theme || 'dark';
+    const root = document.documentElement;
+
+    if (theme === 'black') {
+      root.style.setProperty('--bg-color', '#1a1a1a');
+    } else if (theme === 'purple') {
+      root.style.setProperty('--bg-color', '#161021');
+    } else {
+      root.style.setProperty('--bg-color', '#151f28');
+    }
+
     const url = 'https://chuni-api.tsaibee.org/stat';
 
     fetch(url)
@@ -36,7 +80,7 @@
         data.forEach(row => {
           const tr = document.createElement('tr');
           tr.innerHTML = `
-            <td>${row['PR']}</td>
+            <td>${row['PR'] || ''}</td>
             <td>${row['Rating']}</td>
             <td>${row['OP']}</td>
             <td>${row['P.C.']}</td>
