@@ -15,6 +15,7 @@
   <table id="data-table">
     <thead>
       <tr>
+        <th>　</th>
         <th>Rating</th>
         <th>OP</th>
         <th>P.C.</th>
@@ -35,6 +36,7 @@
         data.forEach(row => {
           const tr = document.createElement('tr');
           tr.innerHTML = `
+            <td>${row['PR']}</td>
             <td>${row['Rating']}</td>
             <td>${row['OP']}</td>
             <td>${row['P.C.']}</td>
