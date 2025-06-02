@@ -2359,7 +2359,7 @@
     };
 
     function er(e) {
-      j(e, "svelte-11jgb29", ".update-scorediff-btn.svelte-11jgb29{background-color:var(--theme-control);padding:0.5rem 1.5rem;margin:0.5rem 0.5rem;border-radius:0.8rem;float:right}.update-scorediff-btn.svelte-11jgb29:disabled{background-color:var(--theme-bg-sub);cursor:no-drop}")
+      j(e, "svelte-11jgb29", ".update-scorediff-btn.svelte-11jgb29{display:none;background-color:var(--theme-control);padding:0.5rem 1.5rem;margin:0.5rem 0.5rem;border-radius:0.8rem;float:right}.update-scorediff-btn.svelte-11jgb29:disabled{background-color:var(--theme-bg-sub);cursor:no-drop}")
     }
 
     function tr(e, t, n) {
