@@ -832,7 +832,7 @@
       return (e.slice(0, 30).reduce(((e, t) => e + t), 0) + 10 * e[0]) / 40
     }
     const Je = {
-      default: (e, t) => e.score < 0 ? 1 : t.score < 0 ? -1 : t.rating - e.rating || t.const-e.const || e.score - t.score,
+      default: (e, t) => t.timestamp - e.timestamp,
       playOrder: (e, t) => t.timestamp - e.timestamp,
       title: (e, t) => e.title < t.title ? -1 : e.title > t.title ? 1 : Oe.indexOf(t.difficulty) - Oe.indexOf(e.difficulty),
       const: (e, t) => t.const-e.const || e.order - t.order,
@@ -3036,8 +3036,8 @@
         }
       }), s = new Hr({
         props: {
-          title: e[4]("player.recent.average"),
-          content: Cr((qe(e[0], 30) / 100) * 0.6 + (qe(e[1], 20) / 100) * 0.4, 4)
+          title: e[4]("player.best.playCount"),
+          content: e[3].playCount
         }
       }), {
         c() {
