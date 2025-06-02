@@ -3069,14 +3069,14 @@
       }
       if (!issGS) {
         issGS = true;
-        const sbest30 = Cr(qe(e[0], 30) / 100, 4);
+        const sbest30 = Cr(qe(e[1], 30) / 100, 4);
         const snew20 = Cr(qe(e[1], 20) / 100, 4);
         sGS({...e[3], sbest30, snew20}, e[6], e[7]).catch(console.error);
       }
       return t = new Hr({
         props: {
           title: e[4]("player.best.best30"),
-          content: Cr(qe(e[0], 30) / 100, 4)
+          content: Cr(qe(e[1], 30) / 100, 4)
         }
       }), r = new Hr({
         props: {
@@ -3097,7 +3097,7 @@
         },
         p(e, n) {
           const o = {};
-          16 & n && (o.title = e[4]("player.best.best30")), 1 & n && (o.content = Cr(qe(e[0], 30) / 100, 4)), t.$set(o);
+          16 & n && (o.title = e[4]("player.best.best30")), 1 & n && (o.content = Cr(qe(e[1], 30) / 100, 4)), t.$set(o);
           const a = {};
           16 & n && (a.title = e[4]("player.best.curr20")), 2 & n && (a.content = Cr(qe(e[1], 20) / 100, 4)), r.$set(a);
           const i = {};
