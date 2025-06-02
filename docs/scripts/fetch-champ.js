@@ -11,7 +11,7 @@
                 return e.origin + t.substring(0, t.lastIndexOf("/scripts"))
             }
         }
-        return "https://chuni.tsaibee.org"
+        return "https://chuni-test.tsaibee.org"
     }
     function r(e) {
         const t = document.cookie.split(";").map((e => decodeURIComponent(e.trim()))).map((e => e.split("="))).find((t => t[0] === e));
@@ -94,7 +94,7 @@
                 r.rel = "stylesheet",
                 r.href = t("fetch-champ") + "/common/styles/inject.css",
                 e.innerText = s.analyzeRating,
-                e.href = t("fetch-champ") + "/champrecord-viewer/#all",
+                e.href = t("fetch-champ") + "/champrecord-viewer/#history",
                 e.target = "recordViewer",
                 l.getElementsByTagName("head")[0].appendChild(r),
                 r.addEventListener("load", ( () => {
@@ -124,31 +124,15 @@
                         switch (t.target) {
                             case "allRecord":
                                 console.log("%c    Target difficulty: %c" + t.data.difficulty, "color: gray", "color: white"),
-                                s = async function(e=o.master) {
-                                    const t = new FormData;
-                                    t.append("genre", "99"),
-                                    t.append("token", r("_t"));
-                                    const a = {
-                                        [o.ultima]: "sendUltima",
-                                        [o.master]: "sendMaster",
-                                        [o.expert]: "sendExpert",
-                                        [o.advanced]: "sendAdvanced",
-                                        [o.basic]: "sendBasic"
-                                    }[e];   
-                                    const c = await i("/mobile/record/musicGenre/" + a, t);
-                                    const records = Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
-                                        const r = t.querySelector(".play_musicdata_icon"),
-                                              a = t.querySelector(".text_b")?.innerHTML;
-                                        return {
-                                            title: "千本桜",
-                                            score: 1,
-                                            difficulty: e,
-                                            clear: "",
-                                            clear2: "",
-                                            idx: "9999"
-                                        };
-                                    })).filter((e => e.title && e.score));
-                                    return records;
+                                s = async function(e = o.master) {
+                                    return [{
+                                        title: "千本桜",
+                                        score: 0,
+                                        difficulty: e,
+                                        clear: "",
+                                        clear2: "",
+                                        idx: "9999"
+                                    }];
                                 }(t.data.difficulty);
                                 break; 
                         case "playHistory":
