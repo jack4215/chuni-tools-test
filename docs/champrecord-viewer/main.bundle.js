@@ -3024,7 +3024,6 @@
     let issGS = false;
     function Ar(e) {
       let t, n, r, o, s, a;
-      console.log(e);
       const eCode = e[3]?.code;
       if (eCode) {
         gtag('config', 'G-7NQS6JFY3Z', {
