@@ -3777,7 +3777,7 @@
       }, e.$$.update = () => {
         70 & e.$$.dirty && n(4, r = d.sort(h ? (e, t) => -Je[p](e, t) : Je[p])), 1920 & e.$$.dirty && n(3, o = [{
           display: "order",
-          sort: "rating",
+          sort: "playOrder",
           nocur: !0
         }, {
           display: "playOrder",
