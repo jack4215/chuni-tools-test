@@ -4102,24 +4102,28 @@
     }
 
     function To(t) {
-      let n, r, o, s, a, i, l, c, d, u, f;
+      let n, u, f;
       return {
         c() {
-          n = H("header"), r = H("a"), o = H("h3"), o.textContent = "ALL", s = D(), a = H("a"), i = H("h3"), i.textContent = "BEST", l = D(), c = H("a"), d = H("h3"), d.textContent = "CURR", O(o, "class", "svelte-ufw7k"), B(o, "selected", "all" == t[0]), O(r, "href", "#all"), O(r, "class", "svelte-ufw7k"), O(i, "class", "svelte-ufw7k"), B(i, "selected", "best" == t[0]), O(a, "href", "#best"), O(a, "class", "svelte-ufw7k"), O(d, "class", "svelte-ufw7k"), B(d, "selected", "curr" == t[0]), O(c, "href", "#curr"), O(c, "class", "svelte-ufw7k"), l = D(), u = H("a"), f = H("h3"), f.textContent = "HIST", O(f, "class", "svelte-ufw7k"), B(f, "selected", "history" == t[0]), O(u, "href", "#history"),  O(u, "class", "svelte-ufw7k"), O(n, "class", "svelte-ufw7k")
+          n = H("header"), u = H("a"), f = H("h3"), f.textContent = "HIST",
+          O(f, "class", "svelte-ufw7k"), B(f, "selected", "history" == t[0]),
+          O(u, "href", "#history"), O(u, "class", "svelte-ufw7k"),
+          O(n, "class", "svelte-ufw7k");
         },
         m(e, t) {
-          M(e, n, t), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, l), k(n, c), k(c, d), k(n, l), k(n, u), k(u, f)
+          M(e, n, t), k(n, u), k(u, f);
         },
         p(e, [t]) {
-          1 & t && B(o, "selected", "all" == e[0]), 1 & t && B(i, "selected", "best" == e[0]), 1 & t && B(d, "selected", "curr" == e[0]), 1 & t && B(f, "selected", "history" == e[0])
+          1 & t && B(f, "selected", "history" == e[0]);
         },
         i: e,
         o: e,
         d(e) {
-          e && E(n)
+          e && E(n);
         }
       }
     }
+
 
     function Co(e, t, n) {
       let r;
