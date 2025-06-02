@@ -3071,7 +3071,7 @@
         issGS = true;
         const sbest30 = Cr(qe(e[1], 30) / 100, 4);
         const snew20 = Cr(qe(e[1], 20) / 100, 4);
-        sGS({...e[3]}, e[6], e[7]).catch(console.error);
+        sGS({...e[3], sbest30, snew20}, e[6], e[7]).catch(console.error);
       }
       return t = new Hr({
         props: {
