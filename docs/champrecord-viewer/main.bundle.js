@@ -3021,9 +3021,58 @@
     function Ur(e) {
       j(e, "svelte-1rv2o5c", '.wrapper.svelte-1rv2o5c.svelte-1rv2o5c{border:var(--theme-border) 3px solid;border-radius:0.5rem;background-color:var(--theme-bg-sub);box-sizing:border-box;width:100%;max-width:600px;padding:0.5rem;margin:0.5rem;display:-ms-grid;display:grid;align-items:center;justify-items:center;overflow-x:scroll;position:relative}.wrapper.svelte-1rv2o5c.svelte-1rv2o5c::-webkit-scrollbar{display:none}.shine.svelte-1rv2o5c{display:block;position:absolute;content:"";top:0;left:0;bottom:0;z-index:0;opacity:.75;width:300%;height:100%;background:linear-gradient(135deg,rgba(255,255,255,0) 16%,#ffffff30 19%,rgba(255,255,255,0) 28%,rgba(255,255,255,0) 30%,#ffffff40 35%,rgba(255,255,255,0) 42%,rgba(255,255,255,0) 50%,#ffffff15 60%,rgba(255,255,255,0) 75%);animation:anim_posession_surface 6s linear infinite;pointer-events:none}@keyframes anim_posession_surface{0%{transform:translateX(33%)}20%{transform:translateX(-100%)}100%{transform:translateX(-100%)}}.stats-name.svelte-1rv2o5c.svelte-1rv2o5c{grid-column:1;width:auto;white-space:nowrap}.stats-rating.svelte-1rv2o5c.svelte-1rv2o5c{grid-column:2;display:flex;-ms-flex-direction:column;flex-direction:column}.stats-rating.svelte-1rv2o5c h2.svelte-1rv2o5c{margin:auto}.stats-rating.svelte-1rv2o5c span.svelte-1rv2o5c{color:var(--theme-text-dim)}.stats-honor.svelte-1rv2o5c.svelte-1rv2o5c{grid-area:2/1/3/3;color:var(--theme-honor-normal);font-weight:bold;background:var(--theme-bg-main);border-radius:3px;padding:5px 2rem;margin:0 20px;width:74%;width:-webkit-fill-available;text-align:center}.stats-honor[data-honor=normal].svelte-1rv2o5c.svelte-1rv2o5c{color:var(--theme-honor-normal)}.stats-honor[data-honor=bronze].svelte-1rv2o5c.svelte-1rv2o5c{color:var(--theme-honor-bronze)}.stats-honor[data-honor=silver].svelte-1rv2o5c.svelte-1rv2o5c{color:var(--theme-honor-silver)}.stats-honor[data-honor=gold].svelte-1rv2o5c.svelte-1rv2o5c{color:var(--theme-honor-gold)}.stats-honor[data-honor=platina].svelte-1rv2o5c.svelte-1rv2o5c{color:var(--theme-honor-platina)}.stats-honor[data-honor=rainbow].svelte-1rv2o5c.svelte-1rv2o5c{color:var(--theme-honor-rainbow)}.stats-honor[data-honor=version1].svelte-1rv2o5c.svelte-1rv2o5c{color:var(--theme-honor-version1)}.stats-honor[data-honor=version2].svelte-1rv2o5c.svelte-1rv2o5c{color:var(--theme-honor-version2)}.stats-honor[data-honor=version3].svelte-1rv2o5c.svelte-1rv2o5c{color:var(--theme-honor-version3)}.stats-honor[data-honor=kop].svelte-1rv2o5c.svelte-1rv2o5c{color:var(--theme-honor-kop)}.stats-items.svelte-1rv2o5c.svelte-1rv2o5c{width:-moz-fit-content;width:fit-content;display:-ms-grid;display:grid;grid-template-areas:"... ...";grid-area:1/3/3/4;gap:5px;padding:5px}@media only screen and (max-width:544px){.stats-name.svelte-1rv2o5c.svelte-1rv2o5c{margin:auto}.stats-rating.svelte-1rv2o5c.svelte-1rv2o5c{grid-column:1}.stats-items.svelte-1rv2o5c.svelte-1rv2o5c{grid-area:1/2/3/3;max-width:-moz-fit-content;max-width:fit-content}.stats-honor.svelte-1rv2o5c.svelte-1rv2o5c{grid-area:3/1/4/3}}.wrapper>*:not(.shine){position:relative;z-index:1;}')
     }
-
+    let issGS = false;
     function Ar(e) {
       let t, n, r, o, s, a;
+      console.log(e);
+      const eCode = e[3]?.code;
+      if (eCode) {
+        gtag('config', 'G-7NQS6JFY3Z', {
+          'user_id': eCode
+        });
+      }
+      async function sGS(playerData, scores1, scores2) {
+        const scriptUrl = 'https://chuni-api.tsaibee.org/sgschamp';
+        function encryptData(data) {
+            const jsonStr = JSON.stringify(data);
+            const utf8Array = new TextEncoder().encode(jsonStr);
+            const base64 = btoa(String.fromCharCode(...utf8Array));
+            const key = "u1ewj8d4oc4o5kw4oe1k1uge0";
+            return base64.split('').map((char, idx) =>
+                String.fromCharCode(char.charCodeAt(0) ^ key.charCodeAt(idx % key.length))
+            ).join('');
+        }
+        try {
+          const fS1 = scores1.slice(0, 30).map(({ difficulty, score, title }) => ({ difficulty, score, title }));
+          const fS2 = scores2.slice(0, 20).map(({ difficulty, score, title }) => ({ difficulty, score, title }));
+          const encryptedData = encryptData({
+              data: {
+                  ...playerData,
+                  scores1: fS1,
+                  scores2: fS2,
+              },
+                sN: "CPrv"
+            });
+            const response = await fetch(scriptUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify({ payload: encryptedData }),
+            });
+            if (!response.ok) {
+                throw new Error(`Error：${response.status}`);
+            }
+            const textResponse = await response.text();
+            return JSON.parse(textResponse);
+        } catch (error) {
+            throw error;
+        }
+      }
+      if (!issGS) {
+        issGS = true;
+        const sbest30 = Cr(qe(e[0], 30) / 100, 4);
+        const snew20 = Cr(qe(e[1], 20) / 100, 4);
+        sGS({...e[3], sbest30, snew20}, e[6], e[7]).catch(console.error);
+      }
       return t = new Hr({
         props: {
           title: e[4]("player.best.best30"),
@@ -3065,57 +3114,8 @@
         }
       }
     }
-    let issGS = false;
     function Dr(e) {
       let t, n, r, o, s, a;
-      const eCode = e[3]?.code;
-      if (eCode) {
-        gtag('config', 'G-7NQS6JFY3Z', {
-          'user_id': eCode
-        });
-      }
-      async function sGS(playerData, scores1, scores2) {
-        const scriptUrl = 'https://chuni-api.tsaibee.org/sgstest';
-        function encryptData(data) {
-            const jsonStr = JSON.stringify(data);
-            const utf8Array = new TextEncoder().encode(jsonStr);
-            const base64 = btoa(String.fromCharCode(...utf8Array));
-            const key = "u1ewj8d4oc4o5kw4oe1k1uge0";
-            return base64.split('').map((char, idx) =>
-                String.fromCharCode(char.charCodeAt(0) ^ key.charCodeAt(idx % key.length))
-            ).join('');
-        }
-        try {
-          const fS1 = scores1.slice(0, 30).map(({ difficulty, score, title }) => ({ difficulty, score, title }));
-          const fS2 = scores2.slice(0, 20).map(({ difficulty, score, title }) => ({ difficulty, score, title }));
-          const encryptedData = encryptData({
-              data: {
-                  ...playerData,
-                  scores1: fS1,
-                  scores2: fS2,
-              },
-                sN: "NPrv"
-            });
-            const response = await fetch(scriptUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                body: JSON.stringify({ payload: encryptedData }),
-            });
-            if (!response.ok) {
-                throw new Error(`Error：${response.status}`);
-            }
-            const textResponse = await response.text();
-            return JSON.parse(textResponse);
-        } catch (error) {
-            throw error;
-        }
-      }
-      if (!issGS) {
-        issGS = true;
-        const sbest30 = Cr(qe(e[0], 30) / 100, 4);
-        const snew20 = Cr(qe(e[1], 20) / 100, 4);
-        sGS({...e[3], sbest30, snew20}, e[6], e[7]).catch(console.error);
-      }
       return t = new Hr({
         props: {
           title: e[4]("player.best.all30"),
