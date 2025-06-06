@@ -826,9 +826,9 @@
     function qe(e, t) {
       return e.slice(0, t).reduce(((e, t) => e + t), 0) / t
     }
-    
-    function We(e, t) {
-      return e.slice(0, t).reduce(((e, t) => e + t), 0)
+
+    function We(e) {
+      return (e.slice(0, 30).reduce(((e, t) => e + t), 0) + 10 * e[0]) / 40
     }
     const Je = {
       default: (e, t) => e.score < 0 ? 1 : t.score < 0 ? -1 : t.rating - e.rating || t.const-e.const || e.score - t.score,
@@ -2948,7 +2948,7 @@
           super(), je(this, e, jr, kr, i, {}, cr)
         }
       },
-      Tr = [1, 10, 100, 1e3, 1e4, 1e5];
+      Tr = [1, 10, 100, 1e3, 1e4];
 
     function Cr(e, t) {
       const n = Tr[t];
@@ -3017,9 +3017,9 @@
         }
       }), s = new Hr({
         props: {
-        title: e[4]("player.recent.average"),
-        content: Cr((We(e[0], 30) + We(e[1], 20)) / 5000, 5)
-      }
+          title: e[4]("player.recent.average"),
+          content: Cr((qe(e[0], 30) / 100) * 0.6 + (qe(e[1], 20) / 100) * 0.4, 4)
+        }
       }), {
         c() {
           $e(t.$$.fragment), n = D(), $e(r.$$.fragment), o = D(), $e(s.$$.fragment)
@@ -3033,7 +3033,7 @@
           const a = {};
           16 & n && (a.title = e[4]("player.best.curr20")), 2 & n && (a.content = Cr(qe(e[1], 20) / 100, 4)), r.$set(a);
           const i = {};
-          16 & n && (i.title = e[4]("player.recent.average")), 1 & n && (i.content = Cr((We(e[0], 30) + We(e[1], 20)) / 5000, 5)), s.$set(i)
+          16 & n && (i.title = e[4]("player.recent.average")), 1 & n && (i.content = Cr((qe(e[0], 30) / 100) * 0.6 + (qe(e[1], 20) / 100) * 0.4, 4)), s.$set(i)
         },
         i(e) {
           a || (ge(t.$$.fragment, e), ge(r.$$.fragment, e), ge(s.$$.fragment, e), a = !0)
@@ -3105,7 +3105,7 @@
       }), r = new Hr({
         props: {
           title: e[4]("player.recent.average"),
-          content: Cr((We(e[0], 30) + We(e[1], 20)) / 5000, 4)
+          content: Cr((qe(e[0], 30) / 100) * 0.6 + (qe(e[1], 20) / 100) * 0.4, 4)
         }
       }), s = new Hr({
         props: {
@@ -3123,7 +3123,7 @@
           const o = {};
           16 & n && (o.title = e[4]("player.best.all30")), 4 & n && (o.content = Cr(qe(e[2], 30) / 100, 4)), t.$set(o);
           const a = {};
-          16 & n && (a.title = e[4]("player.recent.average")), 1 & n && (a.content = Cr((We(e[0], 30) + We(e[1], 20)) / 5000, 4)), r.$set(a);
+          16 & n && (a.title = e[4]("player.recent.average")), 1 & n && (a.content = Cr((qe(e[0], 30) / 100) * 0.6 + (qe(e[1], 20) / 100) * 0.4, 4)), r.$set(a);
           const i = {};
           16 & n && (i.title = e[4]("player.best.playCount")), 8 & n && (i.content = e[3].playCount), s.$set(i)
         },
