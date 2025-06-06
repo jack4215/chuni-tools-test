@@ -2948,7 +2948,7 @@
           super(), je(this, e, jr, kr, i, {}, cr)
         }
       },
-      Tr = [1, 10, 100, 1e3, 1e4];
+      Tr = [1, 10, 100, 1e3, 1e4, 1e5];
 
     function Cr(e, t) {
       const n = Tr[t];
@@ -3105,7 +3105,7 @@
       }), r = new Hr({
         props: {
           title: e[4]("player.recent.average"),
-          content: Cr((We(e[0], 30) + We(e[1], 20)) / 5000, 5)
+          content: Cr((We(e[0], 30) + We(e[1], 20)) / 5000, 4)
         }
       }), s = new Hr({
         props: {
@@ -3123,7 +3123,7 @@
           const o = {};
           16 & n && (o.title = e[4]("player.best.all30")), 4 & n && (o.content = Cr(qe(e[2], 30) / 100, 4)), t.$set(o);
           const a = {};
-          16 & n && (a.title = e[4]("player.recent.average")), 1 & n && (a.content = Cr((We(e[0], 30) + We(e[1], 20)) / 5000, 5)), r.$set(a);
+          16 & n && (a.title = e[4]("player.recent.average")), 1 & n && (a.content = Cr((We(e[0], 30) + We(e[1], 20)) / 5000, 4)), r.$set(a);
           const i = {};
           16 & n && (i.title = e[4]("player.best.playCount")), 8 & n && (i.content = e[3].playCount), s.$set(i)
         },
