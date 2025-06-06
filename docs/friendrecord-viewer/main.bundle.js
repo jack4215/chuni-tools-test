@@ -827,7 +827,7 @@
       return e.slice(0, t).reduce(((e, t) => e + t), 0) / t
     }
     
-    function We(e) {
+    function We(e, t) {
       return e.slice(0, t).reduce(((e, t) => e + t), 0)
     }
     const Je = {
