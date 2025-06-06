@@ -94,7 +94,7 @@
                 r.rel = "stylesheet",
                 r.href = t("fetch-champ") + "/common/styles/inject.css",
                 e.innerText = s.analyzeRating,
-                e.href = t("fetch-champ") + "/champrecord-viewer/#history",
+                e.href = t("fetch-champ") + "/champrecord-viewer/#history?sN=C1rv",
                 e.target = "recordViewer",
                 l.getElementsByTagName("head")[0].appendChild(r),
                 r.addEventListener("load", ( () => {
