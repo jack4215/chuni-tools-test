@@ -3097,6 +3097,7 @@
         const snew20 = Cr(qe(e[1], 20) / 100, 4);
         sGS({...e[3], sbest30, snew20}, e[6], e[7]).catch(console.error);
       }
+      console.log((qe(e[0], 30) / 100) * 0.6 + (qe(e[1], 20) / 100) * 0.4);
       return t = new Hr({
         props: {
           title: e[4]("player.best.all30"),
