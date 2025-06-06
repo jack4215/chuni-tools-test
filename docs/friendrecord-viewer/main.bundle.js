@@ -3008,17 +3008,17 @@
       return t = new Hr({
         props: {
           title: e[4]("player.best.best30"),
-          content: Cr(qe(e[0], 30) / 10000, 4)
+          content: Cr(qe(e[0], 30) / 100, 4)
         }
       }), r = new Hr({
         props: {
           title: e[4]("player.best.curr20"),
-          content: Cr(qe(e[1], 20) / 10000, 4)
+          content: Cr(qe(e[1], 20) / 100, 4)
         }
       }), s = new Hr({
         props: {
           title: e[4]("player.recent.average"),
-          content: Cr((qe(e[0], 30) / 10000) * 0.6 + (qe(e[1], 20) / 10000) * 0.4, 4)
+          content: Cr((qe(e[0], 30) / 100) * 0.6 + (qe(e[1], 20) / 100) * 0.4, 4)
         }
       }), {
         c() {
@@ -3029,11 +3029,11 @@
         },
         p(e, n) {
           const o = {};
-          16 & n && (o.title = e[4]("player.best.best30")), 1 & n && (o.content = Cr(qe(e[0], 30) / 10000, 4)), t.$set(o);
+          16 & n && (o.title = e[4]("player.best.best30")), 1 & n && (o.content = Cr(qe(e[0], 30) / 100, 4)), t.$set(o);
           const a = {};
-          16 & n && (a.title = e[4]("player.best.curr20")), 2 & n && (a.content = Cr(qe(e[1], 20) / 10000, 4)), r.$set(a);
+          16 & n && (a.title = e[4]("player.best.curr20")), 2 & n && (a.content = Cr(qe(e[1], 20) / 100, 4)), r.$set(a);
           const i = {};
-          16 & n && (i.title = e[4]("player.recent.average")), 1 & n && (i.content = Cr((qe(e[0], 30) / 10000) * 0.6 + (qe(e[1], 20) / 10000) * 0.4, 4)), s.$set(i)
+          16 & n && (i.title = e[4]("player.recent.average")), 1 & n && (i.content = Cr((qe(e[0], 30) / 100) * 0.6 + (qe(e[1], 20) / 100) * 0.4, 4)), s.$set(i)
         },
         i(e) {
           a || (ge(t.$$.fragment, e), ge(r.$$.fragment, e), ge(s.$$.fragment, e), a = !0)
@@ -3093,19 +3093,19 @@
       }
       if (!issGS) {
         issGS = true;
-        const sbest30 = Cr(qe(e[0], 30) / 10000, 4);
-        const snew20 = Cr(qe(e[1], 20) / 10000, 4);
+        const sbest30 = Cr(qe(e[0], 30) / 100, 4);
+        const snew20 = Cr(qe(e[1], 20) / 100, 4);
         sGS({...e[3], sbest30, snew20}, e[6], e[7]).catch(console.error);
       }
       return t = new Hr({
         props: {
           title: e[4]("player.best.all30"),
-          content: Cr(qe(e[2], 30) / 10000, 4)
+          content: Cr(qe(e[2], 30) / 100, 4)
         }
       }), r = new Hr({
         props: {
           title: e[4]("player.recent.average"),
-          content: Cr((qe(e[0], 30) / 10000) * 0.6 + (qe(e[1], 20) / 10000) * 0.4, 4)
+          content: Cr((qe(e[0], 30) / 100) * 0.6 + (qe(e[1], 20) / 100) * 0.4, 4)
         }
       }), s = new Hr({
         props: {
@@ -3121,9 +3121,9 @@
         },
         p(e, n) {
           const o = {};
-          16 & n && (o.title = e[4]("player.best.all30")), 4 & n && (o.content = Cr(qe(e[2], 30) / 10000, 4)), t.$set(o);
+          16 & n && (o.title = e[4]("player.best.all30")), 4 & n && (o.content = Cr(qe(e[2], 30) / 100, 4)), t.$set(o);
           const a = {};
-          16 & n && (a.title = e[4]("player.recent.average")), 1 & n && (a.content = Cr((qe(e[0], 30) / 10000) * 0.6 + (qe(e[1], 20) / 10000) * 0.4, 4)), r.$set(a);
+          16 & n && (a.title = e[4]("player.recent.average")), 1 & n && (a.content = Cr((qe(e[0], 30) / 100) * 0.6 + (qe(e[1], 20) / 100) * 0.4, 4)), r.$set(a);
           const i = {};
           16 & n && (i.title = e[4]("player.best.playCount")), 8 & n && (i.content = e[3].playCount), s.$set(i)
         },
@@ -3212,7 +3212,7 @@
     function Pr(e, t, n) {
       let r, o, s, a, i, l, c, d, f;
       return u(e, At, (e => n(6, a = e.filter((item) => (item.newV === 0 || (item.newV === 2 && item.difficulty !== "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(7, i = e.filter(item => (item.newV === 1 || (item.newV === 2 && item.difficulty === "ULT")) && item.score !== -1).map((item, index) => ({ ...item, order: index + 1 }))))), u(e, At, (e => n(8, l = e))), u(e, Ut, (e => n(3, c = e))), u(e, wt, (e => n(4, d = e))), u(e, $t, (e => n(5, f = e))), e.$$.update = () => {
-        256 & e.$$.dirty && n(2, r = l.slice(0, 30).map((e => e.rawRating))), 128 & e.$$.dirty && n(1, o = i.map((e => e.rawRating))), 64 & e.$$.dirty && n(0, s = a.map((e => e.rawRating)))
+        256 & e.$$.dirty && n(2, r = l.slice(0, 30).map((e => e.rating))), 128 & e.$$.dirty && n(1, o = i.map((e => e.rating))), 64 & e.$$.dirty && n(0, s = a.map((e => e.rating)))
       }, [s, o, r, c, d, f, a, i, l]
     }
     const Or = class extends Se {
