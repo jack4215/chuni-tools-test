@@ -64,12 +64,16 @@
             [e.en_US]: {
                 pleaseLogin: "Please login to CHUNITHM-NET first.",
                 needReload: "Please reload CHUNITHM-NET.",
-                analyzeRating: "Submit Results"
+                analyzeRating: "Submit Record",
+                eventTitle: "FT - TAKAO Championship '25 Prelim",
+                eventTime: "Time : 2025/6/3 ~ 2025/7/10"
             },
             [e.zh_TW]: {
                 pleaseLogin: "請先登入 CHUNITHM-NET 再執行本程式。",
                 needReload: "請重新整理 CHUNITHM-NET 再執行本程式。",
-                analyzeRating: "賽事成績上傳"
+                analyzeRating: "賽事成績上傳",
+                eventTitle: "FT - TAKAO Championship '25 Prelim",
+                eventTime: "開放時間：2025/6/3 ~ 2025/7/10"
             }
         }[function() {
             const t = new URLSearchParams(location.search);
@@ -95,10 +99,24 @@
                 r.href = t("fetch-champ") + "/common/styles/inject.css",
                 e.innerText = s.analyzeRating,
                 e.href = t("fetch-champ") + "/champrecord-viewer/?sN=C1rv#history",
-                e.target = "recordViewer",
+                e.target = "champrecordViewer",
                 l.getElementsByTagName("head")[0].appendChild(r),
                 r.addEventListener("load", ( () => {
-                    l.querySelector(".clearfix")?.insertAdjacentElement("afterend", e);
+                    const target = l.querySelector(".clearfix");
+                    if (target) {
+                        target.insertAdjacentElement("afterend", e);
+                        const div = l.createElement("div");
+                        div.className = "fetch-champ-container";
+                        const title = l.createElement("p");
+                        title.style.color = "#ffa173";
+                        title.innerText = s.eventTitle;
+                        const time = l.createElement("p");
+                        time.style.fontSize = "15px";
+                        time.innerText = s.eventTime;
+                        div.appendChild(title);
+                        div.appendChild(time);
+                        e.insertAdjacentElement("afterend", div);
+                    }
                 }
                 ))
             }(),
