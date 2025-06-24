@@ -998,7 +998,7 @@
     for (let e of Rl) Kee[e] = !0;
     let Keee = {};
     for (let e of Rk) Keee[e] = !0;
-    const et = Ue("filterGenre", Ke), eet = Ue("filterRelease", Kee), eeet = Ue("filterRelease", Keee),
+    const et = Ue("filterGenre", Ke), eet = Ue("filterRelease", Kee), eeet = Ue("filterRank", Keee),
       tt = Ne("usedConstData", "verse", ["verse"], (() => {
         At.updateConstData(), Ht.updateConstData()
       })),
