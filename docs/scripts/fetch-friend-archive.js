@@ -94,8 +94,8 @@
                 r.rel = "stylesheet",
                 r.href = t("fetch-friend") + "/common/styles/inject.css",
                 e.innerText = s.analyzeRating,
-                e.href = t("fetch-friend") + "/friendrecord-viewer/#all";
-                e.onclick = e => (e.preventDefault(), window.open(e.currentTarget.href, "friendrecordViewer_" + (document.querySelector('select[name="friend"]')?.value || "default")));
+                e.href = t("fetch-friend") + "/friendrecord-viewer/#best",
+                e.target = "friendrecordViewer",
                 l.getElementsByTagName("head")[0].appendChild(r),
                 r.addEventListener("load", ( () => {
                     l.querySelector(".clearfix")?.insertAdjacentElement("afterend", e)
@@ -122,7 +122,7 @@
                         }(e.source, e.origin);
                         let s;
                         switch (t.target) {
-                        case "friendallRecord":
+                        case "friendbestRecord":
                             console.log("%c    Target difficulty: %c" + t.data.difficulty, "color: gray", "color: white"),
                             s = async function(e=o.master) {
                                 const t = new FormData;
@@ -154,47 +154,24 @@
                             break;
                         case "playerStats":
                             s = async function() {
-                                const sF = document.querySelector('select[name="friend"]').value;
-                                const g = new FormData();
-                                g.append("idx", sF);
-                                g.append("token", r("_t"));
-                                const e = await i("/mobile/friend/sendFriendDetail/", g);
+                                const e = await i("/mobile/friend");
                                 const f = await i("/mobile/home/playerData");
+                                const selectedFriendIdx = document.querySelector('select[name="friend"]').value;
                                 const friendBlock = Array.from(e.querySelectorAll(".friend_block")).find(block => 
-                                    block.querySelector('input[name="idx"]')?.value === sF
+                                    block.querySelector('input[name="idx"]')?.value === selectedFriendIdx
                                 );
-                                const t = e.querySelectorAll(".player_honor_short")[0];
-                                let honorText = null;
-                                let honorColor = "normal";
-                                if (t) {
-                                    const honorTextElement = t.querySelector(".player_honor_text_view span");
-                                    honorText = honorTextElement ? honorTextElement.innerHTML : null;
-                                    const bgImage = t.style.backgroundImage;
-                                    const imageUrlMatch = bgImage.match(/url\(["']?(.*?)["']?\)/);
-                                    const imageUrl = imageUrlMatch ? imageUrlMatch[1] : null;
-                                    const x = /honor_bg_(.*?)(?=\.png)/.exec(bgImage);
-                                    if (x) honorColor = x[1];
-                                    if (!honorText && imageUrl) {
-                                        try {
-                                            const response = await fetch(`https://chuni-test.tsaibee.org/data/title.json?t=${Date.now()}`);
-                                            const titleData = await response.json();
-                                            const matchedTitle = titleData.find(item => item.image === imageUrl);
-                                            if (matchedTitle) {
-                                                honorText = matchedTitle.title;
-                                                honorColor = matchedTitle.genre;
-                                            }
-                                        } catch (error) {
-                                            console.error("Error:", error);
-                                        }
-                                    }
+                                if (!friendBlock) {
+                                    throw new Error("Selected friend not found");
                                 }
-                                const a = Array.from(e.querySelectorAll(".player_rating_num_block img"))
+                                const t = friendBlock.querySelector(".player_honor_short")
+                                    , r = /honor_bg_.*(?=\.png)/.exec(t.style.backgroundImage)
+                                    , a = Array.from(friendBlock.querySelectorAll(".player_rating_num_block img"))
                                     .map(img => /rating_.*_comma.png/.test(img.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(img.src)[0].slice(-1))
                                     .join("");
                                 const aa = Array.from(f.querySelectorAll(".player_rating_num_block img"))
                                     .map((f => /rating_.*_comma.png/.test(f.src) ? "." : /rating_.*_[0-9]*(?=\.png)/.exec(f.src)[0].slice(-1)))
                                     .join("");
-                                const profileDiv = e.querySelector(".box_playerprofile.clearfix, .box_playerprofile");
+                                const profileDiv = friendBlock.querySelector(".box_playerprofile.clearfix, .box_playerprofile");
                                 let background = "normal";
                                 if (profileDiv) {
                                     const styleAttr = profileDiv.getAttribute("style");
@@ -204,24 +181,25 @@
                                     }
                                 }
                                 const playerData = {
-                                    name: e.querySelector(".player_name_in").innerHTML,
+                                    name: friendBlock.querySelector(".player_name_in a").innerHTML,
                                     honor: {
-                                        text: honorText || "Unknown",
-                                        color: honorColor
+                                        text: friendBlock.querySelector(".player_honor_text_view span").innerHTML,
+                                        color: r ? r[0].slice(9) : "normal"
                                     },
                                     rating: a,
-                                    overPower: e.querySelector(".player_overpower_text").innerHTML.match(/\(([^)]+)\)/)[1],
+                                    ratingMax: friendBlock.querySelector(".player_rating_max").innerHTML,
+                                    overPower: friendBlock.querySelector(".player_overpower_text").innerHTML.match(/\(([^)]+)\)/)[1],
                                     playCount: "--", 
                                     lastPlayed: "--",
                                     ratingPn: background,
-                                    code: sF,
+                                    code: selectedFriendIdx,
                                     fname: f.querySelector(".player_name_in").innerHTML,
                                     frating: aa,
                                     fcode: f.querySelector('.user_data_friend_code .user_data_text span[style="display:none;"]')?.innerText || "N/A",
                                 };
                                 return playerData;
                             }();
-                            break;
+                            break;                            
                         case "songPlayCount":                  
                             s = async function() {
                                 return "-";

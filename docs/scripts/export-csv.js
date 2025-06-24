@@ -11,7 +11,7 @@
                 return e.origin + t.substring(0, t.lastIndexOf("/scripts"))
             }
         }
-        return "https://jack4215.github.io/chuni-tools"
+        return "https://chuni-test.tsaibee.org"
     }
     function n(e) {
         const t = document.cookie.split(";").map((e => decodeURIComponent(e.trim()))).map((e => e.split("="))).find((t => t[0] === e));
@@ -127,7 +127,7 @@
                 downloadCSV: "Download Song Record as CSV",
                 downloading: "Downloading {{diff}} data...",
                 downloaded: "Completed!",
-                triggerScript: "chuni Rd",
+                triggerScript: "B30 Image @Qman",
                 loadingMessage: "Loading song data, please do not click the button again."
             },
             [e.zh_TW]: {
@@ -136,7 +136,7 @@
                 downloadCSV: "以CSV下載歌曲記錄",
                 downloading: "正在下載 {{diff}} 資料...",
                 downloaded: "下載完成！",
-                triggerScript: "chuni Rd",
+                triggerScript: "B30 圖片 @Qman",
                 loadingMessage: "正在載入歌曲資料，請勿重複點擊按鈕。"
             }
         }[function() {
@@ -261,7 +261,7 @@
                     }
                     )),
                     o
-                }(n, await fetch(t("export-csv") + "/data/song-const/luminousplus.json").then((async e => await e.json())))
+                }(n, await fetch(t("export-csv") + "/data/song-const/verse.json").then((async e => await e.json())))
                   , i = o.map((e => `"${e.title.replace(/"/g, '""')}",${e.difficulty},${e.const},${e.score},${e.rating},${e.op}`));
                 isLoading = false;
                 e.innerText = a.downloaded;
@@ -282,7 +282,7 @@
 
             triggerButton.addEventListener("click", () => {
                 var e = document.createElement("script");
-                e.src = "https://jack4215.github.io/chuni-tools-test/scripts/b30image.js?" + String(Math.floor((new Date).getTime()/1e3));
+                e.src = "https://chuni-test.tsaibee.org/scripts/b30image.js?" + String(Math.floor((new Date).getTime()/1e3));
                 document.body.appendChild(e);
             });
 

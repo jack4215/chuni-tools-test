@@ -11,7 +11,7 @@
                 return e.origin + t.substring(0, t.lastIndexOf("/scripts"))
             }
         }
-        return "https://chuni.tsaibee.org"
+        return "https://chuni-test.tsaibee.org"
     }
     function r(e) {
         const t = document.cookie.split(";").map((e => decodeURIComponent(e.trim()))).map((e => e.split("="))).find((t => t[0] === e));
@@ -99,7 +99,7 @@
                 l.getElementsByTagName("head")[0].appendChild(r),
                 r.addEventListener("load", ( () => {
                     l.querySelector(".clearfix")?.insertAdjacentElement("afterend", e);
-                    insertClearButtons();
+                 //   insertClearButtons();
                 }
                 ))
                 function insertClearButtons() {
@@ -279,6 +279,7 @@
                                             idx: t.querySelector('input[name="idx"]').value
                                         };
                                     })).filter((e => e.title && e.score && !e.title.includes("Floor Killer") && !e.title.includes("Dig Delight!")));
+                                 /*   // Add hidden song
                                     const difficultyNames = {
                                         [o.ultima]: "ultima",
                                         [o.master]: "master",
@@ -287,7 +288,6 @@
                                         [o.basic]: "basic"
                                     };   
                                     const difficultyScore = sumScores(records);
-                                    // Add hidden song
                                     const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
                                     const clearStatus = JSON.parse(localStorage.getItem("clearStatus_250417") || "{}");
                                     if (e === o.ultima) {
@@ -300,7 +300,7 @@
                                             idx: "2712"
                                         });
                                     }
-                                    // Add hidden song end
+                                    // Add hidden song end */
                                     return records;
                                 }(t.data.difficulty);
                                 break;
@@ -351,7 +351,7 @@
                                     const imageUrl = imageUrlMatch ? imageUrlMatch[1] : null;
                                     if (imageUrl) {
                                         try {
-                                            const response = await fetch(`https://chuni.tsaibee.org/data/title.json?t=${Date.now()}`);
+                                            const response = await fetch(`https://chuni-test.tsaibee.org/data/title.json?t=${Date.now()}`);
                                             const titleData = await response.json();
                                             const matchedTitle = titleData.find(item => item.image === imageUrl);
                                             if (matchedTitle) {

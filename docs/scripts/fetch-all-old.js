@@ -64,12 +64,12 @@
             [e.en_US]: {
                 pleaseLogin: "Please login to CHUNITHM-NET first.",
                 needReload: "Please reload CHUNITHM-NET.",
-                analyzeRating: "Submit Record"
+                analyzeRating: "Analyze Rating (Old)"
             },
             [e.zh_TW]: {
                 pleaseLogin: "請先登入 CHUNITHM-NET 再執行本程式。",
                 needReload: "請重新整理 CHUNITHM-NET 再執行本程式。",
-                analyzeRating: "賽事成績上傳"
+                analyzeRating: "分析遊戲成績 (舊定)"
             }
         }[function() {
             const t = new URLSearchParams(location.search);
@@ -87,69 +87,21 @@
             return alert(s.pleaseLogin),
             void (window.location.href = a);
         try {
-            !(function () {
-                const l = document;
+            !function() {
                 const e = l.createElement("a");
-                e.className = "chuni-tool-btn2";
-                e.target = "champrecordViewer";
-
+                e.className = "chuni-tool-btn";
                 const r = l.createElement("link");
-                r.rel = "stylesheet";
-                r.href = t("fetch-champ") + "/common/styles/inject.css";
-                l.getElementsByTagName("head")[0].appendChild(r);
-
-                const lang = (() => {
-                    const localLang = localStorage.getItem("language");
-                    switch (localLang) {
-                        case "zh_TW": return "zh_TW";
-                        case "en_US": return "en_US";
-                        default: return navigator.language.startsWith("zh") ? "zh_TW" : "en_US";
-                    }
-                })();
-                r.addEventListener("load", () => {
-                    fetch("https://chuni-event.tsaibee.org/event.json?t=" + Date.now())
-                        .then(res => res.json())
-                        .then((events) => {
-                            const now = new Date();
-                            const validEvents = events.filter(ev => !ev.expire || new Date(ev.expire) >= now);
-                            if (validEvents.length === 0) return;
-                            let currentEvent = validEvents[0];
-                            e.innerText = s.analyzeRating;
-                            e.href = t("fetch-champ") + currentEvent.href;
-                            const target = l.querySelector(".clearfix");
-                            if (!target) return;
-                            target.insertAdjacentElement("afterend", e);
-                            const div = l.createElement("div");
-                            div.className = "fetch-champ-container";
-                            const select = l.createElement("select");
-                            select.className = "fetch-champ-select";
-                            validEvents.forEach((ev, index) => {
-                                const opt = l.createElement("option");
-                                opt.value = index;
-                                opt.innerText = ev.title[lang];
-                                select.appendChild(opt);
-                            });
-                            const hint = l.createElement("p");
-                            hint.className = "fetch-champ-hint";
-                            hint.innerText = lang === "zh_TW" ? "請選擇上傳的賽事：" : "Please select a submitted event.";
-                            const time = l.createElement("p");
-                            time.innerText = currentEvent.time[lang];
-                            select.addEventListener("change", (eChange) => {
-                                const idx = parseInt(eChange.target.value);
-                                currentEvent = validEvents[idx];
-                                e.href = t("fetch-champ") + currentEvent.href;
-                                time.innerText = currentEvent.time[lang];
-                            });
-                            div.appendChild(hint);
-                            div.appendChild(select);
-                            div.appendChild(time);
-                            e.insertAdjacentElement("afterend", div);
-                        })
-                        .catch((err) => {
-                            console.error("Error：", err);
-                        });
-                });
-            })(),
+                r.rel = "stylesheet",
+                r.href = t("fetch-all") + "/common/styles/inject.css",
+                e.innerText = s.analyzeRating,
+                e.href = t("fetch-all") + "/record-viewer-old/#all",
+                e.target = "recordViewer",
+                l.getElementsByTagName("head")[0].appendChild(r),
+                r.addEventListener("load", ( () => {
+                    l.querySelector(".clearfix")?.insertAdjacentElement("afterend", e)
+                }
+                ))
+            }(),
             window.addEventListener("message", (function(e) {
                 switch (e.data.action) {
                 case "request":
@@ -170,19 +122,68 @@
                         }(e.source, e.origin);
                         let s;
                         switch (t.target) {
-                            case "champRecord":
+                            case "allRecord":
                                 console.log("%c    Target difficulty: %c" + t.data.difficulty, "color: gray", "color: white"),
-                                s = async function(e = o.master) {
-                                    return [{
-                                        title: "千本桜",
-                                        score: 0,
-                                        difficulty: e,
-                                        clear: "",
-                                        clear2: "",
-                                        idx: "9999"
-                                    }];
+                                s = async function(e=o.master) {
+                                    const t = new FormData;
+                                    t.append("genre", "99"),
+                                    t.append("token", r("_t"));
+                                    const a = {
+                                        [o.ultima]: "sendUltima",
+                                        [o.master]: "sendMaster",
+                                        [o.expert]: "sendExpert",
+                                        [o.advanced]: "sendAdvanced",
+                                        [o.basic]: "sendBasic"
+                                    }[e];   
+                                    const c = await i("/mobile/record/musicGenre/" + a, t);
+                                    const records = Array.from(c.querySelectorAll(".box01.w420")[1].querySelectorAll("form")).map((t => {
+                                        const r = t.querySelector(".play_musicdata_icon"),
+                                              a = t.querySelector(".text_b")?.innerHTML;
+                                        return {
+                                            title: t.querySelector(".music_title")?.innerHTML,
+                                            score: a ? n(a) : -1,
+                                            difficulty: e,
+                                            clear: r?.querySelector('img[src*="alljustice"]') ? "AJ" : r?.querySelector('img[src*="fullcombo"]') ? "FC" : "",
+                                            clear2: r?.querySelector('img[src*="clear"]') ? "CLR" : r?.querySelector('img[src*="hard"]') ? "HRD" : r?.querySelector('img[src*="absolute"]') ? "ABS" : r?.querySelector('img[src*="brave"]') ? "BRV" : r?.querySelector('img[src*="catastrophy"]') ? "CTS" : "",
+                                            idx: t.querySelector('input[name="idx"]').value
+                                        };
+                                    })).filter((e => e.title && e.score && !e.title.includes("Floor Killer") && !e.title.includes("Dig Delight!")));
+                                  /*  // Add hidden song
+                                    const difficultyNames = {
+                                        [o.ultima]: "ultima",
+                                        [o.master]: "master",
+                                        [o.expert]: "expert",
+                                        [o.advanced]: "advanced",
+                                        [o.basic]: "basic"
+                                    };   
+                                    const difficultyScore = sumScores(records);
+                                    const totalHighScore = await fetchTotalHighScore(difficultyNames[e]);
+                                    if (e === o.ultima) {
+                                        records.push({
+                                            title: "Theatore Creatore",
+                                            score: totalHighScore - difficultyScore === 0 ? -1 : totalHighScore - difficultyScore, 
+                                            difficulty: e,
+                                            clear: "",
+                                            idx: "2712"
+                                        });
+                                    }
+                                    // Add hidden song end */
+                                    return records;
                                 }(t.data.difficulty);
-                                break; 
+                                break;
+                            // Calculate total score
+                            function sumScores(records) {
+                                return records.reduce((sum, record) => sum + (record.score !== -1 ? record.score : 0), 0);
+                            }                
+                            async function fetchTotalHighScore(difficulty) {
+                                const response = await fetch(`https://chunithm-net-eng.com/mobile/ranking/totalHighScore/${difficulty}`);
+                                const html = await response.text();
+                                const parser = new DOMParser();
+                                const doc = parser.parseFromString(html, "text/html");                        
+                                const totalHighScoreDiv = doc.querySelector(".mb_5.text_b");
+                                return totalHighScoreDiv ? totalHighScoreDiv.innerText.replace(/,/g, "").trim() : "Error";
+                            }         
+                            // Calculate total score end         
                         case "playHistory":
                             s = async function() {
                                 const e = await i("/mobile/record/playlog");
