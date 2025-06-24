@@ -762,12 +762,10 @@
     }(_s || (_s = {}));
     const Rl = Object.keys(_s);
     var _k;
-    !function(e) {
-      e["D~S"] = "S", e["S+"] = "S+", e["SS"] = "SS", e["SS+"] = "SS+", e["SSS"] = "SSS", e["SSS+"] = "SSS+", e["MAX"] = "MAX"
+    ! function(e) {
+      e["D~S"] = ["S", "AAA", "AA", "A", "BBB", "BB", "B", "C", "D"], e["S+"] = "S+", e["SS"] = "SS", e["SS+"] = "SS+", e["SSS"] = "SSS", e["SSS+"] = "SSS+", e["MAX"] = "MAX"
     }(_k || (_k = {}));
     const Rk = Object.keys(_k);
-    const levelGroupMap = { [_k["D~S"]]: ["S","AAA","AA","A","BBB","BB","B","C","D"], [_k["S+"]]: [_k["S+"]], [_k["SS"]]: [_k["SS"]], [_k["SS+"]]: [_k["SS+"]], [_k["SSS"]]: [_k["SSS"]], [_k["SSS+"]]: [_k["SSS+"]], [_k["MAX"]]: [_k["MAX"]] };
-
 
     function Re(e, t) {
       if (!e) throw new Error("Target window does not exist");
