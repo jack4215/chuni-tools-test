@@ -2826,7 +2826,7 @@
     }
 
     function kr(e) {
-      let t, n, r, o, a, i, l, c, d, u, f, p, h, g, m, v, b, bb, y, yy, w, $, x, j, S, T, C, N, U, A, L, _, I, R, F, B, V, q, W, J, X, G, Y, Z, K, ee, te, ne, se, ae, ie, le, ce, de, ue, fe, ve = e[0]("settings.main.title") + "",
+      let t, n, r, o, a, i, l, c, d, u, f, p, h, g, m, v, b, bb, bbb, y, yy, yyy, w, $, x, j, S, T, C, N, U, A, L, _, I, R, F, B, V, q, W, J, X, G, Y, Z, K, ee, te, ne, se, ae, ie, le, ce, de, ue, fe, ve = e[0]("settings.main.title") + "",
         ye = e[0]("settings.filter.title") + "",
         je = e[0]("settings.data.title") + "",
         Se = e[0]("settings.data.overpower.notify") + "",
@@ -2870,7 +2870,7 @@
       });
       void 0 !== e[1] && (Ne.high = e[1]), void 0 !== e[2] && (Ne.low = e[2]), f = new Dn({
         props: Ne
-      }), Q.push((() => we(f, "high", Me))), Q.push((() => we(f, "low", Ee))), m = new Fn({}), b = new Xn({}), bb = new Xnn({});
+      }), Q.push((() => we(f, "high", Me))), Q.push((() => we(f, "low", Ee))), m = new Fn({}), b = new Xn({}), bb = new Xnn({}), bbb = new Xun({});
       let He = function(e) {
         let t, n, r;
 
@@ -2983,10 +2983,10 @@
         props: Fe
       }), Q.push((() => we(te, "value", ze))), {
         c() {
-          t = H("div"), n = H("div"), r = D(), o = H("div"), a = H("button"), a.textContent = "✕", i = D(), l = H("h3"), c = D(), d = H("h4"), u = D(), $e(f.$$.fragment), g = D(), $e(m.$$.fragment), v = D(), $e(b.$$.fragment), y = D(), $e(bb.$$.fragment), yy = D(), w = H("hr"), $ = D(), x = H("h4"), j = D(), He && He.c(), S = D(), $e(T.$$.fragment), N = D(), U = H("div"), A = D(), $e(L.$$.fragment), I = D(), Pe && Pe.c(), R = D(), $e(F.$$.fragment), V = D(), $e(q.$$.fragment), W = D(), J = H("hr"), X = D(), G = H("h4"), Y = D(), $e(Z.$$.fragment), ee = D(), $e(te.$$.fragment), se = D(), ae = H("hr"), ie = D(), le = H("button"), O(n, "class", "modal-bg svelte-iga5r4"), O(a, "type", "button"), O(a, "class", "close-btn svelte-iga5r4"), z(l, "margin", "0"), O(d, "class", "svelte-iga5r4"), O(w, "class", "svelte-iga5r4"), O(x, "class", "svelte-iga5r4"), z(U, "color", "var(--theme-text-dim)"), z(U, "margin", ".5em auto"), O(J, "class", "svelte-iga5r4"), O(G, "class", "svelte-iga5r4"), O(ae, "class", "svelte-iga5r4"), O(le, "type", "button"), O(le, "class", "reset-btn svelte-iga5r4"), O(o, "class", "modal svelte-iga5r4"), O(t, "class", "wrapper svelte-iga5r4")
+          t = H("div"), n = H("div"), r = D(), o = H("div"), a = H("button"), a.textContent = "✕", i = D(), l = H("h3"), c = D(), d = H("h4"), u = D(), $e(f.$$.fragment), g = D(), $e(m.$$.fragment), v = D(), $e(b.$$.fragment), y = D(), $e(bb.$$.fragment), yy = D(), $e(bbb.$$.fragment), yyy = D(), w = H("hr"), $ = D(), x = H("h4"), j = D(), He && He.c(), S = D(), $e(T.$$.fragment), N = D(), U = H("div"), A = D(), $e(L.$$.fragment), I = D(), Pe && Pe.c(), R = D(), $e(F.$$.fragment), V = D(), $e(q.$$.fragment), W = D(), J = H("hr"), X = D(), G = H("h4"), Y = D(), $e(Z.$$.fragment), ee = D(), $e(te.$$.fragment), se = D(), ae = H("hr"), ie = D(), le = H("button"), O(n, "class", "modal-bg svelte-iga5r4"), O(a, "type", "button"), O(a, "class", "close-btn svelte-iga5r4"), z(l, "margin", "0"), O(d, "class", "svelte-iga5r4"), O(w, "class", "svelte-iga5r4"), O(x, "class", "svelte-iga5r4"), z(U, "color", "var(--theme-text-dim)"), z(U, "margin", ".5em auto"), O(J, "class", "svelte-iga5r4"), O(G, "class", "svelte-iga5r4"), O(ae, "class", "svelte-iga5r4"), O(le, "type", "button"), O(le, "class", "reset-btn svelte-iga5r4"), O(o, "class", "modal svelte-iga5r4"), O(t, "class", "wrapper svelte-iga5r4")
         },
         m(s, p) {
-          M(s, t, p), k(t, n), k(t, r), k(t, o), k(o, a), k(o, i), k(o, l), l.innerHTML = ve, k(o, c), k(o, d), d.innerHTML = ye, k(o, u), xe(f, o, null), k(o, g), xe(m, o, null), k(o, v), xe(b, o, null), k(o, y), xe(bb, o, null), k(o, yy), k(o, w), k(o, $), k(o, x), x.innerHTML = je, k(o, j), He && He.m(o, null), k(o, S), xe(T, o, null), k(o, N), k(o, U), U.innerHTML = Se, k(o, A), xe(L, o, null), k(o, I), Pe && Pe.m(o, null), k(o, R), xe(F, o, null), k(o, V), xe(q, o, null), k(o, W), k(o, J), k(o, X), k(o, G), G.innerHTML = Te, k(o, Y), xe(Z, o, null), k(o, ee), xe(te, o, null), k(o, se), k(o, ae), k(o, ie), k(o, le), le.innerHTML = Ce, de = !0, ue || (fe = [P(n, "click", xt.toggle), P(a, "click", xt.toggle), P(le, "click", e[17])], ue = !0)
+          M(s, t, p), k(t, n), k(t, r), k(t, o), k(o, a), k(o, i), k(o, l), l.innerHTML = ve, k(o, c), k(o, d), d.innerHTML = ye, k(o, u), xe(f, o, null), k(o, g), xe(m, o, null), k(o, v), xe(b, o, null), k(o, y), xe(bb, o, null), k(o, yy), xe(bbb, o, null), k(o, yyy), k(o, w), k(o, $), k(o, x), x.innerHTML = je, k(o, j), He && He.m(o, null), k(o, S), xe(T, o, null), k(o, N), k(o, U), U.innerHTML = Se, k(o, A), xe(L, o, null), k(o, I), Pe && Pe.m(o, null), k(o, R), xe(F, o, null), k(o, V), xe(q, o, null), k(o, W), k(o, J), k(o, X), k(o, G), G.innerHTML = Te, k(o, Y), xe(Z, o, null), k(o, ee), xe(te, o, null), k(o, se), k(o, ae), k(o, ie), k(o, le), le.innerHTML = Ce, de = !0, ue || (fe = [P(n, "click", xt.toggle), P(a, "click", xt.toggle), P(le, "click", e[17])], ue = !0)
         },
         p(e, [t]) {
           (!de || 1 & t) && ve !== (ve = e[0]("settings.main.title") + "") && (l.innerHTML = ve), (!de || 1 & t) && ye !== (ye = e[0]("settings.filter.title") + "") && (d.innerHTML = ye);
@@ -3015,19 +3015,19 @@
           }), !ne && 256 & t && (ne = !0, c.value = e[8], oe((() => ne = !1))), te.$set(c), (!de || 1 & t) && Ce !== (Ce = e[0]("settings.main.reset") + "") && (le.innerHTML = Ce)
         },
         i(e) {
-          de || (ge(f.$$.fragment, e), ge(m.$$.fragment, e), ge(b.$$.fragment, e), ge(bb.$$.fragment, e), ge(He), ge(T.$$.fragment, e), ge(L.$$.fragment, e), ge(Pe), ge(F.$$.fragment, e), ge(q.$$.fragment, e), ge(Z.$$.fragment, e), ge(te.$$.fragment, e), re((() => {
+          de || (ge(f.$$.fragment, e), ge(m.$$.fragment, e), ge(b.$$.fragment, e), ge(bb.$$.fragment, e), ge(bbb.$$.fragment, e), ge(He), ge(T.$$.fragment, e), ge(L.$$.fragment, e), ge(Pe), ge(F.$$.fragment, e), ge(q.$$.fragment, e), ge(Z.$$.fragment, e), ge(te.$$.fragment, e), re((() => {
             de && (ce || (ce = be(t, $n, {
               duration: 100
             }, !0)), ce.run(1))
           })), de = !0)
         },
         o(e) {
-          me(f.$$.fragment, e), me(m.$$.fragment, e), me(b.$$.fragment, e), me(bb.$$.fragment, e), me(He), me(T.$$.fragment, e), me(L.$$.fragment, e), me(Pe), me(F.$$.fragment, e), me(q.$$.fragment, e), me(Z.$$.fragment, e), me(te.$$.fragment, e), ce || (ce = be(t, $n, {
+          me(f.$$.fragment, e), me(m.$$.fragment, e), me(b.$$.fragment, e), me(bb.$$.fragment, e), me(bbb.$$.fragment, e), me(He), me(T.$$.fragment, e), me(L.$$.fragment, e), me(Pe), me(F.$$.fragment, e), me(q.$$.fragment, e), me(Z.$$.fragment, e), me(te.$$.fragment, e), ce || (ce = be(t, $n, {
             duration: 100
           }, !1)), ce.run(0), de = !1
         },
         d(e) {
-          e && E(t), ke(f), ke(m), ke(b), ke(bb), He && He.d(), ke(T), ke(L), Pe && Pe.d(), ke(F), ke(q), ke(Z), ke(te), e && ce && ce.end(), ue = !1, s(fe)
+          e && E(t), ke(f), ke(m), ke(b), ke(bb), ke(bbb), He && He.d(), ke(T), ke(L), Pe && Pe.d(), ke(F), ke(q), ke(Z), ke(te), e && ce && ce.end(), ue = !1, s(fe)
         }
       }
     }
