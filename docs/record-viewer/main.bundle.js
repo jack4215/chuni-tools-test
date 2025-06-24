@@ -2304,7 +2304,7 @@
     }
 
     function Bun(e) {
-      j(e, "svelte-by0upq", '.wrapper.svelte-by0upq{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:1rem}.btns.svelte-by0upq{display:-ms-grid;display:grid;grid-template-columns: repeat(4, 1fr);grid-template-areas:".... .... ....";gap:0.5rem;flex-wrap:wrap}button.svelte-by0upq{width:100%;padding:0.5rem;border-radius:0.5rem;background-color:var(--theme-bg-sub);border:3px solid var(--theme-control);color:var(--theme-text-control);filter:brightness(0.5)}button.svelte-by0upq:hover{filter:brightness(0.8)}button.activated.svelte-by0upq{filter:brightness(1)}.btn-all.svelte-by0upq{grid-column:2/4;border-color:var(--theme-control-altr)}button[disabled].svelte-by0upq{cursor:no-drop;border:3px solid var(--theme-bg-sub)}')
+      j(e, "svelte-by0upq", '.wrapper.svelte-by0upq{display:flex;-ms-flex-direction:column;flex-direction:column;padding:0.5rem;gap:1rem}.btns.svelte-by0upq{display:-ms-grid;display:grid;grid-template-columns: repeat(4, 1fr);grid-template-areas:".... .... ....";gap:0.5rem;flex-wrap:wrap}button.svelte-by0upq{width:100%;padding:0.5rem;border-radius:0.5rem;background-color:var(--theme-bg-sub);border:3px solid var(--theme-control);color:var(--theme-text-control);filter:brightness(0.5)}button.svelte-by0upq:hover{filter:brightness(0.8)}button.activated.svelte-by0upq{filter:brightness(1)}.btn-all.svelte-by0upq{border-color:var(--theme-control-altr)}button[disabled].svelte-by0upq{cursor:no-drop;border:3px solid var(--theme-bg-sub)}')
     }
 
     function Vun(e, t, n) {
