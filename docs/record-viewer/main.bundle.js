@@ -3734,9 +3734,9 @@
         }))
       },() => {
         i || gt("worldRank", l.difficulty, l.idx).then((e => {
-          n(0, l.worldRank = e, l)
+          n(0, l.playCount = e, l)
         })).catch((() => {
-          n(0, l.worldRank = null, l)
+          n(0, l.playCount = null, l)
         }))
       }]
     }
