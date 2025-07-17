@@ -404,6 +404,7 @@
                                   , l = n.querySelectorAll(`.music_box.bg_${Object.entries(o).find((e => e[1] === t))[0]} .box14 > div`)[1].querySelector(".text_b")?.innerHTML.replace("times", "");
                                 return parseInt(l)
                             }(t.data.idx, t.data.difficulty)
+                            break;
                         case "worldRank":
                             s = async function(e, t) {
                                 const a = new FormData;
