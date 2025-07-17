@@ -2393,23 +2393,49 @@
     }
 
     function Yn(t) {
-      let n, r, o, a, i, l, c, d, u, f, p, h = t[3]("playcount.fetch.button") + "";
+      let n, r, o, a, i, l, c, d, u, f, p, h;
+      let m = ["OFF", "PlayCount", "WorldRank"];
+      let modeIndex = 0;
+      h = m[modeIndex];
+
       return {
         c() {
-          n = H("div"), r = H("button"), a = D(), i = H("input"), l = D(), c = H("span"), c.textContent = "～", d = D(), u = H("input"), O(r, "type", "button"), O(r, "class", "btn svelte-1lhvhf8"), r.disabled = o = t[2] || Zn(t[0], t[1]), O(i, "type", "number"), O(i, "min", "1"), O(i, "placeholder", "from"), O(i, "inputmode", "numeric"), O(i, "class", "svelte-1lhvhf8"), O(u, "type", "number"), O(u, "min", "1"), O(u, "placeholder", "to"), O(u, "inputmode", "numeric"), O(u, "class", "svelte-1lhvhf8"), O(n, "class", "wrapper svelte-1lhvhf8")
+          n = H("div"), r = H("button"), a = D(), i = H("input"), l = D(), c = H("span"), c.textContent = "～", d = D(), u = H("input");
+          O(r, "type", "button"), O(r, "class", "btn svelte-1lhvhf8"),
+          r.disabled = o = t[2] || Zn(t[0], t[1]);
+
+          O(i, "type", "number"), O(i, "min", "1"), O(i, "placeholder", "from"), O(i, "inputmode", "numeric"), O(i, "class", "svelte-1lhvhf8");
+          O(u, "type", "number"), O(u, "min", "1"), O(u, "placeholder", "to"), O(u, "inputmode", "numeric"), O(u, "class", "svelte-1lhvhf8");
+          O(n, "class", "wrapper svelte-1lhvhf8");
         },
         m(e, o) {
-          M(e, n, o), k(n, r), r.innerHTML = h, k(n, a), k(n, i), R(i, t[0]), k(n, l), k(n, c), k(n, d), k(n, u), R(u, t[1]), f || (p = [P(r, "click", t[5]), P(i, "input", t[6]), P(u, "input", t[7])], f = !0)
+          M(e, n, o), k(n, r), r.innerHTML = h, k(n, a), k(n, i), R(i, t[0]), k(n, l), k(n, c), k(n, d), k(n, u), R(u, t[1]);
+
+          if (!f) {
+            p = [
+              P(r, "click", () => {
+                modeIndex = (modeIndex + 1) % 3;
+                h = m[modeIndex];
+                r.innerHTML = h;
+                t[4](m[modeIndex]); // 設定模式
+              }),
+              P(i, "input", t[6]),
+              P(u, "input", t[7])
+            ];
+            f = !0;
+          }
         },
         p(e, [t]) {
-          8 & t && h !== (h = e[3]("playcount.fetch.button") + "") && (r.innerHTML = h), 7 & t && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o), 1 & t && _(i.value) !== e[0] && R(i, e[0]), 2 & t && _(u.value) !== e[1] && R(u, e[1])
+          7 & t && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o);
+          1 & t && _(i.value) !== e[0] && R(i, e[0]);
+          2 & t && _(u.value) !== e[1] && R(u, e[1]);
         },
         i: e,
         o: e,
         d(e) {
           e && E(n), f = !1, s(p)
         }
-      }
+      };
     }
 
     function Zn(e, t) {
@@ -2418,31 +2444,64 @@
 
     function Qn(e, t, n) {
       let r, o, s, a, i, l;
-      u(e, jt, (e => n(2, r = e))), u(e, wt, (e => n(3, o = e))), u(e, kt, (e => n(8, s = e))), u(e, St, (e => n(9, a = e))),/* u(e, At, (e => n(10, i = e))),*/ u(e, xt, (e => n(11, l = e)));
-      let c = 1,
-        d = 40;
+      u(e, jt, (e => n(2, r = e)));
+      u(e, wt, (e => n(3, o = e)));
+      u(e, kt, (e => n(8, s = e)));
+      u(e, St, (e => n(9, a = e)));
+      u(e, xt, (e => n(11, l = e)));
+
+      let c = 1, d = 40;
+      let fetchMode = "OFF"; // 初始狀態
+
       async function f(e, t) {
-        if (!Zn(e, t)) {
-          p(St, a = !0, a), p(jt, r = !0, r), p(xt, l = !1, l);
+        if (!Zn(e, t) && fetchMode !== "OFF") {
+          p(St, a = true, a);
+          p(jt, r = true, r);
+          p(xt, l = false, l);
+
           try {
-            const n = sFS.slice(e - 1, t).length;
-            for (const [r, s] of sFS.slice(e - 1, t).entries()) kt.set(o("playcount.fetch.progress", {
-              progress: `${r}`,
-              all: `${n}`
-            })), null == s.playCount && (s.playCount = await gt("songPlayCount", s.difficulty, s.idx), At.set(sFS));
-            p(jt, r = !1, r), p(St, a = !1, a)
+            const list = sFS.slice(e - 1, t);
+            const total = list.length;
+            for (const [idx, song] of list.entries()) {
+              kt.set(o("playcount.fetch.progress", {
+                progress: `${idx}`,
+                all: `${total}`
+              }));
+
+              if (fetchMode === "PlayCount" && song.playCount == null)
+                song.playCount = await gt("songPlayCount", song.difficulty, song.idx);
+
+              if (fetchMode === "WorldRank" && song.worldRank == null)
+                song.worldRank = await gt("worldRank", song.difficulty, song.idx);
+
+              At.set(sFS);
+            }
+            p(jt, r = false, r);
+            p(St, a = false, a);
           } catch {
-            p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s), setTimeout((() => {
-              p(jt, r = !1, r)
-            }), 6e3)
+            p(St, a = false, a);
+            p(kt, s = o("playcount.fetch.error"), s);
+            setTimeout(() => p(jt, r = false, r), 6000);
           }
         }
       }
-      return [c, d, r, o, f, () => f(c, d), function() {
-        c = _(this.value), n(0, c)
-      }, function() {
-        d = _(this.value), n(1, d)
-      }]
+
+      // 將模式設定函式傳回作為第 5 個元素（對應 t[4]）
+      function setFetchMode(mode) {
+        fetchMode = mode;
+      }
+
+      return [
+        c, d, r, o,
+        setFetchMode,
+        () => f(c, d),
+        function () {
+          c = _(this.value), n(0, c)
+        },
+        function () {
+          d = _(this.value), n(1, d)
+        }
+      ];
     }
     const Kn = class extends Se {
       constructor(e) {
