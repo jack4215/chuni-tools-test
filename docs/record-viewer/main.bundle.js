@@ -2393,81 +2393,21 @@
     }
 
     function Yn(t) {
-      let n, r, o, a, i, l, c, d, u, f, p, h, m, g, v, y;
-      h = t[3]("playcount.fetch.button") + "";
-
+      let n, r, o, a, i, l, c, d, u, f, p, h = t[3]("playcount.fetch.button") + "";
       return {
         c() {
-          n = H("div"),
-          r = H("button"),
-          a = D(),
-          i = H("input"),
-          l = D(),
-          c = H("span"),
-          c.textContent = "～",
-          d = D(),
-          u = H("input"),
-          f = D(),
-          m = H("select"),
-          g = H("option"),
-          v = H("option"),
-          O(r, "type", "button"),
-          O(r, "class", "btn svelte-1lhvhf8"),
-          r.disabled = o = t[2] || Zn(t[0], t[1]),
-          O(i, "type", "number"),
-          O(i, "min", "1"),
-          O(i, "placeholder", "from"),
-          O(i, "inputmode", "numeric"),
-          O(i, "class", "svelte-1lhvhf8"),
-          O(u, "type", "number"),
-          O(u, "min", "1"),
-          O(u, "placeholder", "to"),
-          O(u, "inputmode", "numeric"),
-          O(u, "class", "svelte-1lhvhf8"),
-          g.value = "songPlayCount",
-          g.textContent = "Play Count",
-          v.value = "worldRank",
-          v.textContent = "World Rank",
-          O(m, "class", "svelte-1lhvhf8"),
-          O(n, "class", "wrapper svelte-1lhvhf8")
+          n = H("div"), r = H("button"), a = D(), i = H("input"), l = D(), c = H("span"), c.textContent = "～", d = D(), u = H("input"), O(r, "type", "button"), O(r, "class", "btn svelte-1lhvhf8"), r.disabled = o = t[2] || Zn(t[0], t[1]), O(i, "type", "number"), O(i, "min", "1"), O(i, "placeholder", "from"), O(i, "inputmode", "numeric"), O(i, "class", "svelte-1lhvhf8"), O(u, "type", "number"), O(u, "min", "1"), O(u, "placeholder", "to"), O(u, "inputmode", "numeric"), O(u, "class", "svelte-1lhvhf8"), O(n, "class", "wrapper svelte-1lhvhf8")
         },
         m(e, o) {
-          M(e, n, o),
-          k(n, r),
-          r.innerHTML = h,
-          k(n, a),
-          k(n, i),
-          R(i, t[0]),
-          k(n, l),
-          k(n, c),
-          k(n, d),
-          k(n, u),
-          R(u, t[1]),
-          k(n, f),
-          k(n, m),
-          k(m, g),
-          k(m, v),
-          m.value = t[12],
-          y || (p = [
-            P(r, "click", t[5]),
-            P(i, "input", t[6]),
-            P(u, "input", t[7]),
-            P(m, "change", t[8])
-          ], y = !0)
+          M(e, n, o), k(n, r), r.innerHTML = h, k(n, a), k(n, i), R(i, t[0]), k(n, l), k(n, c), k(n, d), k(n, u), R(u, t[1]), f || (p = [P(r, "click", t[5]), P(i, "input", t[6]), P(u, "input", t[7])], f = !0)
         },
         p(e, [t]) {
-          8 & t && h !== (h = e[3]("playcount.fetch.button") + "") && (r.innerHTML = h),
-          7 & t && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o),
-          1 & t && _(i.value) !== e[0] && R(i, e[0]),
-          2 & t && _(u.value) !== e[1] && R(u, e[1]),
-          4096 & t && m.value !== e[12] && (m.value = e[12])
+          8 & t && h !== (h = e[3]("playcount.fetch.button") + "") && (r.innerHTML = h), 7 & t && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o), 1 & t && _(i.value) !== e[0] && R(i, e[0]), 2 & t && _(u.value) !== e[1] && R(u, e[1])
         },
         i: e,
         o: e,
         d(e) {
-          e && E(n),
-          y = !1,
-          s(p)
+          e && E(n), f = !1, s(p)
         }
       }
     }
@@ -2478,31 +2418,18 @@
 
     function Qn(e, t, n) {
       let r, o, s, a, i, l;
-      u(e, jt, (e => n(2, r = e))),
-      u(e, wt, (e => n(3, o = e))),
-      u(e, kt, (e => n(8, s = e))),
-      u(e, St, (e => n(9, a = e))),
-      u(e, At, (e => n(10, i = e))),
-      u(e, xt, (e => n(11, l = e)));
-
+      u(e, jt, (e => n(2, r = e))), u(e, wt, (e => n(3, o = e))), u(e, kt, (e => n(8, s = e))), u(e, St, (e => n(9, a = e))), u(e, At, (e => n(10, i = e))), u(e, xt, (e => n(11, l = e)));
       let c = 1,
-          d = 40,
-          m = "songPlayCount"; // 新增模式 state
-
+        d = 40;
       async function f(e, t) {
         if (!Zn(e, t)) {
           p(St, a = !0, a), p(jt, r = !0, r), p(xt, l = !1, l);
           try {
             const n = i.slice(e - 1, t).length;
-            for (const [r, s] of i.slice(e - 1, t).entries())
-              kt.set(o("playcount.fetch.progress", {
-                progress: `${r}`,
-                all: `${n}`
-              })),
-              null == s.playCount && (
-                s.playCount = await gt(m, s.difficulty, s.idx), // 根據模式切換 API 名稱
-                At.set(i)
-              );
+            for (const [r, s] of i.slice(e - 1, t).entries()) kt.set(o("playcount.fetch.progress", {
+              progress: `${r}`,
+              all: `${n}`
+            })), null == s.playCount && (s.playCount = await gt("songPlayCount", s.difficulty, s.idx), At.set(i));
             p(jt, r = !1, r), p(St, a = !1, a)
           } catch {
             p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s), setTimeout((() => {
@@ -2511,14 +2438,11 @@
           }
         }
       }
-
-      return [
-        c, d, r, o, f,
-        () => f(c, d),
-        function () { c = _(this.value), n(0, c) },
-        function () { d = _(this.value), n(1, d) },
-        function () { m = this.value, n(12, m) } // 模式改變
-      ];
+      return [c, d, r, o, f, () => f(c, d), function() {
+        c = _(this.value), n(0, c)
+      }, function() {
+        d = _(this.value), n(1, d)
+      }]
     }
     const Kn = class extends Se {
       constructor(e) {
@@ -3757,41 +3681,24 @@
     }
 
     function Zr(e, t, n) {
-      let r, o, s, a, i, m;
-
-      u(e, nt, (e => n(1, r = e))),
-      u(e, $t, (e => n(2, o = e))),
-      u(e, Tt, (e => n(3, s = e))),
-      u(e, rt, (e => n(4, a = e))),
-      u(e, jt, (e => n(5, i = e))),
-      u(e, Ct, (e => n(6, m = e)));
-
-      let { song: l } = t;
-
+      let r, o, s, a, i;
+      u(e, nt, (e => n(1, r = e))), u(e, $t, (e => n(2, o = e))), u(e, Tt, (e => n(3, s = e))), u(e, rt, (e => n(4, a = e))), u(e, jt, (e => n(5, i = e)));
+      let {
+        song: l
+      } = t;
       return e.$$set = e => {
         "song" in e && n(0, l = e.song)
-      }, [
-        l, r, o, s, a, i, m,
-        function () {
-          "all" === o && Tt.toggle()
-        },
-        function () {
-          "all" == o && p(nt, r =
-            r === "percentage" ? "value" :
-            r === "value" ? "percentage" :
-            r === "dgpercentage" ? "dgvalue" :
-            r === "dgvalue" ? "dgpercentage" :
-            r === "eudgpercentage" ? "eudgvalue" :
-            "eudgpercentage", r)
-        },
-        () => {
-          i || gt(m, l.difficulty, l.idx).then((e => { // 👈 用 mode 呼叫 gt
-            n(0, l.playCount = e, l)
-          })).catch((() => {
-            n(0, l.playCount = null, l)
-          }))
-        }
-      ]
+      }, [l, r, o, s, a, i, function() {
+        "all" === o && Tt.toggle()
+      }, function() {
+        "all" == o && p(nt, r = r === "percentage" ? "value" : r === "value" ? "percentage" : r === "dgpercentage" ? "dgvalue" : r === "dgvalue" ? "dgpercentage" : r === "eudgpercentage" ? "eudgvalue" : "eudgpercentage", r);
+      }, () => {
+        i || gt("songPlayCount", l.difficulty, l.idx).then((e => {
+          n(0, l.playCount = e, l)
+        })).catch((() => {
+          n(0, l.playCount = null, l)
+        }))
+      }]
     }
     const Qr = class extends Se {
       constructor(e) {
