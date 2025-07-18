@@ -2454,7 +2454,7 @@
           P(r, "click", t[5]),
           P(i, "input", t[6]),
           P(u, "input", t[7]),
-          P(m, "change", t[8]) // 綁定 mode 切換
+          P(m, "change", t[8]) // 新增: 選單改變 mode
         ],
         h = !0
       );
@@ -2480,7 +2480,8 @@
       return isNaN(e) || isNaN(t) || null == e || null == t || t < e
     }
 
-   function Qn(e, t, n) {
+
+function Qn(e, t, n) {
   let r, o, s, a, i, l;
   u(e, jt, (e => n(2, r = e)));
   u(e, wt, (e => n(3, o = e)));
@@ -2490,7 +2491,12 @@
   u(e, xt, (e => n(11, l = e)));
 
   let c = 1, d = 40;
-  let mode = "songPlayCount"; // 新增：模式選擇
+  let currentMode = "songPlayCount";
+
+  // 監聽 store
+  mode.subscribe(value => {
+    currentMode = value;
+  });
 
   async function f(e, t) {
     if (!Zn(e, t)) {
@@ -2505,10 +2511,10 @@
             all: `${n}`
           }));
 
-          if (mode === "songPlayCount" && s.playCount == null) {
+          if (currentMode === "songPlayCount" && s.playCount == null) {
             s.playCount = await gt("songPlayCount", s.difficulty, s.idx);
             At.set(i);
-          } else if (mode === "worldRank" && s.worldRank == null) {
+          } else if (currentMode === "worldRank" && s.worldRank == null) {
             s.worldRank = await gt("worldRank", s.difficulty, s.idx);
             At.set(i);
           }
@@ -2530,9 +2536,10 @@
     () => f(c, d),
     function() { c = _(this.value); n(0, c); },
     function() { d = _(this.value); n(1, d); },
-    function(e) { mode = e.target.value; } // 傳給 select 的事件處理
+    function(e) { mode.set(e.target.value); } // 控制模式
   ];
 }
+
 
     const Kn = class extends Se {
       constructor(e) {
@@ -3770,26 +3777,46 @@
       }
     }
 
-    function Zr(e, t, n) {
-      let r, o, s, a, i;
-      u(e, nt, (e => n(1, r = e))), u(e, $t, (e => n(2, o = e))), u(e, Tt, (e => n(3, s = e))), u(e, rt, (e => n(4, a = e))), u(e, jt, (e => n(5, i = e)));
-      let {
-        song: l
-      } = t;
-      return e.$$set = e => {
-        "song" in e && n(0, l = e.song)
-      }, [l, r, o, s, a, i, function() {
-        "all" === o && Tt.toggle()
-      }, function() {
-        "all" == o && p(nt, r = r === "percentage" ? "value" : r === "value" ? "percentage" : r === "dgpercentage" ? "dgvalue" : r === "dgvalue" ? "dgpercentage" : r === "eudgpercentage" ? "eudgvalue" : "eudgpercentage", r);
-      }, () => {
-        i || gt("songPlayCount", l.difficulty, l.idx).then((e => {
-          n(0, l.playCount = e, l)
-        })).catch((() => {
-          n(0, l.playCount = null, l)
-        }))
-      }]
+function Zr(e, t, n) {
+  let r, o, s, a, i, currentMode = "songPlayCount";
+  u(e, nt, (e => n(1, r = e)));
+  u(e, $t, (e => n(2, o = e)));
+  u(e, Tt, (e => n(3, s = e)));
+  u(e, rt, (e => n(4, a = e)));
+  u(e, jt, (e => n(5, i = e)));
+
+  // 監聽 mode
+  mode.subscribe(value => {
+    currentMode = value;
+  });
+
+  let { song: l } = t;
+
+  return e.$$set = e => {
+    "song" in e && n(0, l = e.song);
+  }, [l, r, o, s, a, i, function() {
+    "all" === o && Tt.toggle();
+  }, function() {
+    "all" == o && p(nt, r = r === "percentage" ? "value" : r === "value" ? "percentage" : r === "dgpercentage" ? "dgvalue" : r === "dgvalue" ? "dgpercentage" : r === "eudgpercentage" ? "eudgvalue" : "eudgpercentage", r);
+  }, () => {
+    if (!i) {
+      const type = currentMode;
+      gt(type, l.difficulty, l.idx).then((e => {
+        if (type === "songPlayCount") {
+          n(0, l.playCount = e, l);
+        } else if (type === "worldRank") {
+          n(0, l.worldRank = e, l);
+        }
+      })).catch(() => {
+        if (type === "songPlayCount") {
+          n(0, l.playCount = null, l);
+        } else if (type === "worldRank") {
+          n(0, l.worldRank = null, l);
+        }
+      });
     }
+  }];
+}
     const Qr = class extends Se {
       constructor(e) {
         super(), je(this, e, Zr, Yr, i, {
