@@ -2393,23 +2393,91 @@
     }
 
     function Yn(t) {
-      let n, r, o, a, i, l, c, d, u, f, p, h = t[3]("playcount.fetch.button") + "";
+      let n, r, o, a, i, l, c, d, u, f, p, m, g1, g2, y, b, h = t[3]("playcount.fetch.button") + "";
       return {
         c() {
-          n = H("div"), r = H("button"), a = D(), i = H("input"), l = D(), c = H("span"), c.textContent = "～", d = D(), u = H("input"), O(r, "type", "button"), O(r, "class", "btn svelte-1lhvhf8"), r.disabled = o = t[2] || Zn(t[0], t[1]), O(i, "type", "number"), O(i, "min", "1"), O(i, "placeholder", "from"), O(i, "inputmode", "numeric"), O(i, "class", "svelte-1lhvhf8"), O(u, "type", "number"), O(u, "min", "1"), O(u, "placeholder", "to"), O(u, "inputmode", "numeric"), O(u, "class", "svelte-1lhvhf8"), O(n, "class", "wrapper svelte-1lhvhf8")
+          n = H("div");
+          r = H("button");
+          a = D();
+          i = H("input");
+          l = D();
+          c = H("span");
+          c.textContent = "～";
+          d = D();
+          u = H("input");
+          f = D();
+          m = H("select");
+          g1 = H("option");
+          g2 = H("option");
+          O(r, "type", "button");
+          O(r, "class", "btn svelte-1lhvhf8");
+          r.disabled = o = t[2] || Zn(t[0], t[1]);
+
+          O(i, "type", "number");
+          O(i, "min", "1");
+          O(i, "placeholder", "from");
+          O(i, "inputmode", "numeric");
+          O(i, "class", "svelte-1lhvhf8");
+
+          O(u, "type", "number");
+          O(u, "min", "1");
+          O(u, "placeholder", "to");
+          O(u, "inputmode", "numeric");
+          O(u, "class", "svelte-1lhvhf8");
+
+          g1.value = "songPlayCount";
+          g1.textContent = "Play Count";
+
+          g2.value = "worldRank";
+          g2.textContent = "World Rank";
+
+          O(m, "class", "svelte-1lhvhf8");
+
+          O(n, "class", "wrapper svelte-1lhvhf8");
         },
         m(e, o) {
-          M(e, n, o), k(n, r), r.innerHTML = h, k(n, a), k(n, i), R(i, t[0]), k(n, l), k(n, c), k(n, d), k(n, u), R(u, t[1]), f || (p = [P(r, "click", t[5]), P(i, "input", t[6]), P(u, "input", t[7])], f = !0)
+          M(e, n, o);
+          k(n, r);
+          r.innerHTML = h;
+          k(n, a);
+          k(n, i);
+          R(i, t[0]);
+          k(n, l);
+          k(n, c);
+          k(n, d);
+          k(n, u);
+          R(u, t[1]);
+          k(n, f);
+          k(n, m);
+          k(m, g1);
+          k(m, g2);
+          m.value = t[12]; // 初始值綁定
+
+          if (!y) {
+            b = [
+              P(r, "click", t[5]),
+              P(i, "input", t[6]),
+              P(u, "input", t[7]),
+              P(m, "change", t[8]) // 新增 select change 綁定
+            ];
+            y = true;
+          }
         },
         p(e, [t]) {
-          8 & t && h !== (h = e[3]("playcount.fetch.button") + "") && (r.innerHTML = h), 7 & t && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o), 1 & t && _(i.value) !== e[0] && R(i, e[0]), 2 & t && _(u.value) !== e[1] && R(u, e[1])
+          8 & t && h !== (h = e[3]("playcount.fetch.button") + "") && (r.innerHTML = h);
+          7 & t && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o);
+          1 & t && _(i.value) !== e[0] && R(i, e[0]);
+          2 & t && _(u.value) !== e[1] && R(u, e[1]);
+          4096 & t && m.value !== e[12] && (m.value = e[12]); // 12 = fetchMode
         },
         i: e,
         o: e,
         d(e) {
-          e && E(n), f = !1, s(p)
+          e && E(n);
+          y = false;
+          s(b);
         }
-      }
+      };
     }
 
     function Zn(e, t) {
@@ -2418,31 +2486,63 @@
 
     function Qn(e, t, n) {
       let r, o, s, a, i, l;
-      u(e, jt, (e => n(2, r = e))), u(e, wt, (e => n(3, o = e))), u(e, kt, (e => n(8, s = e))), u(e, St, (e => n(9, a = e))), u(e, At, (e => n(10, i = e))), u(e, xt, (e => n(11, l = e)));
-      let c = 1,
-        d = 40;
+      u(e, jt, (e => n(2, r = e)));
+      u(e, wt, (e => n(3, o = e)));
+      u(e, kt, (e => n(8, s = e)));
+      u(e, St, (e => n(9, a = e)));
+      u(e, At, (e => n(10, i = e)));
+      u(e, xt, (e => n(11, l = e)));
+
+      let c = 1, d = 40;
+      let fetchMode = "songPlayCount"; // 預設為 playCount
+
       async function f(e, t) {
         if (!Zn(e, t)) {
-          p(St, a = !0, a), p(jt, r = !0, r), p(xt, l = !1, l);
+          p(St, a = !0, a);
+          p(jt, r = !0, r);
+          p(xt, l = !1, l);
+
           try {
             const n = i.slice(e - 1, t).length;
-            for (const [r, s] of i.slice(e - 1, t).entries()) kt.set(o("playcount.fetch.progress", {
-              progress: `${r}`,
-              all: `${n}`
-            })), null == s.playCount && (s.playCount = await gt("worldRank", s.difficulty, s.idx), At.set(i));
-            p(jt, r = !1, r), p(St, a = !1, a)
+
+            for (const [r, s] of i.slice(e - 1, t).entries()) {
+              kt.set(o("playcount.fetch.progress", {
+                progress: `${r}`,
+                all: `${n}`
+              }));
+
+              if (fetchMode === "songPlayCount" && s.playCount == null) {
+                s.playCount = await gt("songPlayCount", s.difficulty, s.idx);
+              } else if (fetchMode === "worldRank" && s.worldRank == null) {
+                s.worldRank = await gt("worldRank", s.difficulty, s.idx);
+              }
+
+              At.set(i);
+            }
+
+            p(jt, r = !1, r);
+            p(St, a = !1, a);
           } catch {
-            p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s), setTimeout((() => {
-              p(jt, r = !1, r)
-            }), 6e3)
+            p(St, a = !1, a);
+            p(kt, s = o("playcount.fetch.error"), s);
+            setTimeout(() => {
+              p(jt, r = !1, r);
+            }, 6000);
           }
         }
       }
-      return [c, d, r, o, f, () => f(c, d), function() {
-        c = _(this.value), n(0, c)
-      }, function() {
-        d = _(this.value), n(1, d)
-      }]
+
+      return [
+        c,
+        d,
+        r,
+        o,
+        f,
+        () => f(c, d),
+        function () { c = _(this.value); n(0, c); },
+        function () { d = _(this.value); n(1, d); },
+        function () { fetchMode = this.value; n(12, fetchMode); } // 切換 mode
+      ];
     }
     const Kn = class extends Se {
       constructor(e) {
