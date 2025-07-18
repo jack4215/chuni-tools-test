@@ -2393,51 +2393,84 @@
     }
 
     function Yn(t) {
-  let n, r, o, a, i, l, c, d, u, f, p, h, m, g = t[3]("playcount.fetch.button") + "";
+  let n, r, o, a, i, l, c, d, u, f, p, h, m, g, y, x = t[3]("playcount.fetch.button") + "";
   return {
     c() {
-      n = H("div"), 
-      r = H("button"), a = D(), 
-      i = H("input"), l = D(), 
-      c = H("span"), c.textContent = "～", 
-      d = D(), u = H("input"), 
-      f = D(), m = H("select"), 
-      h = H("option"), h.textContent = "PlayCount", O(h, "value", "songPlayCount"), 
-      p = H("option"), p.textContent = "WorldRank", O(p, "value", "worldRank"), 
-      
-      O(r, "type", "button"), 
-      O(r, "class", "btn svelte-1lhvhf8"), 
-      r.disabled = o = t[2] || Zn(t[0], t[1]), 
+      n = H("div");
+      r = H("button");
+      a = D();
+      i = H("input");
+      l = D();
+      c = H("span");
+      c.textContent = "～";
+      d = D();
+      u = H("input");
+      f = D();
+      m = H("select");
+      g = H("option");
+      g.textContent = "songPlayCount";
+      y = H("option");
+      y.textContent = "worldRank";
 
-      O(i, "type", "number"), O(i, "min", "1"), O(i, "placeholder", "from"), O(i, "inputmode", "numeric"), O(i, "class", "svelte-1lhvhf8"), 
-      O(u, "type", "number"), O(u, "min", "1"), O(u, "placeholder", "to"), O(u, "inputmode", "numeric"), O(u, "class", "svelte-1lhvhf8"), 
-      O(m, "class", "svelte-1lhvhf8"), 
+      O(r, "type", "button");
+      O(r, "class", "btn svelte-1lhvhf8");
+      r.disabled = o = t[2] || Zn(t[0], t[1]);
 
-      O(n, "class", "wrapper svelte-1lhvhf8")
+      O(i, "type", "number");
+      O(i, "min", "1");
+      O(i, "placeholder", "from");
+      O(i, "inputmode", "numeric");
+      O(i, "class", "svelte-1lhvhf8");
+
+      O(u, "type", "number");
+      O(u, "min", "1");
+      O(u, "placeholder", "to");
+      O(u, "inputmode", "numeric");
+      O(u, "class", "svelte-1lhvhf8");
+
+      O(m, "class", "svelte-1lhvhf8");
+
+      O(n, "class", "wrapper svelte-1lhvhf8");
     },
     m(e, o) {
-      M(e, n, o), 
-      k(n, r), r.innerHTML = g, 
-      k(n, a), k(n, i), R(i, t[0]), 
-      k(n, l), k(n, c), k(n, d), k(n, u), R(u, t[1]), 
-      k(n, f), k(n, m), k(m, h), k(m, p), R(m, t[8]),
+      M(e, n, o);
+      k(n, r);
+      r.innerHTML = x;
+      k(n, a);
+      k(n, i);
+      R(i, t[0]);
+      k(n, l);
+      k(n, c);
+      k(n, d);
+      k(n, u);
+      R(u, t[1]);
+      k(n, f);
+      k(n, m);
+      k(m, g);
+      k(m, y);
 
-      this._unsub = [
-        P(r, "click", t[5]), 
-        P(i, "input", t[6]), 
-        P(u, "input", t[7]), 
-        P(m, "change", t[9])
-      ];
+      h || (
+        p = [
+          P(r, "click", t[5]),
+          P(i, "input", t[6]),
+          P(u, "input", t[7]),
+          P(m, "change", t[8]) // 綁定 mode 切換
+        ],
+        h = !0
+      );
     },
     p(e, [t]) {
-      8 & t && g !== (g = e[3]("playcount.fetch.button") + "") && (r.innerHTML = g), 
-      7 & t && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o), 
-      1 & t && _(i.value) !== e[0] && R(i, e[0]), 
-      2 & t && _(u.value) !== e[1] && R(u, e[1]), 
-      256 & t && _(m.value) !== e[8] && R(m, e[8])
+      8 & t && x !== (x = e[3]("playcount.fetch.button") + "") && (r.innerHTML = x);
+      7 & t && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o);
+      1 & t && _(i.value) !== e[0] && R(i, e[0]);
+      2 & t && _(u.value) !== e[1] && R(u, e[1]);
     },
+    i: e,
+    o: e,
     d(e) {
-      e && E(n), this._unsub.forEach(s);
+      e && E(n);
+      h = !1;
+      s(p);
     }
   }
 }
@@ -2447,48 +2480,57 @@
       return isNaN(e) || isNaN(t) || null == e || null == t || t < e
     }
 
-    function Qn(e, t, n) {
-  let r, o, s, a, i, l, g;
-  u(e, jt, (e => n(2, r = e))), 
-  u(e, wt, (e => n(3, o = e))), 
-  u(e, kt, (e => n(8, s = e))), 
-  u(e, St, (e => n(9, a = e))), 
-  u(e, At, (e => n(10, i = e))), 
+   function Qn(e, t, n) {
+  let r, o, s, a, i, l;
+  u(e, jt, (e => n(2, r = e)));
+  u(e, wt, (e => n(3, o = e)));
+  u(e, kt, (e => n(8, s = e)));
+  u(e, St, (e => n(9, a = e)));
+  u(e, At, (e => n(10, i = e)));
   u(e, xt, (e => n(11, l = e)));
 
   let c = 1, d = 40;
-  g = "songPlayCount";  // 預設選擇
+  let mode = "songPlayCount"; // 新增：模式選擇
 
   async function f(e, t) {
     if (!Zn(e, t)) {
-      p(St, a = !0, a), 
-      p(jt, r = !0, r), 
+      p(St, a = !0, a);
+      p(jt, r = !0, r);
       p(xt, l = !1, l);
       try {
         const n = i.slice(e - 1, t).length;
         for (const [r, s] of i.slice(e - 1, t).entries()) {
-          kt.set(o("playcount.fetch.progress", { progress: `${r}`, all: `${n}` }));
-          if (null == s[g]) {  // 動態欄位 key
-            s[g] = await gt(g, s.difficulty, s.idx);
+          kt.set(o("playcount.fetch.progress", {
+            progress: `${r}`,
+            all: `${n}`
+          }));
+
+          if (mode === "songPlayCount" && s.playCount == null) {
+            s.playCount = await gt("songPlayCount", s.difficulty, s.idx);
+            At.set(i);
+          } else if (mode === "worldRank" && s.worldRank == null) {
+            s.worldRank = await gt("worldRank", s.difficulty, s.idx);
             At.set(i);
           }
         }
-        p(jt, r = !1, r), p(St, a = !1, a);
+        p(jt, r = !1, r);
+        p(St, a = !1, a);
       } catch {
-        p(St, a = !1, a), 
-        p(kt, s = o("playcount.fetch.error"), s), 
-        setTimeout(() => { p(jt, r = !1, r) }, 6e3);
+        p(St, a = !1, a);
+        p(kt, s = o("playcount.fetch.error"), s);
+        setTimeout(() => {
+          p(jt, r = !1, r);
+        }, 6000);
       }
     }
   }
 
   return [
-    c, d, r, o, f, 
-    () => f(c, d), 
-    function() { c = _(this.value), n(0, c) }, 
-    function() { d = _(this.value), n(1, d) }, 
-    g, 
-    function() { g = this.value, n(8, g) }
+    c, d, r, o, f,
+    () => f(c, d),
+    function() { c = _(this.value); n(0, c); },
+    function() { d = _(this.value); n(1, d); },
+    function(e) { mode = e.target.value; } // 傳給 select 的事件處理
   ];
 }
 
