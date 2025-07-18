@@ -2393,153 +2393,133 @@
     }
 
     function Yn(t) {
-  let n, r, o, a, i, l, c, d, u, f, p, h, m, g, y, x = t[3]("playcount.fetch.button") + "";
+  let n, r, o, a, i, l, c, d, u, f, p, h, m, v, g, y;
+  h = t[3]("playcount.fetch.button") + "";
+  v = t[4]; // mode (songPlayCount or worldRank)
   return {
     c() {
-      n = H("div");
-      r = H("button");
-      a = D();
-      i = H("input");
-      l = D();
-      c = H("span");
-      c.textContent = "～";
-      d = D();
-      u = H("input");
-      f = D();
-      m = H("select");
-      g = H("option");
-      g.textContent = "songPlayCount";
-      y = H("option");
-      y.textContent = "worldRank";
+      n = H("div"),
+      r = H("button"),
+      a = D(),
+      i = H("input"),
+      l = D(),
+      c = H("span"),
+      c.textContent = "～",
+      d = D(),
+      u = H("input"),
+      m = D(),
+      p = H("select"),
+      g = H("option"),
+      g.textContent = "songPlayCount",
+      y = H("option"),
+      y.textContent = "worldRank",
 
-      O(r, "type", "button");
-      O(r, "class", "btn svelte-1lhvhf8");
-      r.disabled = o = t[2] || Zn(t[0], t[1]);
+      O(r, "type", "button"),
+      O(r, "class", "btn svelte-1lhvhf8"),
+      r.disabled = o = t[2] || Zn(t[0], t[1]),
 
-      O(i, "type", "number");
-      O(i, "min", "1");
-      O(i, "placeholder", "from");
-      O(i, "inputmode", "numeric");
-      O(i, "class", "svelte-1lhvhf8");
+      O(i, "type", "number"),
+      O(i, "min", "1"),
+      O(i, "placeholder", "from"),
+      O(i, "inputmode", "numeric"),
+      O(i, "class", "svelte-1lhvhf8"),
 
-      O(u, "type", "number");
-      O(u, "min", "1");
-      O(u, "placeholder", "to");
-      O(u, "inputmode", "numeric");
-      O(u, "class", "svelte-1lhvhf8");
+      O(u, "type", "number"),
+      O(u, "min", "1"),
+      O(u, "placeholder", "to"),
+      O(u, "inputmode", "numeric"),
+      O(u, "class", "svelte-1lhvhf8"),
 
-      O(m, "class", "svelte-1lhvhf8");
-
-      O(n, "class", "wrapper svelte-1lhvhf8");
+      O(p, "class", "svelte-1lhvhf8"),
+      O(n, "class", "wrapper svelte-1lhvhf8")
     },
     m(e, o) {
-      M(e, n, o);
-      k(n, r);
-      r.innerHTML = x;
-      k(n, a);
-      k(n, i);
-      R(i, t[0]);
-      k(n, l);
-      k(n, c);
-      k(n, d);
-      k(n, u);
-      R(u, t[1]);
-      k(n, f);
-      k(n, m);
-      k(m, g);
-      k(m, y);
-
-      h || (
-        p = [
+      M(e, n, o),
+      k(n, r), r.innerHTML = h,
+      k(n, a), k(n, i), R(i, t[0]),
+      k(n, l), k(n, c),
+      k(n, d), k(n, u), R(u, t[1]),
+      k(n, m), k(n, p),
+      k(p, g), k(p, y),
+      R(p, t[4]),
+      f || (
+        f = [
           P(r, "click", t[5]),
           P(i, "input", t[6]),
           P(u, "input", t[7]),
-          P(m, "change", t[8]) // 新增: 選單改變 mode
-        ],
-        h = !0
-      );
+          P(p, "change", t[8])
+        ]
+      )
     },
-    p(e, [t]) {
-      8 & t && x !== (x = e[3]("playcount.fetch.button") + "") && (r.innerHTML = x);
-      7 & t && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o);
-      1 & t && _(i.value) !== e[0] && R(i, e[0]);
-      2 & t && _(u.value) !== e[1] && R(u, e[1]);
+    p(e, n) {
+      8 & n && h !== (h = e[3]("playcount.fetch.button") + "") && (r.innerHTML = h),
+      7 & n && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o),
+      1 & n && _(i.value) !== e[0] && R(i, e[0]),
+      2 & n && _(u.value) !== e[1] && R(u, e[1]),
+      16 & n && _(p.value) !== e[4] && R(p, e[4])
     },
     i: e,
     o: e,
     d(e) {
-      e && E(n);
-      h = !1;
-      s(p);
+      e && E(n), f = !1, s(f)
     }
   }
 }
 
-
-    function Zn(e, t) {
-      return isNaN(e) || isNaN(t) || null == e || null == t || t < e
-    }
-
+function Zn(e, t) {
+  return isNaN(e) || isNaN(t) || null == e || null == t || t < e
+}
 
 function Qn(e, t, n) {
-  let r, o, s, a, i, l;
-  u(e, jt, (e => n(2, r = e)));
-  u(e, wt, (e => n(3, o = e)));
-  u(e, kt, (e => n(8, s = e)));
-  u(e, St, (e => n(9, a = e)));
-  u(e, At, (e => n(10, i = e)));
+  let r, o, s, a, i, l, v = "songPlayCount";
+  u(e, jt, (e => n(2, r = e))),
+  u(e, wt, (e => n(3, o = e))),
+  u(e, kt, (e => n(8, s = e))),
+  u(e, St, (e => n(9, a = e))),
+  u(e, At, (e => n(10, i = e))),
   u(e, xt, (e => n(11, l = e)));
 
   let c = 1, d = 40;
-  let currentMode = "songPlayCount";
-
-  // 監聽 store
-  mode.subscribe(value => {
-    currentMode = value;
-  });
 
   async function f(e, t) {
     if (!Zn(e, t)) {
-      p(St, a = !0, a);
-      p(jt, r = !0, r);
+      p(St, a = !0, a),
+      p(jt, r = !0, r),
       p(xt, l = !1, l);
       try {
         const n = i.slice(e - 1, t).length;
-        for (const [r, s] of i.slice(e - 1, t).entries()) {
+        for (const [r, s] of i.slice(e - 1, t).entries())
           kt.set(o("playcount.fetch.progress", {
             progress: `${r}`,
             all: `${n}`
-          }));
+          })),
+          null == s.playCount && (s.playCount = await gt(v, s.difficulty, s.idx), At.set(i));
 
-          if (currentMode === "songPlayCount" && s.playCount == null) {
-            s.playCount = await gt("songPlayCount", s.difficulty, s.idx);
-            At.set(i);
-          } else if (currentMode === "worldRank" && s.worldRank == null) {
-            s.worldRank = await gt("worldRank", s.difficulty, s.idx);
-            At.set(i);
-          }
-        }
-        p(jt, r = !1, r);
-        p(St, a = !1, a);
+        p(jt, r = !1, r),
+        p(St, a = !1, a)
       } catch {
-        p(St, a = !1, a);
-        p(kt, s = o("playcount.fetch.error"), s);
+        p(St, a = !1, a),
+        p(kt, s = o("playcount.fetch.error"), s),
         setTimeout(() => {
-          p(jt, r = !1, r);
-        }, 6000);
+          p(jt, r = !1, r)
+        }, 6e3)
       }
     }
   }
 
   return [
-    c, d, r, o, f,
+    c,
+    d,
+    r,
+    o,
+    v,
+    f,
     () => f(c, d),
-    function() { c = _(this.value); n(0, c); },
-    function() { d = _(this.value); n(1, d); },
-    function(e) { mode.set(e.target.value); } // 控制模式
-  ];
+    function () { c = _(this.value), n(0, c); },
+    function () { d = _(this.value), n(1, d); },
+    function () { v = this.value, n(4, v); } // mode 切換
+  ]
 }
-
 
     const Kn = class extends Se {
       constructor(e) {
@@ -3777,45 +3757,46 @@ function Qn(e, t, n) {
       }
     }
 
-function Zr(e, t, n) {
-  let r, o, s, a, i, currentMode = "songPlayCount";
+    function Zr(e, t, n) {
+  let r, o, s, a, i, v;
   u(e, nt, (e => n(1, r = e)));
   u(e, $t, (e => n(2, o = e)));
   u(e, Tt, (e => n(3, s = e)));
   u(e, rt, (e => n(4, a = e)));
   u(e, jt, (e => n(5, i = e)));
-
-  // 監聽 mode
-  mode.subscribe(value => {
-    currentMode = value;
-  });
+  u(e, mt, (e => n(6, v = e))); // 假設 mt 是 mode 的 store
 
   let { song: l } = t;
 
   return e.$$set = e => {
-    "song" in e && n(0, l = e.song);
-  }, [l, r, o, s, a, i, function() {
-    "all" === o && Tt.toggle();
-  }, function() {
-    "all" == o && p(nt, r = r === "percentage" ? "value" : r === "value" ? "percentage" : r === "dgpercentage" ? "dgvalue" : r === "dgvalue" ? "dgpercentage" : r === "eudgpercentage" ? "eudgvalue" : "eudgpercentage", r);
-  }, () => {
-    if (!i) {
-      const type = currentMode;
-      gt(type, l.difficulty, l.idx).then((e => {
-        if (type === "songPlayCount") {
-          n(0, l.playCount = e, l);
-        } else if (type === "worldRank") {
-          n(0, l.worldRank = e, l);
-        }
-      })).catch(() => {
-        if (type === "songPlayCount") {
-          n(0, l.playCount = null, l);
-        } else if (type === "worldRank") {
-          n(0, l.worldRank = null, l);
-        }
-      });
+    "song" in e && n(0, l = e.song)
+  }, [
+    l,
+    r,
+    o,
+    s,
+    a,
+    i,
+    v,
+    function () {
+      "all" === o && Tt.toggle();
+    },
+    function () {
+      "all" == o && p(nt, r = r === "percentage" ? "value"
+                          : r === "value" ? "percentage"
+                          : r === "dgpercentage" ? "dgvalue"
+                          : r === "dgvalue" ? "dgpercentage"
+                          : r === "eudgpercentage" ? "eudgvalue"
+                          : "eudgpercentage", r);
+    },
+    () => {
+      i || gt(v, l.difficulty, l.idx).then((e => {
+        n(0, l.playCount = e, l)
+      })).catch((() => {
+        n(0, l.playCount = null, l)
+      }))
     }
-  }];
+  ]
 }
     const Qr = class extends Se {
       constructor(e) {
