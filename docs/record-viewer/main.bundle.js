@@ -2393,77 +2393,23 @@
     }
 
     function Yn(t) {
-      let n, r, o, a, i, l, c, d, u, f, p, h, v, g = t[3]("playcount.fetch.button") + "";
-
+      let n, r, o, a, i, l, c, d, u, f, p, h = t[3]("playcount.fetch.button") + "";
       return {
         c() {
-          n = H("div");
-          r = H("button");
-          a = D();
-          i = H("input");
-          l = D();
-          c = H("span");
-          c.textContent = "～";
-          d = D();
-          u = H("input");
-          f = D();
-          v = H("input"); // slider
-          O(r, "type", "button");
-          O(r, "class", "btn svelte-1lhvhf8");
-          r.disabled = o = t[2] || Zn(t[0], t[1]);
-          O(i, "type", "number");
-          O(i, "min", "1");
-          O(i, "placeholder", "from");
-          O(i, "inputmode", "numeric");
-          O(i, "class", "svelte-1lhvhf8");
-          O(u, "type", "number");
-          O(u, "min", "1");
-          O(u, "placeholder", "to");
-          O(u, "inputmode", "numeric");
-          O(u, "class", "svelte-1lhvhf8");
-          O(v, "type", "range");
-          O(v, "min", "0");
-          O(v, "max", "1");
-          O(v, "value", t[12]); // mode slider
-          O(v, "class", "mode-toggle svelte-1lhvhf8");
-          O(n, "class", "wrapper svelte-1lhvhf8");
+          n = H("div"), r = H("button"), a = D(), i = H("input"), l = D(), c = H("span"), c.textContent = "～", d = D(), u = H("input"), O(r, "type", "button"), O(r, "class", "btn svelte-1lhvhf8"), r.disabled = o = t[2] || Zn(t[0], t[1]), O(i, "type", "number"), O(i, "min", "1"), O(i, "placeholder", "from"), O(i, "inputmode", "numeric"), O(i, "class", "svelte-1lhvhf8"), O(u, "type", "number"), O(u, "min", "1"), O(u, "placeholder", "to"), O(u, "inputmode", "numeric"), O(u, "class", "svelte-1lhvhf8"), O(n, "class", "wrapper svelte-1lhvhf8")
         },
         m(e, o) {
-          M(e, n, o);
-          k(n, r);
-          r.innerHTML = g;
-          k(n, a);
-          k(n, i);
-          R(i, t[0]);
-          k(n, l);
-          k(n, c);
-          k(n, d);
-          k(n, u);
-          R(u, t[1]);
-          k(n, f);
-          k(n, v); // mount slider
-          h || (p = [
-            P(r, "click", t[5]),
-            P(i, "input", t[6]),
-            P(u, "input", t[7]),
-            P(v, "input", t[8]) // slider change
-          ], h = !0);
+          M(e, n, o), k(n, r), r.innerHTML = h, k(n, a), k(n, i), R(i, t[0]), k(n, l), k(n, c), k(n, d), k(n, u), R(u, t[1]), f || (p = [P(r, "click", t[5]), P(i, "input", t[6]), P(u, "input", t[7])], f = !0)
         },
-        p(e, s) {
-          8 & s && g !== (g = e[3]("playcount.fetch.button") + "") && (r.innerHTML = g);
-          7 & s && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o);
-          1 & s && _(i.value) !== e[0] && R(i, e[0]);
-          2 & s && _(u.value) !== e[1] && R(u, e[1]);
-          4096 & s && _(v.value) !== e[12] && R(v, e[12]); // update slider
+        p(e, [t]) {
+          8 & t && h !== (h = e[3]("playcount.fetch.button") + "") && (r.innerHTML = h), 7 & t && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o), 1 & t && _(i.value) !== e[0] && R(i, e[0]), 2 & t && _(u.value) !== e[1] && R(u, e[1])
         },
         i: e,
         o: e,
         d(e) {
-          e && E(n);
-          h = !1;
-          s(p);
+          e && E(n), f = !1, s(p)
         }
-      };
+      }
     }
 
     function Zn(e, t) {
@@ -2471,64 +2417,32 @@
     }
 
     function Qn(e, t, n) {
-      let r, o, s, a, i, l, m = 0;
-      u(e, jt, (e => n(2, r = e)));
-      u(e, wt, (e => n(3, o = e)));
-      u(e, kt, (e => n(8, s = e)));
-      u(e, St, (e => n(9, a = e)));
-      u(e, At, (e => n(10, i = e)));
-      u(e, xt, (e => n(11, l = e)));
-
+      let r, o, s, a, i, l;
+      u(e, jt, (e => n(2, r = e))), u(e, wt, (e => n(3, o = e))), u(e, kt, (e => n(8, s = e))), u(e, St, (e => n(9, a = e))), u(e, At, (e => n(10, i = e))), u(e, xt, (e => n(11, l = e)));
       let c = 1,
-          d = 40;
-
+        d = 40;
       async function f(e, t) {
         if (!Zn(e, t)) {
-          p(St, a = !0, a);
-          p(jt, r = !0, r);
-          p(xt, l = !1, l);
+          p(St, a = !0, a), p(jt, r = !0, r), p(xt, l = !1, l);
           try {
             const n = i.slice(e - 1, t).length;
-            const key = m === 1 ? "worldRank" : "songPlayCount";
-            for (const [r, s] of i.slice(e - 1, t).entries()) {
-              kt.set(o("playcount.fetch.progress", {
-                progress: r,
-                all: n
-              }));
-              if (s[key] == null) {
-                s[key] = await gt(key, s.difficulty, s.idx);
-                At.set(i);
-              }
-            }
-            p(jt, r = !1, r);
-            p(St, a = !1, a);
+            for (const [r, s] of i.slice(e - 1, t).entries()) kt.set(o("playcount.fetch.progress", {
+              progress: `${r}`,
+              all: `${n}`
+            })), null == s.playCount && (s.playCount = await gt("songPlayCount", s.difficulty, s.idx), At.set(i));
+            p(jt, r = !1, r), p(St, a = !1, a)
           } catch {
-            p(St, a = !1, a);
-            p(kt, s = o("playcount.fetch.error"), s);
-            setTimeout(() => {
-              p(jt, r = !1, r);
-            }, 6000);
+            p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s), setTimeout((() => {
+              p(jt, r = !1, r)
+            }), 6e3)
           }
         }
       }
-
-      return [
-        c, d, r, o, f,
-        () => f(c, d),
-        function () {
-          c = _(this.value);
-          n(0, c);
-        },
-        function () {
-          d = _(this.value);
-          n(1, d);
-        },
-        function () {
-          m = this.value | 0;
-          n(12, m);
-        },
-        m
-      ];
+      return [c, d, r, o, f, () => f(c, d), function() {
+        c = _(this.value), n(0, c)
+      }, function() {
+        d = _(this.value), n(1, d)
+      }]
     }
     const Kn = class extends Se {
       constructor(e) {
