@@ -2393,7 +2393,8 @@
     }
 
     function Yn(t) {
-      let n, r, o, a, i, l, c, d, u, f, p, m, g1, g2, y, b, h = t[3]("playcount.fetch.button") + "";
+      let n, r, o, a, i, l, c, d, u, f, p, m, g1, g2, h = t[3]("playcount.fetch.button") + "";
+
       return {
         c() {
           n = H("div");
@@ -2409,6 +2410,7 @@
           m = H("select");
           g1 = H("option");
           g2 = H("option");
+
           O(r, "type", "button");
           O(r, "class", "btn svelte-1lhvhf8");
           r.disabled = o = t[2] || Zn(t[0], t[1]);
@@ -2425,16 +2427,17 @@
           O(u, "inputmode", "numeric");
           O(u, "class", "svelte-1lhvhf8");
 
+          O(m, "class", "svelte-1lhvhf8");
+
           g1.value = "songPlayCount";
           g1.textContent = "Play Count";
 
           g2.value = "worldRank";
           g2.textContent = "World Rank";
 
-          O(m, "class", "svelte-1lhvhf8");
-
           O(n, "class", "wrapper svelte-1lhvhf8");
         },
+
         m(e, o) {
           M(e, n, o);
           k(n, r);
@@ -2451,31 +2454,33 @@
           k(n, m);
           k(m, g1);
           k(m, g2);
-          m.value = t[12]; // 初始值綁定
+          m.value = t[12]; // 初始化選單值
 
-          if (!y) {
-            b = [
+          if (!p) {
+            p = [
               P(r, "click", t[5]),
               P(i, "input", t[6]),
               P(u, "input", t[7]),
-              P(m, "change", t[8]) // 新增 select change 綁定
+              P(m, "change", t[8]) // 新增選單監聽
             ];
-            y = true;
           }
         },
-        p(e, [t]) {
-          8 & t && h !== (h = e[3]("playcount.fetch.button") + "") && (r.innerHTML = h);
-          7 & t && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o);
-          1 & t && _(i.value) !== e[0] && R(i, e[0]);
-          2 & t && _(u.value) !== e[1] && R(u, e[1]);
-          4096 & t && m.value !== e[12] && (m.value = e[12]); // 12 = fetchMode
+
+        p(e, [tFlag]) {
+          if (8 & tFlag && h !== (h = e[3]("playcount.fetch.button") + "")) r.innerHTML = h;
+          if (7 & tFlag && o !== (o = e[2] || Zn(e[0], e[1]))) r.disabled = o;
+          if (1 & tFlag && _(i.value) !== e[0]) R(i, e[0]);
+          if (2 & tFlag && _(u.value) !== e[1]) R(u, e[1]);
+          if (4096 & tFlag && m.value !== e[12]) m.value = e[12]; // 更新選單選項
         },
-        i: e,
-        o: e,
+
+        i: e => {},
+        o: e => {},
+
         d(e) {
           e && E(n);
-          y = false;
-          s(b);
+          p && s(p);
+          p = null;
         }
       };
     }
@@ -2485,7 +2490,7 @@
     }
 
     function Qn(e, t, n) {
-      let r, o, s, a, i, l;
+      let r, o, s, a, i, l, fetchMode = "songPlayCount";
       u(e, jt, (e => n(2, r = e)));
       u(e, wt, (e => n(3, o = e)));
       u(e, kt, (e => n(8, s = e)));
@@ -2494,7 +2499,6 @@
       u(e, xt, (e => n(11, l = e)));
 
       let c = 1, d = 40;
-      let fetchMode = "songPlayCount"; // 預設為 playCount
 
       async function f(e, t) {
         if (!Zn(e, t)) {
@@ -2504,7 +2508,6 @@
 
           try {
             const n = i.slice(e - 1, t).length;
-
             for (const [r, s] of i.slice(e - 1, t).entries()) {
               kt.set(o("playcount.fetch.progress", {
                 progress: `${r}`,
@@ -2525,23 +2528,17 @@
           } catch {
             p(St, a = !1, a);
             p(kt, s = o("playcount.fetch.error"), s);
-            setTimeout(() => {
-              p(jt, r = !1, r);
-            }, 6000);
+            setTimeout(() => p(jt, r = !1, r), 6000);
           }
         }
       }
 
       return [
-        c,
-        d,
-        r,
-        o,
-        f,
+        c, d, r, o, f,
         () => f(c, d),
         function () { c = _(this.value); n(0, c); },
         function () { d = _(this.value); n(1, d); },
-        function () { fetchMode = this.value; n(12, fetchMode); } // 切換 mode
+        function () { fetchMode = this.value; n(12, fetchMode); }
       ];
     }
     const Kn = class extends Se {
