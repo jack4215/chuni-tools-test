@@ -2393,98 +2393,105 @@
     }
 
     function Yn(t) {
-      let n, r, o, a, i, l, c, d, u, f, p, h, m, y, g, v, b, x = t[3]("playcount.fetch.button") + "";
+  let n, r, o, a, i, l, c, d, u, f, p, h, m, g, y = t[3]("playcount.fetch.button") + "";
 
-      return {
-        c() {
-          n = H("div"), r = H("button"), a = D(), i = H("input"), l = D(), c = H("span"), c.textContent = "～", d = D(), u = H("input"), f = D(), 
-          p = H("select"), h = H("option"), m = H("option"),
-
-          O(r, "type", "button"), O(r, "class", "btn svelte-1lhvhf8"),
-          r.disabled = o = t[2] || Zn(t[0], t[1]),
-
-          O(i, "type", "number"), O(i, "min", "1"), O(i, "placeholder", "from"), O(i, "inputmode", "numeric"), O(i, "class", "svelte-1lhvhf8"),
-          O(u, "type", "number"), O(u, "min", "1"), O(u, "placeholder", "to"), O(u, "inputmode", "numeric"), O(u, "class", "svelte-1lhvhf8"),
-
-          O(p, "class", "svelte-1lhvhf8"),
-          h.value = "songPlayCount", h.textContent = "Song Play Count",
-          m.value = "worldRank", m.textContent = "World Rank",
-
-          O(n, "class", "wrapper svelte-1lhvhf8")
-        },
-        m(e, o) {
-          M(e, n, o), k(n, r), r.innerHTML = x, k(n, a), k(n, i), R(i, t[0]), k(n, l), k(n, c), k(n, d), k(n, u), R(u, t[1]), k(n, f), k(n, p), k(p, h), k(p, m), R(p, t[4]);
-          v || (b = [
-            P(r, "click", t[5]),
-            P(i, "input", t[6]),
-            P(u, "input", t[7]),
-            P(p, "change", t[8])
-          ], v = !0)
-        },
-        p(e, [t]) {
-          8 & t && x !== (x = e[3]("playcount.fetch.button") + "") && (r.innerHTML = x),
-          7 & t && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o),
-          1 & t && _(i.value) !== e[0] && R(i, e[0]),
-          2 & t && _(u.value) !== e[1] && R(u, e[1]),
-          16 & t && _(p.value) !== e[4] && R(p, e[4])
-        },
-        i: e,
-        o: e,
-        d(e) {
-          e && E(n), v = !1, s(b)
-        }
-      }
+  return {
+    c() {
+      n = H("div"),
+      r = H("button"),
+      o = D(),
+      a = H("input"),
+      i = D(),
+      l = H("span"), l.textContent = "～",
+      c = D(),
+      d = H("input"),
+      u = D(),
+      f = H("select"),
+      p = H("option"), p.textContent = "PlayCount", O(p, "value", "songPlayCount"),
+      h = H("option"), h.textContent = "WorldRank", O(h, "value", "worldRank"),
+      O(r, "type", "button"), O(r, "class", "btn svelte-1lhvhf8"),
+      r.disabled = m = t[2] || Zn(t[0], t[1]),
+      O(a, "type", "number"), O(a, "min", "1"), O(a, "placeholder", "from"),
+      O(a, "inputmode", "numeric"), O(a, "class", "svelte-1lhvhf8"),
+      O(d, "type", "number"), O(d, "min", "1"), O(d, "placeholder", "to"),
+      O(d, "inputmode", "numeric"), O(d, "class", "svelte-1lhvhf8"),
+      O(f, "class", "svelte-1lhvhf8"),
+      O(n, "class", "wrapper svelte-1lhvhf8")
+    },
+    m(e, o) {
+      M(e, n, o), k(n, r), r.innerHTML = y, 
+      k(n, o), k(n, a), R(a, t[0]), 
+      k(n, i), k(n, l), 
+      k(n, c), k(n, d), R(d, t[1]), 
+      k(n, u), k(n, f), 
+      k(f, p), k(f, h), R(f, t[8]),
+      g || ( 
+        this._unsub = [
+          P(r, "click", t[5]),
+          P(a, "input", t[6]),
+          P(d, "input", t[7]),
+          P(f, "change", t[9])
+        ], g = !0
+      )
+    },
+    p(e, [tFlags]) {
+      8 & tFlags && y !== (y = e[3]("playcount.fetch.button") + "") && (r.innerHTML = y),
+      7 & tFlags && m !== (m = e[2] || Zn(e[0], e[1])) && (r.disabled = m),
+      1 & tFlags && _(a.value) !== e[0] && R(a, e[0]),
+      2 & tFlags && _(d.value) !== e[1] && R(d, e[1]),
+      256 & tFlags && _(f.value) !== e[8] && R(f, e[8])
+    },
+    d(e) {
+      e && E(n), g = !1, s(this._unsub)
     }
+  }
+}
 
-    function Zn(e, t) {
-      return isNaN(e) || isNaN(t) || null == e || null == t || t < e
-    }
+function Zn(e, t) {
+  return isNaN(e) || isNaN(t) || null == e || null == t || t < e;
+}
 
-    function Qn(e, t, n) {
-      let r, o, s, a, i, l;
-      u(e, jt, (e => n(2, r = e)));
-      u(e, wt, (e => n(3, o = e)));
-      u(e, kt, (e => n(8, s = e)));
-      u(e, St, (e => n(9, a = e)));
-      u(e, At, (e => n(10, i = e)));
-      u(e, xt, (e => n(11, l = e)));
+function Qn(e, t, n) {
+  let r, o, s, a, i, l;
+  u(e, jt, (e => n(2, r = e)));
+  u(e, wt, (e => n(3, o = e)));
+  u(e, kt, (e => n(8, s = e)));
+  u(e, St, (e => n(9, a = e)));
+  u(e, At, (e => n(10, i = e)));
+  u(e, xt, (e => n(11, l = e)));
 
-      let c = 1,
-          d = 40,
-          mode = "songPlayCount";
+  let c = 1, d = 40, g = "songPlayCount";
 
-      async function f(e, t) {
-        if (!Zn(e, t)) {
-          p(St, a = !0, a), p(jt, r = !0, r), p(xt, l = !1, l);
-          try {
-            const total = i.slice(e - 1, t).length;
-            for (const [idx, song] of i.slice(e - 1, t).entries()) {
-              kt.set(o("playcount.fetch.progress", { progress: `${idx}`, all: `${total}` }));
-              if (mode === "songPlayCount" && song.playCount == null) {
-                song.playCount = await gt("songPlayCount", song.difficulty, song.idx);
-                At.set(i);
-              }
-              if (mode === "worldRank" && song.worldRank == null) {
-                song.worldRank = await gt("worldRank", song.difficulty, song.idx);
-                At.set(i);
-              }
-            }
-            p(jt, r = !1, r), p(St, a = !1, a);
-          } catch {
-            p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s);
-            setTimeout(() => p(jt, r = !1, r), 6000);
+  async function f(e, t) {
+    if (!Zn(e, t)) {
+      p(St, a = !0, a), p(jt, r = !0, r), p(xt, l = !1, l);
+      try {
+        const n = i.slice(e - 1, t).length;
+        for (const [rIdx, song] of i.slice(e - 1, t).entries()) {
+          kt.set(o("playcount.fetch.progress", { progress: `${rIdx}`, all: `${n}` }));
+          if (song[g] == null) {
+            song[g] = await gt(g, song.difficulty, song.idx);
+            At.set(i);
           }
         }
+        p(jt, r = !1, r), p(St, a = !1, a);
+      } catch {
+        p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s);
+        setTimeout(() => p(jt, r = !1, r), 6e3);
       }
-
-      return [
-        c, d, r, o, mode,
-        () => f(c, d),
-        function () { c = _(this.value), n(0, c); },
-        function () { d = _(this.value), n(1, d); },
-        function () { mode = this.value, n(4, mode); }
-      ];
     }
+  }
+
+  return [
+    c, d, r, o, f, 
+    () => f(c, d),
+    function() { c = _(this.value), n(0, c) },
+    function() { d = _(this.value), n(1, d) },
+    g,
+    function() { g = this.value, n(8, g) }
+  ];
+}
+
     const Kn = class extends Se {
       constructor(e) {
         super(), je(this, e, Qn, Yn, i, {}, Gn)
