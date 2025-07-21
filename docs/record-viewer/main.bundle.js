@@ -856,7 +856,7 @@
         const nn = ["", "CLR", "HRD", "BRV", "ABS", "CTS"];
         return nn.indexOf(t.clear2) - nn.indexOf(e.clear2)
       },
-      playcount: (e, t) => null == e.playCount ? 100 : null == t.playCount ? -100 : e.playCount == t.playCount ? e.order - t.order : t.playCount - e.playCount
+      playcount: (e, t) => null == e.playCount ? 100 : null == t.playCount ? -100 : e.playCount == t.playCount ? e.order - t.order : t.playCount - e.playCount,
       worldrank: (e, t) => (e.worldRank === "-" ? 9999999 : e.worldRank) === (t.worldRank === "-" ? 9999999 : t.worldRank) ? e.order - t.order : (e.worldRank === "-" ? 9999999 : e.worldRank) - (t.worldRank === "-" ? 9999999 : t.worldRank)
     };
 
