@@ -3004,6 +3004,20 @@
       }), Q.push((() => we(L, "checked", De)));
       let Pe = e[5] && br(e);
 
+      function Dee(t) {
+        e[17](t)
+      }
+      void 0 !== e[4] && (Ae.value = e[4]), T = new Tn({
+        props: Ae
+      }), Q.push((() => we(T, "value", Ue)));
+      let Le = {
+        label: e[0]("settings.data.worldrank")
+      };
+      void 0 !== e[5] && (Le.checked = e[5]), L = new Nn({
+        props: Le
+      }), Q.push((() => we(L, "checked", Dee)));
+      let Pe = e[5] && brr(e);
+
       function Oe(t) {
         e[14](t)
       }
@@ -3064,10 +3078,6 @@
           1 & t && (s.label = e[0]("settings.data.playcount")), !_ && 32 & t && (_ = !0, s.checked = e[5], oe((() => _ = !1))), L.$set(s), e[5] ? Pe ? (Pe.p(e, t), 32 & t && ge(Pe, 1)) : (Pe = br(e), Pe.c(), ge(Pe, 1), Pe.m(o, R)) : Pe && (pe(), me(Pe, 1, 1, (() => {
             Pe = null
           })), he());
-          const ss = {};
-          1 & t && (s.label = e[0]("settings.data.worldrank")), !_ && 32 & t && (_ = !0, s.checked = e[5], oe((() => _ = !1))), L.$set(s), e[5] ? Pe ? (Pe.p(e, t), 32 & t && ge(Pe, 1)) : (Pe = br(e), Pe.c(), ge(Pe, 1), Pe.m(o, R)) : Pe && (pe(), me(Pe, 1, 1, (() => {
-            Pe = null
-          })), he());
           const a = {};
           1 & t && (a.label = e[0]("settings.data.showScoreDiff")), !B && 64 & t && (B = !0, a.checked = e[6], oe((() => B = !1))), F.$set(a), (!de || 1 & t) && Te !== (Te = e[0]("settings.ui.title") + "") && (G.innerHTML = Te);
           const i = {};
@@ -3100,8 +3110,8 @@
     }
 
     function jr(e, t, n) {
-      let r, o, s, a, i, l, c, d, f;
-      return u(e, wt, (e => n(0, r = e))), u(e, Ze, (e => n(1, o = e))), u(e, Ye, (e => n(2, s = e))), u(e, tt, (e => n(3, a = e))), u(e, nt, (e => n(4, i = e))), u(e, rt, (e => n(5, l = e))), u(e, Tt, (e => n(6, c = e))), u(e, De, (e => n(7, d = e))), u(e, Ae, (e => n(8, f = e))), [r, o, s, a, i, l, c, d, f, function(e) {
+      let r, o, s, a, i, l, c, d, dd, f;
+      return u(e, wt, (e => n(0, r = e))), u(e, Ze, (e => n(1, o = e))), u(e, Ye, (e => n(2, s = e))), u(e, tt, (e => n(3, a = e))), u(e, nt, (e => n(4, i = e))), u(e, rt, (e => n(5, l = e))), u(e, Tt, (e => n(6, c = e))), u(e, De, (e => n(7, d = e))), u(e, Dee, (e => n(8, dd = e))), u(e, Ae, (e => n(9, f = e))), [r, o, s, a, i, l, c, d, dd, f, function(e) {
         o = e, Ze.set(o)
       }, function(e) {
         s = e, Ye.set(s)
@@ -3115,6 +3125,8 @@
         c = e, Tt.set(c)
       }, function(e) {
         d = e, De.set(d)
+      }, function(e) {
+        dd = e, Dee.set(dd)
       }, function(e) {
         f = e, Ae.set(f)
       }, () => {
