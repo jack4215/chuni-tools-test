@@ -401,8 +401,8 @@
                                 a.append("diff", c.indexOf(t).toString()),
                                 a.append("token", r("_t"));
                                 const n = await i("/mobile/record/musicGenre/sendMusicDetail/", a)
-                                  , l = n.querySelectorAll(`.music_box.bg_${Object.entries(o).find((e => e[1] === t))[0]} .box14 > div`)[1].querySelector(".text_b")?.innerHTML.replace("times", "");
-                                return parseInt(l)
+                                , l = n.querySelectorAll(`.music_box.bg_${Object.entries(o).find((e => e[1] === t))?.[0]} .box14 > div`)?.[1]?.querySelector(".text_b")?.innerHTML.replace("times", "");
+                                return parseInt(l) || 0
                             }(t.data.idx, t.data.difficulty)
                             break;
                         case "worldRank":
@@ -417,13 +417,11 @@
                                 const l = n.querySelector(".rank_block_inner_mine");
                                 if (l) {
                                     const rank = l.querySelector(".rank_block_rank")?.textContent.trim() || "-";
-                                    console.log("%c    Your world rank: %c" + rank, "color: gray", "color: white");
                                     return parseInt(rank);
                                 } else {
-                                    console.log("%c    Your world rank: %c-", "color: gray", "color: white");
                                     return "-";
                                 }
-                            }(t.data.idx, t.data.difficulty);
+                            }(t.data.idx, t.data.difficulty)
                         }
                         l("ping", {
                             target: t.target
