@@ -856,7 +856,8 @@
         const nn = ["", "CLR", "HRD", "BRV", "ABS", "CTS"];
         return nn.indexOf(t.clear2) - nn.indexOf(e.clear2)
       },
-      playcount: (e, t) => (e.playCount === "-" ? 9999999 : e.playCount) === (t.playCount === "-" ? 9999999 : t.playCount) ? e.order - t.order : (e.playCount === "-" ? 9999999 : e.playCount) - (t.playCount === "-" ? 9999999 : t.playCount)
+      playcount: (e, t) => null == e.playCount ? 100 : null == t.playCount ? -100 : e.playCount == t.playCount ? e.order - t.order : t.playCount - e.playCount
+      worldrank: (e, t) => (e.worldRank === "-" ? 9999999 : e.worldRank) === (t.worldRank === "-" ? 9999999 : t.worldRank) ? e.order - t.order : (e.worldRank === "-" ? 9999999 : e.worldRank) - (t.worldRank === "-" ? 9999999 : t.worldRank)
     };
 
     function Xe(e) {
@@ -2429,7 +2430,7 @@
             for (const [r, s] of sFS.slice(e - 1, t).entries()) kt.set(o("playcount.fetch.progress", {
               progress: `${r}`,
               all: `${n}`
-            })), null == s.playCount && (s.playCount = await gt("worldRank", s.difficulty, s.idx), At.set(sFS));
+            })), null == s.playCount && (s.playCount = await gt("songPlayCount", s.difficulty, s.idx), At.set(sFS));
             p(jt, r = !1, r), p(St, a = !1, a)
           } catch {
             p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s), setTimeout((() => {
@@ -2447,6 +2448,68 @@
     const Kn = class extends Se {
       constructor(e) {
         super(), je(this, e, Qn, Yn, i, {}, Gn)
+      }
+    };
+
+    function Gnn(e) {
+      j(e, "svelte-1lhvhg8", ".wrapper.svelte-1lhvhg8{padding:0.5rem;display:flex;gap:0.5rem;align-items:center}input[type=number].svelte-1lhvhg8{background-color:var(--theme-bg-sub);color:var(--theme-text-control);border:none;border-radius:0.2rem;width:4rem;padding:0.5rem;-moz-appearance:textfield;appearance:textfield;flex-grow:1}input[type=number].svelte-1lhvhg8::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}.btn.svelte-1lhvhg8{width:-moz-fit-content;width:fit-content;padding:0.5rem 1.5rem;border-radius:0.8rem;background-color:var(--theme-control);color:var(--theme-text-control)}.btn[disabled].svelte-1lhvhg8{background-color:var(--theme-border);cursor:no-drop}")
+    }
+
+    function Ynn(t) {
+      let n, r, o, a, i, l, c, d, u, f, p, h = t[3]("playcount.fetch.button") + "";
+      return {
+        c() {
+          n = H("div"), r = H("button"), a = D(), i = H("input"), l = D(), c = H("span"), c.textContent = "～", d = D(), u = H("input"), O(r, "type", "button"), O(r, "class", "btn svelte-1lhvhg8"), r.disabled = o = t[2] || Znn(t[0], t[1]), O(i, "type", "number"), O(i, "min", "1"), O(i, "placeholder", "from"), O(i, "inputmode", "numeric"), O(i, "class", "svelte-1lhvhg8"), O(u, "type", "number"), O(u, "min", "1"), O(u, "placeholder", "to"), O(u, "inputmode", "numeric"), O(u, "class", "svelte-1lhvhg8"), O(n, "class", "wrapper svelte-1lhvhg8")
+        },
+        m(e, o) {
+          M(e, n, o), k(n, r), r.innerHTML = h, k(n, a), k(n, i), R(i, t[0]), k(n, l), k(n, c), k(n, d), k(n, u), R(u, t[1]), f || (p = [P(r, "click", t[5]), P(i, "input", t[6]), P(u, "input", t[7])], f = !0)
+        },
+        p(e, [t]) {
+          8 & t && h !== (h = e[3]("playcount.fetch.button") + "") && (r.innerHTML = h), 7 & t && o !== (o = e[2] || Znn(e[0], e[1])) && (r.disabled = o), 1 & t && _(i.value) !== e[0] && R(i, e[0]), 2 & t && _(u.value) !== e[1] && R(u, e[1])
+        },
+        i: e,
+        o: e,
+        d(e) {
+          e && E(n), f = !1, s(p)
+        }
+      }
+    }
+
+    function Znn(e, t) {
+      return isNaN(e) || isNaN(t) || null == e || null == t || t < e
+    }
+
+    function Qnn(e, t, n) {
+      let r, o, s, a, i, l;
+      u(e, jt, (e => n(2, r = e))), u(e, wt, (e => n(3, o = e))), u(e, kt, (e => n(8, s = e))), u(e, St, (e => n(9, a = e))),/* u(e, At, (e => n(10, i = e))),*/ u(e, xt, (e => n(11, l = e)));
+      let c = 1,
+        d = 40;
+      async function f(e, t) {
+        if (!Znn(e, t)) {
+          p(St, a = !0, a), p(jt, r = !0, r), p(xt, l = !1, l);
+          try {
+            const n = sFS.slice(e - 1, t).length;
+            for (const [r, s] of sFS.slice(e - 1, t).entries()) kt.set(o("playcount.fetch.progress", {
+              progress: `${r}`,
+              all: `${n}`
+            })), null == s.playCount && (s.playCount = await gt("songPlayCount", s.difficulty, s.idx), At.set(sFS));
+            p(jt, r = !1, r), p(St, a = !1, a)
+          } catch {
+            p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s), setTimeout((() => {
+              p(jt, r = !1, r)
+            }), 6e3)
+          }
+        }
+      }
+      return [c, d, r, o, f, () => f(c, d), function() {
+        c = _(this.value), n(0, c)
+      }, function() {
+        d = _(this.value), n(1, d)
+      }]
+    }
+    const Knn = class extends Se {
+      constructor(e) {
+        super(), je(this, e, Qnn, Ynn, i, {}, Gnn)
       }
     };
 
@@ -2999,6 +3062,10 @@
           }), !C && 16 & t && (C = !0, r.value = e[4], oe((() => C = !1))), T.$set(r), (!de || 1 & t) && Se !== (Se = e[0]("settings.data.overpower.notify") + "") && (U.innerHTML = Se);
           const s = {};
           1 & t && (s.label = e[0]("settings.data.playcount")), !_ && 32 & t && (_ = !0, s.checked = e[5], oe((() => _ = !1))), L.$set(s), e[5] ? Pe ? (Pe.p(e, t), 32 & t && ge(Pe, 1)) : (Pe = br(e), Pe.c(), ge(Pe, 1), Pe.m(o, R)) : Pe && (pe(), me(Pe, 1, 1, (() => {
+            Pe = null
+          })), he());
+          const ss = {};
+          1 & t && (s.label = e[0]("settings.data.worldrank")), !_ && 32 & t && (_ = !0, s.checked = e[5], oe((() => _ = !1))), L.$set(s), e[5] ? Pe ? (Pe.p(e, t), 32 & t && ge(Pe, 1)) : (Pe = br(e), Pe.c(), ge(Pe, 1), Pe.m(o, R)) : Pe && (pe(), me(Pe, 1, 1, (() => {
             Pe = null
           })), he());
           const a = {};
@@ -3599,6 +3666,67 @@
         }
       }
     }
+
+    function Jrr(e) {
+      let t;
+
+      function n(e, t) {
+        return void 0 === e[0].worldRank ? Grr : Xrr
+      }
+      let r = n(e),
+        o = r(e);
+      return {
+        c() {
+          o.c(), t = L()
+        },
+        m(e, n) {
+          o.m(e, n), M(e, t, n)
+        },
+        p(e, s) {
+          r === (r = n(e)) && o ? o.p(e, s) : (o.d(1), o = r(e), o && (o.c(), o.m(t.parentNode, t)))
+        },
+        d(e) {
+          o.d(e), e && E(t)
+        }
+      }
+    }
+
+    function Xrr(e) {
+      let t, n, r = (e[0].worldRank ?? "?") + "";
+      return {
+        c() {
+          t = H("td"), n = A(r), O(t, "class", "svelte-1gjhsjp")
+        },
+        m(e, r) {
+          M(e, t, r), k(t, n)
+        },
+        p(e, t) {
+          1 & t && r !== (r = (e[0].worldRank ?? "?") + "") && I(n, r)
+        },
+        d(e) {
+          e && E(t)
+        }
+      }
+    }
+
+    function Grr(e) {
+      let t, n, r;
+      return {
+        c() {
+          t = H("td"), t.innerHTML = '<span class="svelte-1gjhsjp">  </span>', O(t, "class", "pc-hidden svelte-1gjhsjp"), B(t, "disabled", e[5])
+        },
+        m(o, s) {
+          M(o, t, s), n || (r = P(t, "click", e[8]), n = !0)
+        },
+        p(e, n) {
+          32 & n && B(t, "disabled", e[5])
+        },
+        d(e) {
+          e && E(t), n = !1, r()
+        }
+      }
+    }
+
     function Vz(data) {
       return {
         c() {
@@ -3637,10 +3765,11 @@
       let z = R(t),
         F = z(t),
         V = Wr(t),
-        q = t[4] && "all" === t[2] && Jr(t);
+        q = t[4] && "all" === t[2] && Jr(t)
+        qq = t[4] && "all" === t[2] && Jrr(t);
       return {
         c() {
-          n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"), f = A(T), N && N.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = "history" === t[2] ? 2 : 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ( "curr" === t[2] ? 20 : "history" === t[2] ? 0 : 30)), B(n, "best40", t[0].order <= ("best" === t[2] ? 40 : "curr" === t[2] ? 30 : "history" === t[2] ? 0 : 40)), B(n, "ajc", 101e4 == t[0].score);
+          n = H("tr"), r = H("td"), o = A(j), s = D(), a = H("td"), i = A(S), d = D(), u = H("td"), f = A(T), N && N.c(), p = D(), _.c(), h = D(), g = H("td"), F.c(), m = D(), v = H("td"), b = A(C), y = D(), V && V.c(), w = D(), q && q.c(), qq && qq.c(), O(r, "class", "song-order svelte-1gjhsjp"), O(a, "data-diff", l = t[0].difficulty), O(a, "colspan", c = "history" === t[2] ? 2 : 1), O(a, "class", "svelte-1gjhsjp"), O(u, "class", "svelte-1gjhsjp"), O(g, "class", "song-score svelte-1gjhsjp"), B(g, "clickable", "all" === t[2]), O(v, "class", "svelte-1gjhsjp"), O(n, "class", "svelte-1gjhsjp"), B(n, "best30", t[0].order <= ( "curr" === t[2] ? 20 : "history" === t[2] ? 0 : 30)), B(n, "best40", t[0].order <= ("best" === t[2] ? 40 : "curr" === t[2] ? 30 : "history" === t[2] ? 0 : 40)), B(n, "ajc", 101e4 == t[0].score);
           if (newVIndicator) {
             newVIndicator.c();
             newVIndicator.m(u, null);
@@ -3648,10 +3777,10 @@
           }
         },
         m(e, l) {
-          M(e, n, l), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, d), k(n, u), k(u, f), N && N.m(u, null), k(n, p), _.m(n, null), k(n, h), k(n, g), F.m(g, null), k(n, m), k(n, v), k(v, b), k(n, y), V && V.m(n, null), k(n, w), q && q.m(n, null), $ || (x = P(g, "click", t[6]), $ = !0)
+          M(e, n, l), k(n, r), k(r, o), k(n, s), k(n, a), k(a, i), k(n, d), k(n, u), k(u, f), N && N.m(u, null), k(n, p), _.m(n, null), k(n, h), k(n, g), F.m(g, null), k(n, m), k(n, v), k(v, b), k(n, y), V && V.m(n, null), k(n, w), q && q.m(n, null), qq && qq.m(n, null), $ || (x = P(g, "click", t[6]), $ = !0)
         },
         p(e, [t]) {
-          1 & t && j !== (j = e[0].order + "") && I(o, j), 1 & t && S !== (S = e[0].title + "") && I(i, S), 1 & t && l !== (l = e[0].difficulty) && O(a, "data-diff", l), 4 & t && c !== (c = "history" === e[2] ? 2 : 1) && O(a, "colspan", c), 1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T), e[0].constUncertain ? N || (N = Ir(), N.c(), N.m(u, null)) : N && (N.d(1), N = null), L === (L = U(e)) && _ ? _.p(e, t) : (_.d(1), _ = L(e), _ && (_.c(), _.m(n, h))), z === (z = R(e)) && F ? F.p(e, t) : (F.d(1), F = z(e), F && (F.c(), F.m(g, null))), 4 & t && B(g, "clickable", "all" === e[2]), 1 & t && C !== (C = (e[0].const < 0 || -1 == e[0].score ? "-" : null == e[0].rating ? "??.??" : (e[0].rating / 100).toFixed(2)) + "") && I(b, C), V ? V.p(e, t) : (V = Wr(e), V.c(), V.m(n, w)), e[4] && "all" === e[2] ? q ? q.p(e, t) : (q = Jr(e), q.c(), q.m(n, null)) : q && (q.d(1), q = null), 5 & t && B(n, "best30", e[0].order <= ( "curr" === e[2] ? 20 : "history" === e[2] ? 0 : 30)), 5 & t && B(n, "best40", e[0].order <= ("best" === e[2] ? 40 : "curr" === e[2] ? 30 : "history" === e[2] ? 0 : 40)), 1 & t && B(n, "ajc", 101e4 == e[0].score)
+          1 & t && j !== (j = e[0].order + "") && I(o, j), 1 & t && S !== (S = e[0].title + "") && I(i, S), 1 & t && l !== (l = e[0].difficulty) && O(a, "data-diff", l), 4 & t && c !== (c = "history" === e[2] ? 2 : 1) && O(a, "colspan", c), 1 & t && T !== (T = (e[0].const < 0 ? "-" : e[0].const?.toFixed(1) ?? "??.?") + "") && I(f, T), e[0].constUncertain ? N || (N = Ir(), N.c(), N.m(u, null)) : N && (N.d(1), N = null), L === (L = U(e)) && _ ? _.p(e, t) : (_.d(1), _ = L(e), _ && (_.c(), _.m(n, h))), z === (z = R(e)) && F ? F.p(e, t) : (F.d(1), F = z(e), F && (F.c(), F.m(g, null))), 4 & t && B(g, "clickable", "all" === e[2]), 1 & t && C !== (C = (e[0].const < 0 || -1 == e[0].score ? "-" : null == e[0].rating ? "??.??" : (e[0].rating / 100).toFixed(2)) + "") && I(b, C), V ? V.p(e, t) : (V = Wr(e), V.c(), V.m(n, w)), e[4] && "all" === e[2] ? q ? q.p(e, t) : (q = Jr(e), q.c(), q.m(n, null)) : q && (q.d(1), q = null), e[4] && "all" === e[2] ? qq ? qq.p(e, t) : (qq = Jrr(e), qq.c(), qq.m(n, null)) : qq && (qq.d(1), qq = null), 5 & t && B(n, "best30", e[0].order <= ( "curr" === e[2] ? 20 : "history" === e[2] ? 0 : 30)), 5 & t && B(n, "best40", e[0].order <= ("best" === e[2] ? 40 : "curr" === e[2] ? 30 : "history" === e[2] ? 0 : 40)), 1 & t && B(n, "ajc", 101e4 == e[0].score)
           const shouldShowNewV = 
               e[0].newV === 1 || (e[0].newV === 2 && e[0].difficulty === "ULT");
           if (shouldShowNewV) {
@@ -3674,7 +3803,7 @@
         i: e,
         o: e,
         d(e) {
-          e && E(n), N && N.d(), _.d(), F.d(), V && V.d(), q && q.d(), $ = !1, x();
+          e && E(n), N && N.d(), _.d(), F.d(), V && V.d(), q && q.d(), qq && qq.d(), $ = !1, x();
           newVIndicator && newVIndicator.d();
         }
       }
@@ -3693,10 +3822,16 @@
       }, function() {
         "all" == o && p(nt, r = r === "percentage" ? "value" : r === "value" ? "percentage" : r === "dgpercentage" ? "dgvalue" : r === "dgvalue" ? "dgpercentage" : r === "eudgpercentage" ? "eudgvalue" : "eudgpercentage", r);
       }, () => {
-        i || gt("worldRank", l.difficulty, l.idx).then((e => {
+        i || gt("songPlayCount", l.difficulty, l.idx).then((e => {
           n(0, l.playCount = e, l)
         })).catch((() => {
           n(0, l.playCount = null, l)
+        }))
+      }, () => {
+        i || gt("songWorldRank", l.difficulty, l.idx).then((e => {
+          n(0, l.worldRank = e, l)
+        })).catch((() => {
+          n(0, l.worldRank = null, l)
         }))
       }]
     }
@@ -3911,6 +4046,10 @@
         }, {
           display: "playcount",
           sort: "playcount",
+          condition: a && "all" === s
+        }, {
+          display: "worldrank",
+          sort: "worldrank",
           condition: a && "all" === s
         }])
       }, [f, p, h, o, r, c, d, s, a, i, l, e => {
