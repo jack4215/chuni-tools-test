@@ -2429,7 +2429,7 @@
             for (const [r, s] of sFS.slice(e - 1, t).entries()) kt.set(o("playcount.fetch.progress", {
               progress: `${r}`,
               all: `${n}`
-            })), null == s.playCount && (s.playCount = await gt("songPlayCount", s.difficulty, s.idx), At.set(sFS));
+            })), null == s.playCount && (s.playCount = await gt("worldRank", s.difficulty, s.idx), At.set(sFS));
             p(jt, r = !1, r), p(St, a = !1, a)
           } catch {
             p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s), setTimeout((() => {
@@ -3693,7 +3693,7 @@
       }, function() {
         "all" == o && p(nt, r = r === "percentage" ? "value" : r === "value" ? "percentage" : r === "dgpercentage" ? "dgvalue" : r === "dgvalue" ? "dgpercentage" : r === "eudgpercentage" ? "eudgvalue" : "eudgpercentage", r);
       }, () => {
-        i || gt("songPlayCount", l.difficulty, l.idx).then((e => {
+        i || gt("worldRank", l.difficulty, l.idx).then((e => {
           n(0, l.playCount = e, l)
         })).catch((() => {
           n(0, l.playCount = null, l)
