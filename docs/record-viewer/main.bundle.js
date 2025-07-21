@@ -3010,11 +3010,11 @@
       void 0 !== e[4] && (Ae.value = e[4]), T = new Tn({
         props: Ae
       }), Q.push((() => we(T, "value", Ue)));
-      let Le = {
+      let Lee = {
         label: e[0]("settings.data.worldrank")
       };
       void 0 !== e[5] && (Le.checked = e[5]), L = new Nn({
-        props: Le
+        props: Lee
       }), Q.push((() => we(L, "checked", Dee)));
       let Pe = e[5] && brr(e);
 
