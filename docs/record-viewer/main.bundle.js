@@ -2399,7 +2399,6 @@
           f, p,
           h = t[3]("playcount.fetch.button") + "",
           h2 = t[3]("playcount.fetch.button") + "";
-
       return {
         c() {
             n = H("div"), r = H("button"), r2 = H("button"), a = H("br"), i = H("input"),
