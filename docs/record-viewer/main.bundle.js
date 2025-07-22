@@ -2415,7 +2415,7 @@
             f || (p = [
               P(r, "click", t[5]), P(i, "input", t[6]), P(u, "input", t[7]), P(r2, "click", t[8])
             ], f = !0)
-          }
+          },
         p(e, s) {
           8 & s && h !== (h = e[3]("playcount.fetch.button") + "") && (r.innerHTML = h),
           7 & s && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o),
