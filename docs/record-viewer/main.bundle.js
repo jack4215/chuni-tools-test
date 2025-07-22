@@ -2431,7 +2431,7 @@
           2 & s && _(u.value) !== e[1] && R(u, e[1]),
 
           8 & s && h2 !== (h2 = e[3]("playcount.fetch.button") + "") && (r2.innerHTML = h2),
-          12288 & s && o2 !== (o2 = e[2] || Zn(e[12], e[13])) && (r2.disabled = o2),
+          12288 & s && o2 !== (o2 = e[2] || Zn(e[0], e[1])) && (r2.disabled = o2),
           4096 & s && _(i2.value) !== e[12] && R(i2, e[12]),
           8192 & s && _(u2.value) !== e[13] && R(u2, e[13])
         },
