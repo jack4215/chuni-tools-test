@@ -2452,12 +2452,7 @@
 
     function Qn(e, t, n) {
       let r, o, s, a, i, l;
-      u(e, jt, (e => n(2, r = e))),
-      u(e, wt, (e => n(3, o = e))),
-      u(e, kt, (e => n(8, s = e))),
-      u(e, St, (e => n(9, a = e))),
-      u(e, At, (e => n(10, i = e))),
-      u(e, xt, (e => n(11, l = e)));
+      u(e, jt, (e => n(2, r = e))), u(e, wt, (e => n(3, o = e))), u(e, kt, (e => n(8, s = e))), u(e, St, (e => n(9, a = e))),/* u(e, At, (e => n(10, i = e))),*/ u(e, xt, (e => n(11, l = e)));
 
       let c = 1, d = 40;
 
@@ -2465,10 +2460,10 @@
         if (!Zn(e, t)) {
           p(St, a = !0, a), p(jt, r = !0, r), p(xt, l = !1, l);
           try {
-            const n = i.slice(e - 1, t).length;
-            for (const [r, s] of i.slice(e - 1, t).entries())
+            const n = sFS.slice(e - 1, t).length;
+            for (const [r, s] of sFS.slice(e - 1, t).entries())
               kt.set(o("playcount.fetch.progress", { progress: `${r}`, all: `${n}` })),
-              null == s.playCount && (s.playCount = await gt("songPlayCount", s.difficulty, s.idx), At.set(i));
+              null == s.playCount && (s.playCount = await gt("songPlayCount", s.difficulty, s.idx), At.set(sFS));
             p(jt, r = !1, r), p(St, a = !1, a)
           } catch {
             p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s), setTimeout(() => { p(jt, r = !1, r) }, 6e3)
@@ -2480,10 +2475,10 @@
         if (!Zn(e, t)) {
           p(St, a = !0, a), p(jt, r = !0, r), p(xt, l = !1, l);
           try {
-            const n = i.slice(e - 1, t).length;
-            for (const [r, s] of i.slice(e - 1, t).entries())
+            const n = sFS.slice(e - 1, t).length;
+            for (const [r, s] of sFS.slice(e - 1, t).entries())
               kt.set(o("playcount.fetch.progress", { progress: `${r}`, all: `${n}` })),
-              null == s.playCount && (s.playCount = await gt("songWorldRank", s.difficulty, s.idx), At.set(i));
+              null == s.playCount && (s.playCount = await gt("songWorldRank", s.difficulty, s.idx), At.set(sFS));
             p(jt, r = !1, r), p(St, a = !1, a)
           } catch {
             p(St, a = !1, a), p(kt, s = o("playcount.fetch.error"), s), setTimeout(() => { p(jt, r = !1, r) }, 6e3)
