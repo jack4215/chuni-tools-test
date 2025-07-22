@@ -3589,7 +3589,7 @@
     }
 
     function Jr(e) {
-  let placeholder;
+  let ph1, ph2; // ✅ 兩個錨點
 
   function pickPlayCount(e) {
     return void 0 === e[0].playCount ? Gr : Xr;
@@ -3607,12 +3607,14 @@
     c() {
       playBlock.c();
       rankBlock.c();
-      placeholder = L(); // DOM 錨點
+      ph1 = L();  // ✅ playCount 的錨點
+      ph2 = L();  // ✅ worldRank 的錨點
     },
     m(target, anchor) {
       playBlock.m(target, anchor);
+      M(target, ph1, anchor);   // ✅ 插入錨點1
       rankBlock.m(target, anchor);
-      M(target, placeholder, anchor);
+      M(target, ph2, anchor);   // ✅ 插入錨點2
     },
     p(e, s) {
       let newPlayRenderer = pickPlayCount(e);
@@ -3626,7 +3628,7 @@
         playRenderer = newPlayRenderer;
         playBlock = playRenderer(e);
         playBlock.c();
-        playBlock.m(placeholder.parentNode, placeholder);
+        playBlock.m(ph1.parentNode, ph1);  // ✅ 綁定自己的錨點
       }
 
       // 更新 worldRank
@@ -3637,13 +3639,16 @@
         rankRenderer = newRankRenderer;
         rankBlock = rankRenderer(e);
         rankBlock.c();
-        rankBlock.m(placeholder.parentNode, placeholder);
+        rankBlock.m(ph2.parentNode, ph2);  // ✅ 綁定自己的錨點
       }
     },
     d(detach) {
       playBlock.d(detach);
       rankBlock.d(detach);
-      if (detach) E(placeholder);
+      if (detach) {
+        E(ph1);
+        E(ph2);
+      }
     }
   }
 }
