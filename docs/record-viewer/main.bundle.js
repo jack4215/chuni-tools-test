@@ -3590,13 +3590,10 @@
 
     function Jr(e) {
       let ph1, ph2;
-
       const selCount = e => void 0 === e[0].playCount ? Gr : Xr;
       const selRank  = e => void 0 === e[0].worldRank ? Grw : Wrr;
-
       let cr = selCount(e), rr = selRank(e),
           cb = cr(e), rb = rr(e);
-
       return {
         c() {
           cb.c(); rb.c();
