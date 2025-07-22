@@ -2474,7 +2474,7 @@
       return [
         c, d, r, o,
         f,  () => f(c, d),  function(){ c = _(this.value), n(0, c) }, function(){ d = _(this.value), n(1, d) },
-        () => f2(c, d) // ✅ 第二個按鈕直接跑 f2(c,d)
+        () => f2(c, d)
       ]
     }
     const Kn = class extends Se {
