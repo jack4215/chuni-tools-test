@@ -3589,28 +3589,112 @@
     }
 
     function Jr(e) {
-      let t;
+  let placeholder;
 
-      function n(e, t) {
-        return void 0 === e[0].playCount ? Gr : Xr
+  function pickPlayCount(e) {
+    return void 0 === e[0].playCount ? Gr : Xr;
+  }
+  function pickWorldRank(e) {
+    return void 0 === e[0].worldRank ? Grw : Wrr;
+  }
+
+  let playRenderer = pickPlayCount(e),
+      rankRenderer = pickWorldRank(e),
+      playBlock = playRenderer(e),
+      rankBlock = rankRenderer(e);
+
+  return {
+    c() {
+      playBlock.c();
+      rankBlock.c();
+      placeholder = L(); // DOM 錨點
+    },
+    m(target, anchor) {
+      playBlock.m(target, anchor);
+      rankBlock.m(target, anchor);
+      M(target, placeholder, anchor);
+    },
+    p(e, s) {
+      let newPlayRenderer = pickPlayCount(e);
+      let newRankRenderer = pickWorldRank(e);
+
+      // 更新 playCount
+      if (playRenderer === newPlayRenderer) {
+        playBlock.p && playBlock.p(e, s);
+      } else {
+        playBlock.d(1);
+        playRenderer = newPlayRenderer;
+        playBlock = playRenderer(e);
+        playBlock.c();
+        playBlock.m(placeholder.parentNode, placeholder);
       }
-      let r = n(e),
-        o = r(e);
-      return {
-        c() {
-          o.c(), t = L()
-        },
-        m(e, n) {
-          o.m(e, n), M(e, t, n)
-        },
-        p(e, s) {
-          r === (r = n(e)) && o ? o.p(e, s) : (o.d(1), o = r(e), o && (o.c(), o.m(t.parentNode, t)))
-        },
-        d(e) {
-          o.d(e), e && E(t)
-        }
+
+      // 更新 worldRank
+      if (rankRenderer === newRankRenderer) {
+        rankBlock.p && rankBlock.p(e, s);
+      } else {
+        rankBlock.d(1);
+        rankRenderer = newRankRenderer;
+        rankBlock = rankRenderer(e);
+        rankBlock.c();
+        rankBlock.m(placeholder.parentNode, placeholder);
       }
+    },
+    d(detach) {
+      playBlock.d(detach);
+      rankBlock.d(detach);
+      if (detach) E(placeholder);
     }
+  }
+}
+function Wrr(e) {
+  let td, textNode, val = (e[0].worldRank ?? "-") + "";
+  return {
+    c() {
+      td = H("td");
+      textNode = A(val);
+      O(td, "class", "svelte-1gjhsjp");
+    },
+    m(target, anchor) {
+      M(target, td, anchor);
+      k(td, textNode);
+    },
+    p(e, s) {
+      let newVal = (e[0].worldRank ?? "-") + "";
+      if (val !== newVal) {
+        val = newVal;
+        I(textNode, val);
+      }
+    },
+    d(detach) {
+      if (detach) E(td);
+    }
+  };
+}
+function Grw(e) {
+  let td, cleanup, bound = false;
+  return {
+    c() {
+      td = H("td");
+      td.innerHTML = '<span class="svelte-1gjhsjp">  </span>';
+      O(td, "class", "pc-hidden svelte-1gjhsjp");
+      B(td, "disabled", e[5]);
+    },
+    m(target, anchor) {
+      M(target, td, anchor);
+      // 如果要點擊抓 worldRank，用 e[9] 之類的事件
+      if (!bound) { cleanup = P(td, "click", e[9]); bound = true; }
+    },
+    p(e, flags) {
+      32 & flags && B(td, "disabled", e[5]);
+    },
+    d(detach) {
+      if (detach) E(td);
+      bound = false;
+      cleanup && cleanup();
+    }
+  };
+}
 
     function Xr(e) {
       let t, n, r = (e[0].playCount ?? "?") + "";
