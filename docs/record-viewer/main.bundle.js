@@ -3589,117 +3589,91 @@
     }
 
     function Jr(e) {
-  let ph1, ph2; // ✅ 兩個錨點
+      let ph1, ph2;
 
-  function pickPlayCount(e) {
-    return void 0 === e[0].playCount ? Gr : Xr;
-  }
-  function pickWorldRank(e) {
-    return void 0 === e[0].worldRank ? Grw : Wrr;
-  }
+      const selCount = e => void 0 === e[0].playCount ? Gr : Xr;
+      const selRank  = e => void 0 === e[0].worldRank ? Grw : Wrr;
 
-  let playRenderer = pickPlayCount(e),
-      rankRenderer = pickWorldRank(e),
-      playBlock = playRenderer(e),
-      rankBlock = rankRenderer(e);
+      let cr = selCount(e), rr = selRank(e),
+          cb = cr(e), rb = rr(e);
 
-  return {
-    c() {
-      playBlock.c();
-      rankBlock.c();
-      ph1 = L();  // ✅ playCount 的錨點
-      ph2 = L();  // ✅ worldRank 的錨點
-    },
-    m(target, anchor) {
-      playBlock.m(target, anchor);
-      M(target, ph1, anchor);   // ✅ 插入錨點1
-      rankBlock.m(target, anchor);
-      M(target, ph2, anchor);   // ✅ 插入錨點2
-    },
-    p(e, s) {
-      let newPlayRenderer = pickPlayCount(e);
-      let newRankRenderer = pickWorldRank(e);
-
-      // 更新 playCount
-      if (playRenderer === newPlayRenderer) {
-        playBlock.p && playBlock.p(e, s);
-      } else {
-        playBlock.d(1);
-        playRenderer = newPlayRenderer;
-        playBlock = playRenderer(e);
-        playBlock.c();
-        playBlock.m(ph1.parentNode, ph1);  // ✅ 綁定自己的錨點
-      }
-
-      // 更新 worldRank
-      if (rankRenderer === newRankRenderer) {
-        rankBlock.p && rankBlock.p(e, s);
-      } else {
-        rankBlock.d(1);
-        rankRenderer = newRankRenderer;
-        rankBlock = rankRenderer(e);
-        rankBlock.c();
-        rankBlock.m(ph2.parentNode, ph2);  // ✅ 綁定自己的錨點
-      }
-    },
-    d(detach) {
-      playBlock.d(detach);
-      rankBlock.d(detach);
-      if (detach) {
-        E(ph1);
-        E(ph2);
+      return {
+        c() {
+          cb.c(); rb.c();
+          ph1 = L(); ph2 = L();
+        },
+        m(t, a) {
+          cb.m(t, a); M(t, ph1, a);
+          rb.m(t, a); M(t, ph2, a);
+        },
+        p(e, f) {
+          let ncr = selCount(e), nrr = selRank(e);
+          if (cr === ncr) cb.p?.(e, f);
+          else {
+            cb.d(1);
+            cr = ncr; cb = cr(e);
+            cb.c(); cb.m(ph1.parentNode, ph1);
+          }
+          if (rr === nrr) rb.p?.(e, f);
+          else {
+            rb.d(1);
+            rr = nrr; rb = rr(e);
+            rb.c(); rb.m(ph2.parentNode, ph2);
+          }
+        },
+        d(detach) {
+          cb.d(detach); rb.d(detach);
+          if (detach) { E(ph1); E(ph2); }
+        }
       }
     }
-  }
-}
-function Wrr(e) {
-  let td, textNode, val = (e[0].worldRank ?? "-") + "";
-  return {
-    c() {
-      td = H("td");
-      textNode = A(val);
-      O(td, "class", "svelte-1gjhsjp");
-    },
-    m(target, anchor) {
-      M(target, td, anchor);
-      k(td, textNode);
-    },
-    p(e, s) {
-      let newVal = (e[0].worldRank ?? "-") + "";
-      if (val !== newVal) {
-        val = newVal;
-        I(textNode, val);
-      }
-    },
-    d(detach) {
-      if (detach) E(td);
+    function Wrr(e) {
+      let td, textNode, val = (e[0].worldRank ?? "-") + "";
+      return {
+        c() {
+          td = H("td");
+          textNode = A(val);
+          O(td, "class", "svelte-1gjhsjp");
+        },
+        m(target, anchor) {
+          M(target, td, anchor);
+          k(td, textNode);
+        },
+        p(e, s) {
+          let newVal = (e[0].worldRank ?? "-") + "";
+          if (val !== newVal) {
+            val = newVal;
+            I(textNode, val);
+          }
+        },
+        d(detach) {
+          if (detach) E(td);
+        }
+      };
     }
-  };
-}
-function Grw(e) {
-  let td, cleanup, bound = false;
-  return {
-    c() {
-      td = H("td");
-      td.innerHTML = '<span class="svelte-1gjhsjp">  </span>';
-      O(td, "class", "pc-hidden svelte-1gjhsjp");
-      B(td, "disabled", e[5]);
-    },
-    m(target, anchor) {
-      M(target, td, anchor);
-      // 如果要點擊抓 worldRank，用 e[9] 之類的事件
-      if (!bound) { cleanup = P(td, "click", e[9]); bound = true; }
-    },
-    p(e, flags) {
-      32 & flags && B(td, "disabled", e[5]);
-    },
-    d(detach) {
-      if (detach) E(td);
-      bound = false;
-      cleanup && cleanup();
+    function Grw(e) {
+      let td, cleanup, bound = false;
+      return {
+        c() {
+          td = H("td");
+          td.innerHTML = '<span class="svelte-1gjhsjp">  </span>';
+          O(td, "class", "pc-hidden svelte-1gjhsjp");
+          B(td, "disabled", e[5]);
+        },
+        m(target, anchor) {
+          M(target, td, anchor);
+          if (!bound) { cleanup = P(td, "click", e[9]); bound = true; }
+        },
+        p(e, flags) {
+          32 & flags && B(td, "disabled", e[5]);
+        },
+        d(detach) {
+          if (detach) E(td);
+          bound = false;
+          cleanup && cleanup();
+        }
+      };
     }
-  };
-}
 
     function Xr(e) {
       let t, n, r = (e[0].playCount ?? "?") + "";
