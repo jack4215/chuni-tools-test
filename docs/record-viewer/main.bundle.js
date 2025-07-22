@@ -2394,40 +2394,35 @@
     }
 
     function Yn(t) {
-      let n, r, o, a, i, l, c, d, u,
-          n2, r2, o2, a2, i2, l2, c2, d2, u2,
-          f, p,
+      let n1, r, r2, n2, i, c, u, f, p,
           h = t[3]("playcount.fetch.button") + "",
           h2 = t[3]("worldrank.fetch.button") + "";
+
       return {
         c() {
-            n = H("div"), r = H("button"), r2 = H("button"), a = H("br"), i = H("input"),
-            c = H("span"), c.textContent = "～", u = H("input"),
-            O(r, "type", "button"), O(r, "class", "btn svelte-1lhvhf8"), r.disabled = o = t[2] || Zn(t[0], t[1]),
-            O(r2, "type", "button"), O(r2, "class", "btn svelte-1lhvhf8"),
-            r2.disabled = o2 = t[2] || Zn(t[0], t[1]),
-            O(i, "type", "number"), O(i, "min", "1"), O(i, "placeholder", "from"), O(i, "inputmode", "numeric"), O(i, "class", "svelte-1lhvhf8"),
-            O(u, "type", "number"), O(u, "min", "1"), O(u, "placeholder", "to"), O(u, "inputmode", "numeric"), O(u, "class", "svelte-1lhvhf8"),
-            O(n, "class", "wrapper svelte-1lhvhf8")
-          },
+          n1 = H("div"), r = H("button"), r2 = H("button"),
+          n2 = H("div"), i = H("input"), c = H("span"), c.textContent = "～", u = H("input"),
+          O(r, "type", "button"), O(r, "class", "btn svelte-1lhvhf8"), r.disabled = t[2] || Zn(t[0], t[1]),
+          O(r2, "type", "button"), O(r2, "class", "btn svelte-1lhvhf8"), r2.disabled = t[2] || Zn(t[0], t[1]),
+          O(i, "type", "number"), O(i, "min", "1"), O(i, "placeholder", "from"), O(i, "inputmode", "numeric"), O(i, "class", "svelte-1lhvhf8"),
+          O(u, "type", "number"), O(u, "min", "1"), O(u, "placeholder", "to"), O(u, "inputmode", "numeric"), O(u, "class", "svelte-1lhvhf8"),
+          O(n1, "class", "wrapper svelte-1lhvhf8"), O(n2, "class", "wrapper svelte-1lhvhf8")
+        },
         m(e, o) {
-            M(e, n, o), k(n, r), r.innerHTML = h, k(n, r2), r2.innerHTML = h2, k(n, a), k(n, i), R(i, t[0]), k(n, c), k(n, u), R(u, t[1]),
-            f || (p = [
-              P(r, "click", t[5]), P(i, "input", t[6]), P(u, "input", t[7]), P(r2, "click", t[8])
-            ], f = !0)
-          },
+          M(e, n1, o), k(n1, r), r.innerHTML = h, k(n1, r2), r2.innerHTML = h2,
+          M(e, n2, o), k(n2, i), R(i, t[0]), k(n2, c), k(n2, u), R(u, t[1]),
+          f || (p = [P(r, "click", t[5]), P(i, "input", t[6]), P(u, "input", t[7]), P(r2, "click", t[8])], f = !0)
+        },
         p(e, s) {
-          8 & s && h !== (h = e[3]("playcount.fetch.button") + "") && (r.innerHTML = h),
-          7 & s && o !== (o = e[2] || Zn(e[0], e[1])) && (r.disabled = o),
-          1 & s && _(i.value) !== e[0] && R(i, e[0]),
-          2 & s && _(u.value) !== e[1] && R(u, e[1]),
-
-          8 & s && h2 !== (h2 = e[3]("worldrank.fetch.button") + "") && (r2.innerHTML = h2),
-          7 & s && o2 !== (o2 = e[2] || Zn(e[0], e[1])) && (r2.disabled = o2)
+          (8 & s && h !== (h = e[3]("playcount.fetch.button") + "")) && (r.innerHTML = h),
+          (7 & s) && (r.disabled = e[2] || Zn(e[0], e[1]), r2.disabled = e[2] || Zn(e[0], e[1])),
+          (1 & s && _(i.value) !== e[0]) && R(i, e[0]),
+          (2 & s && _(u.value) !== e[1]) && R(u, e[1]),
+          (8 & s && h2 !== (h2 = e[3]("worldrank.fetch.button") + "")) && (r2.innerHTML = h2)
         },
         i: e,
         o: e,
-        d(e) { e && (E(n), E(n2)), f = !1, s(p) }
+        d(e) { e && (E(n1), E(n2)), f = !1, s(p) }
       }
     }
 
